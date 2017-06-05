@@ -1,0 +1,22 @@
+{
+  "name": "sonet-starter",
+  "private": true,
+  "version": "0.0.0",
+  "description": "A starter project for the SoNet course",
+  "repository": "https://github.com/SoNet-2017/starter-kit",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.18.8",
+    "jshint": "^2.9.4",
+    "firebase-tools": "^3.6.1"
+  },
+  "scripts": {
+    "start-bsync": "browser-sync start --config bs-config.js",
+    "lint": "jshint app/**/*.js",
+
+    "fb-deploy": "firebase deploy",
+
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Luigi De Russis <luigi.derussis@polito.it> and Teodoro Montanaro <teodoro.montanaro@polito.it>"
+}

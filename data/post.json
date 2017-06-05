@@ -1,0 +1,26 @@
+[
+  {
+    "nome_utente" : "Franco",
+    "descrizione" : "Ricetta",
+    "img_url" : "images/userimg.png",
+    "img_alt" : "img_profilo"
+  },
+  {
+    "nome_utente" : "Rosa",
+    "descrizione" : "Tutorial",
+    "img_url" : "images/userimg.png",
+    "img_alt" : "img_profilo"
+  },
+  {
+    "nome_utente" : "Carla",
+    "descrizione" : "Immagine",
+    "img_url" : "images/userimg.png",
+    "img_alt" : "img_profilo"
+  },
+  {
+    "nome_utente" : "Giovanni",
+    "descrizione" : "Registrazione",
+    "img_url" : "images/userimg.png",
+    "img_alt" : "img_profilo"
+  }
+]

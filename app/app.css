@@ -1,0 +1,48 @@
+.navbar {
+  position: absolute;
+  height: 50px;
+  margin-bottom: 0;
+  background-color: #18562c;
+  border: 0;
+  font-size: 12px !important;
+  letter-spacing: 4px;
+  opacity: 0.9;
+  box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.2);
+}
+.navbar li a, .navbar .navbar-brand {
+  color: #bdd4c1 !important;
+}
+.navbar-nav li a:hover {
+  background-color: #349454;
+  color: #fff !important;
+}
+.navbar-nav li.active a {
+  color: #fff !important;
+  background-color: #349454 !important;
+}
+.navbar-default .navbar-toggle {
+  border-color: transparent;
+}
+.pulsante{
+  position: absolute;
+  margin-top: 50px;
+  padding: auto;
+  height: 60px;
+  width: 100%;
+  text-align: center;
+}
+#page{
+  padding-top: 120px;
+}
+#spazioUtente{
+  margin: 3px;
+  padding: 5px;
+  border: solid;
+  border-color: lightgreen;
+}
+#scrollPage{
+  margin: 3px;
+  padding: 5px;
+  border-style: inset;
+  border-color: lightgreen;
+}

@@ -17,8 +17,19 @@
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
   <![endif]-->
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script>
+  <!-- AngularFire -->
+  <script src="https://cdn.firebase.com/libs/angularfire/2.3.0/angularfire.min.js"></script>
+  <!-- Angular -->
+  <script src="../lib/angular/angular.min.js"></script>
+  <script src="../lib/angular/angular-route.min.js"></script>
+  <script src="../lib/angular/angular-resource.min.js"></script>
+
 </head>
 <body>
+
+
 <!--BARRA NAVIGAZIONE-Home/Profilo/Carrello/Logout-->
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
@@ -32,6 +43,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#!/home">Home</a></li>
         <li><a href="#!/userProfile">Profilo</a></li>
+        <li><a href=#/login ng-click="logout();">Logout</a></li>
       </ul>
     </div>
   </div>
@@ -73,10 +85,13 @@
   <script src="areaRicette/areaRicette.js"></script>
   <script src="areaTutorial/areaTutorial.js"></script>
   <script src="areaMercato/areaMercato.js"></script>
+  <script src="login/login.js"></script>
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
   <script src="components/post/post.js"></script>
   <script src="components/post/post-service.js"></script>
+  <script src="components/authentication/authentication.js"></script>
+  <script src="components/authentication/authentication-service.js"></script>
 </body>
 </html>

@@ -1,12 +1,11 @@
 'use strict'; angular.module('myApp.post.service',
     [])
-    .factory('Post', function($http) { var
-        postService = {
+    .factory('Post', function($firebaseArray) {
+        var postService = {
             getData: function () {
-                return $http.get('../data/post.json').then(function (response){ return
-                    response.data;
-                });
+                var ref=firebase.database().ref().child("posts");
+                return $firebaseArray(ref);
             }
-        }
+        };
         return postService;
-    })
+    });

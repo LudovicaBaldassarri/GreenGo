@@ -1,12 +1,67 @@
-<div class="container" id="page">
+
+<div class="container text-center" id="page">
   <div class="row">
-    <div class="col-md-3" id="spazioUtente">
-      <p>spazio utente</p>
+    <!--SPAZIO UTENTE-->
+    <div class="col-sm-3 ">
+      <div class="panel panel-defeault text-left">
+        <div class="panel-body">
+          <img src="../images/profilo-valentina-quadrato.jpg" class="img-circle" alt="Profilo" width="200" height="200">
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <p><a href="#">Interests</a></p>
+      </div>
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
     </div>
-    <div class="col-md-6">
-      <p>pulsanti per ricettario/catalogoTutorial/gas</p>
-      <p>qua va un modal per inserire i post</p>
-      <p>qua vanno tutti i post</p>
+
+    <!--SPAZIO POST-->
+    <div class="col-sm-8">
+
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="panel panel-default text-left">
+            <div class="panel-body">
+              <h2>Valentina Carli</h2>
+              <p>{{post.nome_autore}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <ul class="media-list">
+            <li class="media" ng-repeat="post in dati.post">
+              <a href="#">
+                <div class="media-left">
+                  <img class="media-object" ng-src="../{{post.img_url}}" alt="immagineRicetta">
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading"><strong>{{post.nome_post}}</strong></h4>
+                  <p>{{post.nome_autore}}</p>
+                </div>
+                <hr/>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!--LISTA DINAMICA DEI POST-->
+
+        <!--<div class="col-sm-3">-->
+          <!--<div class="well">-->
+            <!--<p>John</p>-->
+            <!--<img src="../images/userimg.png" class="img-circle" height="55" width="55" alt="Avatar">-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-sm-9">-->
+          <!--<div class="well">-->
+            <!--<p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>-->
+          <!--</div>-->
+        <!--</div>-->
+      </div>
     </div>
   </div>
 </div>

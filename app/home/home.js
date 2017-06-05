@@ -25,6 +25,6 @@ angular.module('myApp.home', ['ngRoute'])
                 $scope.dati={};
                 $scope.dati.vm = this;
                 $rootScope.dati.currentView = "home";
-                $scope.dati.pizzas = Pizza.getData();
+                $scope.dati.post = Post.getData();
             });
         }]);

@@ -18,12 +18,13 @@ angular.module('myApp.userProfile', ['ngRoute'])
             }
         })
     }])
-//.controller('userProfileCtrl', ['$scope', '$rootScope', 'UsersChatService', 'Users', 'currentAuth', '$firebaseAuth', '$location', function($scope, $rootScope, UsersChatService, Users, currentAuth, $firebaseAuth, $location) {
 
-    .controller('userProfileCtrl', ['$scope','$rootScope', 'Post','currentAuth','firebaseAuth', function($scope,$rootScope, currentAuth, $firebaseAuth, Post) {
-  $scope.dati={};
-  $rootScope.dati.currentView = "userProfile";
-  $scope.dati.post=Post.getData();
+    .controller('userProfileCtrl', ['$scope','$rootScope', 'Post','currentAuth','firebaseAuth',
+        function($scope,$rootScope, currentAuth, $firebaseAuth, Post) {
+        $scope.dati={};
+        $rootScope.dati.currentView = "userProfile";
+
+        $scope.dati.posts = Post.getData();
 
     // $scope.logout = function () {
     //

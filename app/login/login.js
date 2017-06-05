@@ -9,7 +9,8 @@ angular.module('myApp.login', ['ngRoute'])
         });
     }])
 
-    .controller('LoginCtrl', ['$scope', '$rootScope', 'Auth', '$location', '$log', 'Users', function($scope, $rootScope, Auth, $location, $log, Users) {
+    .controller('LoginCtrl', ['$scope', '$rootScope', 'Auth', '$location', '$log', 'Users',
+        function($scope, $rootScope, Auth, $location, $log, Users) {
         $scope.user={};
         $scope.auth = Auth; //acquires authentication from app.js (if it was done)
 
@@ -19,7 +20,7 @@ angular.module('myApp.login', ['ngRoute'])
             $scope.firebaseUser = null;
             $scope.error = null;
             //set the variable that is used in the main template to show the active button
-            $rootScope.dati.currentView = "home";
+           // $rootScope.dati.currentView = "home";
             $scope.auth.$signInWithEmailAndPassword($scope.user.email, $scope.user.password).then(function(firebaseUser) {
                 var userId = firebaseUser.uid;
                 Users.registerLogin(userId, $scope.user.email);

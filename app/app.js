@@ -1,4 +1,5 @@
 'use strict';
+
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyCry-tbpb3l8cnc8r8DCgamjBA6lFS6QxA",
@@ -22,7 +23,8 @@ angular.module('myApp', [
   'myApp.post',
   'myApp.login',
   'myApp.authentication',
-  'myApp.version'
+  'myApp.version',
+    'myApp.users'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');

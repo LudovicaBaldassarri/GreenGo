@@ -52,7 +52,9 @@ body{
   width: 100%;
   opacity: 0;
   transition: .5s ease;
-  background-color: #497e52;
+  /*background-color: #497e52;*/
+  /*background-color: #DFF0D8;*/
+  background-color: #C7EFB4;
   text-align: center;
 }
 
@@ -70,16 +72,4 @@ body{
   -ms-transform: translate(-50%, -50%);}
 #page{
   padding-top: 120px;
-}
-#spazioUtente{
-  margin: 3px;
-  padding: 5px;
-  border: solid;
-  border-color: lightgreen;
-}
-#scrollPage{
-  margin: 3px;
-  padding: 5px;
-  border-style: inset;
-  border-color: lightgreen;
 }

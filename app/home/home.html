@@ -1,27 +1,70 @@
-
-
-<div class="container" id="page">
+<div class="container text-center" id="page">
     <div class="row">
-      <div class="col-md-3" id="spazioUtente" align="center">
-          <img src="/images/userimg.png">
-          <h4>Nome</h4>
-          <p>Titolo raggiunto</p>
-          <p>Punteggio</p>
-          <p>Follwer/Following</p>
-      </div>
-        <div class="col-md-6" id="scrollPage">
-            <div class="inserisciPost">
-                <a data-toggle="modal" data-target="#myModal">Scrivi un post<a>
+        <!--SPAZIO UTENTE-->
+        <div class="col-sm-3 ">
+            <div class="panel panel-defeault text-left">
+                <div class="panel-body">
+                    <img src="../images/profilo-valentina-quadrato.jpg" class="img-circle" alt="Profilo" width="200" height="200">
+                </div>
             </div>
-            <p>qua vanno tutti i post</p>
+
+            <div class="panel-body">
+                <p><a href="#">Interests</a></p>
+            </div>
+            <p><a href="#">Link</a></p>
+            <p><a href="#">Link</a></p>
+            <p><a href="#">Link</a></p>
+        </div>
+
+        <!--SPAZIO POST-->
+        <div class="col-sm-8">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel panel-default text-left">
+                        <div class="panel-body">
+                            <h2>al posto del nome va il modal per il post</h2>
+                            <!--<h1>{{dati.user.name}} {{dati.user.surname}}</h1>-->
+                            <!--<p>{{dati.posts.nome_autore}}</p>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="media-list">
+                        <li class="media" ng-repeat="post in dati.posts">
+                            <a href="">
+                                <div class="media-left">
+                                    <img class="media-object" ng-src="../{{post.img_url}}" alt="immagineRicetta">
+                                </div>
+                                <div class="media-body">
+                                    <h4 class="media-heading"><strong>{{post.nome_post}}</strong></h4>
+                                    <p>{{pos.nome_autore}}</p>
+                                </div>
+                                <hr/>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!--LISTA DINAMICA DEI POST-->
+
+                <!--<div class="col-sm-3">-->
+                <!--<div class="well">-->
+                <!--<p>John</p>-->
+                <!--<img src="../images/userimg.png" class="img-circle" height="55" width="55" alt="Avatar">-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col-sm-9">-->
+                <!--<div class="well">-->
+                <!--<p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>-->
+                <!--</div>-->
+                <!--</div>-->
+            </div>
         </div>
     </div>
 </div>
-
-
-
-
-
 
 <!--<p>Home</p>-->
 <!--<ul class="media-list">-->

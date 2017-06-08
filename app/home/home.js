@@ -19,10 +19,11 @@ angular.module('myApp.home', ['ngRoute'])
         })
     }])
 
-    .controller('homeCtrl',['$scope','$rootScope','firebaseAuth', 'Post',
-        function($scope, $rootScope, firebaseAuth, Post) {
-            Post.getData().then(function(data) {
+    .controller('homeCtrl',['$scope','$rootScope','$firebaseAuth', 'Post',
+        function($scope, $rootScope, $firebaseAuth, Post) {
+            Post.getData().$loaded.then(function(data) {
                 $scope.dati={};
+                $rootScope.dati={};
                 $scope.dati.vm = this;
                 $rootScope.dati.currentView = "home";
                 $scope.dati.post = Post.getData();

@@ -54,7 +54,7 @@
 
 
 </head>
-<body>
+<body ng-controller="MainCtrl">
 
 
 <!--BARRA NAVIGAZIONE-Home/Profilo/Carrello/Logout-->
@@ -62,16 +62,14 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#home">
-        <!--<img src="../images/logo1.png" height="25px">-->
-        <!--<img src="../images/logo2.png" height="25px">-->
-        <img src="../images/logo3.png" height="25px">
+        <img src="../images/logo4.png" height="30px" width="90px">
       </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#!/home">Home</a></li>
         <li><a href="#!/userProfile">Profilo</a></li>
-        <li><a href=#/login ng-click="logout();">Logout</a></li>
+        <li><a href="#/login" ng-click="logout();">Logout</a></li>
       </ul>
     </div>
   </div>
@@ -105,8 +103,9 @@
   <div class="container-fluid" ng-view>
     <div class="row">
       <div class="col-xs-12">
-        <ul class="media-list">
-        </ul>
+        <!--<ul class="media-list">-->
+          <!---->
+        <!--</ul>-->
       </div>
     </div>
   </div>

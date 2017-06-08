@@ -25,8 +25,8 @@ angular.module('myApp', [
   'myApp.authentication',
   'myApp.version',
     'myApp.users'
-]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+])
+    .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
     $routeProvider.otherwise({redirectTo: '/home'});
 }])
@@ -40,24 +40,24 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
         }
     });
 }])
-    .controller('MainCtrl', ['$scope', '$rootScope', '$firebaseAuth', function($scope, $rootScope, $firebaseAuth) {
+    .controller('MainCtrl', ['$scope', '$rootScope', '$firebaseAuth', 'currentAuth', 'Users', '$location', function($scope, $rootScope, $firebaseAuth, currentAuth, Users, $location) {
         //this controller only declares a function to get information about the user status (logged in / out)
         //it is used to show menu buttons only when the user is logged
-
+        $scope.dati={};
         //set the variable that is used in the main template to show the active button
         $rootScope.dati = {};
         $rootScope.dati.currentView = 'home';
         $scope.isLogged = function()
         {
-            if ($firebaseAuth().$getAuth())
-                return true;
+            if ($firebaseAuth().$getAuth()){
+                return true;}
             else
-                return false;
+            {return false;}
         };
         $scope.logout = function () {
 
             //save the new status in the database (we do it before the actual logout because we can write in the database only if the user is logged in)
-            Users.registerLogout(currentAuth.uid);
+            Users.registerLogout($firebaseAuth().$getAuth().uid);
             //sign out
             $firebaseAuth().$signOut();
             $firebaseAuth().$onAuthStateChanged(function(firebaseUser) {

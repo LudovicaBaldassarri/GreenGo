@@ -24,8 +24,9 @@
   <script src="../lib/angular/angular-route.min.js"></script>
   <script src="../lib/angular/angular-resource.min.js"></script>
   <!-- Bootstrap -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="../lib/bootstrap/ui-bootstrap-tpls-2.5.0.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/3.6.6/firebase.js"></script>
@@ -70,12 +71,42 @@
         <li><a href="#!/home">Home</a></li>
         <li ng-class="{'active' : dati.currentView === 'userProfile'}" ng-if="isLogged()"><a href="#!/userProfile">Profilo</a></li>
         <li ng-class="{'active' : dati.currentView === 'login'}" ng-if="isLogged()"><a href="#/login" ng-click="logout();">Logout</a></li>
+        <li ng-class="{'active' : dati.currentView === 'login'}" ng-if="isNotLogged()"><a href="#/login">Registrati</a> </li>
+        <li ng-class="{'active' : dati.currentView === 'login'}" ng-if="isNotLogged()">
+          <a href="#/login" data-toggle="modal" data-target="#myModal">Login</a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
 
-<!--BARRA PULSANTI-Ricette/Tutorial/Mercato-->
+<!--MODAL-->
+<!--PROBLEMA! IL MODAL RIMANE DOPO IL LOGIN. COME FACCIO?-->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+    <!--MODAL CONTENT-->
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <div class="modal-body">
+        <form id="frmLogin" role="form" ng-submit="signIn()">
+          <h2>Login</h2>
+          <br>
+          <div class="form-group">
+            <label for="txtEmail">Indirizzo Email</label>
+            <input type="email" class="form-control" id="txtEmail" placeholder="Enter email" name="email" ng-model="user.email" />
+          </div>
+          <div class="form-group">
+            <label for="txtPass">Password</label>
+            <input type="password" class="form-control" id="txtPass" placeholder="Password" name="password" ng-model="user.password" />
+          </div>
+          <button type="submit" class="btn btn-success center-block">Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--BARRA PULSANTI-Ricette/Tutorial/Mercato SI VEDONO SOLO SE SEI LOGGATO->FUNZIONE ISLOGGED-->
 <!--IMPLEMENTARE LE PAGINE-->
 <div class="row">
   <div class="col-md-4">

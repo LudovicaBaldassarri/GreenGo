@@ -41,7 +41,9 @@ angular.module('myApp', [
         }
     });
 }])
-    .controller('MainCtrl', ['$scope', '$rootScope', '$firebaseAuth', 'Users', '$location', function($scope, $rootScope, $firebaseAuth, Users, $location) {
+    //$scope', '$rootScope', 'Auth', '$location', '$log', 'Users',
+    .controller('MainCtrl', ['$scope', '$rootScope', '$firebaseAuth', 'Users','Auth', '$location', '$log',
+        function($scope, $rootScope, $firebaseAuth, Users, Auth, $location, $log) {
         //this controller only declares a function to get information about the user status (logged in / out)
         //it is used to show menu buttons only when the user is logged
         // $scope.dati={};
@@ -53,6 +55,11 @@ angular.module('myApp', [
                 return true;}
             else
             {return false;}
+        };
+        $scope.isNotLogged = function(){
+            if ($firebaseAuth().$getAuth()){
+                return false;
+            } else {return true;}
         };
         $scope.logout = function () {
 
@@ -69,5 +76,25 @@ angular.module('myApp', [
             });
 
 
+        };
+        $scope.user={};
+        $scope.auth = Auth; //acquires authentication from app.js (if it was done)
+
+        //this function will be called when the "Login" button will be pressed
+        $scope.signIn = function() {
+            //initialize variables
+            $scope.firebaseUser = null;
+            $scope.error = null;
+            //set the variable that is used in the main template to show the active button
+            // $rootScope.dati.currentView = "home";
+            $scope.auth.$signInWithEmailAndPassword($scope.user.email, $scope.user.password).then(function(firebaseUser) {
+                var userId = firebaseUser.uid;
+                Users.registerLogin(userId, $scope.user.email);
+
+                $location.path("/home");
+            }).catch(function(error) {
+                $scope.error = error;
+                $log.error(error.message);
+            });
         };
     }]);

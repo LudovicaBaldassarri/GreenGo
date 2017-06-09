@@ -71,7 +71,9 @@
         <li><a href="#!/home">Home</a></li>
         <li ng-class="{'active' : dati.currentView === 'userProfile'}" ng-if="isLogged()"><a href="#!/userProfile">Profilo</a></li>
         <li ng-class="{'active' : dati.currentView === 'login'}" ng-if="isLogged()"><a href="#/login" ng-click="logout();">Logout</a></li>
-        <li ng-class="{'active' : dati.currentView === 'login'}" ng-if="isNotLogged()"><a href="#/login">Registrati</a> </li>
+        <li ng-class="{'active' : dati.currentView === 'login'}" ng-if="isNotLogged()">
+          <a href="#/login" data-toggle="modal" data-target="#myModal2">Registrati</a>
+        </li>
         <li ng-class="{'active' : dati.currentView === 'login'}" ng-if="isNotLogged()">
           <a href="#/login" data-toggle="modal" data-target="#myModal">Login</a>
         </li>
@@ -80,7 +82,7 @@
   </div>
 </nav>
 
-<!--MODAL-->
+<!--MODAL LOGIN-->
 <!--PROBLEMA! IL MODAL RIMANE DOPO IL LOGIN. COME FACCIO?-->
 <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
@@ -105,6 +107,44 @@
     </div>
   </div>
 </div>
+
+<!--MODAL REGISTRAZIONE-->
+<div class="modal fade" id="myModal2" role="dialog">
+  <div class="modal-dialog">
+    <!--MODAL CONTENT-->
+    <div class="modal-content">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <div class="modal-body">
+        <form id="frmRegister" role="form" ng-submit="signUp()">
+          <h2>Registrazione</h2>
+
+          <div class="form-group">
+            <label for="txtName">Nome</label>
+            <input type="text" class="form-control" id="txtName" placeholder="Enter name" name="name" ng-model="user.name" />
+          </div>
+          <div class="form-group">
+            <label for="txtSurname">Cognome</label>
+            <input type="text" class="form-control" id="txtSurname" placeholder="Enter surname" name="surname" ng-model="user.surname" />
+          </div>
+          <div class="form-group">
+            <label for="txtEmail">Indirizzo Email</label>
+            <input type="email" class="form-control" id="txtEmail2" placeholder="Enter email" name="email" ng-model="user.email" />
+          </div>
+          <div class="form-group">
+            <label for="txtPass">Password</label>
+            <input type="password" class="form-control" id="txtPass1" placeholder="Password" name="password" ng-model="user.password" />
+          </div>
+          <div class="form-group">
+            <label for="txtPass2">Conferma Password</label>
+            <input type="password" class="form-control" id="txtPass2" placeholder="Confirm password" name="password2" ng-model="user.password2" />
+          </div>
+          <button type="submit" class="btn btn-success center-block">Invia</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!--BARRA PULSANTI-Ricette/Tutorial/Mercato SI VEDONO SOLO SE SEI LOGGATO->FUNZIONE ISLOGGED-->
 <!--IMPLEMENTARE LE PAGINE-->

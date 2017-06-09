@@ -16,6 +16,7 @@ angular.module('myApp', [
   'ngRoute',
   'myApp.home',
     'myApp.post',
+    'myApp.ricetta',
     'myApp.login',
     'myApp.authentication',
     'myApp.users',

@@ -19,8 +19,8 @@ angular.module('myApp.userProfile', ['ngRoute'])
         })
     }])
 
-    .controller('userProfileCtrl', ['$scope','$rootScope', 'Post','currentAuth','$firebaseAuth',
-        function($scope,$rootScope, currentAuth, $firebaseAuth, Post) {
+    .controller('userProfileCtrl', ['$scope','$rootScope', 'Post','$firebaseAuth',
+        function($scope,$rootScope, Post, $firebaseAuth) {
         $scope.dati={};
         $rootScope.dati={};
         $rootScope.dati.currentView = "userProfile";

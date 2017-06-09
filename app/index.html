@@ -68,8 +68,8 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#!/home">Home</a></li>
-        <li><a href="#!/userProfile">Profilo</a></li>
-        <li><a href="#/login" ng-click="logout();">Logout</a></li>
+        <li ng-class="{'active' : dati.currentView === 'userProfile'}" ng-if="isLogged()"><a href="#!/userProfile">Profilo</a></li>
+        <li ng-class="{'active' : dati.currentView === 'login'}" ng-if="isLogged()"><a href="#/login" ng-click="logout();">Logout</a></li>
       </ul>
     </div>
   </div>
@@ -79,20 +79,20 @@
 <!--IMPLEMENTARE LE PAGINE-->
 <div class="row">
   <div class="col-md-4">
-    <button class="pulsante"><img src="../images/icona_ricette.png" class="image"></button>
-    <div class="overlay">
+    <button ng-class="{'active' : dati.currentView === 'areaRicette'}" ng-if="isLogged()" class="pulsante"><img src="../images/icona_ricette.png" class="image"></button>
+    <div ng-if="isLogged()" class="overlay">
       <div class="text"><a href="#!/areaRicette" style="text-decoration: none; color: white">Ricette</a></div>
     </div>
   </div>
   <div class="col-md-4">
-    <button class="pulsante"><img src="../images/icona_tutorial.png" class="image"></button>
-    <div class="overlay">
+    <button ng-class="{'active' : dati.currentView === 'areaTutorial'}" ng-if="isLogged()" class="pulsante"><img src="../images/icona_tutorial.png" class="image"></button>
+    <div ng-if="isLogged()" class="overlay">
       <div class="text"><a href="#!/areaTutorial" style="text-decoration: none; color: white">Tutorial</a></div>
     </div>
   </div>
   <div class="col-md-4">
-    <button class="pulsante"><img src="../images/icona_mercato.png" class="image"></button>
-    <div class="overlay">
+    <button ng-class="{'active' : dati.currentView === 'areaMercato'}" ng-if="isLogged()" class="pulsante"><img src="../images/icona_mercato.png" class="image"></button>
+    <div ng-if="isLogged()" class="overlay">
       <div class="text"><a href="#!/areaMercato" style="text-decoration: none; color: white">Mercato</a></div>
     </div>
   </div>

@@ -1,5 +1,4 @@
 'use strict';
-
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyCry-tbpb3l8cnc8r8DCgamjBA6lFS6QxA",
@@ -16,15 +15,17 @@ angular.module('myApp', [
     "firebase",
   'ngRoute',
   'myApp.home',
+    'myApp.post',
+    'myApp.login',
+    'myApp.authentication',
+    'myApp.users',
   'myApp.userProfile',
   'myApp.areaRicette',
   'myApp.areaTutorial',
   'myApp.areaMercato',
-  'myApp.post',
-  'myApp.login',
   'myApp.authentication',
-  'myApp.version',
-    'myApp.users'
+  'myApp.version'
+
 ])
     .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
@@ -40,11 +41,10 @@ angular.module('myApp', [
         }
     });
 }])
-    .controller('MainCtrl', ['$scope', '$rootScope', '$firebaseAuth', 'currentAuth', 'Users', '$location', function($scope, $rootScope, $firebaseAuth, currentAuth, Users, $location) {
+    .controller('MainCtrl', ['$scope', '$rootScope', '$firebaseAuth', 'Users', '$location', function($scope, $rootScope, $firebaseAuth, Users, $location) {
         //this controller only declares a function to get information about the user status (logged in / out)
         //it is used to show menu buttons only when the user is logged
-        $scope.dati={};
-        //set the variable that is used in the main template to show the active button
+        // $scope.dati={};
         $rootScope.dati = {};
         $rootScope.dati.currentView = 'home';
         $scope.isLogged = function()

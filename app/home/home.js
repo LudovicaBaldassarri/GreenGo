@@ -16,7 +16,7 @@ angular.module('myApp.home', ['ngRoute'])
                 }]
 
             }
-        })
+        });
     }])
 
     .controller('homeCtrl',['$scope','$rootScope','$firebaseAuth', 'Post',

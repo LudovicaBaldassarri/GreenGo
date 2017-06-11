@@ -111,7 +111,7 @@ angular.module('myApp', [
                                 Users.registerNewUserInfo(userId, $scope.user.name, $scope.user.surname, $scope.user.email);
                                 Users.registerLogin(userId, $scope.user.email);
                                 // login successful: redirect to the pizza list
-                                $location.path("/pizzaView");
+                                $location.path("/home");
                             }).catch(function(error) {
                                 $scope.error = error;
                                 console.log(error.message);

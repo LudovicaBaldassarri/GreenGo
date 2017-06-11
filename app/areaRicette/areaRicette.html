@@ -18,9 +18,10 @@
         <div class="row">
             <ul class="media-list">
                 <li ng-repeat="ricetta in dati.ricettas">
+
                     <div class="col-sm-4">
                         <div class="panel panel-success">
-                            <div class="panel-heading"><p>{{ricetta.nome_ricetta}}<p></div>
+                            <div class="panel-heading"><a href="#!/detailsRicetta/{{ricetta.id}}">{{ricetta.nome_ricetta}}</a></div>
                             <div class="panel-body"><img ng-src="{{ricetta.img_url}}" style="width:100%" height="200px" alt="Image"></div>
                             <div class="panel-footer"><p>{{ricetta.nome_autore}}</p></div>
                         </div>

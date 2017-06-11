@@ -24,7 +24,7 @@ angular.module('myApp', [
   'myApp.areaRicette',
   'myApp.areaTutorial',
   'myApp.areaMercato',
-  'myApp.authentication',
+    'myApp.detailsRicetta',
   'myApp.version'
 
 ])

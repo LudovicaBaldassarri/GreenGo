@@ -19,12 +19,14 @@ angular.module('myApp.userProfile', ['ngRoute'])
         });
     }])
 
-    .controller('userProfileCtrl', ['$scope','$rootScope', 'Post','$firebaseAuth',
-        function($scope,$rootScope, Post, $firebaseAuth) {
+    .controller('userProfileCtrl', ['$scope','$rootScope', 'Post','UsersInfo','currentAuth', '$firebaseAuth',
+        function($scope,$rootScope, Post, UsersInfo, currentAuth,  $firebaseAuth) {
         $scope.dati={};
         $rootScope.dati={};
         $rootScope.dati.currentView = "userProfile";
-        // $scope.dati.userId = currentAuth.uid;
         $scope.dati.posts = Post.getData();
+
+        $scope.dati.userId = currentAuth.uid;
+        $scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
 
 }]);

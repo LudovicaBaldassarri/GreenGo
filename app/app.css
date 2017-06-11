@@ -2,11 +2,7 @@ body{
   margin:0;
   font-family: Verdana;
 }
-.jumbotron{
-  margin-right: 15%;
-  margin-left: 15%;
-  width: 70%;
-}
+
 .navbar {
   position: fixed;
   height: 50px;
@@ -84,5 +80,56 @@ body{
 
 #page{
   padding-top: 120px;
+}
+
+
+#post a {
+  color: grey;
+  text-decoration: none;
+}
+
+#post button {
+
+}
+
+#post .panel-body {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+#post .panel-footer {
+  background-color: #dff0d8 ;
+}
+
+#post .modal-body {
+  padding: 20px;
+}
+
+
+#modalRicetta {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+#modalRicetta h3, form {
+  padding: 20px;
+}
+
+#modalRicetta label, input, textarea {
+  margin-bottom: 10px;
+}
+
+#modalRicetta img {
+  position: static;
+  height: 140px;
+  width: 140px;
+}
+
+#modalRicetta p {
+  position: absolute;
+  margin-left: 150px;
+
+
 }
 

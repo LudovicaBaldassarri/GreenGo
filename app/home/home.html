@@ -1,4 +1,4 @@
-<div class="container text-center" id="page">
+<div class="container" id="page">
     <div class="row">
         <!--SPAZIO UTENTE-->
         <div class="col-sm-3 ">
@@ -23,13 +23,66 @@
                 <div class="col-sm-12">
                     <div class="panel panel-default text-left">
                         <div class="panel-body">
-                            <h2>al posto del nome va il modal per il post</h2>
+                            <h2>Ciao {{dati.user.name}}</h2>
                             <!--<h1>{{dati.user.name}} {{dati.user.surname}}</h1>-->
                             <!--<p>{{dati.posts.nome_autore}}</p>-->
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="panel panel-default" id="post">
+                <div class="panel-body">
+                    <a href="#/home" data-toggle="modal" data-target="#modalPost">Scrivi qualcosa...</a>
+                </div>
+                <div class="panel-footer">
+                    <button type="button" class="btn btn-success" href="#/home"
+                            data-toggle="modal" data-target="#modalRicetta">Ricetta</button>
+                    <button type="button" class="btn btn-success">Tutorial</button>
+                </div>
+            </div>
+
+            <!-- MODAL POST -->
+
+            <div class="modal fade" id="modalPost" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="6" id="comment" placeholder="Scrivi qualcosa..."></textarea>
+                                </div>
+                            </form>
+                        <button type="button" class="btn btn-success" href="#/home"
+                                data-toggle="modal" data-target="#modalRicetta">Ricetta</button>
+                        <button type="button" class="btn btn-success">Tutorial</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- MODAL RICETTA -->
+
+            <div class="modal fade" id="modalRicetta" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h3>Insersci la tua Ricetta</h3>
+                        <form>
+                            <div class="form-group">
+                                <label for="title">Titolo:</label>
+                                <input type="text" class="form-control" id="title"></input>
+                                <textarea class="form-control" rows="6" id="comment2" placeholder="Descrizione..."></textarea>
+                                <img src="" alt="inserisci immagine">
+                                <p>Inserisci ingredienti:</p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
 
             <div class="row">
                 <div class="col-xs-12">
@@ -52,6 +105,8 @@
             </div>
         </div>
     </div>
+
+
 </div>
 
 

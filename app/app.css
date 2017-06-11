@@ -107,9 +107,7 @@ body{
 
 
 #modalRicetta {
-  width: 90%;
-  margin-left: 5%;
-  margin-right: 5%;
+  width: auto;
 }
 
 #modalRicetta h3, form {
@@ -126,10 +124,15 @@ body{
   width: 140px;
 }
 
-#modalRicetta p {
-  position: absolute;
-  margin-left: 150px;
-
-
+.form-group {
+  position: relative;
 }
+
+#modalRicetta p {
+  display: inline;
+  position: relative;
+  bottom: 53px;
+  left: 20px;
+}
+
 

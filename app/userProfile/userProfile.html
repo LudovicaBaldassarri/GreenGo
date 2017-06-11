@@ -22,10 +22,8 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="panel panel-default text-left">
-            <div class="panel-body">
-              <h2>Valentina Carli</h2>
-              <h1>{{dati.user.name}} {{dati.user.surname}}</h1>
-              <p>{{post.nome_autore}}</p>
+            <div class="panel-body" >
+              <h1>{{user.name}} {{user.surname}}</h1>
             </div>
           </div>
         </div>
@@ -37,7 +35,7 @@
             <li class="media" ng-repeat="post in dati.posts">
               <a href="">
                 <div class="media-left">
-                  <img class="media-object" ng-src="../{{post.img_url}}" alt="immagineRicetta">
+                  <img class="media-object" ng-src="/{{post.img_url}}" alt="immagineRicetta">
                 </div>
                 <div class="media-body">
                   <h4 class="media-heading"><strong>{{post.nome_post}}</strong></h4>
@@ -48,20 +46,6 @@
             </li>
           </ul>
         </div>
-        <!--LISTA DINAMICA DEI POST-->
-
-        <!--<div class="col-sm-3">-->
-          <!--<div class="well">-->
-            <!--<p>John</p>-->
-            <!--<img src="../images/userimg.png" class="img-circle" height="55" width="55" alt="Avatar">-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="col-sm-9">-->
-          <!--<div class="well">-->
-            <!--<p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>-->
-          <!--</div>-->
-        <!--</div>-->
-      </div>
-    </div>
+      </div></div>
   </div>
 </div>

@@ -19,13 +19,18 @@ angular.module('myApp.home', ['ngRoute'])
         });
     }])
 
-    .controller('homeCtrl',['$scope','$rootScope','$firebaseAuth', 'Post',
-        function($scope, $rootScope, $firebaseAuth, Post) {
-            Post.getData().$loaded.then(function(data) {
-                $scope.dati={};
-                $rootScope.dati={};
-                $scope.dati.vm = this;
-                $rootScope.dati.currentView = "home";
-                $scope.dati.posts = Post.getData();
-            });
+    .controller('homeCtrl',['$scope','$rootScope','Post','$firebaseAuth',
+        function($scope, $rootScope, Post, $firebaseAuth) {
+            // Post.getData().$loaded.then(function(data) {
+            //     $scope.dati={};
+            //     $rootScope.dati={};
+            //     $scope.dati.vm = this;
+            //     $rootScope.dati.currentView = "home";
+            //     $scope.dati.posts = Post.getData();
+            // });
+            $scope.dati={};
+            $rootScope.dati={};
+            $rootScope.dati.currentView = "home";
+            // $scope.dati.userId = currentAuth.uid;
+            $scope.dati.posts = Post.getData();
         }]);

@@ -16,6 +16,7 @@ angular.module('myApp', [
   'ngRoute',
   'myApp.home',
     'myApp.post',
+    'myApp.ricetta',
     'myApp.login',
     'myApp.authentication',
     'myApp.users',
@@ -41,7 +42,9 @@ angular.module('myApp', [
         }
     });
 }])
-    .controller('MainCtrl', ['$scope', '$rootScope', '$firebaseAuth', 'Users', '$location', function($scope, $rootScope, $firebaseAuth, Users, $location) {
+    //$scope', '$rootScope', 'Auth', '$location', '$log', 'Users',
+    .controller('MainCtrl', ['$scope', '$rootScope', '$firebaseAuth', 'Users','Auth', '$location', '$log',
+        function($scope, $rootScope, $firebaseAuth, Users, Auth, $location, $log) {
         //this controller only declares a function to get information about the user status (logged in / out)
         //it is used to show menu buttons only when the user is logged
         // $scope.dati={};
@@ -53,6 +56,11 @@ angular.module('myApp', [
                 return true;}
             else
             {return false;}
+        };
+        $scope.isNotLogged = function(){
+            if ($firebaseAuth().$getAuth()){
+                return false;
+            } else {return true;}
         };
         $scope.logout = function () {
 
@@ -70,4 +78,77 @@ angular.module('myApp', [
 
 
         };
+        $scope.user={};
+        $scope.auth = Auth; //acquires authentication from app.js (if it was done)
+
+        //this function will be called when the "Login" button will be pressed
+        $scope.signIn = function() {
+            //initialize variables
+            $scope.firebaseUser = null;
+            $scope.error = null;
+            //set the variable that is used in the main template to show the active button
+            // $rootScope.dati.currentView = "home";
+            $scope.auth.$signInWithEmailAndPassword($scope.user.email, $scope.user.password).then(function(firebaseUser) {
+                var userId = firebaseUser.uid;
+                Users.registerLogin(userId, $scope.user.email);
+
+                $location.path("/home");
+            }).catch(function(error) {
+                $scope.error = error;
+                $log.error(error.message);
+            });
+        };
+            $scope.signUp = function() {
+                //check if the second password is equal to the first one
+                if ($scope.user.password!= '' && $scope.user.password === $scope.user.password2) {
+                    //create a new user with specified email and password
+                    Auth.$createUserWithEmailAndPassword($scope.user.email, $scope.user.password)
+                        .then(function (firebaseUser) {
+                            //after creating the user, we will perform a login and then the new information will be saved in the database
+                            //(the reason is that we cannot write in the database if we are not logged in ... it is not the best way of doing it but it is ok for our prototype)
+                            Auth.$signInWithEmailAndPassword($scope.user.email, $scope.user.password).then(function(internalFirebaseUser) {
+                                var userId = internalFirebaseUser.uid;
+                                Users.registerNewUserInfo(userId, $scope.user.name, $scope.user.surname, $scope.user.email);
+                                Users.registerLogin(userId, $scope.user.email);
+                                // login successful: redirect to the pizza list
+                                $location.path("/pizzaView");
+                            }).catch(function(error) {
+                                $scope.error = error;
+                                console.log(error.message);
+                            });
+                        }).catch(function (error) {
+                        $scope.error = error;
+                        console.log(error.message);
+                    });
+                }
+            };
     }]);
+/*.controller('UserRegistrationCtrl', ['$scope', '$rootScope', 'Auth', 'Users', '$location', function($scope, $rootScope, Auth, Users, $location) {
+ $scope.user={};
+ //set the variable that is used in the main template to show the active button
+ $rootScope.dati.currentView = "home";
+ $scope.signUp = function() {
+ //check if the second password is equal to the first one
+ if ($scope.user.password!= '' && $scope.user.password === $scope.user.password2) {
+ //create a new user with specified email and password
+ Auth.$createUserWithEmailAndPassword($scope.user.email, $scope.user.password)
+ .then(function (firebaseUser) {
+ //after creating the user, we will perform a login and then the new information will be saved in the database
+ //(the reason is that we cannot write in the database if we are not logged in ... it is not the best way of doing it but it is ok for our prototype)
+ Auth.$signInWithEmailAndPassword($scope.user.email, $scope.user.password).then(function(internalFirebaseUser) {
+ var userId = internalFirebaseUser.uid;
+ Users.registerNewUserInfo(userId, $scope.user.name, $scope.user.surname, $scope.user.email);
+ Users.registerLogin(userId, $scope.user.email);
+ // login successful: redirect to the pizza list
+ $location.path("/pizzaView");
+ }).catch(function(error) {
+ $scope.error = error;
+ console.log(error.message);
+ });
+ }).catch(function (error) {
+ $scope.error = error;
+ console.log(error.message);
+ });
+ }
+ };
+ }]);*/

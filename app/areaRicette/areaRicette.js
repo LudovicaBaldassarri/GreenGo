@@ -9,6 +9,12 @@ angular.module('myApp.areaRicette', ['ngRoute'])
         });
     }])
 
-    .controller('areaRicetteCtrl', [function() {
+    .controller('areaRicetteCtrl', ['$scope', '$rootScope', 'Ricetta', '$firebaseAuth',
+        function($scope, $rootScope, Ricetta, $firebaseAuth) {
+        $scope.dati={};
+        $rootScope.dati={};
+        $rootScope.dati.currentView="areaRicette";
+        $scope.dati.ricettas= Ricetta.getData();
 
     }]);
+

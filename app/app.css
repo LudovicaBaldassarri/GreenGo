@@ -135,4 +135,9 @@ body{
   left: 20px;
 }
 
-
+#postaRicetta {
+  float: right;
+  position: absolute;
+  left: 450px;
+  bottom: 10px;
+}

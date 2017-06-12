@@ -23,7 +23,6 @@ angular.module('myApp.post.insertPostService', [])
                 ref.update({
                     id: postId
                 });
-
             }
         };
         return newPostService;

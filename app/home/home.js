@@ -42,7 +42,7 @@ angular.module('myApp.home', ['ngRoute'])
                     $scope.dati.userInfo = InsertPostService.getUserInfo($scope.dati.userId);
                     InsertPostService.updatePost(postId);
                     $scope.dati.descrizione = "";
-                    $scope.dati.feedback="grandioso! ha aggiunto un post";
+                    console.log("hai aggiunto un post");
                 });
             } ;
 

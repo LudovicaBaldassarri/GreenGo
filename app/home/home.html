@@ -44,17 +44,16 @@
 
             <!-- MODAL POST -->
 
+            <form id="frmAddPosr" role="form" ng-submit="addPost()">
             <div class="modal fade" id="modalPost" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <div class="modal-body">
-                            <form id="frmAddPosr" role="form" ng-submit="addPost()">
                                 <div class="form-group">
                                     <textarea type = "text" class="form-control" nome="descrizione" rows="6" id="desc" placeholder="Scrivi qualcosa..."
-                                    ng-model="post.descrizione"></textarea>
+                                    ng-model="dati.descrizione"></textarea>
                                 </div>
-                            </form>
                         <button type="button" class="btn btn-success" href="#/home"
                                 data-toggle="modal" data-target="#modalRicetta">Ricetta</button>
                         <button type="button" class="btn btn-success">Tutorial</button>
@@ -63,6 +62,7 @@
                     </div>
                 </div>
             </div>
+            </form>
 
 
             <!-- MODAL RICETTA -->

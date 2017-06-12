@@ -43,7 +43,7 @@
 
             <!-- MODAL POST -->
 
-            <form id="frmAddPosr" role="form" ng-submit="addPost()">
+            <form id="frmAddPost" role="form" ng-submit="addPost()">
             <div class="modal fade" id="modalPost" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -81,14 +81,19 @@
                             </div>
 
                             <div class="form-group">
-                                   <label for="dif" style="margin-top: 20px">difficoltà: </label>
-                                   <select class="form-control" id="dif">
-                                          <option>facile</option>
-                                          <option>medio</option>
-                                          <option>difficile</option>
-                                   </select>
-                                <label for="tmp">tempo:</label>
-                                <input type="text" class="form-control" id="tmp" placeholder="ore:minuti"></input>
+                                <label for="procedimento">Procedimento:</label>
+                                <textarea class="form-control" rows="7" id="procedimento"></textarea>
+
+                                <label for="dif" style="margin-top: 20px">difficoltà: </label>
+                                <select class="form-control" id="dif" style="max-width: 140px">
+                                    <option>facile</option>
+                                    <option>medio</option>
+                                    <option>difficile</option>
+                                </select>
+
+                                <label for="tmp" style="padding-top: 10px; display: block">tempo:</label>
+                                <input type="text" class="form-control" id="tmp"  style="max-width: 140px" placeholder="ore:minuti">
+
                             </div>
                         </form>
                     </div>

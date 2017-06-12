@@ -35,9 +35,10 @@ angular.module('myApp.home', ['ngRoute'])
             $scope.dati.userId = currentAuth.uid;
             $scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
             $scope.dati.posts = Post.getData();
+            console.log($scope.dati.user);
 
             $scope.addPost= function() {
-                InsertPostService.insertNewPost($scope.dati.userId, $scope.dati.descrizione).then(function(ref) {
+                InsertPostService.insertNewPost($scope.dati.userId,$scope.dati.user.name, $scope.dati.descrizione).then(function(ref) {
                     var postId = ref.key;
                     $scope.dati.userInfo = InsertPostService.getUserInfo($scope.dati.userId);
                     InsertPostService.updatePost(postId);

@@ -32,7 +32,7 @@
       <div class="row">
         <div class="col-xs-12">
           <ul class="media-list">
-            <li class="media" ng-repeat="post in dati.posts" ng-if="dati.user.autoreId == post.autoreId">
+            <li class="media" ng-repeat="post in dati.posts" ng-if="dati.user.id == post.autoreId">
                 <div class="media-left">
                   <img class="media-object" ng-src="/{{post.img_url}}" alt="immagineRicetta">
                 </div>

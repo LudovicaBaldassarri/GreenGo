@@ -19,8 +19,8 @@ angular.module('myApp.home', ['ngRoute'])
         });
     }])
 
-    .controller('homeCtrl',['$scope','$rootScope','currentAuth', 'Post', 'InsertPostService',
-        function($scope, $rootScope, currentAuth, Post, InsertPostService) {
+    .controller('homeCtrl',['$scope','$rootScope','currentAuth','UsersInfo', 'Post', 'InsertPostService',
+        function($scope, $rootScope, currentAuth, UsersInfo, Post, InsertPostService) {
             // Post.getData().$loaded.then(function(data) {
             //     $scope.dati={};
             //     $rootScope.dati={};
@@ -33,7 +33,7 @@ angular.module('myApp.home', ['ngRoute'])
             $rootScope.dati={};
             $rootScope.dati.currentView = "home";
             $scope.dati.userId = currentAuth.uid;
-
+            $scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
             $scope.dati.posts = Post.getData();
 
             $scope.addPost= function() {
@@ -46,43 +46,6 @@ angular.module('myApp.home', ['ngRoute'])
                 });
             } ;
 
-
-
-            // $scope.fileToUpload = null;
-            // $scope.imgPath = "";
-            //
-            // var ctrl = this;
-            //
-            //     $scope.addPost = function () {
-            //     if ($scope.dati.descrizione != undefined && $scope.dati.descrizione != "") {
-            //         $scope.dati.error = "";
-            //
-            //         // prova a caricare l'immagine: se nessun immagine è specificata, crea un nuovo post senza immagine
-            //         if ($scope.fileToUpload != null) {
-            //             var fileName = $scope.fileToUpload.name;
-            //             var storageRef = firebase.storage().ref("images/" + fileName);
-            //             $scope.storage = $firebaseStorage(storageRef);
-            //             var uploadTask = $scope.storage.$put($scope.fileToUpload);
-            //             uploadTask.$complete(function(snapshot){
-            //                 $scope.finalPostAddition();
-            //             });
-            //         uploadTask.$error(function(error){
-            //             $scope.finalPostAddition();
-            //         });
-            //         }
-            //         else {
-            //             $scope.finalPostAddition() ;
-            //         }
-            //     }
-            //     else {
-            //         // da modificare! impediamo di pubblicare un post vuoto
-            //         $scope.dati.error= "stai creando un post vuoto :(";
-            //     }
-            // };
-            //
-            // ctrl.onChange = function onChange(fileList) {
-            //      $scope.fileToUpload = fileList[0];
-            //  };
 
 
 

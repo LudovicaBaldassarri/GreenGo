@@ -4,7 +4,7 @@
         <div class="col-sm-3 ">
             <div class="panel panel-defeault text-left">
                 <div class="panel-body">
-                    <img src="../images/profilo-valentina-quadrato.jpg" class="img-circle" alt="Profilo" width="200" height="200">
+                    <img src="../images/profilo-valentina-quadrato.jpg" class="img-circle" alt="Profilo" width="150" height="150">
                 </div>
             </div>
 
@@ -23,9 +23,8 @@
                 <div class="col-sm-12">
                     <div class="panel panel-default text-left">
                         <div class="panel-body">
-                            <h2>Ciao {{dati.user.name}}</h2>
-                            <!--<h1>{{dati.user.name}} {{dati.user.surname}}</h1>-->
-                            <!--<p>{{dati.posts.nome_autore}}</p>-->
+                            <h3>Ciao <span style="color: green">{{dati.user.name}}</span>!</h3>
+                            <h4 style="color:lightgrey;">Benvenuto su <em>greenGO</em></h4>
                         </div>
                     </div>
                 </div>
@@ -101,26 +100,28 @@
                 </div>
             </div>
 
-
             <div class="row">
                 <div class="col-xs-12">
                     <ul class="media-list">
                         <li class="media" ng-repeat="post in dati.posts">
-                            <a href="#!/detailsRicetta/{{post.id_details}}">
-                                <div class="media-left">
-                                    <img class="media-object" ng-src="../{{post.img_url}}" alt="immagineRicetta">
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading"><strong>{{post.nome_post}}</strong></h4>
-                                    <p>{{post.nome_autore}}</p>
-                                </div>
-                                <hr/>
-                            </a>
+                            <div class="media-left">
+                                <!--QUI METTEREI L'IMMAGINE DEL PROFILO-->
+                                <img class="media-object" ng-src="/{{post.img_url}}" alt="immagine">
+                            </div>
+                            <div class="media-body">
+                                <h4><strong>{{post.nome_autore}}</strong> ha pubblicato:</h4>
+                                <p>{{post.testo}}</p>
+                                <!--QUI METTEREI L'IMMAGINE EFFETTIVA DI RICETTA/TUTORIAL-->
+                                <a href="#!/detailsRicetta/{{post.id_details}}" style="color: darkgreen">
+                                <h4 class="media-heading"><strong>{{post.nome_post}}</strong></h4>
+                                </a>
+                            </div>
+                            <hr/>
                         </li>
                     </ul>
                 </div>
-
             </div>
+
         </div>
     </div>
 

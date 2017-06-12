@@ -89,13 +89,14 @@
 </nav>
 
 <!--MODAL LOGIN-->
-<!--PROBLEMA! IL MODAL RIMANE DOPO IL LOGIN. COME FACCIO?-->
+<!--PROBLEMA! IL MODAL RIMANE DOPO IL LOGIN. COME FACCIO? LA X NON VA-->
 <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
     <!--MODAL CONTENT-->
     <div class="modal-content">
-      <button type="button" class="close" data-dismiss="modal">&times;</button>
       <div class="modal-body">
+
+        <button type="button" class="close" data-dismiss="modal" data-target="#myModal">&times;</button>
         <form id="frmLogin" role="form" ng-submit="signIn()">
           <h2>Login</h2>
           <br>
@@ -119,8 +120,8 @@
   <div class="modal-dialog">
     <!--MODAL CONTENT-->
     <div class="modal-content">
-      <button type="button" class="close" data-dismiss="modal">&times;</button>
       <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" data-target="#myModal2">&times;</button>
         <form id="frmRegister" role="form" ng-submit="signUp()">
           <h2>Registrazione</h2>
 

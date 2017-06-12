@@ -28,5 +28,4 @@ angular.module('myApp.userProfile', ['ngRoute'])
 
         $scope.dati.userId = currentAuth.uid;
         $scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
-
 }]);

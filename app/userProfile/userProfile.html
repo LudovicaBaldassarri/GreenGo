@@ -1,4 +1,4 @@
-<div class="container text-center" id="page">
+<div class="container" id="page">
   <div class="row">
     <!--SPAZIO UTENTE-->
     <div class="col-sm-3 ">
@@ -32,20 +32,20 @@
       <div class="row">
         <div class="col-xs-12">
           <ul class="media-list">
-            <li class="media" ng-repeat="post in dati.posts">
-              <a href="">
+            <li class="media" ng-repeat="post in dati.posts" ng-if="dati.user.autoreId == post.autoreId">
                 <div class="media-left">
                   <img class="media-object" ng-src="/{{post.img_url}}" alt="immagineRicetta">
                 </div>
                 <div class="media-body">
-                  <h4 class="media-heading"><strong>{{post.nome_post}}</strong></h4>
-                  <p>{{post.nome_autore}}</p>
+                  <h4><strong>{{post.nome_autore}}</strong> ha pubblicato:</h4>
+                  <p>{{post.descrizione}}</p>
+                  <a href=""><h4 class="media-heading"><strong>{{post.nome_post}}</strong></h4></a>
                 </div>
                 <hr/>
-              </a>
             </li>
           </ul>
         </div>
-      </div></div>
+      </div>
+    </div>
   </div>
 </div>

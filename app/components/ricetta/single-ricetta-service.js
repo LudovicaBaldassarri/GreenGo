@@ -10,4 +10,5 @@ angular.module('myApp.ricetta.singleRicettaService', [])
         }
     };
     return singleRicettaService;
+
 })

@@ -48,11 +48,18 @@ angular.module('myApp.home', ['ngRoute'])
             console.log($scope.dati.oraStampa);
 
             $scope.addPost= function() {
-                InsertPostService.insertNewPost($scope.dati.userId, $scope.dati.user.name, $scope.dati.user.surname, $scope.dati.descrizione, $scope.dati.date, $scope.dati.dataStampa, $scope.dati.oraStampa).then(function(ref) {
+                InsertPostService.insertNewPost($scope.dati.userId, $scope.dati.user.name, $scope.dati.user.surname,
+                                                $scope.dati.descrizione, $scope.dati.date, $scope.dati.dataStampa,
+                                                $scope.dati.oraStampa, $scope.dati.titolo, $scope.dati.procedimento,
+                                                $scope.dati.difficolta, $scope.dati.tempo).then(function(ref) {
                     var postId = ref.key;
                     $scope.dati.userInfo = InsertPostService.getUserInfo($scope.dati.userId);
                     InsertPostService.updatePost(postId);
                     $scope.dati.descrizione = "";
+                    $scope.dati.titolo= "";
+                    $scope.dati.procedimento = "";
+                    $scope.dati.difficolta = "" ;
+                    $scope.dati.tempo = "" ;
                     console.log("hai aggiunto un post");
                 });
             } ;

@@ -111,7 +111,8 @@
                                 <img class="media-object" ng-src="/{{post.img_url}}" alt="immagine">
                             </div>
                             <div class="media-body">
-                                <h4><strong>{{post.nome_autore}}</strong> ha pubblicato:</h4>
+                                <h4><strong>{{post.name}} {{post.surname}}</strong> ha pubblicato:</h4>
+                                <p class="data-ora"> {{dati.dataStampa}} {{dati.oraStampa}}</p>
                                 <p>{{post.testo}}</p>
                                 <!--QUI METTEREI L'IMMAGINE EFFETTIVA DI RICETTA/TUTORIAL-->
                                 <a href="#!/detailsRicetta/{{post.id_details}}" style="color: darkgreen">

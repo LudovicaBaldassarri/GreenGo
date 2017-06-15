@@ -26,6 +26,7 @@ angular.module('myApp.userProfile', ['ngRoute'])
         $rootScope.dati.currentView = "userProfile";
         $scope.dati.posts = Post.getData();
 
+
         $scope.dati.userId = currentAuth.uid;
         $scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
 }]);

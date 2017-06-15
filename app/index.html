@@ -68,6 +68,11 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
       <a class="navbar-brand" href="#home">
         <img src="../images/logo4.png" height="30px" width="90px">
       </a>
@@ -154,20 +159,21 @@
 
 <!--BARRA PULSANTI-Ricette/Tutorial/Mercato SI VEDONO SOLO SE SEI LOGGATO->FUNZIONE ISLOGGED-->
 <!--IMPLEMENTARE LE PAGINE-->
+
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-4 col-sm-4 col-xs-4">
     <button ng-class="{'active' : dati.currentView === 'areaRicette'}" ng-if="isLogged()" class="pulsante"><img src="../images/icona_ricette.png" class="image"></button>
     <div ng-if="isLogged()" class="overlay">
       <div class="text"><a href="#!/areaRicette" style="text-decoration: none; color: white">Ricette</a></div>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4 col-sm-4 col-xs-4">
     <button ng-class="{'active' : dati.currentView === 'areaTutorial'}" ng-if="isLogged()" class="pulsante"><img src="../images/icona_tutorial.png" class="image"></button>
     <div ng-if="isLogged()" class="overlay">
       <div class="text"><a href="#!/areaTutorial" style="text-decoration: none; color: white">Tutorial</a></div>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4 col-sm-4 col-xs-4">
     <button ng-class="{'active' : dati.currentView === 'areaMercato'}" ng-if="isLogged()" class="pulsante"><img src="../images/icona_mercato.png" class="image"></button>
     <div ng-if="isLogged()" class="overlay">
       <div class="text"><a href="#!/areaMercato" style="text-decoration: none; color: white">Mercato</a></div>

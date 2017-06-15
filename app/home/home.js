@@ -61,6 +61,11 @@ angular.module('myApp.home', ['ngRoute'])
                     $scope.dati.difficolta = "" ;
                     $scope.dati.tempo = "" ;
                     console.log("hai aggiunto un post");
+                    // SERVE PER CHIUDERE IL MODAL
+                    var modalDiv = $("#modalPost");
+                    modalDiv.modal('hide');
+                    var modalDiv = $("#modalRicetta");
+                    modalDiv.modal('hide');
                 });
             } ;
 

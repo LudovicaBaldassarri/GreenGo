@@ -91,6 +91,9 @@ angular.module('myApp', [
             $scope.auth.$signInWithEmailAndPassword($scope.user.email, $scope.user.password).then(function(firebaseUser) {
                 var userId = firebaseUser.uid;
                 Users.registerLogin(userId, $scope.user.email);
+                // SERVE PER CHIUDERE IL MODAL
+                var modalDiv = $("#myModal");
+                modalDiv.modal('hide');
 
                 $location.path("/home");
             }).catch(function(error) {
@@ -110,6 +113,9 @@ angular.module('myApp', [
                                 var userId = internalFirebaseUser.uid;
                                 Users.registerNewUserInfo(userId, $scope.user.name, $scope.user.surname, $scope.user.email);
                                 Users.registerLogin(userId, $scope.user.email);
+                                // SERVE PER CHIUDERE IL MODAL
+                                var modalDiv = $("#myModal2");
+                                modalDiv.modal('hide');
 
                                 $location.path("/home");
                             }).catch(function(error) {

@@ -13,19 +13,20 @@ firebase.initializeApp(config);
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
     "firebase",
-  'ngRoute',
-  'myApp.home',
+    'ngRoute',
+    'myApp.home',
     'myApp.post',
     'myApp.ricetta',
     'myApp.login',
     'myApp.authentication',
     'myApp.users',
-  'myApp.userProfile',
-  'myApp.areaRicette',
-  'myApp.areaTutorial',
-  'myApp.areaMercato',
+    'myApp.userProfile',
+    'myApp.areaRicette',
+    'myApp.areaTutorial',
+    'myApp.areaMercato',
     'myApp.detailsRicetta',
-  'myApp.version'
+    'myApp.version',
+    'myApp.fileUpload'
 
 ])
     .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {

@@ -18,5 +18,5 @@ function FileUploadDirective() {
                 scope.onChange(element.children()[0].files);
             });
         }
-    }
+    };
 }

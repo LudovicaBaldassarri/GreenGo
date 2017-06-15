@@ -25,8 +25,8 @@ angular.module('myApp', [
     'myApp.areaTutorial',
     'myApp.areaMercato',
     'myApp.detailsRicetta',
-    'myApp.version',
-    'myApp.fileUpload'
+    'myApp.version'
+    //'myApp.fileUpload'
 
 ])
     .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {

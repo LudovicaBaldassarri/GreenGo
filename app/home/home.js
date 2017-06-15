@@ -44,6 +44,11 @@ angular.module('myApp.home', ['ngRoute'])
                     InsertPostService.updatePost(postId);
                     $scope.dati.descrizione = "";
                     console.log("hai aggiunto un post");
+                    // SERVE PER CHIUDERE IL MODAL
+                    var modalDiv = $("#modalPost");
+                    modalDiv.modal('hide');
+                    var modalDiv = $("#modalRicetta");
+                    modalDiv.modal('hide');
                 });
             } ;
 

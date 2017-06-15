@@ -109,8 +109,8 @@
                                 <img class="media-object" ng-src="/{{post.img_url}}" alt="immagine">
                             </div>
                             <div class="media-body">
-                                <h4><strong>{{post.nome_autore}}</strong> ha pubblicato:</h4>
-                                <p>{{post.testo}}</p>
+                                <h4><strong>{{dati.user.name}}</strong> ha pubblicato:</h4>
+                                <p>{{post.descrizione}}</p>
                                 <!--QUI METTEREI L'IMMAGINE EFFETTIVA DI RICETTA/TUTORIAL-->
                                 <a href="#!/detailsRicetta/{{post.id_details}}" style="color: darkgreen">
                                 <h4 class="media-heading"><strong>{{post.nome_post}}</strong></h4>
@@ -121,6 +121,13 @@
                     </ul>
                 </div>
             </div>
+
+            <!--
+             <div class="media-body">
+                  <h4><strong>{{dati.user.name}}</strong> ha pubblicato:</h4>
+                  <p>{{post.descrizione}}</p>
+                  <a href=""><h4 class="media-heading"><strong>{{post.nome_post}}</strong></h4></a>
+            -->
 
         </div>
     </div>

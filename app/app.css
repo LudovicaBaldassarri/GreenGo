@@ -32,7 +32,7 @@ body{
   position: absolute;
   margin-top: 50px;
   padding: auto;
-  height: 60px;
+  height: 70px;
   width: 100%;
   background-color: white;
   border-style: solid;
@@ -44,12 +44,13 @@ body{
 .image {
   /*display: block;*/
   height:45px;
+  padding: 5px 0;
 }
 
 .overlay {
   position: absolute;
   margin-top: 50px;
-  height: 60px;
+  height: 70px;
   width: 100%;
   opacity: 0;
   transition: .5s ease;
@@ -79,7 +80,7 @@ body{
 }
 
 #page{
-  padding-top: 120px;
+  padding-top: 130px;
 }
 
 

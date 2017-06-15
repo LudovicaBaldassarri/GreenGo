@@ -32,12 +32,13 @@
       <div class="row">
         <div class="col-xs-12">
           <ul class="media-list">
-            <li class="media" ng-repeat="post in dati.posts" ng-if=" post.autoreId == dati.user.id">
+            <li class="media" ng-repeat="post in dati.posts" ng-if="  dati.userId == post.autoreId">
                 <div class="media-left">
                   <img class="media-object" ng-src="/{{post.img_url}}" alt="immagineRicetta">
                 </div>
                 <div class="media-body">
-                  <h4><strong>{{dati.user.name}}</strong> ha pubblicato:</h4>
+                  <h4><strong>{{post.name}} {{post.surname}}</strong> ha pubblicato:</h4>
+                  <p class="data-ora">{{post.dataStampa}} {{post.oraStampa}} </p>
                   <p>{{post.descrizione}}</p>
                   <a href=""><h4 class="media-heading"><strong>{{post.nome_post}}</strong></h4></a>
                 </div>

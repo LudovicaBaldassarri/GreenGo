@@ -35,10 +35,20 @@ angular.module('myApp.home', ['ngRoute'])
             $scope.dati.userId = currentAuth.uid;
             $scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
             $scope.dati.posts = Post.getData();
-            console.log($scope.dati.user);
+            //salva la data di oggi e la inserisce come attributo nel firebase del post
+            $scope.dati.date = new Date();
+            //scompone la data completa in gg/mm/aaa da stampare in html quando serve
+            var month = $scope.dati.date.getUTCMonth()+1;
+            $scope.dati.dataStampa = $scope.dati.date.getUTCDate() + "/"+ month + "/" + $scope.dati.date.getUTCFullYear();
+            //scompone l0ora da date in hh:mm:ss da stampare quando serve
+            $scope.dati.oraStampa= $scope.dati.date.getUTCHours()+ ":"+$scope.dati.date.getUTCMinutes()+":"+$scope.dati.date.getUTCSeconds();
+
+
+            console.log($scope.dati.dataStampa);
+            console.log($scope.dati.oraStampa);
 
             $scope.addPost= function() {
-                InsertPostService.insertNewPost($scope.dati.userId,$scope.dati.user.name, $scope.dati.descrizione).then(function(ref) {
+                InsertPostService.insertNewPost($scope.dati.userId, $scope.dati.user.name, $scope.dati.user.surname, $scope.dati.descrizione, $scope.dati.date, $scope.dati.dataStampa, $scope.dati.oraStampa).then(function(ref) {
                     var postId = ref.key;
                     $scope.dati.userInfo = InsertPostService.getUserInfo($scope.dati.userId);
                     InsertPostService.updatePost(postId);

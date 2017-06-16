@@ -1,3 +1,20 @@
+
 <div id="page">
-    <h1> {{dati.ricetta.nome_ricetta}}</h1>
+    <div class="col-sm-2 sidenav">
+
+    </div>
+
+    <div class="col-sm-8 text-left">
+    <h1>{{dati.post.titolo}}</h1>
+    <img class="img-responsive" ng-src="{{dati.post.img_url}}" width="640" height="426">
+    <h4>Descrizione</h4>
+    <p> {{dati.post.descrizione}}</p>
+    <hr>
+    <h3>Preparazione</h3>
+    <p>{{dati.post.procedimento}}</p>
+    </div>
+    <div class="col-sm-2 sidenav">
+        Ricetta di
+        {{dati.post.name}} {{dati.post.surname}}
+    </div>
 </div>

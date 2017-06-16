@@ -1,20 +1,65 @@
-
-<div id="page">
-    <div class="col-sm-2 sidenav">
-
-    </div>
-
-    <div class="col-sm-8 text-left">
-    <h1>{{dati.post.titolo}}</h1>
-    <img class="img-responsive" ng-src="{{dati.post.img_url}}" width="640" height="426">
-    <h4>Descrizione</h4>
-    <p> {{dati.post.descrizione}}</p>
-    <hr>
-    <h3>Preparazione</h3>
-    <p>{{dati.post.procedimento}}</p>
-    </div>
-    <div class="col-sm-2 sidenav">
-        Ricetta di
-        {{dati.post.name}} {{dati.post.surname}}
+<div class="container" id="page">
+    <!--MAGARI QUI DENTRO METTIAMO QUALCOSA-->
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-7 text-left">
+            <div class="panel panel-default text-left">
+                <div class="panel-body">
+                    <h1 style="color: green;">{{dati.post.titolo}}</h1>
+                </div>
+            </div>
+            <div class="panel panel-default text-left">
+                <div class="panel-body">
+                    <img class="img-responsive" ng-src="{{dati.post.img_url}}" width="640" height="426">
+                    <h4 style="color: green;">Descrizione</h4>
+                    <p> {{dati.post.descrizione}}</p>
+                    <hr>
+                        <div class="row">
+                            <!--MANCA TEMPO DI COTTURA-->
+                            <div class="col-md-4">
+                                <span><img src="../images/icona_tempo.png" height="15px"></span>
+                                <span style="color: green;">Preparazione: </span>{{dati.post.cottura}}
+                            </div>
+                            <div class="col-md-4">
+                                <span><img src="../images/icona_clessidra.png" height="15px"></span>
+                                <span style="color: green;">Cottura: </span>{{dati.post.cottura}}
+                            </div>
+                            <div class="col-md-4">
+                                <span><img src="../images/icona_difficolta.png" height="15px"></span>
+                                <span style="color: green;">Difficoltà: </span>{{dati.post.difficolta}}
+                            </div>
+                        </div>
+                    <hr>
+                    <h4 style="color: green;">Ingredienti</h4>
+                    <div class="panel panel-default" style="background-color: darkseagreen">
+                        <!--CAMBIARE COLORE SFONDO e testo-->
+                        <!--QUA METTIAMO UN DIV CLASS ROW QUANDO ABBIAMO GLI INGREDIENTI-->
+                        <!--PER FARLI VENIRE IN DUE COLONNE-->
+                        <ul style="color: white; list-style: none; padding-top: 10px">
+                            <li>Ingrediente1</li>
+                            <li>Ingrediente2</li>
+                        </ul>
+                    </div>
+                    <h3 style="color: green;">Preparazione</h3>
+                    <p>{{dati.post.procedimento}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 sidenav">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    Autore: <br>
+                    <a href="#"><span style="color: green">{{dati.post.name}} {{dati.post.surname}}</span></a>
+                    <hr>
+                    Altro da {{dati.post.name}}
+                    <hr>
+                    <b>{{dati.post.titolo}}</b> <br><br>
+                    <p style="color: lightgrey;"><em>VARI FILTRI</em></p>
+                    <!--mettiamo i filtri a lista-->
+                    <br>
+                    Commenta / Vota
+                </div>
+            </div>
+        </div>
     </div>
 </div>

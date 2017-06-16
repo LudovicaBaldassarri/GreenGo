@@ -1,4 +1,3 @@
-
 'use strict';
 
 // definisce una direttiva che crea un bottone di upload di file e l'handler onClick

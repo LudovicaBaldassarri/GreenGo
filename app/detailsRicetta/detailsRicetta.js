@@ -3,7 +3,7 @@
 angular.module('myApp.detailsRicetta', ['ngRoute'])
 
 .config(['$routeProvider', function($routeProvider){
-    $routeProvider.when('/detailsRicetta/:ricettaId', {
+    $routeProvider.when('/detailsRicetta/:postId', {
         templateUrl: 'detailsRicetta/detailsRicetta.html',
         controller: 'detailsRicettaCtrl',
         resolve: {
@@ -19,11 +19,11 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
     })
 }])
 
-.controller('detailsRicettaCtrl', ['$scope', '$rootScope', 'SingleRicetta', '$routeParams',
-    function ($scope, $rootScope, SingleRicetta, $routeParams) {
+.controller('detailsRicettaCtrl', ['$scope', '$rootScope', 'SinglePost', '$routeParams',
+    function ($scope, $rootScope, SinglePost, $routeParams) {
         $scope.dati = {};
         $rootScope.dati= {};
         $rootScope.dati.currentView = "detailsRicetta";
-        $scope.dati.ricetta = SingleRicetta.getSingleRicetta($routeParams.ricettaId);
+        $scope.dati.post = SinglePost.getSinglePost($routeParams.postId);
     }
 ]);

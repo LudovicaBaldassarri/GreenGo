@@ -11,7 +11,7 @@ angular.module('myApp.post.insertPostService', [])
             },
 
             insertNewPost: function (autoreId, name, surname, descrizione, date, dataStampa, oraStampa,
-                                       titolo, procedimento, difficolta, tempo){
+                                       titolo, procedimento, difficolta, tempo, tag){
                 var ref=firebase.database().ref().child("posts");
                 return $firebaseArray(ref).$add({
                     autoreId: autoreId,
@@ -24,7 +24,8 @@ angular.module('myApp.post.insertPostService', [])
                     titolo: titolo,
                     procedimento: procedimento,
                     difficolta: difficolta,
-                    tempo: tempo
+                    tempo: tempo,
+                    tag: tag
                 });
             },
             updatePost: function(postId) {

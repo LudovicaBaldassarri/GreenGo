@@ -21,13 +21,7 @@ angular.module('myApp.home', ['ngRoute'])
 
     .controller('homeCtrl',['$scope','$rootScope','currentAuth','UsersInfo', 'Post', 'InsertPostService',
         function($scope, $rootScope, currentAuth, UsersInfo, Post, InsertPostService) {
-            // Post.getData().$loaded.then(function(data) {
-            //     $scope.dati={};
-            //     $rootScope.dati={};
-            //     $scope.dati.vm = this;
-            //     $rootScope.dati.currentView = "home";
-            //     $scope.dati.posts = Post.getData();
-            // });
+
             $scope.dati={};
             $scope.dati.feedback = "" ;
             $rootScope.dati={};
@@ -43,15 +37,18 @@ angular.module('myApp.home', ['ngRoute'])
             //scompone l0ora da date in hh:mm:ss da stampare quando serve
             $scope.dati.oraStampa= $scope.dati.date.getUTCHours()+ ":"+$scope.dati.date.getUTCMinutes()+":"+$scope.dati.date.getUTCSeconds();
 
+            $scope.dati.titolo = "";
+            $scope.dati.procedimento ="";
+            $scope.dati.difficolta ="";
+            $scope.dati.tempo ="";
+            $scope.dati.tag ="";
 
-            console.log($scope.dati.dataStampa);
-            console.log($scope.dati.oraStampa);
 
             $scope.addPost= function() {
                 InsertPostService.insertNewPost($scope.dati.userId, $scope.dati.user.name, $scope.dati.user.surname,
                                                 $scope.dati.descrizione, $scope.dati.date, $scope.dati.dataStampa,
                                                 $scope.dati.oraStampa, $scope.dati.titolo, $scope.dati.procedimento,
-                                                $scope.dati.difficolta, $scope.dati.tempo).then(function(ref) {
+                                                $scope.dati.difficolta, $scope.dati.tempo, $scope.dati.tag).then(function(ref) {
                     var postId = ref.key;
                     $scope.dati.userInfo = InsertPostService.getUserInfo($scope.dati.userId);
                     InsertPostService.updatePost(postId);
@@ -60,6 +57,7 @@ angular.module('myApp.home', ['ngRoute'])
                     $scope.dati.procedimento = "";
                     $scope.dati.difficolta = "" ;
                     $scope.dati.tempo = "" ;
+                    $scope.dati.tag = "";
                     console.log("hai aggiunto un post");
                     // SERVE PER CHIUDERE IL MODAL
                     var modalDiv = $("#modalPost");
@@ -68,5 +66,10 @@ angular.module('myApp.home', ['ngRoute'])
                     modalDiv.modal('hide');
                 });
             } ;
+
+            $scope.setTag = function (nometag)
+            {
+                $scope.dati.tag = nometag;
+            }
 
         }]);

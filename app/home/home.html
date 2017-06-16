@@ -4,7 +4,7 @@
         <div class="col-sm-3 ">
             <div class="panel panel-defeault text-left">
                 <div class="panel-body">
-                    <img ng-src="{{dati.user.img_url}}" class="img-circle" alt="{{dati.user.img_alt}}" width="150" height="150">
+                    <img src="../images/profilo-valentina-quadrato.jpg" class="img-circle" alt="Profilo" width="150" height="150">
                 </div>
             </div>
 
@@ -16,6 +16,7 @@
             <p><a href="#">Link</a></p>
         </div>
 
+        <!--SPAZIO POST-->
         <div class="col-sm-8">
 
             <div class="row">
@@ -35,7 +36,7 @@
                 </div>
                 <div class="panel-footer">
                     <button type="button" class="btn btn-success" href="#/home"
-                            data-toggle="modal" data-target="#modalRicetta">Ricetta</button>
+                            data-toggle="modal" data-target="#modalRicetta"ng-click="setTag('ricetta');">Ricetta</button>
                     <button type="button" class="btn btn-success">Tutorial</button>
                 </div>
             </div>
@@ -54,7 +55,7 @@
                                     ng-model="dati.descrizione"></textarea>
                                 </div>
                         <button type="button" class="btn btn-success" href="#/home"
-                                data-toggle="modal" data-target="#modalRicetta">Ricetta</button>
+                                data-toggle="modal" data-target="#modalRicetta" ng-click="setTag('ricetta');">Ricetta</button>
                         <button type="button" class="btn btn-success">Tutorial</button>
                             <button type="submit" style="float: right" class="btn btn-default">Pubblica</button>
                         </div>
@@ -91,7 +92,7 @@
                                 <p>Inserisci ingredienti:</p>
                             </div>
 
-                            <div id="frmAddRicetta" role="form" class="form-group">
+                            <div id="frmAddRicetta" role="form" class="form-group" >
                                 <label for="procedimento">Procedimento:</label>
                                 <textarea class="form-control" rows="7" id="procedimento"
                                           ng-model="dati.procedimento"></textarea>
@@ -107,6 +108,8 @@
                                 <label for="tmp" style="padding-top: 10px; display: block">tempo:</label>
                                 <input type="text" class="form-control" id="tmp"  style="max-width: 140px" placeholder="ore:minuti"
                                        ng-model="dati.tempo">
+
+
                                 <button href="#home" style="float: right"
                                         type="submit" class="btn btn-default">Pubblica</button>
                             </div>
@@ -115,24 +118,22 @@
                 </div>
             </div>
 
-
-            <!--SPAZIO POST-->
             <div class="row">
                 <div class="col-xs-12">
                     <ul class="media-list">
-                        <li class="media" ng-repeat="post in dati.posts">
+                        <li class="media" ng-repeat="post in dati.posts | orderBy: '-date' :true">
                             <div class="media-left">
                                 <!--QUI METTEREI L'IMMAGINE DEL PROFILO-->
-                                <img class="img-circle" id= profile_post ng-src="{{dati.user.img_url}}" alt="{{dati.user.img_alt}}">
+                                <img class="media-object" ng-src="{{post.img_url}}" alt="immagine" width="230" height="135">
                             </div>
                             <div class="media-body">
                                 <h4><strong>{{post.name}} {{post.surname}}</strong> ha pubblicato:</h4>
-                                <p class="data-ora"> {{dati.dataStampa}} {{dati.oraStampa}}</p>
-                                <p>{{post.descrizione}}</p>
+                                <p class="data-ora"> {{post.dataStampa}} {{post.oraStampa}}</p>
                                 <!--QUI METTEREI L'IMMAGINE EFFETTIVA DI RICETTA/TUTORIAL-->
-                                <a href="#!/detailsRicetta/{{post.id_details}}" style="color: darkgreen">
+                                <a href="#!/detailsRicetta/{{post.id}}" style="color: darkgreen">
                                 <h4 class="media-heading"><strong>{{post.titolo}}</strong></h4>
                                 </a>
+                                <p>{{post.descrizione}}</p>
                             </div>
                             <hr/>
                         </li>

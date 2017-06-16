@@ -26,7 +26,7 @@ angular.module('myApp', [
     'myApp.areaMercato',
     'myApp.detailsRicetta',
     'myApp.version'
-    //'myApp.fileUpload'
+    // 'myApp.fileUpload'
 
 ])
     .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
@@ -44,13 +44,19 @@ angular.module('myApp', [
     });
 }])
     //$scope', '$rootScope', 'Auth', '$location', '$log', 'Users',
-    .controller('MainCtrl', ['$scope', '$rootScope', '$firebaseAuth', 'Users','Auth', '$location', '$log',
-        function($scope, $rootScope, $firebaseAuth, Users, Auth, $location, $log) {
+    .controller('MainCtrl', ['$scope', '$rootScope', '$firebaseAuth', 'Users','Auth', '$location', '$log', '$firebaseStorage',
+        function($scope, $rootScope, $firebaseAuth, Users, Auth, $location, $log, $firebaseStorage) {
         //this controller only declares a function to get information about the user status (logged in / out)
         //it is used to show menu buttons only when the user is logged
         // $scope.dati={};
         $rootScope.dati = {};
         $rootScope.dati.currentView = 'home';
+        // DATI PER IMMAGINE
+        $scope.dati.feedback = "";
+        var ctrl = this;
+        $scope.fileToUpload = null;
+        $scope.imgPath= "";
+
         $scope.isLogged = function()
         {
             if ($firebaseAuth().$getAuth()){
@@ -92,6 +98,7 @@ angular.module('myApp', [
             $scope.auth.$signInWithEmailAndPassword($scope.user.email, $scope.user.password).then(function(firebaseUser) {
                 var userId = firebaseUser.uid;
                 Users.registerLogin(userId, $scope.user.email);
+
                 // SERVE PER CHIUDERE IL MODAL
                 var modalDiv = $("#myModal");
                 modalDiv.modal('hide');
@@ -112,7 +119,33 @@ angular.module('myApp', [
                             //(the reason is that we cannot write in the database if we are not logged in ... it is not the best way of doing it but it is ok for our prototype)
                             Auth.$signInWithEmailAndPassword($scope.user.email, $scope.user.password).then(function(internalFirebaseUser) {
                                 var userId = internalFirebaseUser.uid;
-                                Users.registerNewUserInfo(userId, $scope.user.name, $scope.user.surname, $scope.user.email);
+                                if ($scope.fileToUpload != null) {
+                                    //get the name of the file
+                                    var fileName = $scope.fileToUpload.name;
+                                    //specify the path in which the file should be saved on firebase
+                                    var storageRef = firebase.storage().ref("../images/" + fileName);
+                                    $scope.storage = $firebaseStorage(storageRef);
+                                    var uploadTask = $scope.storage.$put($scope.fileToUpload);
+                                    uploadTask.$complete(function (snapshot) {
+                                        $scope.imgPath = snapshot.downloadURL;
+                                        $scope.registerNewUserInfo();
+                                    });
+                                    uploadTask.$error(function (error) {
+                                        $scope.dati.error = error + " - Potrai scegliere in futuro la tua immagine!";
+                                        // errore nell'immagine'
+                                        $scope.registerNewUserInfo();
+                                    });
+                                }
+                                else {
+                                    //do not add the image
+                                    $scope.registerNewUserInfo();
+
+                                }
+                                ctrl.onChange = function onChange(fileList) {
+                                    $scope.fileToUpload = fileList[0];
+                                };
+
+                                Users.registerNewUserInfo(userId, $scope.user.name, $scope.user.surname, $scope.user.email, $imgPath);
                                 Users.registerLogin(userId, $scope.user.email);
                                 // SERVE PER CHIUDERE IL MODAL
                                 var modalDiv = $("#myModal2");

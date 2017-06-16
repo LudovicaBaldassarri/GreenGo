@@ -140,3 +140,8 @@ body{
   font-size: small;
   color: #bebec5;
 }
+
+#profile_post{
+  height: 70px;
+  width: 70px;
+}

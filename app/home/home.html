@@ -4,7 +4,7 @@
         <div class="col-sm-3 ">
             <div class="panel panel-defeault text-left">
                 <div class="panel-body">
-                    <img src="../images/profilo-valentina-quadrato.jpg" class="img-circle" alt="Profilo" width="150" height="150">
+                    <a  href="#!/userProfile"><img src="../images/profilo-valentina-quadrato.jpg" class="img-circle" alt="Profilo" width="150" height="150"></a>
                 </div>
             </div>
 
@@ -118,24 +118,30 @@
                 </div>
             </div>
 
+            <!--LISTA POST DATABASE-->
             <div class="row">
                 <div class="col-xs-12">
                     <ul class="media-list">
                         <li class="media" ng-repeat="post in dati.posts | orderBy: '-date' :true">
                             <div class="media-left">
                                 <!--QUI METTEREI L'IMMAGINE DEL PROFILO-->
-                                <img class="media-object" ng-src="{{post.img_url}}" alt="immagine" width="230" height="135">
+                                <img class="img-circle" ng-src="{{post.img_autore}}" alt="immagine" width="80%" height="50px">
+                                <!--<img class="media-object" ng-src="{{post.img_url}}" alt="immagine" width="230" height="135">-->
                             </div>
                             <div class="media-body">
-                                <h4><strong>{{post.name}} {{post.surname}}</strong> ha pubblicato:</h4>
-                                <p class="data-ora"> {{post.dataStampa}} {{post.oraStampa}}</p>
+                                <h4 class="media-heading"><strong>{{post.name}} {{post.surname}}</strong> ha pubblicato:</h4>
+
                                 <!--QUI METTEREI L'IMMAGINE EFFETTIVA DI RICETTA/TUTORIAL-->
                                 <a href="#!/detailsRicetta/{{post.id}}" style="color: darkgreen">
                                 <h4 class="media-heading"><strong>{{post.titolo}}</strong></h4>
                                 </a>
                                 <p>{{post.descrizione}}</p>
+                                <!--METTERE IF PER IMMAGINE-->
+                                <img class="media-object" ng-src="{{post.img_url}}" alt="immagine" width="70%">
+                                <br>
+                                <p class="data-ora" style="float: right;"> {{post.dataStampa}} {{post.oraStampa}}</p><br><hr/>
                             </div>
-                            <hr/>
+
                         </li>
                     </ul>
                 </div>

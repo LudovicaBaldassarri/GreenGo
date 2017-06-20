@@ -48,8 +48,16 @@
         <div class="col-md-3 sidenav">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    Autore: <br>
-                    <a href="#"><span style="color: green">{{dati.post.name}} {{dati.post.surname}}</span></a>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img ng-src="{{dati.post.foto_autore}}" class="img-circle" alt="ProfiloAutore" width="50px" height="50px">
+                        </div>
+                        <div class="col-md-8">
+                            Pubblicata da: <br>
+                            <a href="#"><span style="color: green">{{dati.post.name}} {{dati.post.surname}}</span></a>
+                            <!--punteggio/titolo raggiunto-->
+                        </div>
+                    </div>
                     <hr>
                     Altro da {{dati.post.name}}
                     <hr>

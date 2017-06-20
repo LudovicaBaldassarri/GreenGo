@@ -1,6 +1,6 @@
 body{
   margin:0;
-  font-family: Verdana;
+  font-family: "Verdana";
 }
 
 .navbar {
@@ -146,6 +146,7 @@ body{
   height: 70px;
   width: 70px;
 }
+
 
 /*.panel{*/
   /*border-color: #C7EFB4;*/

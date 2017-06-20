@@ -1,7 +1,7 @@
 'use strict';
 
 // definisce una direttiva che crea un bottone di upload di file e l'handler onClick
-angular.module('myApp.fileUpload.fuleUploadDirective', [])
+angular.module('myApp.fileUpload.fileUploadDirective', [])
     .directive("fileUpload", FileUploadDirective);
 
 function FileUploadDirective() {

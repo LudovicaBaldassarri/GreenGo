@@ -9,6 +9,20 @@
       </div>
 
       <div class="panel-body">
+        <div id="followersDiv">
+          <h4>Followers</h4>
+          <div ng-repeat="follow in dati.follows" ng-if ="dati.user.userId == follow.followed" >
+            <em>{{follow.follower.name}}</em>
+          </div>
+        </div>
+        <div id="followingDiv">
+          <h4>Following</h4>
+          <div ng-repeat="follow in dati.follows" ng-if="dati.user.userId==follow.follower.userId">
+            <em>{{follow.followedName}}</em>
+          </div>
+        </div>
+
+
         <p><a href="#">Interests</a></p>
       </div>
       <p><a href="#">Link</a></p>

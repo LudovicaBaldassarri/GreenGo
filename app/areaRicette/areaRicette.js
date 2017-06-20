@@ -9,8 +9,8 @@ angular.module('myApp.areaRicette', ['ngRoute'])
         });
     }])
 
-    .controller('areaRicetteCtrl', ['$scope', '$rootScope','Post', '$firebaseAuth',
-        function($scope, $rootScope, Post , $firebaseAuth) {
+    .controller('areaRicetteCtrl', ['$scope', '$rootScope','Post',
+        function($scope, $rootScope, Post) {
 
         $scope.dati={};
         $rootScope.dati={};

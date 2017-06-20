@@ -26,9 +26,13 @@ angular.module('myApp.home', ['ngRoute'])
             $scope.dati.feedback = "" ;
             $rootScope.dati={};
             $rootScope.dati.currentView = "home";
+
             $scope.dati.userId = currentAuth.uid;
             $scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
+
             $scope.dati.posts = Post.getData();
+
+
             //salva la data di oggi e la inserisce come attributo nel firebase del post
             $scope.dati.date = new Date();
             //scompone la data completa in gg/mm/aaa da stampare in html quando serve

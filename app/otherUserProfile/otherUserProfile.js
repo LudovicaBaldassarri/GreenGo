@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('myApp.OtheUserProfile', ['ngRoute'])
+angular.module('myApp.otherUserProfile', ['ngRoute'])
 
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/otherUserProfile/:otherUserId', {
-            templateUrl: 'otheUserProfile/otheUserProfile.html',
-            controller: 'OtheUserProfileCtrl',
+            templateUrl: 'otherUserProfile/otherUserProfile.html',
+            controller: 'otherUserProfileCtrl',
             resolve: {
                 // controller will not be loaded until $requireSignIn resolves
                 // Auth refers to our $firebaseAuth wrapper in the factory below
@@ -18,10 +18,14 @@ angular.module('myApp.OtheUserProfile', ['ngRoute'])
             }
         });
     }])
-    .controller('OtherUserProfileCtrl', ['$scope', '$rootScope', '$routeParams',
-        function ($scope, $rootScope, SinglePost, $routeParams) {
+    .controller('otherUserProfileCtrl', ['$scope', '$rootScope', '$routeParams', 'currentAuth', 'UsersFollowService',
+        function ($scope, $rootScope, $routeParams, currentAuth, UsersFollowService) {
             $scope.dati = {};
             $rootScope.dati= {};
             $rootScope.dati.currentView = "otherUserProfile";
+
+            $scope.dati.userId = UsersFollowService.getUserInfo(currentAuth.uid);
+            $scope.dati.otherUserId = $routeParams.otherUserId;
+            $scope.dati.otherUserInfo = UsersFollowService.getUserInfo($scope.dati.otherUserId);
         }
     ]);

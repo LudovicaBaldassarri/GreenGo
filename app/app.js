@@ -25,8 +25,8 @@ angular.module('myApp', [
     'myApp.areaTutorial',
     'myApp.areaMercato',
     'myApp.detailsRicetta',
-    'myApp.version'
-    // 'myApp.otherUserProfile'
+    'myApp.version',
+    'myApp.otherUserProfile'
     // 'myApp.fileUpload'
 
 ])

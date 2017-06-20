@@ -1,3 +1,73 @@
 <div class="container" id="page">
     YEASH
+    <p> {{dati.otherUserInfo.name}}</p>
+</div>
+
+<div class="container" id="page">
+    <div class="row">
+        <!--SPAZIO UTENTE-->
+        <div class="col-sm-3 ">
+            <div class="panel panel-defeault text-left">
+                <div class="panel-body">
+                    <img src="../images/profilo-valentina-quadrato.jpg" class="img-circle" alt="Profilo" width="200" height="200">
+                </div>
+            </div>
+
+            <div class="panel-body">
+                <div id="followersDiv">
+                    <h4>Followers</h4>
+                    <div ng-repeat="follow in dati.follows" ng-if ="dati.user.userId == follow.followed" >
+                        <em>{{follow.follower.name}}</em>
+                    </div>
+                </div>
+                <div id="followingDiv">
+                    <h4>Following</h4>
+                    <div ng-repeat="follow in dati.follows" ng-if="dati.user.userId==follow.follower.userId">
+                        <em>{{follow.followedName}}</em>
+                    </div>
+                </div>
+
+
+                <p><a href="#">Interests</a></p>
+            </div>
+            <p><a href="#">Link</a></p>
+            <p><a href="#">Link</a></p>
+            <p><a href="#">Link</a></p>
+        </div>
+
+        <!--SPAZIO POST-->
+        <div class="col-sm-8">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel panel-default text-left">
+                        <div class="panel-body" >
+                            <h1>{{dati.otherUserInfo.name}} {{dati.otherUserInfo.surname}}</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="media-list">
+                        <li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="  dati.userId == post.autoreId">
+                            <div class="media-left">
+                                <img class="media-object" ng-src="{{post.img_url}}" alt="immagineRicetta" width="230" height="135">
+                            </div>
+                            <div class="media-body">
+                                <h4><strong>{{post.name}} {{post.surname}}</strong> ha pubblicato:</h4>
+                                <p class="data-ora">{{post.dataStampa}} {{post.oraStampa}} </p>
+                                <a href="#!/detailsRicetta/{{post.id}}" style="color: darkgreen">
+                                    <h4 class="media-heading"><strong>{{post.titolo}}</strong></h4>
+                                    <a href=""><h4 class="media-heading"><strong>{{post.nome_post}}</strong></h4></a>
+                                    <p>{{post.descrizione}}</p>
+                            </div>
+                            <hr/>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

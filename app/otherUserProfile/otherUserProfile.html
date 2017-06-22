@@ -13,10 +13,16 @@
                 </div>
             </div>
 
-            <div class="panel-body">
+            <!--BOTTONE FOLLOWING-->
+            <button id="followButton" ng-if= "dati.notFollowing" ng-click="CreateFollow()"
+                    type="submit" class="btn btn-success"  style="float: right;">Segui</button>
+            <button ng-if="dati.yetFollowing " ng-click="removeFollow(dati.Follow)" type="submit" class="btn btn-default"
+                    style="float: right;">Segui già</button>
+
+            <!--<div class="panel-body">
                 <div id="followersDiv">
                     <h4>Followers</h4>
-                    <div ng-repeat="follow in dati.follows" ng-if ="dati.user.userId == follow.followed" >
+                    <div ng-repeat="follow in dati.follows" ng-if ="dati.otherUserInfo.userId == follow.followed" >
                         <em>{{follow.follower.name}}</em>
                     </div>
                 </div>
@@ -25,7 +31,7 @@
                     <div ng-repeat="follow in dati.follows" ng-if="dati.user.userId==follow.follower.userId">
                         <em>{{follow.followedName}}</em>
                     </div>
-                </div>
+                </div>-->
 
 
                 <p><a href="#">Interests</a></p>
@@ -51,7 +57,7 @@
             <div class="row">
                 <div class="col-xs-12">
                     <ul class="media-list">
-                        <li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="  dati.userId == post.autoreId">
+                        <li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="  dati.otherUserId == post.autoreId">
                             <div class="media-left">
                                 <img class="media-object" ng-src="{{post.img_url}}" alt="immagineRicetta" width="230" height="135">
                             </div>

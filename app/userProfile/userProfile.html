@@ -9,6 +9,11 @@
       </div>
 
       <div class="panel-body">
+        <!--VEDI BOTTONE "SEGUI"-->
+        <button type="button" ng-click="isProduttore()" id="nonProduttore"  class="btn btn-default">Diventa produttore</button>
+        <button type="button" id="produttore" style="visibility:hidden">Vai alla tua pagina Produttore</button>
+
+
         <div id="followersDiv">
           <h4>Followers</h4>
           <div ng-repeat="follow in dati.follows" ng-if ="dati.user.userId == follow.followed" >

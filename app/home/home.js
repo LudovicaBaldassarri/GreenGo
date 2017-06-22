@@ -74,6 +74,6 @@ angular.module('myApp.home', ['ngRoute'])
             $scope.setTag = function (nometag)
             {
                 $scope.dati.tag = nometag;
-            }
+            };
 
         }]);

@@ -26,7 +26,16 @@ angular.module('myApp.userProfile', ['ngRoute'])
         $rootScope.dati.currentView = "userProfile";
         $scope.dati.posts = Post.getData();
         // $scope.dati.follows = UsersFollowService.getFollow();
-
         $scope.dati.userId = currentAuth.uid;
         $scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
+
+        // $scope.isProduttore = function () {
+        //
+        //     document.getElementById('nonProduttore').style.visibility='hidden';
+        //     document.getElementById("produttore").style.visibility = 'visible';
+        //
+        // };
+
+
+
 }]);

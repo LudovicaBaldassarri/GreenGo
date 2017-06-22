@@ -163,6 +163,7 @@ angular.module('myApp', [
                     });
                 }
             };
+
     }]);
 /*.controller('UserRegistrationCtrl', ['$scope', '$rootScope', 'Auth', 'Users', '$location', function($scope, $rootScope, Auth, Users, $location) {
  $scope.user={};

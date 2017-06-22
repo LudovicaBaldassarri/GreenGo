@@ -18,11 +18,12 @@ angular.module('myApp.otherUserProfile', ['ngRoute'])
             }
         });
     }])
-    .controller('otherUserProfileCtrl', ['$scope', '$rootScope', '$routeParams', 'currentAuth', 'UsersFollowService',
-        function ($scope, $rootScope, $routeParams, currentAuth, UsersFollowService) {
+    .controller('otherUserProfileCtrl', ['$scope', '$rootScope', '$routeParams', 'Post', 'currentAuth', 'UsersFollowService',
+        function ($scope, $rootScope, $routeParams, Post,currentAuth, UsersFollowService) {
             $scope.dati = {};
             $rootScope.dati= {};
             $rootScope.dati.currentView = "otherUserProfile";
+            $scope.dati.posts = Post.getData();
 
             $scope.dati.userId = UsersFollowService.getUserInfo(currentAuth.uid);
             $scope.dati.otherUserId = $routeParams.otherUserId;

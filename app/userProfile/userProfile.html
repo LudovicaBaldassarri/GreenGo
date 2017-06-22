@@ -4,23 +4,27 @@
     <div class="col-sm-3 ">
       <div class="panel panel-defeault text-left">
         <div class="panel-body">
-          <img src="../images/profilo-valentina-quadrato.jpg" class="img-circle" alt="Profilo" width="200" height="200">
+          <img src="../images/profilo-valentina-quadrato.PNG" class="img-circle" alt="Profilo" width="200" height="200">
         </div>
       </div>
 
       <div class="panel-body">
-        <div id="followersDiv">
-          <h4>Followers</h4>
-          <div ng-repeat="follow in dati.follows" ng-if ="dati.user.userId == follow.followed" >
-            <em>{{follow.follower.name}}</em>
-          </div>
-        </div>
-        <div id="followingDiv">
-          <h4>Following</h4>
-          <div ng-repeat="follow in dati.follows" ng-if="dati.user.userId==follow.follower.userId">
-            <em>{{follow.followedName}}</em>
-          </div>
-        </div>
+        <!--VEDI BOTTONE "SEGUI"-->
+        <button id="produttoreButton" ng-if="dati.nonProduttore" ng-click="becomeProduttore()" class="btn btn-success">Diventa Produttore</button>
+        <button ng-if="dati.yetProduttore" class="btn btn-default"><a href="#">Vai alla tua pagina Produttore</a></button>
+
+        <!--<div id="followersDiv">-->
+          <!--<h4>Followers</h4>-->
+          <!--<div ng-repeat="follow in dati.follows" ng-if ="dati.user.userId == follow.followed" >-->
+            <!--<em>{{follow.follower.name}}</em>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div id="followingDiv">-->
+          <!--<h4>Following</h4>-->
+          <!--<div ng-repeat="follow in dati.follows" ng-if="dati.user.userId==follow.follower.userId">-->
+            <!--<em>{{follow.followedName}}</em>-->
+          <!--</div>-->
+        <!--</div>-->
 
 
         <p><a href="#">Interests</a></p>
@@ -51,7 +55,8 @@
                   <img class="media-object" ng-src="{{post.img_url}}" alt="immagineRicetta" width="230" height="135">
                 </div>
                 <div class="media-body">
-                  <h4><strong>{{post.name}} {{post.surname}}</strong> ha pubblicato:</h4>
+                  <a href="#!/otherUserProfile/{{post.autoreId}}" style="color: black">
+                    <h4><strong>{{post.name}} {{post.surname}}</strong></a> ha pubblicato:</h4>
                   <p class="data-ora">{{post.dataStampa}} {{post.oraStampa}} </p>
                   <a href="#!/detailsRicetta/{{post.id}}" style="color: darkgreen">
                     <h4 class="media-heading"><strong>{{post.titolo}}</strong></h4>

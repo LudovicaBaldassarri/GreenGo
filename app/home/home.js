@@ -20,8 +20,9 @@ angular.module('myApp.home', ['ngRoute'])
         });
     }])
 
-    .controller('homeCtrl',['$scope','$rootScope','currentAuth','UsersInfo', 'Post', 'InsertPostService',
-        function($scope, $rootScope, currentAuth, UsersInfo, Post, InsertPostService) {
+
+    .controller('homeCtrl',['$scope','$rootScope', 'currentAuth','UsersInfo', 'Post', 'InsertPostService',
+        function($scope, $rootScope, currentAuth , UsersInfo, Post, InsertPostService) {
 
             $scope.dati={};
             $scope.dati.feedback = "" ;
@@ -30,6 +31,7 @@ angular.module('myApp.home', ['ngRoute'])
 
             $scope.dati.userId = currentAuth.uid;
             $scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
+            //$scope.dati.userId = $firebaseAuth.getAuth().uid;
 
             $scope.dati.posts = Post.getData();
 
@@ -108,6 +110,6 @@ angular.module('myApp.home', ['ngRoute'])
             $scope.setTag = function (nometag)
             {
                 $scope.dati.tag = nometag;
-            }
+            };
 
         }]);

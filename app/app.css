@@ -108,9 +108,13 @@ body{
 }
 
 
+
+
+
 #modalRicetta {
   width: auto;
 }
+
 
 #modalRicetta h3, form {
   padding: 20px;
@@ -142,6 +146,7 @@ body{
   color: #bebec5;
 }
 
+
 #profile_post{
   height: 70px;
   width: 70px;
@@ -151,3 +156,13 @@ body{
 /*.panel{*/
   /*border-color: #C7EFB4;*/
 /*}*/
+
+.entry:not(:first-of-type)
+{
+  margin-top: 10px;
+}
+
+.glyphicon
+{
+  font-size: 12px;
+}

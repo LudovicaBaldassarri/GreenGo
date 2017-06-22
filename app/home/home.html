@@ -4,7 +4,7 @@
         <div class="col-sm-3 ">
             <div class="panel panel-defeault text-left">
                 <div class="panel-body">
-                    <a  href="#!/userProfile"><img src="../images/profilo-valentina-quadrato.jpg" class="img-circle" alt="Profilo" width="150" height="150"></a>
+                    <a  href="#!/userProfile"><img src="../images/profilo-valentina-quadrato.PNG" class="img-circle" alt="Profilo" width="150" height="150"></a>
                 </div>
             </div>
 
@@ -144,7 +144,9 @@
                                 <!--<img class="media-object" ng-src="{{post.img_url}}" alt="immagine" width="230" height="135">-->
                             </div>
                             <div class="media-body">
-                                <h4 class="media-heading"><strong>{{post.name}} {{post.surname}}</strong> ha pubblicato:</h4>
+                                <a href="#!/otherUserProfile/{{post.autoreId}}" style="color: black">
+                                    <h4 class="media-heading"><strong>{{post.name}} {{post.surname}}</strong></a> ha pubblicato:</h4>
+
 
                                 <!--QUI METTEREI L'IMMAGINE EFFETTIVA DI RICETTA/TUTORIAL-->
                                 <a href="#!/detailsRicetta/{{post.id}}" style="color: darkgreen">
@@ -152,7 +154,7 @@
                                 </a>
                                 <p>{{post.descrizione}}</p>
                                 <!--METTERE IF PER IMMAGINE-->
-                                <img class="media-object" ng-src="{{post.img_url}}" alt="immagine" width="70%">
+                                <img class="media-object" ng-src="{{post.img_url}}" width="70%">
                                 <br>
                                 <p class="data-ora" style="float: right;"> {{post.dataStampa}} {{post.oraStampa}}</p><br><hr/>
                             </div>

@@ -29,13 +29,10 @@ angular.module('myApp.userProfile', ['ngRoute'])
         $scope.dati.userId = currentAuth.uid;
         $scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
 
-        // $scope.isProduttore = function () {
-        //
-        //     document.getElementById('nonProduttore').style.visibility='hidden';
-        //     document.getElementById("produttore").style.visibility = 'visible';
-        //
-        // };
-
-
+        $scope.dati.nonProduttore = true;
+        $scope.becomeProduttore= function () {
+            $scope.dati.nonProduttore=false;
+            $scope.dati.yetProduttore=true;
+        };
 
 }]);

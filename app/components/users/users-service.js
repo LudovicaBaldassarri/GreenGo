@@ -32,6 +32,7 @@ angular.module('myApp.users.usersService', [])
                     email: email
                 });
             }
+
         };
     });
 

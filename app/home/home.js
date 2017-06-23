@@ -57,7 +57,7 @@ angular.module('myApp.home', ['ngRoute'])
                                                 $scope.dati.descrizione, $scope.dati.date, $scope.dati.dataStampa,
                                                 $scope.dati.oraStampa, $scope.dati.titolo, $scope.dati.procedimento,
                                                 $scope.dati.difficolta, $scope.dati.tempo, $scope.dati.tag,
-                                                $scope.dati.ingrediente).then(function(ref) {
+                                                $scope.dati.ingrediente).then(function(ref){
                     var postId = ref.key;
                     $scope.dati.userInfo = InsertPostService.getUserInfo($scope.dati.userId);
                     InsertPostService.updatePost(postId);
@@ -72,7 +72,7 @@ angular.module('myApp.home', ['ngRoute'])
                     console.log("hai aggiunto un post");
                     // SERVE PER CHIUDERE IL MODAL
                     var modalDiv = $("#modalPost");
-                    modalDiv.modal('hid{e');
+                    modalDiv.modal('hide');
                     var modalDiv = $("#modalRicetta");
                     modalDiv.modal('hide');
 
@@ -82,8 +82,7 @@ angular.module('myApp.home', ['ngRoute'])
 
             } ;
 
-            // prova jQuery
-            //$('.btn-add').click(function(e) {
+            //  LISTA DINAMICA PER L'INSERIMENTO DEGLI INGREDIENTI
                 $(document).on('click', '.btn-add', function(e){
                     e.preventDefault();
 
@@ -97,14 +96,19 @@ angular.module('myApp.home', ['ngRoute'])
                         .removeClass('btn-success').addClass('btn-danger')
                         .html('<span class="glyphicon glyphicon-minus"></span>');
                 });
-            $(document).on('click', '.btn-remove', function(e)
-            {
-            //$('.btn-remove').click(function(e) {
+                $(document).on('click', '.btn-remove', function(e)
+                {
                     $(this).parents('.entry:first').remove();
 
                     e.preventDefault();
                     return false;
-                });
+                 });
+
+            //
+            // function conto() {
+            //     var x = document.getElementById("ingrd").lenght;
+            //     console.log(x);
+            // }
 
 
             $scope.setTag = function (nometag)
@@ -112,4 +116,6 @@ angular.module('myApp.home', ['ngRoute'])
                 $scope.dati.tag = nometag;
             };
 
-        }]);
+        } ]);
+
+

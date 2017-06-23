@@ -29,17 +29,18 @@ angular.module('myApp.userProfile', ['ngRoute'])
         $scope.dati.userId = $firebaseAuth().$getAuth().uid;
         $scope.dati.user = UsersInfo.getUserInfo($firebaseAuth().$getAuth().uid);
 
-        //$scope.dati.follows = UsersFollowService.getFollow();
-        //$scope.dati.userId = currentAuth.uid;
-        //$scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
-
-
-        $scope.dati.nonProduttore = true;
         $scope.becomeProduttore= function () {
-            $scope.dati.nonProduttore=false;
-            $scope.dati.yetProduttore=true;
+            $scope.dati.user = Users.updateTipo($firebaseAuth().$getAuth().uid);
+            var modalDiv = $("#modalProduttore");
+            modalDiv.modal('hide');
+            //$window.location.reload();
         };
 
+
+
+            //$scope.dati.follows = UsersFollowService.getFollow();
+        //$scope.dati.userId = currentAuth.uid;
+        //$scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
 
         var ctrl = this;
         $scope.fileToUpload = null;

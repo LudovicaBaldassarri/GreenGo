@@ -57,6 +57,12 @@ angular.module('myApp.users.usersService', [])
                     citta: citta,
                     descrizione: descrizione
                 });
+            },
+            updateUser: function(userId) {
+                var ref = firebase.database().ref().child("users").child(userId);
+                ref.update({
+                    id: userId
+                });
             }
 
         };

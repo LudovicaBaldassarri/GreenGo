@@ -137,11 +137,11 @@
         <button type="button" class="close" data-dismiss="modal" data-target="#myModal2">&times;</button>
         <form id="frmRegister" role="form" ng-submit="signUp()">
           <h2>Registrazione</h2>
-          <div class="form-group">
-            <p>Scegli un'immagine per il tuo profilo: </p>
-            <!--LO FAREI ANCHE PER CAMBIARE IMMAGINE PROFILO-->
-            <file-upload on-change="$ctrl.onChange"></file-upload>
-          </div>
+          <!--<div class="form-group">-->
+            <!--<p>Scegli un'immagine per il tuo profilo: </p>-->
+            <!--&lt;!&ndash;LO FAREI ANCHE PER CAMBIARE IMMAGINE PROFILO&ndash;&gt;-->
+            <!--<file-upload on-change="$ctrl.onChange"></file-upload>-->
+          <!--</div>-->
           <div class="form-group">
             <label for="txtName">Nome</label>
             <input type="text" class="form-control" id="txtName" placeholder="Enter name" name="name" ng-model="user.name" />

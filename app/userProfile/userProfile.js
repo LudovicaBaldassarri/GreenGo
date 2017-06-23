@@ -41,11 +41,11 @@ angular.module('myApp.userProfile', ['ngRoute'])
 
         $scope.updateInfoProduttore = function () {
             Users.updateProduttore($scope.dati.userId, $scope.dati.nomeProduttore, $scope.dati.citta, $scope.dati.descrizione).then(function (ref) {
+                var userId = ref.key;
+                // Users.updateUser(userId);
                 $scope.dati.nomeProduttore="";
                 $scope.dati.citta="";
                 $scope.dati.descrizione="";
-                console.log("hai aggiunto un post");
-
 
             });
         };

@@ -4,9 +4,32 @@
     <div class="col-sm-3 ">
       <div class="panel panel-defeault text-left">
         <div class="panel-body">
-          <img src="../images/profilo-valentina-quadrato.PNG" class="img-circle" alt="Profilo" width="200" height="200">
+          <img class="img-circle" width="200" height="200"
+               ng-src="{{dati.user.img_url}}" alt="{{dati.user.img_alt}}" ng-if="dati.user.img_url.includes('https://firebasestorage.googleapis.com')">
+
+            <!--<div class="media-left">
+                <img class="media-object" ng-src="../{{pizza.img_url}}" alt="{{pizza.img_alt}}" ng-if="!(pizza.img_url.includes('https://firebasestorage.googleapis.com')) && pizza.img_url!=''">
+                <img class="media-object" ng-src="{{pizza.img_url}}" alt="{{pizza.img_alt}}" ng-if="pizza.img_url.includes('https://firebasestorage.googleapis.com')">
+                <img class="media-object" ng-src="../images/notAvailable.png" alt="{{pizza.img_alt}}" ng-if="pizza.img_url == ''">
+            </div>-->
+
         </div>
       </div>
+
+      <div ng-controller="userProfileCtrl as $ctrl">
+        <form id="frmAdd" role="form" ng-submit="addImage()">
+
+            <!--<h5 ng-if=" dati.user.img_alt == 'null'">Aggiungi nuova immagine del profilo</h5>
+            <h5 ng-else>Modifica immagine Profilo</h5>-->
+            <file-upload on-change="$ctrl.onChange"> </file-upload>
+            <!--<input type="file" name="file" data-url="home/upload"
+                   multiple upload><span>Add files...</span>-->
+          <button type="submit">Add</button>
+        </form>
+      </div>
+
+
+
 
       <div class="panel-body">
         <!--BOTTONI PRODUTTORE-->

@@ -30,7 +30,7 @@ angular.module('myApp.home', ['ngRoute'])
 
             $scope.dati.userId = currentAuth.uid;
             $scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
-            //$scope.dati.userId = $firebaseAuth.getAuth().uid;
+            //$scope.dati.userId = $firebaseAuth().$getAuth().uid;
 
             $scope.dati.posts = Post.getData();
 
@@ -65,6 +65,7 @@ angular.module('myApp.home', ['ngRoute'])
                     $scope.dati.tempo = "" ;
                     $scope.dati.tag = "";
                     console.log("hai aggiunto un post");
+                    
                     // SERVE PER CHIUDERE IL MODAL
                     var modalDiv = $("#modalPost");
                     modalDiv.modal('hide');
@@ -76,6 +77,6 @@ angular.module('myApp.home', ['ngRoute'])
             $scope.setTag = function (nometag)
             {
                 $scope.dati.tag = nometag;
-            };
+            }
 
         }]);

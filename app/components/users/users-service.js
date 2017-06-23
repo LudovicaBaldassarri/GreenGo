@@ -38,6 +38,14 @@ angular.module('myApp.users.usersService', [])
                 ref.update({
                     tipo: 'produttore'
                 });
+            },
+
+            updateImage: function (userId, imgPath) {
+                var iRef = firebase.database().ref().child("users").child(userId)
+                iRef.update({
+                    img_url: imgPath,
+                    img_alt: userId,
+                });
             }
 
         };

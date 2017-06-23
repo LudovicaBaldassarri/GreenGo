@@ -35,6 +35,20 @@ angular.module('myApp.userProfile', ['ngRoute'])
             modalDiv.modal('hide');
             //$window.location.reload();
         };
+        $scope.dati.nomeProduttore="";
+        $scope.dati.citta="";
+        $scope.dati.descrizione="";
+
+        $scope.updateInfoProduttore = function () {
+            Users.updateProduttore($scope.dati.userId, $scope.dati.nomeProduttore, $scope.dati.citta, $scope.dati.descrizione).then(function (ref) {
+                $scope.dati.nomeProduttore="";
+                $scope.dati.citta="";
+                $scope.dati.descrizione="";
+                console.log("hai aggiunto un post");
+
+
+            });
+        };
 
 
 

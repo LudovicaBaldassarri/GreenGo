@@ -26,8 +26,9 @@ angular.module('myApp', [
     'myApp.areaMercato',
     'myApp.detailsRicetta',
     'myApp.version',
-    'myApp.otherUserProfile'
-    // 'myApp.fileUpload'
+    'myApp.otherUserProfile',
+     'myApp.paginaProduttore',
+     'myApp.fileUpload'
 
 ])
     .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {

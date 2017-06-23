@@ -4,7 +4,10 @@
         <div class="col-sm-3 ">
             <div class="panel panel-defeault text-left">
                 <div class="panel-body">
-                    <a  href="#!/userProfile"><img src="../images/profilo-valentina-quadrato.PNG" class="img-circle" alt="Profilo" width="150" height="150"></a>
+                    <a  href="#!/userProfile">
+                        <img class="img-circle" alt="Profilo" width="150" height="150"
+                             ng-src="{{dati.user.img_url}}" alt="{{dati.user.img_alt}}" ng-if="dati.user.img_url.includes('https://firebasestorage.googleapis.com')">
+                    </a>
                 </div>
             </div>
 
@@ -140,7 +143,8 @@
                         <li class="media" ng-repeat="post in dati.posts | orderBy: '-date' :true">
                             <div class="media-left">
                                 <!--QUI METTEREI L'IMMAGINE DEL PROFILO-->
-                                <img class="img-circle" ng-src="{{post.img_autore}}" alt="immagine" width="80%" height="50px">
+                                <img class="img-circle" alt="immagine" width="50" height="50"
+                                     ng-src="{{dati.user.img_url}}" alt="{{dati.user.img_alt}}" ng-if="dati.user.img_url.includes('https://firebasestorage.googleapis.com')">
                                 <!--<img class="media-object" ng-src="{{post.img_url}}" alt="immagine" width="230" height="135">-->
                             </div>
                             <div class="media-body">

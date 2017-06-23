@@ -19,20 +19,74 @@ angular.module('myApp.userProfile', ['ngRoute'])
         });
     }])
 
-    .controller('userProfileCtrl', ['$scope','$rootScope', 'Post','UsersInfo','currentAuth', '$firebaseAuth',
-        function($scope,$rootScope, Post, UsersInfo, currentAuth,  $firebaseAuth) {
+    .controller('userProfileCtrl', ['$scope','$rootScope', 'Post','UsersInfo', '$firebaseAuth', '$firebaseStorage', 'Users',
+        function($scope,$rootScope, Post, UsersInfo,  $firebaseAuth, $firebaseStorage, Users) {
         $scope.dati={};
         $rootScope.dati={};
         $rootScope.dati.currentView = "userProfile";
         $scope.dati.posts = Post.getData();
-        // $scope.dati.follows = UsersFollowService.getFollow();
-        $scope.dati.userId = currentAuth.uid;
-        $scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
+
+        $scope.dati.userId = $firebaseAuth().$getAuth().uid;
+        $scope.dati.user = UsersInfo.getUserInfo($firebaseAuth().$getAuth().uid);
+
+        //$scope.dati.follows = UsersFollowService.getFollow();
+        //$scope.dati.userId = currentAuth.uid;
+        //$scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
+
 
         $scope.dati.nonProduttore = true;
         $scope.becomeProduttore= function () {
             $scope.dati.nonProduttore=false;
             $scope.dati.yetProduttore=true;
         };
+
+
+        var ctrl = this;
+        $scope.fileToUpload = null;
+        $scope.imgPath= "";
+
+        $scope.addImage = function() {
+
+            console.log($scope.dati.userId);
+
+            //try to upload the image: if no image was specified, we create a new opera without an image
+            if ($scope.fileToUpload != null) {
+                //get the name of the file
+                var fileName = $scope.fileToUpload.name;
+                //specify the path in which the file should be saved on firebase
+                var storageRef = firebase.storage().ref("userImages/" + fileName);
+                $scope.storage = $firebaseStorage(storageRef);
+                var uploadTask = $scope.storage.$put($scope.fileToUpload);
+                uploadTask.$complete(function (snapshot) {
+                    $scope.imgPath = snapshot.downloadURL;
+                    $scope.finalAddImage();
+
+
+                    });
+                    uploadTask.$error(function (error) {
+                        $scope.dati.error = error + " - l'utente rimmarrà senza immagine profilo :(";
+                        //senza aggiungere un immagine
+                        $scope.finalAddImage();
+                    });
+                }
+                else {
+                    //do not add the image
+                    $scope.finalAddImage();
+
+                }
+            };
+
+            //initialize the function that will be called when a new file will be specified by the user
+            ctrl.onChange = function onChange(fileList) {
+                $scope.fileToUpload = fileList[0];
+                console.log($scope.fileToUpload.name);
+            };
+
+            $scope.finalAddImage = function() {
+                Users.updateImage($scope.dati.userId, $scope.imgPath);
+                console.log("greeeeen");
+                $scope.dati.feedback = "Inserimento effettuato con successo";
+
+            };
 
 }]);

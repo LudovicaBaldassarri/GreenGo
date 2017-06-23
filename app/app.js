@@ -26,7 +26,8 @@ angular.module('myApp', [
     'myApp.areaMercato',
     'myApp.detailsRicetta',
     'myApp.version',
-    'myApp.otherUserProfile'
+    'myApp.otherUserProfile',
+    'myApp.paginaProduttore'
     // 'myApp.fileUpload'
 
 ])

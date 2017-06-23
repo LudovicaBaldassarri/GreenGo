@@ -22,14 +22,21 @@ angular.module('myApp.users.usersService', [])
                     logged: false
                 });
             },
-            registerNewUserInfo: function (userId, name, surname, email) {
+            registerNewUserInfo: function (userId, name, surname, email, tipo) {
                 //add the user to list of users and set the logged value to true
                 var ref = firebase.database().ref().child("users").child(userId);
                 // create a synchronized array
                 ref.set({
                     name: name,
                     surname: surname,
-                    email: email
+                    email: email,
+                    tipo: ""
+                });
+            },
+            updateTipo: function (userId) {
+                var ref = firebase.database().ref().child("users").child(userId);
+                ref.update({
+                    tipo: 'produttore'
                 });
             }
 

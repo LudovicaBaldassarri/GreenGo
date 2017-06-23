@@ -19,8 +19,8 @@ angular.module('myApp.userProfile', ['ngRoute'])
         });
     }])
 
-    .controller('userProfileCtrl', ['$scope','$rootScope', 'Post','UsersInfo','currentAuth', '$firebaseAuth',
-        function($scope,$rootScope, Post, UsersInfo, currentAuth,  $firebaseAuth) {
+    .controller('userProfileCtrl', ['$scope','$rootScope','Post','UsersInfo', 'currentAuth','$firebaseAuth','Users',
+        function($scope,$rootScope, Post, UsersInfo, currentAuth,  $firebaseAuth, Users) {
         $scope.dati={};
         $rootScope.dati={};
         $rootScope.dati.currentView = "userProfile";
@@ -29,10 +29,11 @@ angular.module('myApp.userProfile', ['ngRoute'])
         $scope.dati.userId = currentAuth.uid;
         $scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
 
-        $scope.dati.nonProduttore = true;
         $scope.becomeProduttore= function () {
-            $scope.dati.nonProduttore=false;
-            $scope.dati.yetProduttore=true;
+            $scope.dati.user = Users.updateTipo(currentAuth.uid);
+            var modalDiv = $("#modalProduttore");
+            modalDiv.modal('hide');
+            //$window.location.reload();
         };
 
 }]);

@@ -9,9 +9,12 @@
       </div>
 
       <div class="panel-body">
+        <!--BOTTONI PRODUTTORE-->
         <!--VEDI BOTTONE "SEGUI"-->
-        <button id="produttoreButton" ng-if="dati.nonProduttore" ng-click="becomeProduttore()" class="btn btn-success">Diventa Produttore</button>
-        <button ng-if="dati.yetProduttore" class="btn btn-default"><a href="#">Vai alla tua pagina Produttore</a></button>
+
+        <!--<button id="button2" ng-if="dati.user.tipo== null" ng-click="becomeProduttore()" class="btn btn-success">Diventa Produttore</button>-->
+        <button id="button2" ng-if="dati.user.tipo== null" data-toggle="modal" data-target="#modalProduttore" class="btn btn-success">Diventa Produttore</button>
+        <button id="button1" ng-if="dati.user.tipo == 'produttore'" class="btn btn-default"><a href="#!/paginaProduttore">Vai alla tua pagina Produttore</a></button>
 
         <!--<div id="followersDiv">-->
           <!--<h4>Followers</h4>-->
@@ -70,4 +73,24 @@
       </div>
     </div>
   </div>
+
+  <!--MODAL PRODUTTORE-->
+  <div class="modal fade" id="modalProduttore" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Diventa Produttore!</h4>
+        </div>
+        <div class="modal-body">
+          <p>Vuoi diventare produttore? Compila questo form per mostrare le informazioni che desideri!</p>
+        </div>
+        <div class="modal-footer">
+          <a href="#!/paginaProduttore"><button class="btn btn-success" ng-click="becomeProduttore()">Diventa Produttore</button></a>
+          <button class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>

@@ -27,6 +27,7 @@ angular.module('myApp.post.insertPostService', [])
                     tempo: tempo,
                     tag: tag,
                     ingrediente: ingrediente
+                    //"elemento":{ingrediente: ingrediente}
                 });
             },
             updatePost: function(postId) {

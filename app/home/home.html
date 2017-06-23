@@ -97,7 +97,7 @@
                                     <div class="controls">
                                             <span role="form" autocomplete="off">
                                                 <div class="entry input-group col-xs-3">
-                                                    <input class="form-control" style="width: 200px" name="fields[]"
+                                                 <input class="form-control" style="width: 200px" name="fields[]"
                                                            type="text" placeholder="Aggiungi Ingrediente"
                                                            ng-model="dati.ingrediente"/>
                                                     <span class="input-group-btn">
@@ -111,7 +111,7 @@
                                 </div>
                             </div>
 
-                            <label for="procedimento">Procedimento:</label>
+                            <h4>Procedimento:</h4>
                             <textarea class="form-control" rows="7" id="procedimento"
                                       ng-model="dati.procedimento"></textarea>
 
@@ -148,8 +148,9 @@
                                 <!--<img class="media-object" ng-src="{{post.img_url}}" alt="immagine" width="230" height="135">-->
                             </div>
                             <div class="media-body">
-                                <a href="#!/otherUserProfile/{{post.autoreId}}" style="color: black">
-                                    <h4 class="media-heading"><strong>{{post.name}} {{post.surname}}</strong></a> ha pubblicato:</h4>
+                                    <h4 class="media-heading">
+                                        <a href="#!/otherUserProfile/{{post.autoreId}}" style="color: black">
+                                            <strong>{{post.name}} {{post.surname}}</strong></a> ha pubblicato:</h4>
 
 
                                 <!--QUI METTEREI L'IMMAGINE EFFETTIVA DI RICETTA/TUTORIAL-->
@@ -170,6 +171,5 @@
 
         </div>
     </div>
-
 
 </div>

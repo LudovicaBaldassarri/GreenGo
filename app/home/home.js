@@ -21,17 +21,16 @@ angular.module('myApp.home', ['ngRoute'])
     }])
 
 
-    .controller('homeCtrl',['$scope','$rootScope', 'currentAuth','UsersInfo', 'Post', 'InsertPostService',
-        function($scope, $rootScope, currentAuth , UsersInfo, Post, InsertPostService) {
+    .controller('homeCtrl',['$scope','$rootScope', '$firebaseAuth','UsersInfo', 'Post', 'InsertPostService', '$firebaseStorage',
+        function($scope, $rootScope, $firebaseAuth , UsersInfo, Post, InsertPostService, $firebaseStorage) {
 
-            $scope.dati={};
-            $scope.dati.feedback = "" ;
-            $rootScope.dati={};
+            $scope.dati = {};
+            $scope.dati.feedback = "";
+            $rootScope.dati = {};
             $rootScope.dati.currentView = "home";
 
-            $scope.dati.userId = currentAuth.uid;
-            $scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
-            //$scope.dati.userId = $firebaseAuth.getAuth().uid;
+            $scope.dati.userId = $firebaseAuth().$getAuth().uid;
+            $scope.dati.user = UsersInfo.getUserInfo($firebaseAuth().$getAuth().uid);
 
             $scope.dati.posts = Post.getData();
 
@@ -39,33 +38,79 @@ angular.module('myApp.home', ['ngRoute'])
             //salva la data di oggi e la inserisce come attributo nel firebase del post
             $scope.dati.date = new Date();
             //scompone la data completa in gg/mm/aaa da stampare in html quando serve
-            var month = $scope.dati.date.getUTCMonth()+1;
-            $scope.dati.dataStampa = $scope.dati.date.getUTCDate() + "/"+ month + "/" + $scope.dati.date.getUTCFullYear();
+            var month = $scope.dati.date.getUTCMonth() + 1;
+            $scope.dati.dataStampa = $scope.dati.date.getUTCDate() + "/" + month + "/" + $scope.dati.date.getUTCFullYear();
             //scompone l0ora da date in hh:mm:ss da stampare quando serve
-            $scope.dati.oraStampa= $scope.dati.date.getUTCHours()+ ":"+$scope.dati.date.getUTCMinutes()+":"+$scope.dati.date.getUTCSeconds();
+            $scope.dati.oraStampa = $scope.dati.date.getUTCHours() + ":" + $scope.dati.date.getUTCMinutes() + ":" + $scope.dati.date.getUTCSeconds();
 
             $scope.dati.titolo = "";
-            $scope.dati.procedimento ="";
-            $scope.dati.difficolta ="";
-            $scope.dati.tempo ="";
-            $scope.dati.tag ="";
-            $scope.dati.ingrediente ="";
+            $scope.dati.procedimento = "";
+            $scope.dati.difficolta = "";
+            $scope.dati.tempo = "";
+            $scope.dati.tag = "";
+            $scope.dati.ingrediente = "";
+
+            var ctrl = this;
+            $scope.fileToUpload = null;
+            $scope.imgPath= "";
 
 
-            $scope.addPost= function() {
+            $scope.addPost = function () {
+
+                //check if the user inserted all the required information
+                if ($scope.dati.descrizione != undefined && $scope.dati.descrizione != "") {
+                    $scope.dati.error = "";
+                    //try to upload the image: if no image was specified, we create a new opera without an image
+                    if ($scope.fileToUpload != null) {
+                        //get the name of the file
+                        var fileName = $scope.fileToUpload.name;
+                        //specify the path in which the file should be saved on firebase
+                        var storageRef = firebase.storage().ref("images/" + fileName);
+                        $scope.storage = $firebaseStorage(storageRef);
+                        var uploadTask = $scope.storage.$put($scope.fileToUpload);
+                        uploadTask.$complete(function (snapshot) {
+                            $scope.imgPath = snapshot.downloadURL;
+                            $scope.finalPostAddition();
+                            console.log("inserisco immagine");
+
+                        });
+                        uploadTask.$error(function (error) {
+                            $scope.dati.error = error + " - the Post will be added without a descriptive image!";
+                            $scope.finalPostAddition();
+                        });
+                    }
+                    else {
+                        //do not add the image
+                        $scope.finalPostAddition();
+
+                    }
+                }
+                else {
+                    //write an error message to the user
+                    $scope.dati.error = "You forgot to insert one of the required information!";
+                }
+            };
+            //initialize the function that will be called when a new file will be specified by the user
+            ctrl.onChange = function onChange(fileList) {
+                $scope.fileToUpload = fileList[0];
+            };
+
+
+            $scope.finalPostAddition = function () {
                 InsertPostService.insertNewPost($scope.dati.userId, $scope.dati.user.name, $scope.dati.user.surname,
-                                                $scope.dati.descrizione, $scope.dati.date, $scope.dati.dataStampa,
-                                                $scope.dati.oraStampa, $scope.dati.titolo, $scope.dati.procedimento,
-                                                $scope.dati.difficolta, $scope.dati.tempo, $scope.dati.tag,
-                                                $scope.dati.ingrediente).then(function(ref){
+                    $scope.dati.descrizione, $scope.dati.date, $scope.dati.dataStampa,
+                    $scope.dati.oraStampa, $scope.dati.titolo, $scope.dati.procedimento,
+                    $scope.dati.difficolta, $scope.dati.tempo, $scope.dati.tag, $scope.imgPath,
+                    $scope.dati.ingrediente).then(function (ref) {
+
                     var postId = ref.key;
                     $scope.dati.userInfo = InsertPostService.getUserInfo($scope.dati.userId);
                     InsertPostService.updatePost(postId);
                     $scope.dati.descrizione = "";
-                    $scope.dati.titolo= "";
+                    $scope.dati.titolo = "";
                     $scope.dati.procedimento = "";
-                    $scope.dati.difficolta = "" ;
-                    $scope.dati.tempo = "" ;
+                    $scope.dati.difficolta = "";
+                    $scope.dati.tempo = "";
                     $scope.dati.tag = "";
                     $scope.dati.ingrediente = "";
 
@@ -79,8 +124,9 @@ angular.module('myApp.home', ['ngRoute'])
 
                 });
 
+            };
 
-            } ;
+
 
             //  LISTA DINAMICA PER L'INSERIMENTO DEGLI INGREDIENTI
                 $(document).on('click', '.btn-add', function(e){
@@ -96,6 +142,7 @@ angular.module('myApp.home', ['ngRoute'])
                         .removeClass('btn-success').addClass('btn-danger')
                         .html('<span class="glyphicon glyphicon-minus"></span>');
                 });
+
                 $(document).on('click', '.btn-remove', function(e)
                 {
                     $(this).parents('.entry:first').remove();
@@ -116,6 +163,6 @@ angular.module('myApp.home', ['ngRoute'])
                 $scope.dati.tag = nometag;
             };
 
-        } ]);
+        }]);
 
 

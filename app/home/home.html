@@ -67,6 +67,7 @@
                 </form>
             </div>
 
+            <div ng-controller="homeCtrl as $ctrl">
             <div class="modal fade" id="modalRicetta" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -83,12 +84,11 @@
                                           ng-model="dati.descrizione"></textarea>
                             </div>
 
-                            <!--  <img src="" alt="inserisci immagine">
-                              BOTTONE PER CARICAMENTO DI FILE
+                            <!--BOTTONE PER CARICAMENTO DI FILE-->
+                            <!--<img ng-src="{{post.img_url}}" alt="{{post.img_alt}}" ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">-->
                             <span>Immagine descrittiva</span>
                             <file-upload on-change="$ctrl.onChange">
                             </file-upload>
-                            -->
 
                             <!-- INSERISCI INGREDIENTI -->
                             <div class="row" style="display: inline">
@@ -134,6 +134,7 @@
                     </div>
                 </div>
             </div>
+            </div>
             <!-- fine modal -->
 
             <!--LISTA POST DATABASE-->
@@ -158,8 +159,9 @@
                                 <h4 class="media-heading"><strong>{{post.titolo}}</strong></h4>
                                 </a>
                                 <p>{{post.descrizione}}</p>
-                                <!--METTERE IF PER IMMAGINE-->
-                                <img class="media-object" ng-src="{{post.img_url}}" width="70%">
+                                <!--IMMAGINE-->
+                                <img class="media-object" width="70%" img ng-src="{{post.img_url}}" alt="{{post.img_alt}}"
+                                     ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">
                                 <br>
                                 <p class="data-ora" style="float: right;"> {{post.dataStampa}} {{post.oraStampa}}</p><br><hr/>
                             </div>

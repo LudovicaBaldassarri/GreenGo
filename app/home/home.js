@@ -43,16 +43,17 @@ angular.module('myApp.home', ['ngRoute'])
             //scompone l0ora da date in hh:mm:ss da stampare quando serve
             $scope.dati.oraStampa = $scope.dati.date.getUTCHours() + ":" + $scope.dati.date.getUTCMinutes() + ":" + $scope.dati.date.getUTCSeconds();
 
+
             $scope.dati.titolo = "";
             $scope.dati.procedimento = "";
             $scope.dati.difficolta = "";
             $scope.dati.tempo = "";
-            $scope.dati.tag = "";
+            $rootScope.dati.tag = "";
             $scope.dati.ingrediente = "";
 
             var ctrl = this;
             $scope.fileToUpload = null;
-            $scope.imgPath= "";
+            $scope.imgPath = "";
 
 
             $scope.addPost = function () {
@@ -100,7 +101,7 @@ angular.module('myApp.home', ['ngRoute'])
                 InsertPostService.insertNewPost($scope.dati.userId, $scope.dati.user.name, $scope.dati.user.surname,
                     $scope.dati.descrizione, $scope.dati.date, $scope.dati.dataStampa,
                     $scope.dati.oraStampa, $scope.dati.titolo, $scope.dati.procedimento,
-                    $scope.dati.difficolta, $scope.dati.tempo, $scope.dati.tag, $scope.imgPath,
+                    $scope.dati.difficolta, $scope.dati.tempo, $rootScope.dati.tag, $scope.imgPath,
                     $scope.dati.ingrediente).then(function (ref) {
 
                     var postId = ref.key;
@@ -110,9 +111,11 @@ angular.module('myApp.home', ['ngRoute'])
                     $scope.dati.titolo = "";
                     $scope.dati.procedimento = "";
                     $scope.dati.difficolta = "";
-                    $scope.dati.tempo = "";
+                    $rootScope.dati.tempo = "";
                     $scope.dati.tag = "";
                     $scope.dati.ingrediente = "";
+
+                    console.log($rootScope.dati.tag);
 
                     console.log("hai aggiunto un post");
                     // SERVE PER CHIUDERE IL MODAL
@@ -127,29 +130,27 @@ angular.module('myApp.home', ['ngRoute'])
             };
 
 
-
             //  LISTA DINAMICA PER L'INSERIMENTO DEGLI INGREDIENTI
-                $(document).on('click', '.btn-add', function(e){
-                    e.preventDefault();
+            $(document).on('click', '.btn-add', function (e) {
+                e.preventDefault();
 
-                    var controlForm = $('.controls span:first'),
-                        currentEntry = $(this).parents('.entry').filter(":first"),
-                        newEntry = currentEntry.clone().appendTo(controlForm);
+                var controlForm = $('.controls span:first'),
+                    currentEntry = $(this).parents('.entry').filter(":first"),
+                    newEntry = currentEntry.clone().appendTo(controlForm);
 
-                    newEntry.find('input').val('');
-                    controlForm.find('.entry:not(:last) .btn-add')
-                        .removeClass('btn-add').addClass('btn-remove')
-                        .removeClass('btn-success').addClass('btn-danger')
-                        .html('<span class="glyphicon glyphicon-minus"></span>');
-                });
+                newEntry.find('input').val('');
+                controlForm.find('.entry:not(:last) .btn-add')
+                    .removeClass('btn-add').addClass('btn-remove')
+                    .removeClass('btn-success').addClass('btn-danger')
+                    .html('<span class="glyphicon glyphicon-minus"></span>');
+            });
 
-                $(document).on('click', '.btn-remove', function(e)
-                {
-                    $(this).parents('.entry:first').remove();
+            $(document).on('click', '.btn-remove', function (e) {
+                $(this).parents('.entry:first').remove();
 
-                    e.preventDefault();
-                    return false;
-                 });
+                e.preventDefault();
+                return false;
+            });
 
             //
             // function conto() {
@@ -157,12 +158,11 @@ angular.module('myApp.home', ['ngRoute'])
             //     console.log(x);
             // }
 
-
-            $scope.setTag = function (nometag)
-            {
-                $scope.dati.tag = nometag;
+            // TAG RICETTA-TUTORIAL
+            $scope.setTag = function (nometag) {
+                $rootScope.dati.tag = nometag;
+                console.log($rootScope.dati.tag);
             };
-
-        }]);
+    }]);
 
 

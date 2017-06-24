@@ -151,12 +151,15 @@ angular.module('myApp.home', ['ngRoute'])
                 e.preventDefault();
                 return false;
             });
+                   // FINE LISTA DINAMICA
 
-            //
+
+
             // function conto() {
             //     var x = document.getElementById("ingrd").lenght;
             //     console.log(x);
             // }
+
 
             // TAG RICETTA-TUTORIAL
             $scope.setTag = function (nometag) {

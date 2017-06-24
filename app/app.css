@@ -80,7 +80,11 @@ body{
   width: 80%;
 }
 
-#page{
+#page {
+  padding-top: 130px;
+}
+
+#pageTut{
   padding-top: 130px;
 }
 

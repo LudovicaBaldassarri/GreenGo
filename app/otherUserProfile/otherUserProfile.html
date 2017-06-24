@@ -4,7 +4,8 @@
         <div class="col-sm-3 ">
             <div class="panel panel-defeault text-left">
                 <div class="panel-body">
-                    <img src="../images/profilo-valentina-quadrato.jpg" class="img-circle" alt="Profilo" width="200" height="200">
+                    <img class="img-circle" alt="Profilo" width="200" height="200"
+                         ng-src="{{dati.otherUserInfo.img_url}}" alt="{{dati.otherUserInfo.img_alt}}" ng-if="dati.otherUserInfo.img_url.includes('https://firebasestorage.googleapis.com')">
                 </div>
             </div>
 

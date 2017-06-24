@@ -98,7 +98,7 @@ angular.module('myApp.home', ['ngRoute'])
 
 
             $scope.finalPostAddition = function () {
-                InsertPostService.insertNewPost($scope.dati.userId, $scope.dati.user.name, $scope.dati.user.surname,
+                InsertPostService.insertNewPost($scope.dati.userId, $scope.dati.user.name, $scope.dati.user.surname, $scope.dati.user.img_url,
                     $scope.dati.descrizione, $scope.dati.date, $scope.dati.dataStampa,
                     $scope.dati.oraStampa, $scope.dati.titolo, $scope.dati.procedimento,
                     $scope.dati.difficolta, $scope.dati.tempo, $rootScope.dati.tag, $scope.imgPath,

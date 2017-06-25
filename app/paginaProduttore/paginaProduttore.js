@@ -94,7 +94,9 @@ angular.module('myApp.paginaProduttore', ['ngRoute'])
                     $scope.dati.userInfo = InsertProdottoService.getUserInfo($scope.dati.userId);
                     InsertProdottoService.updateProdotto(prodottoId);
                     $scope.dati.descrizione = "";
+                    $scope.dati.prezzo = "";
                     $scope.dati.nomeProdotto = "";
+
                     // SERVE PER CHIUDERE IL MODAL
                     var modalDiv = $("#modalProdotto");
                     modalDiv.modal('hide');

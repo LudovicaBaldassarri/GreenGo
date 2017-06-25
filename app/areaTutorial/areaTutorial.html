@@ -16,7 +16,22 @@
     <div class="container">
         <div class="row">
             <ul class="media-list">
-                <li ng-repeat=""></li>
+                <li ng-repeat="posts in dati.posts" ng-if="post.tag === 'tutorial'">
+
+                    <div class="col-md-4">
+                        <div class="panel panel-success">
+                            <div class="panel-heading"><a href="#!/detailsRicetta/{{post.id}}">{{post.titolo}}</a></div>
+                            <div class="panel-body">
+                                <img style="width:100%" height="200px" alt="Image"
+                                     ng-src="{{post.img_url}}" alt="{{post.img_alt}}"
+                                     ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')"></div>
+                            <div class="panel-footer">
+                                <p><a href="#!/otherUserProfile/{{post.autoreId}}" style="color: green">{{post.name}} {{post.surname}} </a><br>
+                                <!--{{post.descrizione}}--></p></div>
+                        </div>
+                    </div>
+
+                </li>
             </ul>
         </div>
     </div>

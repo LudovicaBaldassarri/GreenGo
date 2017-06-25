@@ -1,0 +1,69 @@
+<div class="container" id="page">
+    <div class="row">
+        <div class="col-md-1"></div>
+
+        <div class="col-md-7 text-left">
+            <div class="panel panel-default text-left">
+                <div class="panel-body">
+                    <h1 style="color: green;">{{dati.post.titolo}}</h1>
+                </div>
+            </div>
+            <div class="panel panel-default text-left">
+                <div class="panel-body">
+                    <img class="img-responsive" ng-src="{{dati.post.img_url}}" width="640" height="426">
+                    <h4>Descrizione</h4>
+                    <p>{{dati.post.descrizione}}</p>
+                    <hr>
+                    <div class="col-md-4">
+                        <span><img src="../images/icona_difficolta.png" height="15px"></span>
+                        <span style="color: green;">Difficoltà: </span>{{dati.post.difficolta}}
+                    </div>
+                    <hr>
+                    <h4 style="color: green">Materiale Necessario:</h4>
+                    <div class="panel panel-default" style="background-color: darkseagreen">
+                        <ul style="color: white; list-style: none; padding-top: 10px">
+                            <li>Strumento 1</li>
+                            <li>Strumento 2</li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <h3 style="color: green;">Procedimento</h3>
+                    <p>{{dati.post.procedimento}}</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-3 sidenav">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img class="img-circle" width="50px" height="50px"
+                                 ng-src="{{dati.post.autore_img}}" alt="{{dati.post.autore_img}}" ng-if="dati.post.autore_img.includes('https://firebasestorage.googleapis.com')">
+                        </div>
+                        <div class="col-md-8">
+                            Pubblicata da: <br>
+
+                            <ul class="media-list">
+                                <a href="#!/otherUserProfile/{{dati.post.autoreId}}" ng-if="dati.userId != dati.post.autoreId"><span style="color: green">
+                                {{dati.post.name}} {{dati.post.surname}}</span></a>
+                                <a href="#!/userProfile" ng-if="dati.userId == dati.post.autoreId">
+                                    {{dati.post.name}} {{dati.post.surname}}</a>
+                            </ul>
+
+                            <!--punteggio/titolo raggiunto-->
+                        </div>
+                    </div>
+                    <hr>
+                    Altro da {{dati.post.name}}
+                    <hr>
+                    <b>{{dati.post.titolo}}</b> <br><br>
+                    <p style="color: lightgrey;"><em>VARI FILTRI</em></p>
+                    <!--mettiamo i filtri a lista-->
+                    <br>
+                    Commenta / Vota
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

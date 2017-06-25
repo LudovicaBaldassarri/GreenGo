@@ -145,6 +145,42 @@ body{
   left: 20px;
 }
 
+/** lo rifaccio uguale per il modal tutorial poi vedo come compattare
+ */
+
+
+#modalTutorial {
+  width: auto;
+}
+
+
+#modalTutorial h3, form {
+  padding: 20px;
+}
+
+#modalTutorial label, input, textarea {
+  margin-bottom: 10px;
+}
+
+#modalTutorial img {
+  position: static;
+  height: 140px;
+  width: 140px;
+}
+
+#modalTutorial p {
+  display: inline;
+  position: relative;
+  bottom: 53px;
+  left: 20px;
+}
+
+
+
+
+
+
+
 .data-ora{
   font-size: small;
   color: #bebec5;

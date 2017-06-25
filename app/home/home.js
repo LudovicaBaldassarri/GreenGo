@@ -123,6 +123,8 @@ angular.module('myApp.home', ['ngRoute'])
                     modalDiv.modal('hide');
                     var modalDiv = $("#modalRicetta");
                     modalDiv.modal('hide');
+                    var modalDiv = $("#modalTutorial");
+                    modalDiv.modal('hide');
 
 
                 });

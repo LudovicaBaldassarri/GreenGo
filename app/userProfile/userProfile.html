@@ -70,7 +70,11 @@
           <ul class="media-list">
             <li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="  dati.userId == post.autoreId">
                 <div class="media-left">
-                  <img class="media-object" ng-src="{{post.img_url}}" alt="immagineRicetta" width="230" height="135">
+                  <div class="media-left">
+                    <!--QUI METTEREI L'IMMAGINE DEL PROFILO-->
+                    <img class="img-circle" alt="immagine" width="50" height="50"
+                         ng-src="{{post.autore_img}}" alt="{{post.autore_img}}" ng-if="post.autore_img.includes('https://firebasestorage.googleapis.com')">
+                  </div>
                 </div>
                 <div class="media-body">
                   <a href="#!/otherUserProfile/{{post.autoreId}}" style="color: black">
@@ -78,6 +82,7 @@
                   <p class="data-ora">{{post.dataStampa}} {{post.oraStampa}} </p>
                   <a href="#!/detailsRicetta/{{post.id}}" style="color: darkgreen">
                     <h4 class="media-heading"><strong>{{post.titolo}}</strong></h4>
+                    <img class="media-object" ng-src="{{post.img_url}}" ng-alt="{{post.img_alt}}" width="70%">
                   <a href=""><h4 class="media-heading"><strong>{{post.nome_post}}</strong></h4></a>
                     <p>{{post.descrizione}}</p>
                 </div>

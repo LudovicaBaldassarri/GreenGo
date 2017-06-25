@@ -40,14 +40,7 @@ angular.module('myApp.userProfile', ['ngRoute'])
         $scope.dati.descrizione="";
 
         $scope.updateInfoProduttore = function () {
-            Users.updateProduttore($scope.dati.userId, $scope.dati.nomeProduttore, $scope.dati.citta, $scope.dati.descrizione).then(function (ref) {
-                var userId = ref.key;
-                // Users.updateUser(userId);
-                $scope.dati.nomeProduttore="";
-                $scope.dati.citta="";
-                $scope.dati.descrizione="";
-
-            });
+            Users.updateProduttore($scope.dati.userId, $scope.dati.nomeProduttore, $scope.dati.citta, $scope.dati.descrizione);
         };
 
 

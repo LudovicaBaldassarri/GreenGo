@@ -36,7 +36,7 @@
         <!--VEDI BOTTONE "SEGUI"-->
 
         <!--<button id="button2" ng-if="dati.user.tipo== null" ng-click="becomeProduttore()" class="btn btn-success">Diventa Produttore</button>-->
-        <button id="button2" ng-if="dati.user.tipo== null" data-toggle="modal" data-target="#modalProduttore" class="btn btn-success">Diventa Produttore</button>
+        <button id="button2"  ng-if="dati.user.tipo == ''" data-toggle="modal" data-target="#modalProduttore" class="btn btn-success">Diventa Produttore</button>
         <button id="button1" ng-if="dati.user.tipo == 'produttore'" class="btn btn-default"><a href="#!/paginaProduttore">Vai alla tua pagina Produttore</a></button>
 
         <!--<div id="followersDiv">-->
@@ -53,8 +53,9 @@
         <!--</div>-->
 
 
-        <p><a href="#">Interests</a></p>
+
       </div>
+        <p><a href="#">Interests</a></p>
       <p><a href="#">Link</a></p>
       <p><a href="#">Link</a></p>
       <p><a href="#">Link</a></p>
@@ -121,7 +122,7 @@
               <label for="txtPres">Descrizione</label>
               <input class="form-control" id="txtPres" placeholder="Fai una breve descrizione della tua attività" name="password" ng-model="dati.descrizione" />
             </div>
-            <a href="#!/paginaProduttore"><button class="btn btn-success" type="submit" ng-click="becomeProduttore()">Diventa Produttore</button></a>
+            <button href="#!/paginaProduttore" class="btn btn-success" type="submit" ng-click="becomeProduttore()">Diventa Produttore</button>
 
           </form>
         </div>

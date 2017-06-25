@@ -44,7 +44,7 @@ angular.module('myApp.users.usersService', [])
             },
 
             updateImage: function (userId, imgPath) {
-                var iRef = firebase.database().ref().child("users").child(userId)
+                var iRef = firebase.database().ref().child("users").child(userId);
                 iRef.update({
                     img_url: imgPath,
                     img_alt: userId,

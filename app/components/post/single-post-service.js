@@ -11,4 +11,4 @@ angular.module('myApp.post.singlePostService', [])
         };
         return singlePostService;
 
-    })
+    });

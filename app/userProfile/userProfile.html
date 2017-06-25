@@ -16,19 +16,10 @@
         </div>
       </div>
 
-      <div ng-controller="userProfileCtrl as $ctrl">
-        <form id="frmAdd" role="form" ng-submit="addImage()">
-
-            <!--<h5 ng-if=" dati.user.img_alt == 'null'">Aggiungi nuova immagine del profilo</h5>
-            <h5 ng-else>Modifica immagine Profilo</h5>-->
-            <file-upload on-change="$ctrl.onChange"> </file-upload>
-            <!--<input type="file" name="file" data-url="home/upload"
-                   multiple upload><span>Add files...</span>-->
-          <button type="submit">Add</button>
-        </form>
+      <div>
+        <button type="button" class="btn btn-default"
+                data-toggle="modal" data-target="#modalAddImmagine">Aggiorna immagine profilo</button>
       </div>
-
-
 
 
       <div class="panel-body">
@@ -127,6 +118,34 @@
           <button class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
 
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+  <!--MODAL ADD IMMGINE-->
+  <div ng-controller="userProfileCtrl as $ctrl">
+    <div class="modal fade" id="modalAddImmagine" role="dialog">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Aggiorna la tua immagine profilo! </h4>
+          </div>
+          <form id="frmAddImg" role="form" ng-submit="addImage()">
+
+            <!--<h5 ng-if=" dati.user.img_alt == 'null'">Aggiungi nuova immagine del profilo</h5>
+            <h5 ng-else>Modifica immagine Profilo</h5>-->
+            <file-upload on-change="$ctrl.onChange"> </file-upload>
+            <!--<input type="file" name="file" data-url="home/upload"
+                   multiple upload><span>Add files...</span>-->
+            <button class="btn btn-success" type="submit">Add</button>
+            <button class="btn btn-default" data-dismiss="modal">Close</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>

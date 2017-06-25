@@ -35,7 +35,13 @@
 
             <div class="panel panel-default" id="post">
                 <div class="panel-body">
+                    <div class="media-left">
+                    <img class="img-circle" alt="immagine" width="50" height="50"
+                         ng-src="{{dati.user.img_url}}" alt="{{dati.user.img_url}}" ng-if="dati.user.img_url.includes('https://firebasestorage.googleapis.com')">
+                    </div>
+                    <div class="media-body">
                     <a href="#/home" data-toggle="modal" data-target="#modalPost">Scrivi qualcosa...</a>
+                    </div>
                 </div>
                 <div class="panel-footer">
                     <button type="button" class="btn btn-success" href="#/home"
@@ -47,16 +53,22 @@
 
 
             <!-- MODAL POST -->
-
             <div class="modal fade" id="modalPost" role="dialog">
                 <form id="frmAddPost" role="form" ng-submit="addPost()">
                 <div class="modal-dialog">
                     <div class="modal-content">
+                        <div class="modal-header"><button type="button" class="close" data-dismiss="modal" data-target="#modalPost">&times;</button></div>
                         <div class="modal-body">
                                 <div class="form-group">
-                                    <button type="button" class="close" data-dismiss="modal" data-target="#modalPost">&times;</button>
+
+                                    <div class="media-left">
+                                        <img class="img-circle" alt="immagine" width="50" height="50"
+                                             ng-src="{{dati.user.img_url}}" alt="{{dati.user.img_url}}" ng-if="dati.user.img_url.includes('https://firebasestorage.googleapis.com')">
+                                    </div>
+                                    <div class="media-body">
                                     <textarea type = "text" class="form-control" nome="descrizione" rows="6" id="desc" placeholder="Scrivi qualcosa..."
                                     ng-model="dati.descrizione"></textarea>
+                                    </div>
                                 </div>
                         <button type="button" class="btn btn-success" href="#/home"
                                 data-toggle="modal" data-target="#modalRicetta" ng-click="setTag('ricetta');">Ricetta</button>
@@ -69,19 +81,21 @@
                 </form>
             </div>
 
+            <!--POST RICETTA-->
             <div ng-controller="homeCtrl as $ctrl">
             <div class="modal fade" id="modalRicetta" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h3>Insersci la tua Ricetta</h3>
-
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" data-target="#modalPost">&times;</button>
+                            <h4>Insersci la tua Ricetta</h4>
+                        </div>
                         <form ng-submit="addPost()">
                             <div class="form-group">
                                 <label for="title">Titolo:</label>
                                 <input type="text" class="form-control" id="title"
                                        ng-model="dati.titolo" />
-                                <textarea class="form-control" rows="6" id="comment2" placeholder="Descrizione..."
+                                <textarea class="form-control" rows="4" id="comment2" placeholder="Descrizione..."
                                           ng-model="dati.descrizione"></textarea>
                             </div>
 

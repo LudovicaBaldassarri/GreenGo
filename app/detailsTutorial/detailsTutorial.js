@@ -19,12 +19,12 @@ angular.module('myApp.detailsTutorial', ['ngRoute'])
     })
 }])
 
-.controller('detailsTutorialCtrl', ['$scope', '$rootScope', 'SiglePost', '$routeParams', 'currentAuth',
-        function($scope, $rootScope, SiglePost, $routeParams, currentAuth) {
+.controller('detailsTutorialCtrl', ['$scope', '$rootScope', 'SinglePost', '$routeParams', 'currentAuth',
+        function($scope, $rootScope, SinglePost, $routeParams, currentAuth) {
             $scope.dati = {};
             $rootScope.dati = {};
             $rootScope.dati.currentView = 'detailsTutorial';
-            $scope.dati.post = SiglePost.getSinglePost($routeParams.postId);
+            $scope.dati.post = SinglePost.getSinglePost($routeParams.postId);
             $scope.dati.userId = currentAuth.uid;
         }
 ]);

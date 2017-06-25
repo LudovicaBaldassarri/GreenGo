@@ -21,7 +21,7 @@
                 <!--PRODOTTI-->
                 <ul class="media-list">
                     <!--METTERE NG-IF-->
-                    <li ng-repeat="prodotto in dati.products">
+                    <li ng-repeat="prodotto in dati.products" ng-if="dati.userId == prodotto.autoreId">
 
                         <div class="col-md-4">
                             <div class="panel panel-default">

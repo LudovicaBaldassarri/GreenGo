@@ -19,26 +19,47 @@
             </div>
             <div class="col-md-9">
                 <!--PRODOTTI-->
-                <ul>
+                <ul class="media-list">
+                    <!--METTERE NG-IF-->
+                    <li ng-repeat="prodotto in dati.products">
 
-                    <li ng-repeat="prodotto in products | orderBy: '-date' :true">
-
+                        <div class="col-md-4">
                             <div class="panel panel-default">
-                                <div class="panel panel-body">
-                                    <img class="media-object" img ng-src="{{post.img_url}}" alt="{{post.img_alt}}"
-                                         ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">
+                                <div class="panel-heading">{{prodotto.nomeProdotto}}</div>
+                                <div class="panel-body">
+                                    <img style="width:100%" height="200px" alt="Image"
+                                         ng-src="{{prodotto.img_url}}" alt="immagine" ng-if="prodotto.img_url.includes('https://firebasestorage.googleapis.com')">
                                 </div>
                                 <div class="panel-footer">
-                                    <h5 style="color: green">{{prodotto.nomeProdotto}}</h5>
                                     <p>{{prodotto.descrizione}}</p>
-                                    <p>Prezzo: {{prodotto.prezzo}}</p>
-                                    <p class="data-ora" style="float: right;"> {{post.dataStampa}} {{post.oraStampa}}</p>
+                                    <p>{{prodotto.prezzo}}</p>
+                                    <!--METTERE DATA-->
                                 </div>
-
                             </div>
+                        </div>
                     </li>
-
                 </ul>
+
+                <!--<ul>-->
+
+                    <!--<li ng-repeat="prodotto in products | orderBy: '-date' :true">-->
+
+                            <!--<div class="panel panel-default">-->
+                                <!--<div class="panel panel-body">-->
+                                    <!--<img class="media-object" img ng-src="{{post.img_url}}" alt="{{post.img_alt}}"-->
+                                         <!--ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">-->
+                                <!--</div>-->
+                                <!--<div class="panel-footer">-->
+                                    <!--<h5 style="color: green">{{prodotto.nomeProdotto}}</h5>-->
+                                    <!--<p>{{prodotto.descrizione}}</p>-->
+                                    <!--<p>Prezzo: {{prodotto.prezzo}}</p>-->
+                                    <!--<p class="data-ora" style="float: right;"> {{post.dataStampa}} {{post.oraStampa}}</p>-->
+                                <!--</div>-->
+
+                            <!--</div>-->
+                    <!--</li>-->
+
+                <!--</ul>-->
             </div>
         </div>
     </div>

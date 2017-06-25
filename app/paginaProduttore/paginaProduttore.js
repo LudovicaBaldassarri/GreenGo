@@ -46,22 +46,64 @@ angular.module('myApp.paginaProduttore', ['ngRoute'])
             $scope.imgPath = "";
 
             $scope.addProdotto = function () {
+
+                //check if the user inserted all the required information
+                if ($scope.dati.descrizione != undefined && $scope.dati.descrizione != "") {
+                    $scope.dati.error = "";
+                    //try to upload the image: if no image was specified, we create a new opera without an image
+                    if ($scope.fileToUpload != null) {
+                        //get the name of the file
+                        var fileName = $scope.fileToUpload.name;
+                        //specify the path in which the file should be saved on firebase
+                        var storageRef = firebase.storage().ref("images/" + fileName);
+                        $scope.storage = $firebaseStorage(storageRef);
+                        var uploadTask = $scope.storage.$put($scope.fileToUpload);
+                        uploadTask.$complete(function (snapshot) {
+                            $scope.imgPath = snapshot.downloadURL;
+                            $scope.finalProdottoAddition();
+
+                        });
+                        uploadTask.$error(function (error) {
+                            $scope.dati.error = error + " - the Post will be added without a descriptive image!";
+                            $scope.finalProdottoddition();
+                        });
+                    }
+                    else {
+                        //do not add the image
+                        $scope.finalProdottoAddition();
+
+                    }
+                }
+                else {
+                    //write an error message to the user
+                    $scope.dati.error = "You forgot to insert one of the required information!";
+                }
+            };
+            //initialize the function that will be called when a new file will be specified by the user
+            ctrl.onChange = function onChange(fileList) {
+                $scope.fileToUpload = fileList[0];
+            };
+
+
+            $scope.finalProdottoAddition = function () {
                 InsertProdottoService.insertNewProdotto($scope.dati.userId, $scope.dati.user.nomeProduttore, $scope.dati.user.img_url,
-                    $scope.dati.descrizione, $scope.dati.prezzo, $scope.dati.date, $scope.dati.dataStampa,
-                    $scope.dati.oraStampa, $scope.dati.nomeProdotto, $scope.imgPath).then(function (ref) {
+                           $scope.dati.descrizione, $scope.dati.prezzo, $scope.dati.date, $scope.dati.dataStampa,
+                           $scope.dati.oraStampa, $scope.dati.nomeProdotto, $scope.imgPath).then(function (ref) {
 
                     var prodottoId = ref.key;
                     $scope.dati.userInfo = InsertProdottoService.getUserInfo($scope.dati.userId);
                     InsertProdottoService.updateProdotto(prodottoId);
                     $scope.dati.descrizione = "";
                     $scope.dati.nomeProdotto = "";
-                    $scope.dati.prezzo = "";
                     // SERVE PER CHIUDERE IL MODAL
                     var modalDiv = $("#modalProdotto");
                     modalDiv.modal('hide');
 
+
                 });
+
             };
+
 
 
         }]);

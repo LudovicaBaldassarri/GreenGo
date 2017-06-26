@@ -5,10 +5,28 @@ angular.module('myApp.areaMercato', ['ngRoute'])
     .config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/areaMercato', {
             templateUrl: 'areaMercato/areaMercato.html',
-            controller: 'areaMercatoCtrl'
+            controller: 'areaMercatoCtrl',
+            resolve: {
+                // controller will not be loaded until $requireSignIn resolves
+                // Auth refers to our $firebaseAuth wrapper in the factory below
+                "currentAuth": ["Auth", function(Auth) {
+                    // $requireSignIn returns a promise so the resolve waits for it to complete
+                    // If the promise is rejected, it will throw a $routeChangeError (see above)
+                    return Auth.$requireSignIn();
+                }]
+
+            }
         });
     }])
 
-    .controller('areaMercatoCtrl', [function() {
+    .controller('areaMercatoCtrl', ['$scope', '$rootScope', '$routeParams', 'Prodotto',
+        function($scope, $rootScope, $routeParams, Prodotto) {
 
-    }]);
+            $scope.dati={};
+            $rootScope.dati={};
+            $rootScope.dati.currentView="areaMercato";
+            $scope.dati.products = Prodotto.getData();
+
+
+
+        }]);

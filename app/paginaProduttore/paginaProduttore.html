@@ -25,41 +25,53 @@
 
                         <div class="col-md-4">
                             <div class="panel panel-default">
-                                <div class="panel-heading">{{prodotto.nomeProdotto}}</div>
+                                <div class="panel-heading"><a data-toggle="modal" data-target="#modalInfo">{{prodotto.nomeProdotto}}</a></div>
                                 <div class="panel-body">
-                                    <img style="width:100%" height="70%" alt="Image"
+                                    <img style="width:100%" height="200px" alt="Image"
                                          ng-src="{{prodotto.img_url}}" alt="immagine" ng-if="prodotto.img_url.includes('https://firebasestorage.googleapis.com')">
                                 </div>
-                                <div class="panel-footer" style="height: 100px">
-                                    <p>{{prodotto.descrizione}}</p>
-                                    <p>{{prodotto.prezzo}}</p>
+                                <div class="panel-footer" style="height: 85px">
+                                    <p style="height: 30px">{{prodotto.descrizione}}</p>
+                                    <span style="float: right">{{prodotto.prezzo}} Euro/kg</span>
                                     <!--METTERE DATA-->
                                 </div>
                             </div>
+
+                            <!--<div class="modal fade" id="modalInfo" role="dialog">-->
+                                <!--<div class="modal-dialog">-->
+
+                                    <!--&lt;!&ndash; Modal content&ndash;&gt;-->
+                                    <!--<div class="modal-content">-->
+                                        <!--<div class="modal-header">-->
+                                            <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
+                                            <!--<h4 class="modal-title">{{prodotto.nomeProdotto}}</h4>-->
+                                        <!--</div>-->
+                                        <!--<div class="modal-body">-->
+                                            <!--<div class="row">-->
+                                                <!--<div class="col-md-5">-->
+                                                    <!--<img style="width:200px" alt="Image"-->
+                                                         <!--ng-src="{{prodotto.img_url}}" alt="immagine" ng-if="prodotto.img_url.includes('https://firebasestorage.googleapis.com')">-->
+                                                <!--</div>-->
+                                                <!--<div class="col-md-7">-->
+                                                    <!--<p>{{prodotto.descrizione}}</p>-->
+                                                    <!--<p>{{prodotto.prezzo}} Euro/kg</p>-->
+                                                    <!--<p>pezzi minimi ecc?</p>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+
+                                        <!--</div>-->
+                                        <!--<div class="modal-footer">-->
+                                            <!--<button type="button" class="btn btn-success">Compra</button>-->
+                                            <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+
+                                <!--</div>-->
+                            <!--</div>-->
+
                         </div>
                     </li>
                 </ul>
-
-                <!--<ul>-->
-
-                    <!--<li ng-repeat="prodotto in products | orderBy: '-date' :true">-->
-
-                            <!--<div class="panel panel-default">-->
-                                <!--<div class="panel panel-body">-->
-                                    <!--<img class="media-object" img ng-src="{{post.img_url}}" alt="{{post.img_alt}}"-->
-                                         <!--ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">-->
-                                <!--</div>-->
-                                <!--<div class="panel-footer">-->
-                                    <!--<h5 style="color: green">{{prodotto.nomeProdotto}}</h5>-->
-                                    <!--<p>{{prodotto.descrizione}}</p>-->
-                                    <!--<p>Prezzo: {{prodotto.prezzo}}</p>-->
-                                    <!--<p class="data-ora" style="float: right;"> {{post.dataStampa}} {{post.oraStampa}}</p>-->
-                                <!--</div>-->
-
-                            <!--</div>-->
-                    <!--</li>-->
-
-                <!--</ul>-->
             </div>
         </div>
     </div>
@@ -78,16 +90,28 @@
                             <div class="form-group">
                                 <label for="title">Nome Prodotto</label>
                                 <input type="text" class="form-control" id="title"
-                                       ng-model="dati.nomeProdotto" />
+                                       ng-model="dati.nomeProdotto">
                                 <textarea class="form-control" rows="6" id="comment2" placeholder="Descrizione..."
                                           ng-model="dati.descrizione"></textarea>
+                                <label for="cat">Categoria </label>
+                                <select class="form-control" id="cat" style="max-width: 300px" ng-model="dati.categoria">
+                                    <option>Pasta e Pane</option>
+                                    <option>Frutta e Verdura</option>
+                                    <option>Legumi e Semi</option>
+                                    <option>Conserve</option>
+                                    <option>Vino e Bevande</option>
+                                    <option>Latte e Formaggi</option>
+                                    <option>Carne</option>
+                                    <option>Olio</option>
+                                    <option>Aromi</option>
+                                </select>
                             </div>
 
                             <span>Immagine descrittiva</span>
                             <file-upload on-change="$ctrl.onChange">
                             </file-upload>
 
-                            <input type="text" class="form-control"  placeholder="00,00 Euro" ng-model="dati.prezzo">
+                            <input type="text" class="form-control"  placeholder="00,00 Euro/kg" ng-model="dati.prezzo">
 
                             <button href="#home" style="float: right" type="submit" class="btn btn-default">Pubblica</button>
                         </form>
@@ -98,7 +122,6 @@
             </div>
         </div>
     </div>
-
 
 </div>
 

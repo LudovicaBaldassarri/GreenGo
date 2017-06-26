@@ -28,6 +28,8 @@ angular.module('myApp.paginaProduttore', ['ngRoute'])
             $scope.dati.userId = $firebaseAuth().$getAuth().uid;
             $scope.dati.user = UsersInfo.getUserInfo($firebaseAuth().$getAuth().uid);
 
+            console.log($scope.dati.user);
+
             //per inserimento prodotto
 
             $scope.dati.date = new Date();

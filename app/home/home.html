@@ -212,9 +212,10 @@
 
 
                                 <!--QUI METTEREI L'IMMAGINE EFFETTIVA DI RICETTA/TUTORIAL-->
-                                <a href="#!/detailsRicetta/{{post.id}}" style="color: darkgreen">
-                                <h4 class="media-heading"><strong>{{post.titolo}}</strong></h4>
-                                </a>
+                                <a ng-if="post.tag == 'ricetta'" href="#!/detailsRicetta/{{post.id}}" style="color: darkgreen">
+                                    <h4 class="media-heading"><strong>{{post.titolo}}</strong></h4></a>
+                                <a ng-if="post.tag == 'tutorial'" href="#!/detailsTutorial/{{post.id}}" style="color: darkgreen">
+                                <h4 class="media-heading"><strong>{{post.titolo}}</strong></h4></a>
                                 <p>{{post.descrizione}}</p>
                                 <!--IMMAGINE-->
                                 <img class="media-object" width="70%" img ng-src="{{post.img_url}}" alt="{{post.img_alt}}"

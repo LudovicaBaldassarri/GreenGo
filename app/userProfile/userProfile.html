@@ -27,7 +27,7 @@
         <!--VEDI BOTTONE "SEGUI"-->
 
         <!--<button id="button2" ng-if="dati.user.tipo== null" ng-click="becomeProduttore()" class="btn btn-success">Diventa Produttore</button>-->
-        <button id="button2"  ng-if="dati.user.tipo == null" data-toggle="modal" data-target="#modalProduttore" class="btn btn-success">Diventa Produttore</button>
+        <button id="button2"  ng-if="dati.user.tipo == ''" data-toggle="modal" data-target="#modalProduttore" class="btn btn-success">Diventa Produttore</button>
         <button id="button1" ng-if="dati.user.tipo == 'produttore'" class="btn btn-default"><a href="#!/paginaProduttore">Vai alla tua pagina Produttore</a></button>
 
         <!--<div id="followersDiv">-->
@@ -124,8 +124,6 @@
         </div>
 
 
-
-
       </div>
     </div>
   </div>
@@ -134,7 +132,7 @@
   <!--MODAL ADD IMMGINE-->
   <div ng-controller="userProfileCtrl as $ctrl">
     <div class="modal fade" id="modalAddImmagine" role="dialog">
-      <div class="modal-dialog modal-lg">
+      <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>

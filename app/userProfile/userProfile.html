@@ -43,13 +43,14 @@
           <!--</div>-->
         <!--</div>-->
 
-
-
       </div>
+      <div class ="container">
         <p><a href="#">Interests</a></p>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
-      <p><a href="#">Link</a></p>
+      <button type="button3" class="btn btn-default"
+              data-toggle="modal" data-target="#modalUpdateInfo">Modifica</button>
+      <p>Nata il {{dati.user.dataNascita}}</p>
+      <p>Vive a {{dati.user.cittaVive}}</p>
+      <p>Parlo di me {{dati.user.descPersonale}}</p></div>
     </div>
 
     <!--SPAZIO POST-->
@@ -143,14 +144,43 @@
           </div>
           <form id="frmAddImg" role="form" ng-submit="addImage()">
 
-            <!--<h5 ng-if=" dati.user.img_alt == 'null'">Aggiungi nuova immagine del profilo</h5>
-            <h5 ng-else>Modifica immagine Profilo</h5>-->
             <file-upload on-change="$ctrl.onChange"> </file-upload>
-            <!--<input type="file" name="file" data-url="home/upload"
-                   multiple upload><span>Add files...</span>-->
+
             <button class="btn btn-success" type="submit">Add</button>
             <button class="btn btn-default" data-dismiss="modal">Close</button>
           </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--MODIFICA INFO PERSONALI-->
+  <div ng-controller="userProfileCtrl as $ctrl">
+    <div class="modal fade" id="modalUpdateInfo" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Aggiorna le tue informazioni personali </h4>
+          </div>
+          <div class="modal-body">
+            <form id="frmUpdateInfo" role="form" ng-submit="updateInfoUser()">
+              <div class="form-group">
+                <label for="txtNome">Data di nascita</label>
+                <input class="form-control" id="txtDataNascita" placeholder="gg/mm/aaaa" ng-model="dati.dataNascita" />
+              </div>
+              <div class="form-group">
+                <label for="txtNome">Città in qui vivo</label>
+                <input class="form-control" id="txtCittaVive" placeholder="Città" ng-model="dati.cittaVive" />
+              </div>
+              <div class="form-group">
+                <label for="txtNome">Mi descrivo</label>
+                <input class="form-control" id="txtDescPersonale" placeholder="Mi piace..." ng-model="dati.descPersonale" />
+              </div>
+            <button class="btn btn-success" type="submit">Salva</button>
+            <button class="btn btn-default" data-dismiss="modal">Close</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

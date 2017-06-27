@@ -38,9 +38,17 @@ angular.module('myApp.userProfile', ['ngRoute'])
         $scope.dati.nomeProduttore="";
         $scope.dati.citta="";
         $scope.dati.descrizione="";
+        $scope.dati.dataNascita="";
+        $scope.dati.cittaVive="";
+        $scope.dati.descPersonale="";
 
         $scope.updateInfoProduttore = function () {
             Users.updateProduttore($scope.dati.userId, $scope.dati.nomeProduttore, $scope.dati.citta, $scope.dati.descrizione);
+        };
+
+
+        $scope.updateInfoUser = function () {
+                Users.updateInfo($scope.dati.userId, $scope.dati.dataNascita, $scope.dati.cittaVive, $scope.dati.descPersonale);
         };
 
         //$scope.dati.follows = UsersFollowService.getFollow();

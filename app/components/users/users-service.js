@@ -47,15 +47,23 @@ angular.module('myApp.users.usersService', [])
                 var iRef = firebase.database().ref().child("users").child(userId);
                 iRef.update({
                     img_url: imgPath,
-                    img_alt: userId,
+                    img_alt: userId
                 });
             },
-            updateProduttore: function (userId, nomeProduttore, citta, descrizione) {
+            updateProduttore: function (userId, nomeProduttore, cittaVive, descPersonale) {
                 var ref = firebase.database().ref().child("users").child(userId);
                 ref.update({
                     nomeProduttore: nomeProduttore,
                     citta: citta,
                     descrizione: descrizione
+                });
+            },
+            updateInfo: function (userId, dataNascita, cittaVive, descPersonale) {
+                var ref = firebase.database().ref().child("users").child(userId);
+                ref.update({
+                    dataNascita: dataNascita,
+                    cittaVive: cittaVive,
+                    descPersonale: descPersonale
                 });
             },
             updateUser: function(userId) {

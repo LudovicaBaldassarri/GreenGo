@@ -42,6 +42,7 @@ angular.module('myApp.paginaProduttore', ['ngRoute'])
             $scope.dati.nomeProdotto = "";
             $scope.dati.descrizione = "";
             $scope.dati.prezzo = "";
+            $scope.dati.categoria= "";
 
             var ctrl = this;
             $scope.fileToUpload = null;
@@ -90,13 +91,14 @@ angular.module('myApp.paginaProduttore', ['ngRoute'])
             $scope.finalProdottoAddition = function () {
                 InsertProdottoService.insertNewProdotto($scope.dati.userId, $scope.dati.user.nomeProduttore, $scope.dati.user.img_url,
                            $scope.dati.descrizione, $scope.dati.prezzo, $scope.dati.date, $scope.dati.dataStampa,
-                           $scope.dati.oraStampa, $scope.dati.nomeProdotto, $scope.imgPath).then(function (ref) {
+                           $scope.dati.oraStampa, $scope.dati.nomeProdotto, $scope.dati.categoria, $scope.imgPath).then(function (ref) {
 
                     var prodottoId = ref.key;
                     $scope.dati.userInfo = InsertProdottoService.getUserInfo($scope.dati.userId);
                     InsertProdottoService.updateProdotto(prodottoId);
                     $scope.dati.descrizione = "";
                     $scope.dati.prezzo = "";
+                    $scope.dati.categoria= "";
                     $scope.dati.nomeProdotto = "";
 
                     // SERVE PER CHIUDERE IL MODAL

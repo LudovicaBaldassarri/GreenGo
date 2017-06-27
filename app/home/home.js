@@ -191,8 +191,8 @@ angular.module('myApp.home', ['ngRoute'])
             $scope.setTag = function (nometag) {
                 $rootScope.dati.tag = nometag;
                 // CHIUDE IL MODAL POST PICCOLO
-                var modalDiv = $("#modalPost");
-                modalDiv.modal('hide');
+                //var modalDiv = $("#modalPost");
+               // modalDiv.modal('hide');
                 console.log($rootScope.dati.tag);
             };
     }]);

@@ -167,15 +167,18 @@
             <form id="frmUpdateInfo" role="form" ng-submit="updateInfoUser()">
               <div class="form-group">
                 <label for="txtNome">Data di nascita</label>
-                <input class="form-control" id="txtDataNascita" placeholder="gg/mm/aaaa" ng-model="dati.dataNascita" />
+                <input ng-if="dati.descPersonale ==''" class="form-control" id="txtDataNascita" placeholder="gg/mm/aaaa" ng-model="dati.dataNascita" />
+                <input ng-if="dati.descPersonale !=''" class="form-control" id="txtDataNascita2" placeholder="{{dati.dataNascita}}" ng-model="dati.dataNascita" />
               </div>
               <div class="form-group">
                 <label for="txtNome">Città in qui vivo</label>
-                <input class="form-control" id="txtCittaVive" placeholder="Città" ng-model="dati.cittaVive" />
+                <input ng-if="dati.descPersonale ==''" class="form-control" id="txtCittaVive2" placeholder="Città" ng-model="dati.cittaVive" />
+                <input ng-if="dati.descPersonale !=''" class="form-control" id="txtCittaVive" placeholder="{{dati.cittaVive}}" ng-model="dati.cittaVive" />
               </div>
               <div class="form-group">
                 <label for="txtNome">Mi descrivo</label>
-                <input class="form-control" id="txtDescPersonale" placeholder="Mi piace..." ng-model="dati.descPersonale" />
+                <input ng-if="dati.descPersonale==''" class="form-control" id="txtDescPersonale2" placeholder="Mi piace..." ng-model="dati.descPersonale" />
+                <input ng-if="dati.descPersonale !=''" class="form-control" id="txtDescPersonale" placeholder="{{dati.descPersonale}}" ng-model="dati.descPersonale" />
               </div>
             <button class="btn btn-success" type="submit">Salva</button>
             <button class="btn btn-default" data-dismiss="modal">Close</button>

@@ -49,7 +49,16 @@ angular.module('myApp.home', ['ngRoute'])
             $scope.dati.difficolta = "";
             $scope.dati.tempo = "";
             $rootScope.dati.tag = "";
-            $scope.dati.ingrediente = "";
+            $scope.dati.ingrediente1 = "";
+            $scope.dati.ingrediente2 = "";
+            $scope.dati.ingrediente3 = "";
+            $scope.dati.ingrediente4 = "";
+            $scope.dati.ingrediente5 = "";
+            $scope.dati.ingrediente6 = "";
+            $scope.dati.ingrediente7 = "";
+            $scope.dati.ingrediente8 = "";
+            $scope.dati.ingrediente9 = "";
+            $scope.dati.ingrediente10 = "";
 
             var ctrl = this;
             $scope.fileToUpload = null;
@@ -102,7 +111,10 @@ angular.module('myApp.home', ['ngRoute'])
                     $scope.dati.descrizione, $scope.dati.date, $scope.dati.dataStampa,
                     $scope.dati.oraStampa, $scope.dati.titolo, $scope.dati.procedimento,
                     $scope.dati.difficolta, $scope.dati.tempo, $rootScope.dati.tag, $scope.imgPath,
-                    $scope.dati.ingrediente).then(function (ref) {
+                    $scope.dati.ingrediente1, $scope.dati.ingrediente2, $scope.dati.ingrediente3,
+                    $scope.dati.ingrediente4, $scope.dati.ingrediente5, $scope.dati.ingrediente6,
+                    $scope.dati.ingrediente7, $scope.dati.ingrediente8,
+                    $scope.dati.ingrediente9, $scope.dati.ingrediente10).then(function (ref) {
 
                     var postId = ref.key;
                     $scope.dati.userInfo = InsertPostService.getUserInfo($scope.dati.userId);
@@ -113,7 +125,17 @@ angular.module('myApp.home', ['ngRoute'])
                     $scope.dati.difficolta = "";
                     $rootScope.dati.tempo = "";
                     $scope.dati.tag = "";
-                    $scope.dati.ingrediente = "";
+                    $scope.dati.ingrediente1 = "";
+                    $scope.dati.ingrediente2 = "";
+                    $scope.dati.ingrediente3 = "";
+                    $scope.dati.ingrediente4 = "";
+                    $scope.dati.ingrediente5 = "";
+                    $scope.dati.ingrediente6 = "";
+                    $scope.dati.ingrediente7 = "";
+                    $scope.dati.ingrediente8 = "";
+                    $scope.dati.ingrediente9 = "";
+                    $scope.dati.ingrediente10 = "";
+
 
                     console.log($rootScope.dati.tag);
 
@@ -131,32 +153,36 @@ angular.module('myApp.home', ['ngRoute'])
 
             };
 
+            // funzioni per l'aggiunta di input INGREDIENTI
+            $scope.addIng2 = function () {
+                document.getElementById("ing2").style.display = "block";
+            };
+            $scope.addIng3 = function () {
+                document.getElementById("ing3").style.display = "block";
+            };
+            $scope.addIng4 = function () {
+                document.getElementById("ing4").style.display = "block";
+            };
+            $scope.addIng5 = function () {
+                document.getElementById("ing5").style.display = "block";
+            };
+            $scope.addIng6 = function () {
+                document.getElementById("ing6").style.display = "block";
+            };
+            $scope.addIng7 = function () {
+                document.getElementById("ing7").style.display = "block";
+            };
+            $scope.addIng8 = function () {
+                document.getElementById("ing8").style.display = "block";
+            };
+            $scope.addIng9 = function () {
+                document.getElementById("ing9").style.display = "block";
+            };
+            $scope.addIng10 = function () {
+                document.getElementById("ing10").style.display = "block";
+            };
 
-            //  LISTA DINAMICA PER L'INSERIMENTO DEGLI INGREDIENTI
-            $(document).on('click', '.btn-add', function (e) {
-                e.preventDefault();
 
-                var controlForm = $('.controls span:first'),
-                    currentEntry = $(this).parents('.entry').filter(":first"),
-                    newEntry = currentEntry.clone().appendTo(controlForm);
-
-                newEntry.find('input').val('');
-                controlForm.find('.entry:not(:last) .btn-add')
-                    .removeClass('btn-add').addClass('btn-remove')
-                    .removeClass('btn-success').addClass('btn-danger')
-                    .html('<span class="glyphicon glyphicon-minus"></span>');
-            });
-
-            $(document).on('click', '.btn-remove', function (e) {
-                $(this).parents('.entry:first').remove();
-
-                e.preventDefault();
-                return false;
-            });
-
-
-
-                   // FINE LISTA DINAMICA
 
 
 
@@ -172,5 +198,28 @@ angular.module('myApp.home', ['ngRoute'])
                 console.log($rootScope.dati.tag);
             };
     }]);
+
+//  LISTA DINAMICA PER L'INSERIMENTO DEGLI INGREDIENTI
+// $(document).on('click', '.btn-add', function (e) {
+//     e.preventDefault();
+//
+//     var controlForm = $('.controls span:first'),
+//         currentEntry = $(this).parents('.entry').filter(":first"),
+//         newEntry = currentEntry.clone().appendTo(controlForm);
+//
+//     newEntry.find('input').val('');
+//     controlForm.find('.entry:not(:last) .btn-add')
+//         .removeClass('btn-add').addClass('btn-remove')
+//         .removeClass('btn-success').addClass('btn-danger')
+//         .html('<span class="glyphicon glyphicon-minus"></span>');
+// });
+//
+// $(document).on('click', '.btn-remove', function (e) {
+//     $(this).parents('.entry:first').remove();
+//
+//     e.preventDefault();
+//     return false;
+// });
+// FINE LISTA DINAMICA
 
 

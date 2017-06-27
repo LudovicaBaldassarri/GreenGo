@@ -11,7 +11,9 @@ angular.module('myApp.post.insertPostService', [])
             },
 
             insertNewPost: function (autoreId, name, surname, img_url, descrizione, date, dataStampa, oraStampa,
-                                       titolo, procedimento, difficolta, tempo, tag, imgPath,  ingrediente){
+                                       titolo, procedimento, difficolta, tempo, tag, imgPath,  ingrediente1, ingrediente2,
+                                        ingrediente3, ingrediente4, ingrediente5, ingrediente6, ingrediente7,
+                                     ingrediente8, ingrediente9, ingrediente10){
                 var ref=firebase.database().ref().child("posts");
                 return $firebaseArray(ref).$add({
                     autoreId: autoreId,
@@ -28,7 +30,17 @@ angular.module('myApp.post.insertPostService', [])
                     tempo: tempo,
                     tag: tag,
                     img_url: imgPath,
-                    ingrediente: ingrediente
+                    "ingredienti":{
+                    ingrediente1: ingrediente1,
+                    ingrediente2: ingrediente2,
+                    ingrediente3: ingrediente3,
+                    ingrediente4: ingrediente4,
+                    ingrediente5: ingrediente5,
+                    ingrediente6: ingrediente6,
+                    ingrediente7: ingrediente7,
+                    ingrediente8: ingrediente8,
+                    ingrediente9: ingrediente9,
+                    ingrediente10: ingrediente10}
                     //"elemento":{ingrediente: ingrediente}
                 });
             },

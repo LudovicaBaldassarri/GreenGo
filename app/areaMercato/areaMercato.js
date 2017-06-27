@@ -19,12 +19,13 @@ angular.module('myApp.areaMercato', ['ngRoute'])
         });
     }])
 
-    .controller('areaMercatoCtrl', ['$scope', '$rootScope', '$routeParams', 'Prodotto',
-        function($scope, $rootScope, $routeParams, Prodotto) {
+    .controller('areaMercatoCtrl', ['$scope', '$rootScope', '$routeParams', 'currentAuth', 'Prodotto',
+        function($scope, $rootScope, $routeParams, currentAuth, Prodotto) {
 
             $scope.dati={};
             $rootScope.dati={};
             $rootScope.dati.currentView="areaMercato";
+            $scope.dati.userId = currentAuth.uid;
             $scope.dati.products = Prodotto.getData();
 
 

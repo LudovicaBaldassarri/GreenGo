@@ -29,12 +29,15 @@ angular.module('myApp.userProfile', ['ngRoute'])
         $scope.dati.userId = $firebaseAuth().$getAuth().uid;
         $scope.dati.user = UsersInfo.getUserInfo($firebaseAuth().$getAuth().uid);
 
-        $scope.becomeProduttore= function () {
-            $scope.dati.user = Users.updateTipo($firebaseAuth().$getAuth().uid);
-            var modalDiv = $("#modalProduttore");
-            modalDiv.modal('hide');
-            //$window.location.reload();
-        };
+        // $scope.becomeProduttore= function () {
+        //     $scope.dati.user = Users.updateTipo($firebaseAuth().$getAuth().uid);
+        //     $window.location.reload();
+        //     var modalDiv = $("#modalProduttore");
+        //     modalDiv.modal('hide');
+        //     var modalMsg = $("#modalMsg");
+        //     modalMsg.modal('show');
+        //
+        // };
         $scope.dati.nomeProduttore="";
         $scope.dati.citta="";
         $scope.dati.descrizione="";
@@ -44,11 +47,21 @@ angular.module('myApp.userProfile', ['ngRoute'])
 
         $scope.updateInfoProduttore = function () {
             Users.updateProduttore($scope.dati.userId, $scope.dati.nomeProduttore, $scope.dati.citta, $scope.dati.descrizione);
+            $scope.dati.user = Users.updateTipo($firebaseAuth().$getAuth().uid);
+            var modalDiv = $("#modalProduttore");
+            modalDiv.modal('hide');
+            var modalMsg = $("#modalMsg");
+            modalMsg.modal('show');
+        };
+        $scope.close = function () {
+            var modalMsg = $("#modalMsg");
+            modalMsg.modal('hide');
         };
 
-
         $scope.updateInfoUser = function () {
-                Users.updateInfo($scope.dati.userId, $scope.dati.dataNascita, $scope.dati.cittaVive, $scope.dati.descPersonale);
+                Users.updateInfo($scope.dati.userId, $scope.dati.dataNascita, $scope.dati.cittaVive, $scope.dati.descPersonale)
+            var modalDiv = $("#modalUpdateInfo");
+            modalDiv.modal('hide');
         };
 
         //$scope.dati.follows = UsersFollowService.getFollow();
@@ -88,6 +101,8 @@ angular.module('myApp.userProfile', ['ngRoute'])
                     $scope.finalAddImage();
 
                 }
+            var modalDiv = $("#modalAddImmagine");
+            modalDiv.modal('hide');
             };
 
             //initialize the function that will be called when a new file will be specified by the user
@@ -101,8 +116,8 @@ angular.module('myApp.userProfile', ['ngRoute'])
                 console.log("greeeeen");
                 $scope.dati.feedback = "Inserimento effettuato con successo";
 
-                var modalDiv = $("#modalAddImmagine");
-                modalDiv.modal('hide');
+                // var modalDiv = $("#modalAddImmagine");
+                // modalDiv.modal('hide');
 
             };
 

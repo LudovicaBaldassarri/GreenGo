@@ -31,6 +31,7 @@ angular.module('myApp', [
     'myApp.version',
     'myApp.otherUserProfile',
      'myApp.paginaProduttore',
+    'myApp.otherProduttore',
      'myApp.fileUpload'
 
 ])

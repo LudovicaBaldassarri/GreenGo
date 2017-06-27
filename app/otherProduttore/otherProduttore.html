@@ -1,0 +1,117 @@
+<div class="container-fluid" id="page">
+    <div class="row">
+        <div class="col-md-12" style="width: 70%; margin-right: 15%; margin-left: 15%">
+            <!--RIVEDERE LO STILE- SPOSTARLO IN APP.CSS -->
+            <div class="panel panel-default text-center" style="padding-bottom: 15px">
+                <h3>I prodotti di {{dati.otherProduttoreInfo.nomeProduttore}}</h3><br>
+                <img class="img-circle" width="150" height="150"
+                     ng-src="{{dati.otherProduttoreInfo.img_url}}" alt="immagine" ng-if="dati.otherProduttoreInfo.img_url.includes('https://firebasestorage.googleapis.com')">
+            </div>
+            <div class="col-md-3">
+                <div class="panel panel-default text-center">
+                    <div class="panel-body">
+                        <h5>Informazioni</h5><hr>
+                        <p><span style="color:green">Città</span><br>{{dati.otherProduttoreInfo.citta}} </p><br>
+                        <p><span style="color:green">Descrizione dell'attività </span><br>{{dati.otherProduttoreInfo.descrizione}} </p><hr>
+                        <a href="#!/otherUserProfile/{{dati.otherProduttoreId}}"><button class="btn btn-default">Vai al Profilo personale</button></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <!--PRODOTTI-->
+                <ul class="media-list">
+                    <!--METTERE NG-IF-->
+                    <li ng-repeat="prodotto in dati.products" ng-if="dati.otherProduttoreId == prodotto.autoreId">
+
+                        <div class="col-md-4">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <!--<a data-toggle="modal" data-target="#modalInfo">{{prodotto.nomeProdotto}}</a>-->
+                                    <span class="coloreTestoVerde">{{prodotto.nomeProdotto}}</span>
+                                    <span style="float: right"><a class="btn btn-success btn-xs"><span class="glyphicon glyphicon-shopping-cart"></span></a></span>
+                                </div>
+                                <div class="panel-body">
+                                    <img style="width:100%" height="200px" alt="Image"
+                                         ng-src="{{prodotto.img_url}}" alt="immagine" ng-if="prodotto.img_url.includes('https://firebasestorage.googleapis.com')">
+                                </div>
+                                <div class="panel-footer" style="height: 85px">
+                                    <p style="height: 30px">{{prodotto.descrizione}}</p>
+                                    <span style="float: right">{{prodotto.prezzo}}/kg</span>
+                                    <!--METTERE DATA-->
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<!--<div class="container" id="page">-->
+    <!--<div class="row">-->
+        <!--&lt;!&ndash;SPAZIO UTENTE&ndash;&gt;-->
+        <!--<div class="col-sm-3 ">-->
+            <!--<div class="panel panel-defeault text-left">-->
+                <!--<div class="panel-body">-->
+                    <!--<img class="img-circle" alt="Profilo" width="200" height="200"-->
+                         <!--ng-src="{{dati.otherUserInfo.img_url}}" alt="{{dati.otherUserInfo.img_alt}}" ng-if="dati.otherUserInfo.img_url.includes('https://firebasestorage.googleapis.com')">-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="panel-body">-->
+                <!--&lt;!&ndash;BOTTONE FOLLOWING&ndash;&gt;-->
+                <!--<button id="followButton" ng-if= "dati.notFollowing" ng-click="CreateFollow()"-->
+                        <!--type="submit" class="btn btn-success"  style="float: right;">Segui</button>-->
+                <!--<button ng-if="dati.yetFollowing " ng-click="removeFollow(dati.Follow)" type="submit" class="btn btn-default"-->
+                        <!--style="float: right;">Segui già</button>-->
+
+                <!--<p><a href="#">Interests</a></p>-->
+            <!--</div>-->
+            <!--<p>Nata il</p>-->
+            <!--<p>Vive a</p>-->
+            <!--<p>Parlo di me</p>-->
+        <!--</div>-->
+
+        <!--&lt;!&ndash;SPAZIO POST&ndash;&gt;-->
+        <!--<div class="col-sm-8">-->
+
+            <!--<div class="row">-->
+                <!--<div class="col-sm-12">-->
+                    <!--<div class="panel panel-default text-left">-->
+                        <!--<div class="panel-body" >-->
+                            <!--<h1>{{dati.otherUserInfo.name}} {{dati.otherUserInfo.surname}}</h1>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="row">-->
+                <!--<div class="col-xs-12">-->
+                    <!--<ul class="media-list">-->
+                        <!--<li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="dati.otherUserId == post.autoreId">-->
+                            <!--<div class="media-left">-->
+                                <!--<img class="media-object" ng-src="{{post.img_url}}" alt="immagineRicetta" width="230" height="135">-->
+                            <!--</div>-->
+                            <!--<div class="media-body">-->
+                                <!--<h4><strong>{{post.name}} {{post.surname}}</strong> ha pubblicato:</h4>-->
+                                <!--<p class="data-ora">{{post.dataStampa}} {{post.oraStampa}} </p>-->
+                                <!--<a ng-if="post.tag == 'ricetta'" href="#!/detailsRicetta/{{post.id}}" style="color: darkgreen">-->
+                                    <!--<h4 class="media-heading"><strong>{{post.titolo}}</strong></h4></a>-->
+                                <!--<a ng-if="post.tag == 'tutorial'" href="#!/detailsTutorial/{{post.id}}" style="color: darkgreen">-->
+                                    <!--<h4 class="media-heading"><strong>{{post.titolo}}</strong></h4></a>-->
+                                    <!--<a href=""><h4 class="media-heading"><strong>{{post.nome_post}}</strong></h4></a>-->
+                                    <!--<p>{{post.descrizione}}</p>-->
+                            <!--</div>-->
+                            <!--<hr/>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->

@@ -19,14 +19,17 @@ angular.module('myApp.areaRicette', ['ngRoute'])
         });
     }])
 
-    .controller('areaRicetteCtrl', ['$scope', '$rootScope','Post',
-        function($scope, $rootScope, Post) {
+    .controller('areaRicetteCtrl', ['$scope', '$rootScope','$routeParams','currentAuth','Post','SinglePost',
+        function($scope, $rootScope,$routeParams, currentAuth, Post, SinglePost) {
 
         $scope.dati={};
         $rootScope.dati={};
         $rootScope.dati.currentView="areaRicette";
+        $scope.dati.userId = currentAuth.uid;
         $scope.dati.posts = Post.getData();
 
 
-    }]);
+
+
+        }]);
 

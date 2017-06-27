@@ -2,55 +2,41 @@
   <div class="row">
     <!--SPAZIO UTENTE-->
     <div class="col-sm-3 ">
-      <div class="panel panel-defeault text-left">
+      <div class="panel panel-default" align="center" >
         <div class="panel-body">
-          <img class="img-circle" width="200" height="200"
-               ng-src="{{dati.user.img_url}}" alt="{{dati.user.img_alt}}" ng-if="dati.user.img_url.includes('https://firebasestorage.googleapis.com')">
+          <div>
+            <img class="img-circle" width="200" height="200"
+                 ng-src="{{dati.user.img_url}}" alt="{{dati.user.img_alt}}" ng-if="dati.user.img_url.includes('https://firebasestorage.googleapis.com')">
+            <button type="button" class="btn btn-default"
+                        data-toggle="modal" data-target="#modalAddImmagine">Aggiorna immagine profilo</button><hr>
+          </div>
 
-            <!--<div class="media-left">
-                <img class="media-object" ng-src="../{{pizza.img_url}}" alt="{{pizza.img_alt}}" ng-if="!(pizza.img_url.includes('https://firebasestorage.googleapis.com')) && pizza.img_url!=''">
-                <img class="media-object" ng-src="{{pizza.img_url}}" alt="{{pizza.img_alt}}" ng-if="pizza.img_url.includes('https://firebasestorage.googleapis.com')">
-                <img class="media-object" ng-src="../images/notAvailable.png" alt="{{pizza.img_alt}}" ng-if="pizza.img_url == ''">
-            </div>-->
+          <!--BOTTONI PRODUTTORE risolvere problema-->
+          <button id="button2"  ng-if="dati.user.tipo == ''" data-toggle="modal" data-target="#modalProduttore" class="btn btn-success">Diventa Produttore</button>
+          <button id="button1" ng-if="dati.user.tipo == 'produttore'" class="btn btn-default"><a href="#!/paginaProduttore">Vai alla tua pagina Produttore</a></button>
 
-        </div>
-      </div>
-
-      <div>
-        <button type="button" class="btn btn-default"
-                data-toggle="modal" data-target="#modalAddImmagine">Aggiorna immagine profilo</button>
-      </div>
-
-
-      <div class="panel-body">
-        <!--BOTTONI PRODUTTORE-->
-        <!--VEDI BOTTONE "SEGUI"-->
-
-        <!--<button id="button2" ng-if="dati.user.tipo== null" ng-click="becomeProduttore()" class="btn btn-success">Diventa Produttore</button>-->
-        <button id="button2"  ng-if="dati.user.tipo == ''" data-toggle="modal" data-target="#modalProduttore" class="btn btn-success">Diventa Produttore</button>
-        <button id="button1" ng-if="dati.user.tipo == 'produttore'" class="btn btn-default"><a href="#!/paginaProduttore">Vai alla tua pagina Produttore</a></button>
-
-        <!--<div id="followersDiv">-->
+          <!--<div id="followersDiv">-->
           <!--<h4>Followers</h4>-->
           <!--<div ng-repeat="follow in dati.follows" ng-if ="dati.user.userId == follow.followed" >-->
-            <!--<em>{{follow.follower.name}}</em>-->
+          <!--<em>{{follow.follower.name}}</em>-->
           <!--</div>-->
-        <!--</div>-->
-        <!--<div id="followingDiv">-->
+          <!--</div>-->
+          <!--<div id="followingDiv">-->
           <!--<h4>Following</h4>-->
           <!--<div ng-repeat="follow in dati.follows" ng-if="dati.user.userId==follow.follower.userId">-->
-            <!--<em>{{follow.followedName}}</em>-->
+          <!--<em>{{follow.followedName}}</em>-->
           <!--</div>-->
-        <!--</div>-->
+          <!--</div>-->
 
+        </div>
+        <div style="padding: 10px">
+
+          <p><span class="coloreTestoVerde">Data di nascita: </span>{{dati.user.dataNascita}}</p>
+          <p><span class="coloreTestoVerde">Vive a: </span>{{dati.user.cittaVive}}</p>
+          <p><span class="coloreTestoVerde">Dice di sè: </span>{{dati.user.descPersonale}}</p>
+          <button type="button3" class="btn btn-default" data-toggle="modal" data-target="#modalUpdateInfo">Modifica Informazioni</button>
+        </div><br>
       </div>
-      <div class ="container">
-        <p><a href="#">Interests</a></p>
-      <button type="button3" class="btn btn-default"
-              data-toggle="modal" data-target="#modalUpdateInfo">Modifica</button>
-      <p>Nata il {{dati.user.dataNascita}}</p>
-      <p>Vive a {{dati.user.cittaVive}}</p>
-      <p>Parlo di me {{dati.user.descPersonale}}</p></div>
     </div>
 
     <!--SPAZIO POST-->
@@ -98,7 +84,7 @@
     </div>
   </div>
 
-  <!--MODAL PRODUTTORE-->
+  <!--MODAL DIVENTA PRODUTTORE-->
   <div class="modal fade" id="modalProduttore" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -122,9 +108,11 @@
               <label for="txtPres">Descrizione</label>
               <input class="form-control" id="txtPres" placeholder="Fai una breve descrizione della tua attività" name="password" ng-model="dati.descrizione" />
             </div>
-            <button href="#!/paginaProduttore" class="btn btn-success" type="submit" ng-click="becomeProduttore()">Diventa Produttore</button>
+            <div class="form-group" align="center">
+              <button href="#!/paginaProduttore" class="btn btn-success" type="submit">Diventa Produttore</button>
+            </div>
           </form>
-          <button class="btn btn-default" data-dismiss="modal">Close</button>
+          <button class="btn btn-default" data-dismiss="modal" style="float: right">Close</button>
         </div>
 
 
@@ -132,6 +120,24 @@
     </div>
   </div>
 
+  <!--MODAL MESSAGGIO CONFERMA-->
+  <div class="modal fade" id="modalMsg" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Complimenti!</h4>
+        </div>
+        <div class="modal-body">
+          <p>Adesso sei un produttore. Visita la tua pagina Produttore, o torna al tuo profilo.</p>
+        </div>
+        <div class="modal-footer">
+          <a class="btn btn-success" href="#!/paginaProduttore" ng-click="close()" style="float: left">Vai alla pagina produttore</a>
+          <button class="btn btn-default" data-dismiss="modal" style="float: right">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!--MODAL ADD IMMGINE-->
   <div ng-controller="userProfileCtrl as $ctrl">
@@ -171,12 +177,12 @@
                 <input ng-if="dati.descPersonale !=''" class="form-control" id="txtDataNascita2" placeholder="{{dati.dataNascita}}" ng-model="dati.dataNascita" />
               </div>
               <div class="form-group">
-                <label for="txtNome">Città in qui vivo</label>
+                <label for="txtNome">Città in cui vivi</label>
                 <input ng-if="dati.descPersonale ==''" class="form-control" id="txtCittaVive2" placeholder="Città" ng-model="dati.cittaVive" />
                 <input ng-if="dati.descPersonale !=''" class="form-control" id="txtCittaVive" placeholder="{{dati.cittaVive}}" ng-model="dati.cittaVive" />
               </div>
               <div class="form-group">
-                <label for="txtNome">Mi descrivo</label>
+                <label for="txtNome">Come ti descrivi?</label>
                 <input ng-if="dati.descPersonale==''" class="form-control" id="txtDescPersonale2" placeholder="Mi piace..." ng-model="dati.descPersonale" />
                 <input ng-if="dati.descPersonale !=''" class="form-control" id="txtDescPersonale" placeholder="{{dati.descPersonale}}" ng-model="dati.descPersonale" />
               </div>

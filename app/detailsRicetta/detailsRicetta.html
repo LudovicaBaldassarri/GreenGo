@@ -35,10 +35,27 @@
                         <!--CAMBIARE COLORE SFONDO e testo-->
                         <!--QUA METTIAMO UN DIV CLASS ROW QUANDO ABBIAMO GLI INGREDIENTI-->
                         <!--PER FARLI VENIRE IN DUE COLONNE-->
-                        <ul style="color: white; list-style: none; padding-top: 10px">
-                            <li>Ingrediente1</li>
-                            <li>Ingrediente2</li>
-                        </ul>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul style="color: white; list-style: none; padding-top: 10px">
+                                    <li>{{dati.post.ingredienti.ingrediente1}}</li>
+                                    <li>{{dati.post.ingredienti.ingrediente2}}</li>
+                                    <li>{{dati.post.ingredienti.ingrediente3}}</li>
+                                    <li>{{dati.post.ingredienti.ingrediente4}}</li>
+                                    <li>{{dati.post.ingredienti.ingrediente5}}</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul style="color: white; list-style: none; padding-top: 10px">
+                                    <li>{{dati.post.ingredienti.ingrediente6}}</li>
+                                    <li>{{dati.post.ingredienti.ingrediente7}}</li>
+                                    <li>{{dati.post.ingredienti.ingrediente8}}</li>
+                                    <li>{{dati.post.ingredienti.ingrediente9}}</li>
+                                    <li>{{dati.post.ingredienti.ingrediente10}}</li>
+                                </ul>
+                            </div>
+                        </div>
+
                     </div>
                     <h3 style="color: green;">Preparazione</h3>
                     <p>{{dati.post.procedimento}}</p>

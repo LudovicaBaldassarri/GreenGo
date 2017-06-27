@@ -16,7 +16,7 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
             }]
 
         }
-    })
+    });
 }])
 
 .controller('detailsRicettaCtrl', ['$scope', '$rootScope', 'SinglePost', '$routeParams', 'currentAuth',

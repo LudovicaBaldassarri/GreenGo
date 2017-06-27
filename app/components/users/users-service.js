@@ -50,7 +50,7 @@ angular.module('myApp.users.usersService', [])
                     img_alt: userId
                 });
             },
-            updateProduttore: function (userId, nomeProduttore, cittaVive, descPersonale) {
+            updateProduttore: function (userId, nomeProduttore, citta, descrizione) {
                 var ref = firebase.database().ref().child("users").child(userId);
                 ref.update({
                     nomeProduttore: nomeProduttore,

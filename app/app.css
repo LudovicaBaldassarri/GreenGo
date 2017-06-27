@@ -206,3 +206,9 @@ body{
 {
   font-size: 12px;
 }
+.coloreTestoVerde{
+  color: green;
+}
+.modal{
+  margin-top: 130px;
+}

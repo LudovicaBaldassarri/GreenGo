@@ -104,26 +104,155 @@
                             <file-upload on-change="$ctrl.onChange">
                             </file-upload>
 
-                            <!-- INSERISCI INGREDIENTI -->
-                            <div class="row" style="display: inline">
-                                <div class="control-group" id="fields" style="padding-top: 15px;">
-                                    <label class="control-label" for="field1">Inserisci Ingredienti:</label>
-                                    <div class="controls">
-                                            <span role="form" autocomplete="off">
-                                                <div class="entry input-group col-xs-3">
-                                                 <input class="form-control" style="width: 200px" name="fields[]"
-                                                           type="text" placeholder="Aggiungi Ingrediente"
-                                                           ng-model="dati.ingrediente"/>
-                                                    <span class="input-group-btn">
-                                                        <button class="btn btn-success btn-add" type="button">
-                                                            <span class="glyphicon glyphicon-plus"></span>
-                                                        </button>
-                                                    </span>
-                                                </div>
-                                            </span>
-                                    </div>
-                                </div>
+
+
+                            <!-- INSERIMENTO INGREDIENTI -->
+                            <label class="control-label" for="field1">Inserisci Ingredienti:</label>
+                            <div class="controls">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field1"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.ingrediente1"/>
+                                     <span class="input-group-btn">
+                                       <button class="btn btn-success btn-add" type="button" ng-click="addIng2()">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
                             </div>
+                            <div class="controls" id="ing2" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field2"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.ingrediente2"/>
+                                     <span class="input-group-btn">
+                                       <button class="btn btn-success btn-add" type="button" ng-click="addIng3()">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                            </div>
+                            <div class="controls" id="ing3" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field3"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.ingrediente3"/>
+                                     <span class="input-group-btn">
+                                       <button class="btn btn-success btn-add" type="button" ng-click="addIng4()">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                            </div>
+                            <div class="controls" id="ing4" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field4"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.ingrediente4"/>
+                                     <span class="input-group-btn">
+                                       <button class="btn btn-success btn-add" type="button" ng-click="addIng5()">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                            </div>
+                            <div class="controls" id="ing5" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field5"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.ingrediente5"/>
+                                     <span class="input-group-btn">
+                                       <button class="btn btn-success btn-add" type="button" ng-click="addIng6()">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                            </div>
+                            <div class="controls" id="ing6" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field6"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.ingrediente6"/>
+                                     <span class="input-group-btn">
+                                       <button class="btn btn-success btn-add" type="button" ng-click="addIng7()">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                            </div>
+                            <div class="controls" id="ing7" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field7"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.ingrediente7"/>
+                                     <span class="input-group-btn">
+                                       <button class="btn btn-success btn-add" type="button" ng-click="addIng8()">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                            </div>
+                            <div class="controls" id="ing8" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field8"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.ingrediente8"/>
+                                     <span class="input-group-btn">
+                                       <button class="btn btn-success btn-add" type="button" ng-click="addIng9()">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                            </div>
+                            <div class="controls" id="ing9" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field9"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.ingrediente9"/>
+                                     <span class="input-group-btn">
+                                       <button class="btn btn-success btn-add" type="button" ng-click="addIng10()">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                            </div>
+                            <div class="controls" id="ing10" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field10"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.ingrediente10"/>
+                                     <span class="input-group-btn">
+                                       <button class="btn btn-success btn-add" type="button">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                            </div>
+
+                            <!--     FINE INSERIMENTO INGREDIENTI    -->
+
+
+
 
                             <h4>Procedimento:</h4>
                             <textarea class="form-control" rows="7" id="procedimento"
@@ -232,3 +361,25 @@
     </div>
 
 </div>
+
+<!--   INSERISCI INGREDIENTI
+
+<div class="row" style="display: inline">
+    <div class="control-group" id="fields" style="padding-top: 15px;">
+        <label class="control-label" for="field1">Inserisci Ingredienti:</label>
+        <div class="controls">
+                                            <span role="form" autocomplete="off">
+                                                <div class="entry input-group col-xs-3">
+                                                 <input class="form-control" style="width: 200px" name="fields[]"
+                                                        type="text" placeholder="Aggiungi Ingrediente"
+                                                        ng-model="dati.ingrediente"/>
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-success btn-add" type="button">
+                                                            <span class="glyphicon glyphicon-plus"></span>
+                                                        </button>
+                                                    </span>
+                                                </div>
+                                            </span>
+        </div>
+    </div>
+</div>    --->

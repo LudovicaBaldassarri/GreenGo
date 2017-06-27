@@ -60,8 +60,10 @@
                             <div class="media-body">
                                 <h4><strong>{{post.name}} {{post.surname}}</strong> ha pubblicato:</h4>
                                 <p class="data-ora">{{post.dataStampa}} {{post.oraStampa}} </p>
-                                <a href="#!/detailsRicetta/{{post.id}}" style="color: darkgreen">
-                                    <h4 class="media-heading"><strong>{{post.titolo}}</strong></h4>
+                                <a ng-if="post.tag == 'ricetta'" href="#!/detailsRicetta/{{post.id}}" style="color: darkgreen">
+                                    <h4 class="media-heading"><strong>{{post.titolo}}</strong></h4></a>
+                                <a ng-if="post.tag == 'tutorial'" href="#!/detailsTutorial/{{post.id}}" style="color: darkgreen">
+                                    <h4 class="media-heading"><strong>{{post.titolo}}</strong></h4></a>
                                     <a href=""><h4 class="media-heading"><strong>{{post.nome_post}}</strong></h4></a>
                                     <p>{{post.descrizione}}</p>
                             </div>

@@ -43,9 +43,7 @@ angular.module('myApp.userProfile', ['ngRoute'])
             Users.updateProduttore($scope.dati.userId, $scope.dati.nomeProduttore, $scope.dati.citta, $scope.dati.descrizione);
         };
 
-
-
-            //$scope.dati.follows = UsersFollowService.getFollow();
+        //$scope.dati.follows = UsersFollowService.getFollow();
         //$scope.dati.userId = currentAuth.uid;
         //$scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
 
@@ -94,6 +92,9 @@ angular.module('myApp.userProfile', ['ngRoute'])
                 Users.updateImage($scope.dati.userId, $scope.imgPath);
                 console.log("greeeeen");
                 $scope.dati.feedback = "Inserimento effettuato con successo";
+
+                var modalDiv = $("#modalAddImmagine");
+                modalDiv.modal('hide');
 
             };
 

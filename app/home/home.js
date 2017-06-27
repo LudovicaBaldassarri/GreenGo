@@ -136,10 +136,9 @@ angular.module('myApp.home', ['ngRoute'])
                     $scope.dati.ingrediente9 = "";
                     $scope.dati.ingrediente10 = "";
 
-
                     console.log($rootScope.dati.tag);
-
                     console.log("hai aggiunto un post");
+
                     // SERVE PER CHIUDERE IL MODAL
                     var modalDiv = $("#modalPost");
                     modalDiv.modal('hide');
@@ -182,10 +181,6 @@ angular.module('myApp.home', ['ngRoute'])
                 document.getElementById("ing10").style.display = "block";
             };
 
-
-
-
-
             // function conto() {
             //     var x = document.getElementById("ingrd").lenght;
             //     console.log(x);
@@ -195,6 +190,9 @@ angular.module('myApp.home', ['ngRoute'])
             // TAG RICETTA-TUTORIAL
             $scope.setTag = function (nometag) {
                 $rootScope.dati.tag = nometag;
+                // CHIUDE IL MODAL POST PICCOLO
+                var modalDiv = $("#modalPost");
+                modalDiv.modal('hide');
                 console.log($rootScope.dati.tag);
             };
     }]);

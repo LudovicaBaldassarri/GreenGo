@@ -47,7 +47,8 @@ angular.module('myApp.home', ['ngRoute'])
             $scope.dati.titolo = "";
             $scope.dati.procedimento = "";
             $scope.dati.difficolta = "";
-            $scope.dati.tempo = "";
+            $scope.dati.tempoP = "";
+            $scope.dati.tempoC = "";
             $rootScope.dati.tag = "";
             $scope.dati.ingrediente1 = "";
             $scope.dati.ingrediente2 = "";
@@ -110,7 +111,7 @@ angular.module('myApp.home', ['ngRoute'])
                 InsertPostService.insertNewPost($scope.dati.userId, $scope.dati.user.name, $scope.dati.user.surname, $scope.dati.user.img_url,
                     $scope.dati.descrizione, $scope.dati.date, $scope.dati.dataStampa,
                     $scope.dati.oraStampa, $scope.dati.titolo, $scope.dati.procedimento,
-                    $scope.dati.difficolta, $scope.dati.tempo, $rootScope.dati.tag, $scope.imgPath,
+                    $scope.dati.difficolta, $scope.dati.tempoP, $scope.dati.tempoC, $rootScope.dati.tag, $scope.imgPath,
                     $scope.dati.ingrediente1, $scope.dati.ingrediente2, $scope.dati.ingrediente3,
                     $scope.dati.ingrediente4, $scope.dati.ingrediente5, $scope.dati.ingrediente6,
                     $scope.dati.ingrediente7, $scope.dati.ingrediente8,
@@ -123,7 +124,8 @@ angular.module('myApp.home', ['ngRoute'])
                     $scope.dati.titolo = "";
                     $scope.dati.procedimento = "";
                     $scope.dati.difficolta = "";
-                    $rootScope.dati.tempo = "";
+                    $rootScope.dati.tempoP = "";
+                    $scope.dati.tempoC = "";
                     $scope.dati.tag = "";
                     $scope.dati.ingrediente1 = "";
                     $scope.dati.ingrediente2 = "";

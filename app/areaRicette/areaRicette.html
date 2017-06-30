@@ -1,10 +1,26 @@
 <div id="page">
     <!--SPAZIO RICERCA-->
     <div class="jumbotron" align="center">
-        <span>"Aggiungi ingrediente"</span>
-        <button class="btn btn-default">Filtri(dropdown)</button>
-        <button class="btn btn-success">Cerca</button>
+
     </div>
+    <script>
+        function myFunction() {
+            var input, filter, ul, li, a, i;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("myUL");
+            li = ul.getElementsByTagName("li");
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+
+                }
+            }
+        }
+    </script>
     <!--SPAZIO INGREDIENTI/FILTRI AGGIUNTI-->
     <div class="container">
         <!--CHE POI SARANNO UNA LISTA STI BOTTONI-->

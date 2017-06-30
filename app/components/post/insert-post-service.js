@@ -13,7 +13,7 @@ angular.module('myApp.post.insertPostService', [])
             insertNewPost: function (autoreId, name, surname, img_url, descrizione, date, dataStampa, oraStampa,
                                        titolo, procedimento, difficolta, tempoP, tempoC, tag, imgPath,  ingrediente1, ingrediente2,
                                         ingrediente3, ingrediente4, ingrediente5, ingrediente6, ingrediente7,
-                                     ingrediente8, ingrediente9, ingrediente10){
+                                     ingrediente8, ingrediente9, ingrediente10, voto, sumVoti, votatori, media){
                 var ref=firebase.database().ref().child("posts");
                 return $firebaseArray(ref).$add({
                     autoreId: autoreId,
@@ -41,7 +41,11 @@ angular.module('myApp.post.insertPostService', [])
                     ingrediente7: ingrediente7,
                     ingrediente8: ingrediente8,
                     ingrediente9: ingrediente9,
-                    ingrediente10: ingrediente10}
+                    ingrediente10: ingrediente10},
+                    voto: 0,
+                    sumVoti: 0,
+                    votatori: 0,
+                    media: 0
                     //"elemento":{ingrediente: ingrediente}
                 });
             },
@@ -50,7 +54,23 @@ angular.module('myApp.post.insertPostService', [])
                 ref.update({
                     id: postId
                 });
+            },
+            updateVoto: function (postId, voto) {
+                var ref = firebase.database().ref().child("posts").child(postId);
+                ref.update({
+                    voto: voto
+
+                });
+            },
+            updateSumVoti: function (postId, sumVoti, voto) {
+                var ref = firebase.database().ref().child("posts").child(postId);
+                ref.update({
+                    sumVoti: sumVoti+voto
+
+
+                });
             }
+
         };
         return newPostService;
     });

@@ -154,6 +154,10 @@ angular.module('myApp.home', ['ngRoute'])
 
             };
 
+
+            $scope.removePost = function(postId){
+                Post.deletePost(postId);}
+
             // funzioni per l'aggiunta di input INGREDIENTI
             $scope.addIng2 = function () {
                 document.getElementById("ing2").style.display = "block";

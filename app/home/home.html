@@ -367,6 +367,11 @@
                                 <img class="media-object" width="70%" img ng-src="{{post.img_url}}" alt="{{post.img_alt}}"
                                      ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">
                                 <br>
+
+                                <!-- CANCELLA POST --->
+                                <button class="btn btn-danger"
+                                        ng-click="removePost(post.id)"ng-if="dati.userId == post.autoreId">Rimuovi</button>
+
                                 <p class="data-ora" style="float: right;"> {{post.dataStampa}} {{post.oraStampa}}</p><br><hr/>
                             </div>
 

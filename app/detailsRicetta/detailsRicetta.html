@@ -90,7 +90,18 @@
                     <p style="color: lightgrey;"><em>VARI FILTRI</em></p>
                     <!--mettiamo i filtri a lista-->
                     <br>
-                    Commenta / Vota
+                    Voto: {{dati.post.media}}
+                    <form ng-submit="addVoto()">
+                        <select class="form-control" id="voto" ng-model="dati.post.voto" style="width: 100px; float: left">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+
+                        </select>
+                        <button type="submit" class="btn btn-success">Vota</button>
+                    </form>
                 </div>
             </div>
         </div>

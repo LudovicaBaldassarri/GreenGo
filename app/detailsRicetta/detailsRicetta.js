@@ -19,13 +19,20 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
     });
 }])
 
-.controller('detailsRicettaCtrl', ['$scope', '$rootScope', 'SinglePost', '$routeParams', 'currentAuth',
-    function ($scope, $rootScope, SinglePost, $routeParams, currentAuth) {
+.controller('detailsRicettaCtrl', ['$scope', '$rootScope', 'SinglePost', '$routeParams', 'currentAuth','InsertPostService',
+    function ($scope, $rootScope, SinglePost, $routeParams, currentAuth, InsertPostService) {
         $scope.dati = {};
         $rootScope.dati= {};
         $rootScope.dati.currentView = "detailsRicetta";
         $scope.dati.post = SinglePost.getSinglePost($routeParams.postId);
         $scope.dati.userId = currentAuth.uid;
+        // $scope.dati.post.sumVoti="";
 
+        $scope.addVoto= function () {
+
+           InsertPostService.updateVoto($routeParams.postId, $scope.dati.post.voto);
+           InsertPostService.updateSumVoti($routeParams.postId, $scope.dati.post.sumVoti, $scope.dati.post.voto);
+
+        };
     }
 ]);

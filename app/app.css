@@ -146,7 +146,7 @@ body{
 }
 
 /** lo rifaccio uguale per il modal tutorial poi vedo come compattare
- */
+
 
 
 #modalTutorial {
@@ -163,7 +163,7 @@ body{
 }
 
 #modalTutorial img {
-  position: static;
+  /**  position: static;
   height: 140px;
   width: 140px;
 }
@@ -175,6 +175,7 @@ body{
   left: 20px;
 }
 
+*/
 
 
 

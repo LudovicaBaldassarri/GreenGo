@@ -11,9 +11,12 @@ angular.module('myApp.post.insertPostService', [])
             },
 
             insertNewPost: function (autoreId, name, surname, img_url, descrizione, date, dataStampa, oraStampa,
-                                       titolo, procedimento, difficolta, tempoP, tempoC, tag, imgPath,  ingrediente1, ingrediente2,
+                                       titolo, procedimento, categoria, dieta, difficolta, tempoP, tempoC, tag, imgPath,
+                                     ingrediente1, ingrediente2,
                                         ingrediente3, ingrediente4, ingrediente5, ingrediente6, ingrediente7,
-                                     ingrediente8, ingrediente9, ingrediente10){
+                                     ingrediente8, ingrediente9, ingrediente10, strumento1, strumento2, strumento3,
+                                     strumento4, strumento5, strumento6, strumento7, strumento8, strumento9,
+                                     strumento10){
                 var ref=firebase.database().ref().child("posts");
                 return $firebaseArray(ref).$add({
                     autoreId: autoreId,
@@ -26,6 +29,8 @@ angular.module('myApp.post.insertPostService', [])
                     oraStampa: oraStampa,
                     titolo: titolo,
                     procedimento: procedimento,
+                    categoria: categoria,
+                    dieta: dieta,
                     difficolta: difficolta,
                     tempoP: tempoP,
                     tempoC: tempoC,
@@ -41,7 +46,19 @@ angular.module('myApp.post.insertPostService', [])
                     ingrediente7: ingrediente7,
                     ingrediente8: ingrediente8,
                     ingrediente9: ingrediente9,
-                    ingrediente10: ingrediente10}
+                    ingrediente10: ingrediente10},
+                    "strumenti":{
+                        strumento1: strumento1,
+                        strumento2: strumento2,
+                        strumento3: strumento3,
+                        strumento4: strumento4,
+                        strumento5: strumento5,
+                        strumento6: strumento6,
+                        strumento7: strumento7,
+                        strumento8: strumento8,
+                        strumento9: strumento9,
+                        strumento10: strumento10},
+
                     //"elemento":{ingrediente: ingrediente}
                 });
             },

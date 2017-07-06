@@ -46,6 +46,8 @@ angular.module('myApp.home', ['ngRoute'])
 
             $scope.dati.titolo = "";
             $scope.dati.procedimento = "";
+            $scope.dati.categoria= "";
+            $scope.dati.dieta="";
             $scope.dati.difficolta = "";
             $scope.dati.tempoP = "";
             $scope.dati.tempoC = "";
@@ -60,6 +62,16 @@ angular.module('myApp.home', ['ngRoute'])
             $scope.dati.ingrediente8 = "";
             $scope.dati.ingrediente9 = "";
             $scope.dati.ingrediente10 = "";
+            $scope.dati.strumento1 = "";
+            $scope.dati.strumento2 = "";
+            $scope.dati.strumento3 = "";
+            $scope.dati.strumento4 = "";
+            $scope.dati.strumento5 = "";
+            $scope.dati.strumento6 = "";
+            $scope.dati.strumento7 = "";
+            $scope.dati.strumento8 = "";
+            $scope.dati.strumento9 = "";
+            $scope.dati.strumento10 = "";
 
             var ctrl = this;
             $scope.fileToUpload = null;
@@ -111,11 +123,17 @@ angular.module('myApp.home', ['ngRoute'])
                 InsertPostService.insertNewPost($scope.dati.userId, $scope.dati.user.name, $scope.dati.user.surname, $scope.dati.user.img_url,
                     $scope.dati.descrizione, $scope.dati.date, $scope.dati.dataStampa,
                     $scope.dati.oraStampa, $scope.dati.titolo, $scope.dati.procedimento,
-                    $scope.dati.difficolta, $scope.dati.tempoP, $scope.dati.tempoC, $rootScope.dati.tag, $scope.imgPath,
+                    $scope.dati.categoria, $scope.dati.dieta,
+                    $scope.dati.difficolta, $scope.dati.tempoP, $scope.dati.tempoC,
+                    $rootScope.dati.tag, $scope.imgPath,
                     $scope.dati.ingrediente1, $scope.dati.ingrediente2, $scope.dati.ingrediente3,
                     $scope.dati.ingrediente4, $scope.dati.ingrediente5, $scope.dati.ingrediente6,
                     $scope.dati.ingrediente7, $scope.dati.ingrediente8,
-                    $scope.dati.ingrediente9, $scope.dati.ingrediente10).then(function (ref) {
+                    $scope.dati.ingrediente9, $scope.dati.ingrediente10, $scope.dati.strumento1,
+                    $scope.dati.strumento2, $scope.dati.strumento3, $scope.dati.strumento4,
+                    $scope.dati.strumento5, $scope.dati.strumento6, $scope.dati.strumento7,
+                    $scope.dati.strumento8, $scope.dati.strumento9,
+                    $scope.dati.strumento10).then(function (ref) {
 
                     var postId = ref.key;
                     $scope.dati.userInfo = InsertPostService.getUserInfo($scope.dati.userId);
@@ -123,6 +141,8 @@ angular.module('myApp.home', ['ngRoute'])
                     $scope.dati.descrizione = "";
                     $scope.dati.titolo = "";
                     $scope.dati.procedimento = "";
+                    $scope.dati.categoria = "";
+                    $scope.dati.dieta = "";
                     $scope.dati.difficolta = "";
                     $rootScope.dati.tempoP = "";
                     $scope.dati.tempoC = "";
@@ -137,6 +157,16 @@ angular.module('myApp.home', ['ngRoute'])
                     $scope.dati.ingrediente8 = "";
                     $scope.dati.ingrediente9 = "";
                     $scope.dati.ingrediente10 = "";
+                    $scope.dati.strumento1 = "";
+                    $scope.dati.strumento2 = "";
+                    $scope.dati.strumento3 = "";
+                    $scope.dati.strumento4 = "";
+                    $scope.dati.strumento5 = "";
+                    $scope.dati.strumento6 = "";
+                    $scope.dati.strumento7 = "";
+                    $scope.dati.strumento8 = "";
+                    $scope.dati.strumento9 = "";
+                    $scope.dati.strumento10 = "";
 
                     console.log($rootScope.dati.tag);
                     console.log("hai aggiunto un post");
@@ -156,7 +186,7 @@ angular.module('myApp.home', ['ngRoute'])
 
 
             $scope.removePost = function(postId){
-                Post.deletePost(postId);}
+                Post.deletePost(postId);};
 
             // funzioni per l'aggiunta di input INGREDIENTI
             $scope.addIng2 = function () {
@@ -186,6 +216,37 @@ angular.module('myApp.home', ['ngRoute'])
             $scope.addIng10 = function () {
                 document.getElementById("ing10").style.display = "block";
             };
+
+            // funzioni per l'aggiunta di input OGGETTI
+            $scope.addOgg2 = function () {
+                document.getElementById("ogg2").style.display = "block";
+            };
+            $scope.addOgg3 = function () {
+                document.getElementById("ogg3").style.display = "block";
+            };
+            $scope.addOgg4 = function () {
+                document.getElementById("ogg4").style.display = "block";
+            };
+            $scope.addOgg5 = function () {
+                document.getElementById("ogg5").style.display = "block";
+            };
+            $scope.addOgg6 = function () {
+                document.getElementById("ogg6").style.display = "block";
+            };
+            $scope.addOgg7 = function () {
+                document.getElementById("ogg7").style.display = "block";
+            };
+            $scope.addOgg8 = function () {
+                document.getElementById("ogg8").style.display = "block";
+            };
+            $scope.addOgg9 = function () {
+                document.getElementById("ogg9").style.display = "block";
+            };
+            $scope.addIOgg10 = function () {
+                document.getElementById("ogg10").style.display = "block";
+            };
+
+
 
             // function conto() {
             //     var x = document.getElementById("ingrd").lenght;

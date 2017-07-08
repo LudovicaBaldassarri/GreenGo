@@ -31,7 +31,9 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
         $scope.addVoto= function () {
 
            InsertPostService.updateVoto($routeParams.postId, $scope.dati.post.voto);
-           InsertPostService.updateSumVoti($routeParams.postId, $scope.dati.post.sumVoti, $scope.dati.post.voto);
+           InsertPostService.updateVotatori($routeParams.postId, $scope.dati.post.votatori);
+           // InsertPostService.updateSumVoti($routeParams.postId, $scope.dati.post.sumVoti, $scope.dati.post.voto);
+           // $scope.dati.post.sumVoti="";
 
         };
     }

@@ -67,6 +67,9 @@ angular.module('myApp.post.insertPostService', [])
                 ref.update({
                     id: postId
                 });
+            },
+            updateVotatori: function (postId, votatori) {
+                votatori++;
             }
         };
         return newPostService;

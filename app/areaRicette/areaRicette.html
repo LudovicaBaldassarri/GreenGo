@@ -1,23 +1,32 @@
 <div id="page">
     <!--SPAZIO RICERCA-->
     <div class="jumbotron" align="center">
-        <input id="Search" type="text" class="form-control" ng-model="ricetteSearch" placeholder="">
-        <h5>Categoria</h5>
-        <select class="form-control" id="categoriaRic" style="max-width: 150px" ng-model="categoriaSearch">
-            <option></option>
-            <option>Antipasti</option>
-            <option>Primi</option>
-            <option>Secondi</option>
-            <option>Dolci</option>
-        </select>
-
+        <div class="row">
+        <div class="col-sm-10">
+        <input  id="Search" type="text" class="form-control input-lg" ng-model="ricetteSearch" placeholder="Cerca per ingrediente...">
+        </div>
+        <div class="col-xs-2"><button class="btn btn-success btn-lg" ng-click="setRicerca()"> Cerca </button></div>
+        </div>
+        <div class="row">
+        <div class="col-xs-4">
+            <h5>Categoria</h5>
+            <select class="form-control" id="categoriaRic" style="max-width: 150px" ng-model="categoriaSearch">
+                <option></option>
+                <option>Antipasti</option>
+                <option>Primi</option>
+                <option>Secondi</option>
+                <option>Dolci</option>
+            </select>
+        </div>
+        <div class="col-xs-4">
         <h5>Difficoltà</h5>
         <select class="form-control" id="difRic" style="max-width: 150px" ng-model="difficoltaSearch">
             <option>Facile</option>
             <option>Medio</option>
             <option>Difficile</option>
         </select>
-
+        </div>
+        <div class="col-xs-4">
         <h5>Dieta</h5>
         <select class="form-control" id="dieta" style="max-width: 150px" ng-model="dietaSearch">
             <option></option>
@@ -26,10 +35,11 @@
             <option>Senza Glutine</option>
             <option>Senza derivati del Latte</option>
         </select>
-        <hr>
+        </div>
+        </div>
 
         <!--<input id="Search2" type="text" class="form-control" ng-model="ricetteSearch.$" placeholder="">-->
-        <button class="btn" ng-click="setRicerca()">Cerca</button>
+
     </div>
 
     <script>
@@ -53,10 +63,14 @@
     <!--SPAZIO INGREDIENTI/FILTRI AGGIUNTI-->
     <div class="container">
         <!--CHE POI SARANNO UNA LISTA STI BOTTONI-->
-        <button class="btn" ng-if="ricerca && ricetteSearch !=''" ng-click="deleteIngrediente()">{{ricetteSearch}} </button>
-        <button class="btn" ng-if="ricerca && categoriaSearch != ''" ng-click="deleteCategoria()">{{categoriaSearch}}</button>
-        <button class="btn" ng-if="ricerca && dietaSearch != ''" ng-click="deleteDieta()">{{dietaSearch}}</button>
-        <button class="btn" ng-if="ricerca && difficoltaSearch != ''" ng-click="deleteDifficolta()">{{difficoltaSearch}}</button>
+        <button class="btn btn-default" ng-if="ricerca && ricetteSearch !=''" ng-click="deleteIngrediente()">
+            <span class="glyphicon glyphicon-remove"></span>  {{ricetteSearch}} </button>
+        <button class="btn btn-default" ng-if="ricerca && categoriaSearch != ''" ng-click="deleteCategoria()">
+            <span class="glyphicon glyphicon-remove"></span>  {{categoriaSearch}}</button>
+        <button class="btn btn-default" ng-if="ricerca && dietaSearch != ''" ng-click="deleteDieta()">
+            <span class="glyphicon glyphicon-remove"></span>  {{dietaSearch}}</button>
+        <button class="btn btn-default" ng-if="ricerca && difficoltaSearch != ''" ng-click="deleteDifficolta()">
+            <span class="glyphicon glyphicon-remove"></span>  {{difficoltaSearch}}</button>
         <button class="btn btn-danger" ng-click="cancellaTutto()">Cancella tutto</button>
     </div><br><br>
     <!--SPAZIO RICETTE TROVATE-->

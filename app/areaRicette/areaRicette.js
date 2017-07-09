@@ -27,9 +27,44 @@ angular.module('myApp.areaRicette', ['ngRoute'])
         $rootScope.dati.currentView="areaRicette";
         $scope.dati.userId = currentAuth.uid;
         $scope.dati.posts = Post.getData();
+        //$scope.dati.ingr = Ingredienti.getData();
+        $scope.orderProp = "ingredienti";
+        $scope.ricetteSearch = "";
+        $scope.categoriaSearch = "";
+        //$scope.ricettaSearch.a = {};
+        //$scope.ricettaSearch.b = {};
+        $scope.difficoltaSearch = "";
+        $scope.dietaSearch = "";
+        $scope.ricerca = false;
 
+        //FUNZIONI PER GESTIRE BOTTONI RICERCA
+        $scope.cancellaTutto = function () {
+            $scope.difficoltaSearch = "";
+            $scope.dietaSearch = "";
+            $scope.ricetteSearch = "";
+            $scope.categoriaSearch = "";
+            $scope.ricerca = false;
+        }
 
+        $scope.setRicerca = function () {
+            $scope.ricerca = true;
+        }
 
+        $scope.deleteIngrediente = function () {
+            $scope.ricetteSearch = "";
+        }
+
+        $scope.deleteCategoria = function () {
+                $scope.categoriaSearch = "";
+        }
+
+        $scope.deleteDieta = function () {
+                $scope.dietaSearch = "";
+
+        }
+        $scope.deleteDifficolta = function () {
+                $scope.difficoltaSearch = "";
+        }
 
         }]);
 

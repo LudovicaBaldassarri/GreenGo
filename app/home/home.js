@@ -179,7 +179,6 @@ angular.module('myApp.home', ['ngRoute'])
                     var modalDiv = $("#modalTutorial");
                     modalDiv.modal('hide');
 
-
                 });
 
             };

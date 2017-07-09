@@ -219,3 +219,8 @@ body{
 .controls{
   padding-bottom: 20px;
 }
+.stellaButton{
+  border: none;
+  background-color: white;
+  margin: 0;
+}

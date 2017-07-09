@@ -1,8 +1,37 @@
 <div id="page">
     <!--SPAZIO RICERCA-->
     <div class="jumbotron" align="center">
+        <input id="Search" type="text" class="form-control" ng-model="ricetteSearch" placeholder="">
+        <h5>Categoria</h5>
+        <select class="form-control" id="categoriaRic" style="max-width: 150px" ng-model="categoriaSearch">
+            <option></option>
+            <option>Antipasti</option>
+            <option>Primi</option>
+            <option>Secondi</option>
+            <option>Dolci</option>
+        </select>
 
+        <h5>Difficoltà</h5>
+        <select class="form-control" id="difRic" style="max-width: 150px" ng-model="difficoltaSearch">
+            <option>Facile</option>
+            <option>Medio</option>
+            <option>Difficile</option>
+        </select>
+
+        <h5>Dieta</h5>
+        <select class="form-control" id="dieta" style="max-width: 150px" ng-model="dietaSearch">
+            <option></option>
+            <option>Vegetariana</option>
+            <option>Vegana</option>
+            <option>Senza Glutine</option>
+            <option>Senza derivati del Latte</option>
+        </select>
+        <hr>
+
+        <!--<input id="Search2" type="text" class="form-control" ng-model="ricetteSearch.$" placeholder="">-->
+        <button class="btn" ng-click="setRicerca()">Cerca</button>
     </div>
+
     <script>
         function myFunction() {
             var input, filter, ul, li, a, i;
@@ -16,24 +45,25 @@
                     li[i].style.display = "";
                 } else {
                     li[i].style.display = "none";
-
                 }
             }
+
         }
     </script>
     <!--SPAZIO INGREDIENTI/FILTRI AGGIUNTI-->
     <div class="container">
         <!--CHE POI SARANNO UNA LISTA STI BOTTONI-->
-        <button class="btn">Ingrediente1</button>
-        <button class="btn">Ingrediente2</button>
-        <button class="btn">Filtro1</button>
-        <button class="btn btn-danger">Cancella tutto</button>
+        <button class="btn" ng-if="ricerca && ricetteSearch !=''" ng-click="deleteIngrediente()">{{ricetteSearch}} </button>
+        <button class="btn" ng-if="ricerca && categoriaSearch != ''" ng-click="deleteCategoria()">{{categoriaSearch}}</button>
+        <button class="btn" ng-if="ricerca && dietaSearch != ''" ng-click="deleteDieta()">{{dietaSearch}}</button>
+        <button class="btn" ng-if="ricerca && difficoltaSearch != ''" ng-click="deleteDifficolta()">{{difficoltaSearch}}</button>
+        <button class="btn btn-danger" ng-click="cancellaTutto()">Cancella tutto</button>
     </div><br><br>
     <!--SPAZIO RICETTE TROVATE-->
     <div class="container">
         <div class="row">
             <ul class="media-list">
-                <li ng-repeat="post in dati.posts" ng-if=" post.tag === 'ricetta'" >
+                <li ng-repeat="post in dati.posts | filter:ricetteSearch| filter:{difficolta:difficoltaSearch, categoria:categoriaSearch, dieta:dietaSearch}  " ng-if="post.tag === 'ricetta'" >
 
                     <div class="col-md-4">
                         <div class="panel panel-success">

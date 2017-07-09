@@ -61,7 +61,36 @@
                     <p style="color: lightgrey;"><em>VARI FILTRI</em></p>
                     <!--mettiamo i filtri a lista-->
                     <br>
-                    Commenta / Vota
+                    Voto :
+                    <img src="../images/votozero.png" height="20px" ng-if="dati.post.media==null">
+                    <img src="../images/votouno.png" height="20px" ng-if="dati.post.media==1">
+                    <img src="../images/votodue.png" height="20px" ng-if="dati.post.media==2">
+                    <img src="../images/vototre.png" height="20px" ng-if="dati.post.media==3">
+                    <img src="../images/votoquattro.png" height="20px" ng-if="dati.post.media==4">
+                    <img src="../images/votocinque.png" height="20px" ng-if="dati.post.media==5">
+                    <hr>
+                    Il tuo voto:
+                    <br>
+                    <form ng-submit="addVoto()" id="formVota">
+                        <button class="stellaButton" ng-click="valueUno()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
+                        <button class="stellaButton" ng-click="valueDue()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
+                        <button class="stellaButton" ng-click="valueTre()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
+                        <button class="stellaButton" ng-click="valueQuattro()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
+                        <button class="stellaButton" ng-click="valueCinque()" type="submit"><img src="../images/empty-star.png" height="20px"></button>
+
+                        <!--<select class="form-control" id="voto" ng-model="dati.post.nuovoVoto" style="width: 100px; float: left">-->
+                        <!--<option>1</option>-->
+                        <!--<option>2</option>-->
+                        <!--<option>3</option>-->
+                        <!--<option>4</option>-->
+                        <!--<option>5</option>-->
+
+                        <!--</select>-->
+                        <!--<button type="submit" class="btn btn-success">Vota</button>-->
+                    </form>
+                    <span id="miovoto" hidden>
+                        <p>Il tuo voto è stato aggiunto! <span class="glyphicon glyphicon-ok"></span></p>
+                    </span>
                 </div>
             </div>
         </div>

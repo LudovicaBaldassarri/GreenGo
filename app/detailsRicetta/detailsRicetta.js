@@ -61,7 +61,7 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
            }
             var form = $("#formVota");
             form.hide();
-            var voto = $("#miovoto")
+            var voto = $("#miovoto");
             voto.show();
 
         };

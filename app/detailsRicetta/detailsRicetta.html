@@ -106,20 +106,17 @@
                         <button class="stellaButton" ng-click="valueTre()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
                         <button class="stellaButton" ng-click="valueQuattro()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
                         <button class="stellaButton" ng-click="valueCinque()" type="submit"><img src="../images/empty-star.png" height="20px"></button>
-
-                        <!--<select class="form-control" id="voto" ng-model="dati.post.nuovoVoto" style="width: 100px; float: left">-->
-                            <!--<option>1</option>-->
-                            <!--<option>2</option>-->
-                            <!--<option>3</option>-->
-                            <!--<option>4</option>-->
-                            <!--<option>5</option>-->
-
-                        <!--</select>-->
-                        <!--<button type="submit" class="btn btn-success">Vota</button>-->
                     </form>
                     <span id="miovoto" hidden>
                         <p>Il tuo voto è stato aggiunto! <span class="glyphicon glyphicon-ok"></span></p>
                     </span>
+                    <hr>
+                    commenta:
+                    <form id="frmAddCommento" role="form" ng-submit="addCommento()">
+                        <textarea type = "text" class="form-control" nome="testo" rows="4" id="desc" placeholder="Scrivi un commento..."
+                                  ng-model="dati.post.comments.testo"></textarea>
+                        <button class="btn btn-success" type="submit">Pubblica</button>
+                    </form>
                 </div>
             </div>
         </div>

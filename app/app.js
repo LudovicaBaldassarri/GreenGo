@@ -16,6 +16,7 @@ angular.module('myApp', [
     'ngRoute',
     'myApp.home',
     'myApp.post',
+    'myApp.commento',
     'myApp.prodotto',
     'myApp.ricetta',
     'myApp.tutorial',

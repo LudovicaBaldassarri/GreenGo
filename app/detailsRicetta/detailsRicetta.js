@@ -19,51 +19,81 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
     });
 }])
 
-.controller('detailsRicettaCtrl', ['$scope', '$rootScope', 'SinglePost', '$routeParams', 'currentAuth','InsertPostService',
-    function ($scope, $rootScope, SinglePost, $routeParams, currentAuth, InsertPostService) {
+.controller('detailsRicettaCtrl', ['$scope', '$rootScope', 'SinglePost', '$routeParams', 'currentAuth','InsertPostService', 'InsertCommentoService',
+    function ($scope, $rootScope, SinglePost, $routeParams, currentAuth, InsertPostService, InsertCommentoService) {
         $scope.dati = {};
-        $rootScope.dati= {};
+        $rootScope.dati = {};
         $rootScope.dati.currentView = "detailsRicetta";
         $scope.dati.post = SinglePost.getSinglePost($routeParams.postId);
         $scope.dati.userId = currentAuth.uid;
 
         //ALGORITMO PER I VOTI STELLE
 
-        $scope.valueUno= function () {
+        $scope.valueUno = function () {
             $scope.dati.post.nuovoVoto = 1;
         },
-        $scope.valueDue= function () {
-            $scope.dati.post.nuovoVoto = 2;
-        },
-        $scope.valueTre= function () {
-            $scope.dati.post.nuovoVoto = 3;
-        },
-        $scope.valueQuattro= function () {
-            $scope.dati.post.nuovoVoto = 4;
-        },
-        $scope.valueCinque= function () {
-            $scope.dati.post.nuovoVoto = 5;
-        },
-        $scope.addVoto= function () {
-            if($scope.dati.post.votatori == null){
-                InsertPostService.setVotatori($routeParams.postId);
-            } else {
-                InsertPostService.updateVotatori($routeParams.postId, $scope.dati.post.votatori);
+            $scope.valueDue = function () {
+                $scope.dati.post.nuovoVoto = 2;
+            },
+            $scope.valueTre = function () {
+                $scope.dati.post.nuovoVoto = 3;
+            },
+            $scope.valueQuattro = function () {
+                $scope.dati.post.nuovoVoto = 4;
+            },
+            $scope.valueCinque = function () {
+                $scope.dati.post.nuovoVoto = 5;
+            },
+            $scope.addVoto = function () {
+                if ($scope.dati.post.votatori == null) {
+                    InsertPostService.setVotatori($routeParams.postId);
+                } else {
+                    InsertPostService.updateVotatori($routeParams.postId, $scope.dati.post.votatori);
+                }
+                if ($scope.dati.post.voto == null) {
+                    InsertPostService.setVoto($routeParams.postId, $scope.dati.post.nuovoVoto);
+                    $scope.dati.post.media = $scope.dati.post.nuovoVoto;
+                    InsertPostService.updateMedia($routeParams.postId, $scope.dati.post.media);
+                } else {
+                    InsertPostService.updateVoto($routeParams.postId, $scope.dati.post.voto, $scope.dati.post.nuovoVoto);
+                    $scope.dati.post.media = parseInt(parseInt($scope.dati.post.voto) / parseInt($scope.dati.post.votatori));
+                    InsertPostService.updateMedia($routeParams.postId, $scope.dati.post.media);
+                }
+                var form = $("#formVota");
+                form.hide();
+                var voto = $("#miovoto");
+                voto.show();
+            },
+
+        $scope.addCommento = function () {
+
+            //check if the user inserted all the required information
+            if ($scope.dati.testo != undefined && $scope.dati.testo != "") {
+                $scope.dati.error = "";
+                $scope.finalCommentoAddition();
+
             }
-           if($scope.dati.post.voto == null){
-               InsertPostService.setVoto($routeParams.postId, $scope.dati.post.nuovoVoto);
-                   $scope.dati.post.media= $scope.dati.post.nuovoVoto;
-                   InsertPostService.updateMedia($routeParams.postId, $scope.dati.post.media);
-           }else {
-               InsertPostService.updateVoto($routeParams.postId, $scope.dati.post.voto, $scope.dati.post.nuovoVoto);
-               $scope.dati.post.media= parseInt(parseInt($scope.dati.post.voto )/parseInt($scope.dati.post.votatori));
-               InsertPostService.updateMedia($routeParams.postId, $scope.dati.post.media);
-           }
-            var form = $("#formVota");
-            form.hide();
-            var voto = $("#miovoto");
-            voto.show();
+            else {
+                //write an error message to the user
+                $scope.dati.error = "You forgot to insert one of the required information!";
+            }
+        },
+
+
+        $scope.finalCommentoAddition = function () {
+            InsertCommentoService.insertNewCommento($scope.dati.userId, $scope.dati.user.name, $scope.dati.user.surname, $scope.dati.user.img_url,
+                $scope.dati.testo, $scope.dati.date, $scope.dati.dataStampa,
+                $scope.dati.oraStampa).then(function (ref) {
+
+                var commentoId = ref.key;
+                $scope.dati.userInfo = InsertPostService.getPostInfo($scope.dati.post.key);
+                InsertPostService.updateCommento(commentoId);
+                $scope.dati.testo = "";
+
+            });
 
         };
+
+
     }
 ]);

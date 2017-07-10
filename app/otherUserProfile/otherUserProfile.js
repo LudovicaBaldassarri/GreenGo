@@ -26,10 +26,21 @@ angular.module('myApp.otherUserProfile', ['ngRoute'])
 
             $scope.dati.userId = UsersFollowService.getUserInfo(currentAuth.uid);
             $scope.dati.otherUserId = $routeParams.otherUserId;
+            // $scope.dati.recipient = UsersFollowService.getUserInfo($scope.dati.otherUserId);
             $scope.dati.otherUserInfo = UsersFollowService.getUserInfo($scope.dati.otherUserId);
+            $scope.Autore = function (autoreId) {
+                if (autoreId = $scope.dati.otherUserId){
+                    return autoreId;
+                };
+            };
+            $scope.orderProp = "autoreId";
+
+            $scope.orderProp1 = "followed";
+
             $scope.dati.posts = Post.getData();
 
             $scope.dati.follows = UsersFollowService.getFollow();
+
             $scope.dati.notFollowing = true;
             $scope.dati.follows.$loaded().then(function(){
                 var following = $scope.dati.follows;

@@ -16,7 +16,7 @@ angular.module('myApp.post.insertPostService', [])
                                         ingrediente3, ingrediente4, ingrediente5, ingrediente6, ingrediente7,
                                      ingrediente8, ingrediente9, ingrediente10, strumento1, strumento2, strumento3,
                                      strumento4, strumento5, strumento6, strumento7, strumento8, strumento9,
-                                     strumento10, votatori){
+                                     strumento10){
                 var ref=firebase.database().ref().child("posts");
                 return $firebaseArray(ref).$add({
                     autoreId: autoreId,
@@ -57,11 +57,7 @@ angular.module('myApp.post.insertPostService', [])
                         strumento7: strumento7,
                         strumento8: strumento8,
                         strumento9: strumento9,
-                        strumento10: strumento10},
-                    // voto: 0,
-                    // votatori: 0,
-
-                    //"elemento":{ingrediente: ingrediente}
+                        strumento10: strumento10}
                 });
             },
             updatePost: function(postId) {

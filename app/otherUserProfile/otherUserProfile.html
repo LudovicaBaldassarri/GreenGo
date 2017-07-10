@@ -16,19 +16,21 @@
                 <button ng-if="dati.yetFollowing " ng-click="removeFollow(dati.Follow)" type="submit" class="btn btn-default"
                         style="float: right;">Segui già</button>
 
-                <!--<div id="followersDiv">-->
-                    <!--<h4>Followers</h4>-->
-                    <!--<div ng-repeat="follow in dati.follows" ng-if ="dati.user.userId == follow.followed" >-->
-                        <!--<em>{{follow.follower.name}}</em>-->
-                    <!--</div>-->
-                <!--</div>-->
-                <!--<div id="followingDiv">-->
-                    <!--<h4>Following</h4>-->
-                    <!--<div ng-repeat="follow in dati.follows" ng-if="dati.user.userId==follow.follower.userId">-->
-                        <!--<em>{{follow.followedName}}</em>-->
-                    <!--</div>-->
-                <!--</div>-->
 
+
+                <div id="followersDiv">
+                    <h4>Followers</h4>
+                    <div ng-repeat="follow in dati.follows" ng-if ="dati.otherUserId == follow.followed" >
+                        <em>{{follow.follower.name}}</em>
+                    </div>
+                </div>
+                <div id="followingDiv">
+                    <h4>Following</h4>
+                    <div ng-repeat="follow in dati.follows" ng-if="dati.otherUserId==follow.follower.userId">
+                        <em>{{follow.followedName}}</em>
+                    </div>
+                </div>
+                <hr>
 
                 <p><a href="#">Interests</a></p>
             </div>

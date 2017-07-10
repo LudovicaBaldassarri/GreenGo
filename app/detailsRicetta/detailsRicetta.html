@@ -1,8 +1,7 @@
-<div class="container" id="page">
+<div class="container-fluid" id="page" style="margin-left: 10%; margin-right: 10%; width: 80%">
     <!--MAGARI QUI DENTRO METTIAMO QUALCOSA-->
     <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-7 text-left">
+        <div class="col-md-8 text-left">
             <div class="panel panel-default text-left">
                 <div class="panel-body">
                     <h1 style="color: green;">{{dati.post.titolo}}</h1>
@@ -62,7 +61,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3 sidenav">
+        <div class="col-md-4 sidenav">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="row">
@@ -119,11 +118,22 @@
                     </form>
                     <hr>
                     <div>
-                        <div class="media" ng-repeat=" commenti in dati.commenti">
-                            <div> <h4>{{commenti.descrizione}} {{commenti.name}}</h4>
+                        <li class="media-list" ng-repeat="commenti in dati.commenti | orderBy: '-date' :true" style="list-style: none">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="media-left">
+                                        <img class="img-circle" ng-src="{{commenti.autore_img}}" height="60px" width="60px">
+                                    </div>
+                                    <div class="media-body">
+                                        <p><span style="color: green"><b>{{commenti.name}} {{commenti.surname}}: </b></span> {{commenti.descrizione}}</p>
+                                        <p class="data-ora" style="float: right">{{commenti.dataStampa}} {{commenti.oraStampa}}</p>
+                                    </div>
+                                </div>
+
+
                             </div>
+
                         </li>
-                    </div>
                 </div>
             </div>
         </div>

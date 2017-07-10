@@ -19,14 +19,16 @@ angular.module('myApp.paginaProduttore', ['ngRoute'])
         });
     }])
 
-    .controller('paginaProduttoreCtrl', [ '$scope', '$rootScope', 'Prodotto', 'InsertProdottoService', 'UsersInfo', '$firebaseAuth', '$firebaseStorage', 'Users',
-        function($scope, $rootScope, Prodotto, InsertProdottoService, UsersInfo, $firebaseAuth, $firebaseStorage, Users) {
+    .controller('paginaProduttoreCtrl', [ '$scope', '$rootScope', 'Prodotto', 'InsertProdottoService', 'UsersInfo', '$firebaseAuth', '$firebaseStorage',
+        'Users', 'SendMessaggioService',
+        function($scope, $rootScope, Prodotto, InsertProdottoService, UsersInfo, $firebaseAuth, $firebaseStorage, Users, SendMessaggioService) {
             $scope.dati={};
             $rootScope.dati={};
             $rootScope.dati.currentView = "paginaProduttore";
             $scope.dati.products = Prodotto.getData();
             $scope.dati.userId = $firebaseAuth().$getAuth().uid;
             $scope.dati.user = UsersInfo.getUserInfo($firebaseAuth().$getAuth().uid);
+            $scope.dati.messaggi = SendMessaggioService.getMessaggi();
 
             console.log($scope.dati.user);
 

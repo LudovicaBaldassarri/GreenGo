@@ -46,7 +46,7 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
 
         })*/
 
-        console.log($scope.dati.oraStampa);
+        console.log($scope.dati.user);
         console.log($scope.dati.dataStampa);
         //ALGORITMO PER I VOTI STELLE
 

@@ -1,22 +1,49 @@
 <div id="pageTut">
 
     <div class="jumbotron" align="center">
-        <span>Cerca Oggetto</span>
-        <button class="btn btn-default">Categorie (dropdown)</button>
-        <button class="btn btn-success">Cerca</button>
+        <div class="row">
+            <div class="col-sm-10">
+                <input  id="Search" type="text" class="form-control input-lg" ng-model="tutorialSearch" placeholder="Cerca per strumento...">
+            </div>
+            <div class="col-xs-2"><button class="btn btn-success btn-lg" ng-click="setRicerca()"> Cerca </button></div>
+        </div>
+        <div class="row">
+            <div class="col-xs-4">
+                <h5>Categoria</h5>
+                <select class="form-control" id="categoriaRic" style="max-width: 150px" ng-model="categoriaSearch">
+                    <option></option>
+                    <option>Riutilizzo</option>
+                    <option>Cucina</option>
+                    <option>Cura del corpo</option>
+                </select>
+            </div>
+            <div class="col-xs-4">
+                <h5>Difficoltà</h5>
+                <select class="form-control" id="difRic" style="max-width: 150px" ng-model="difficoltaSearch">
+                    <option>Facile</option>
+                    <option>Medio</option>
+                    <option>Difficile</option>
+                </select>
+            </div>
+        </div>
     </div>
+    <!-- <br><br>  -->
 
     <div class="container">
-        <button class="btn">Oggetto1</button>
-        <button class="btn btn-danger">Cancella</button>
-    </div>
-
-    <!-- <br><br>  -->
+        <!--CHE POI SARANNO UNA LISTA STI BOTTONI-->
+        <button class="btn btn-default" ng-if="ricerca && tutorialSearch !=''" ng-click="deleteIngrediente()">
+            <span class="glyphicon glyphicon-remove"></span>  {{tutorialSearch}} </button>
+        <button class="btn btn-default" ng-if="ricerca && categoriaSearch != ''" ng-click="deleteCategoria()">
+            <span class="glyphicon glyphicon-remove"></span>  {{categoriaSearch}}</button>
+        <button class="btn btn-default" ng-if="ricerca && difficoltaSearch != ''" ng-click="deleteDifficolta()">
+            <span class="glyphicon glyphicon-remove"></span>  {{difficoltaSearch}}</button>
+        <button class="btn btn-danger" ng-click="cancellaTutto()">Cancella tutto</button>
+    </div><br><br>
 
     <div class="container">
         <div class="row">
             <ul class="media-list">
-                <li ng-repeat="posts in dati.posts" ng-if="posts.tag === 'tutorial'">
+                <li ng-repeat="posts in dati.posts | filter:tutorialSearch| filter:{difficolta:difficoltaSearch, categoria:categoriaSearch} " ng-if="posts.tag === 'tutorial'">
 
                     <div class="col-md-4">
                         <div class="panel panel-success">

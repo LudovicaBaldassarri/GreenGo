@@ -29,6 +29,11 @@ angular.module('myApp.commento.insertCommentoService', [])
                 ref.update({
                     id: commentoId
                 });
+            },
+
+            getCommenti: function (postId) {
+                var commentiRef = firebase.database().ref().child("posts").child(postId).child("commenti");
+                return $firebaseArray(commentiRef);
             }
         };
         return newCommentoService;

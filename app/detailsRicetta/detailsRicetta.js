@@ -27,16 +27,24 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
         $scope.dati.post = SinglePost.getSinglePost($routeParams.postId);
         $scope.dati.userId = currentAuth.uid;
         $scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
+        $scope.dati.commenti = InsertCommentoService.getCommenti($routeParams.postId);
 
         $scope.dati.commento = "";
-        $scope.dati.oraStampa = "";
-        $scope.dati.dataStampa = "";
 
-        $scope.dati.post.$loaded().then(function () {
+        //salva la data di oggi e la inserisce come attributo nel firebase del post
+        $scope.dati.date = new Date();
+        //scompone la data completa in gg/mm/aaa da stampare in html quando serve
+        var month = $scope.dati.date.getUTCMonth() + 1;
+        $scope.dati.dataStampa = $scope.dati.date.getUTCDate() + "/" + month + "/" + $scope.dati.date.getUTCFullYear();
+        //scompone l0ora da date in hh:mm:ss da stampare quando serve
+        $scope.dati.oraStampa = $scope.dati.date.getUTCHours() + ":" + $scope.dati.date.getUTCMinutes() + ":" + $scope.dati.date.getUTCSeconds();
+
+
+        /*$scope.dati.post.$loaded().then(function () {
             $scope.dati.oraStampa = $scope.dati.post.oraStampa;
             $scope.dati.dataStampa = $scope.dati.post.dataStampa;
 
-        });
+        })*/
 
         console.log($scope.dati.oraStampa);
         console.log($scope.dati.dataStampa);
@@ -78,22 +86,17 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
                 voto.show();
             },
 
-        $scope.salvaRicetta = function () {
-            InsertPostService.savePost($routeParams.postId, $scope.dati.userId);
-        },
-
-        // ALGORITMO COMMENTI
         $scope.addCommento = function () {
 
             //check if the user inserted all the required information
             if ($scope.dati.commento != undefined && $scope.dati.commento != "") {
                 $scope.dati.error = "";
                 $scope.dati.post.$loaded().then(function () {
-                    $scope.dati.oraStampa = $scope.dati.post.oraStampa;
+                    /*$scope.dati.oraStampa = $scope.dati.post.oraStampa;
                     $scope.dati.dataStampa = $scope.dati.post.dataStampa;
                     console.log($scope.dati.oraStampa);
-                    console.log($scope.dati.dataStampa);
-                });
+                    console.log($scope.dati.dataStampa);*/
+                })
                 $scope.finalCommentoAddition();
 
             }
@@ -113,6 +116,7 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
             InsertCommentoService.insertNewCommento($scope.dati.post.$id, $scope.dati.userId, $scope.dati.user.name, $scope.dati.user.surname, $scope.dati.user.img_url,
                 $scope.dati.commento, $scope.dati.dataStampa, $scope.dati.oraStampa);
 
+            $scope.dati.commento = "";
         };
 
 

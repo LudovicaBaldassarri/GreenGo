@@ -98,7 +98,10 @@ angular.module('myApp.userProfile', ['ngRoute'])
                 }
                 else {
                     //do not add the image
-                    $scope.finalAddImage();
+                   // $scope.finalAddImage();
+
+                   //provo a mettere l'immagine default
+                   $scope.addDefaultImage();
 
                 }
             var modalDiv = $("#modalAddImmagine");
@@ -119,6 +122,12 @@ angular.module('myApp.userProfile', ['ngRoute'])
                 // var modalDiv = $("#modalAddImmagine");
                 // modalDiv.modal('hide');
 
+            };
+
+            //provo a mettere l'immagine default
+            $scope.addDefaultImage = function () {
+                $scope.imgPath = "userImages/Default.png"
+                Users.updateImage($scope.dati.userId, $scope.imgPath);
             };
 
 }]);

@@ -14,6 +14,9 @@
                         <p><span style="color:green">Città</span><br>{{dati.otherProduttoreInfo.citta}} </p><br>
                         <p><span style="color:green">Descrizione dell'attività </span><br>{{dati.otherProduttoreInfo.descrizione}} </p><hr>
                         <a href="#!/otherUserProfile/{{dati.otherProduttoreId}}"><button class="btn btn-default">Vai al Profilo personale</button></a>
+                        <button type="button" class="btn btn-default" href="#/otherProduttore"
+                                 data-toggle="modal" data-target="#modalMessaggio">
+                            Contatta il produttore</button>
                     </div>
                 </div>
             </div>
@@ -45,6 +48,29 @@
                 </ul>
             </div>
         </div>
+
+        <!-- MODAL PER SCRIVERE AL PRODUTTORE  -->
+        <div class="modal fade" id="modalMessaggio" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="padding: 0 25px">
+                    <h3>Contatta il Produttore</h3>
+                    <p>Qui puoi scrivere un messaggio al produttore per avere informazioni sui prodotti, sulla disponibilità o su qualunque cosa ti serva!</p>
+                    </div>
+                    <form ng-submit="addMessage()">
+                        <div class="form-group">
+                          <textarea class="form-control" rows="4"
+                                     ng-model="dati.testo"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button href="#otherProduttore" type="submit" class="btn btn-info">Invia</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
 </div>

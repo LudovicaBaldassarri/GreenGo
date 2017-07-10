@@ -42,7 +42,6 @@ angular.module('myApp.ricetta.insertRicettaService', [])
             updateRicetta: function() {
             }
 
-
         };
         return newRicettaService;
     });

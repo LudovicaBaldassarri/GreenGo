@@ -36,7 +36,7 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
             $scope.dati.oraStampa = $scope.dati.post.oraStampa;
             $scope.dati.dataStampa = $scope.dati.post.dataStampa;
 
-        })
+        });
 
         console.log($scope.dati.oraStampa);
         console.log($scope.dati.dataStampa);
@@ -78,6 +78,11 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
                 voto.show();
             },
 
+        $scope.salvaRicetta = function () {
+            InsertPostService.savePost($routeParams.postId, $scope.dati.userId);
+        },
+
+        // ALGORITMO COMMENTI
         $scope.addCommento = function () {
 
             //check if the user inserted all the required information
@@ -88,7 +93,7 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
                     $scope.dati.dataStampa = $scope.dati.post.dataStampa;
                     console.log($scope.dati.oraStampa);
                     console.log($scope.dati.dataStampa);
-                })
+                });
                 $scope.finalCommentoAddition();
 
             }

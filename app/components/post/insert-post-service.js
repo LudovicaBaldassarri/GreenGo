@@ -95,6 +95,12 @@ angular.module('myApp.post.insertPostService', [])
                 ref.update({
                     media: media
                 });
+            },
+            savePost: function (postId, userId){
+                var ref=firebase.database().ref().child("posts").child(postId).child("savers").child(userId);
+                ref.update({
+                    id_salvatore: userId
+                });
             }
         };
         return newPostService;

@@ -31,9 +31,6 @@ angular.module('myApp.users.usersService', [])
                     surname: surname,
                     email: email,
                     tipo: ""
-                    // nomeProduttore: "",
-                    // citta: "",
-                    // descrizione: ""
                 });
             },
             updateTipo: function (userId) {

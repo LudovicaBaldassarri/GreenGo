@@ -60,9 +60,10 @@ angular.module('myApp', [
         $rootScope.dati.currentView = 'home';
         // DATI PER IMMAGINE
         $scope.dati.feedback = "";
-        var ctrl = this;
-        $scope.fileToUpload = null;
-        $scope.imgPath= "";
+
+        // var ctrl = this;
+        // $scope.fileToUpload = null;
+        // $scope.imgPath= "";
 
         $scope.isLogged = function()
         {
@@ -143,6 +144,7 @@ angular.module('myApp', [
                     });
                 }
             };
+
 
     }]);
 /*.controller('UserRegistrationCtrl', ['$scope', '$rootScope', 'Auth', 'Users', '$location', function($scope, $rootScope, Auth, Users, $location) {

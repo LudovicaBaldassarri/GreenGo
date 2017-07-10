@@ -6,6 +6,9 @@
             <div class="panel panel-default text-left">
                 <div class="panel-body">
                     <h1 style="color: green;">{{dati.post.titolo}}</h1>
+                    <button class="btn btn-success" ng-click="salvaRicetta()" style="float: right;" ng-if="">Salva ricetta</button>
+                    <button class="btn btn-default" style="float: right;" ng-if="dati.post.savers.ha_salvato == 'si'">Salva ricetta</button>
+
                 </div>
             </div>
             <div class="panel panel-default text-left">

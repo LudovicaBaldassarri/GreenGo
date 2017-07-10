@@ -119,7 +119,9 @@
                     </form>
                     <hr>
                     <div>
-                        <li class="media" ng-repeat="">
+                        <div class="media" ng-repeat=" commenti in dati.commenti">
+                            <div> <h4>{{commenti.descrizione}} {{commenti.name}}</h4>
+                            </div>
                         </li>
                     </div>
                 </div>

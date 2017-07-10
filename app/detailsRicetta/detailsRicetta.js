@@ -27,6 +27,7 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
         $scope.dati.post = SinglePost.getSinglePost($routeParams.postId);
         $scope.dati.userId = currentAuth.uid;
         $scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
+        $scope.dati.commenti = InsertCommentoService.getCommenti($routeParams.postId);
 
         $scope.dati.commento = "";
         $scope.dati.oraStampa = "";
@@ -108,6 +109,7 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
             InsertCommentoService.insertNewCommento($scope.dati.post.$id, $scope.dati.userId, $scope.dati.user.name, $scope.dati.user.surname, $scope.dati.user.img_url,
                 $scope.dati.commento, $scope.dati.dataStampa, $scope.dati.oraStampa);
 
+            $scope.dati.commento = "";
         };
 
 

@@ -19,14 +19,27 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
     });
 }])
 
-.controller('detailsRicettaCtrl', ['$scope', '$rootScope', 'SinglePost', '$routeParams', 'currentAuth','InsertPostService', 'InsertCommentoService',
-    function ($scope, $rootScope, SinglePost, $routeParams, currentAuth, InsertPostService, InsertCommentoService) {
+.controller('detailsRicettaCtrl', ['$scope', '$rootScope', 'SinglePost', '$routeParams', 'currentAuth', 'UsersInfo','InsertPostService', 'InsertCommentoService',
+    function ($scope, $rootScope, SinglePost, $routeParams, currentAuth, UsersInfo, InsertPostService, InsertCommentoService) {
         $scope.dati = {};
         $rootScope.dati = {};
         $rootScope.dati.currentView = "detailsRicetta";
         $scope.dati.post = SinglePost.getSinglePost($routeParams.postId);
         $scope.dati.userId = currentAuth.uid;
+        $scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
 
+        $scope.dati.commento = "";
+        $scope.dati.oraStampa = "";
+        $scope.dati.dataStampa = "";
+
+        $scope.dati.post.$loaded().then(function () {
+            $scope.dati.oraStampa = $scope.dati.post.oraStampa;
+            $scope.dati.dataStampa = $scope.dati.post.dataStampa;
+
+        })
+
+        console.log($scope.dati.oraStampa);
+        console.log($scope.dati.dataStampa);
         //ALGORITMO PER I VOTI STELLE
 
         $scope.valueUno = function () {
@@ -68,8 +81,14 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
         $scope.addCommento = function () {
 
             //check if the user inserted all the required information
-            if ($scope.dati.testo != undefined && $scope.dati.testo != "") {
+            if ($scope.dati.commento != undefined && $scope.dati.commento != "") {
                 $scope.dati.error = "";
+                $scope.dati.post.$loaded().then(function () {
+                    $scope.dati.oraStampa = $scope.dati.post.oraStampa;
+                    $scope.dati.dataStampa = $scope.dati.post.dataStampa;
+                    console.log($scope.dati.oraStampa);
+                    console.log($scope.dati.dataStampa);
+                })
                 $scope.finalCommentoAddition();
 
             }
@@ -80,17 +99,14 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
         },
 
 
+        console.log($scope.dati.post.$id);
+        console.log($scope.dati.post.oraStampa);
+        console.log($scope.dati.userId);
+        console.log($scope.dati.user.name);
+
         $scope.finalCommentoAddition = function () {
-            InsertCommentoService.insertNewCommento($scope.dati.userId, $scope.dati.user.name, $scope.dati.user.surname, $scope.dati.user.img_url,
-                $scope.dati.testo, $scope.dati.date, $scope.dati.dataStampa,
-                $scope.dati.oraStampa).then(function (ref) {
-
-                var commentoId = ref.key;
-                $scope.dati.userInfo = InsertPostService.getPostInfo($scope.dati.post.key);
-                InsertPostService.updateCommento(commentoId);
-                $scope.dati.testo = "";
-
-            });
+            InsertCommentoService.insertNewCommento($scope.dati.post.$id, $scope.dati.userId, $scope.dati.user.name, $scope.dati.user.surname, $scope.dati.user.img_url,
+                $scope.dati.commento, $scope.dati.dataStampa, $scope.dati.oraStampa);
 
         };
 

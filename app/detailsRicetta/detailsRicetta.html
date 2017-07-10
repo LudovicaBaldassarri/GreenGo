@@ -114,9 +114,14 @@
                     commenta:
                     <form id="frmAddCommento" role="form" ng-submit="addCommento()">
                         <textarea type = "text" class="form-control" nome="testo" rows="4" id="desc" placeholder="Scrivi un commento..."
-                                  ng-model="dati.post.comments.testo"></textarea>
+                                  ng-model="dati.commento"></textarea>
                         <button class="btn btn-success" type="submit">Pubblica</button>
                     </form>
+                    <hr>
+                    <div>
+                        <li class="media" ng-repeat="">
+                        </li>
+                    </div>
                 </div>
             </div>
         </div>

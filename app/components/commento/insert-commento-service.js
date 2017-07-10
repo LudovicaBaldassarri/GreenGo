@@ -10,19 +10,20 @@ angular.module('myApp.commento.insertCommentoService', [])
                  return $firebaseArray(postRef);
             },
 
-            insertNewCommento: function (autoreId, name, surname, img_url, testo, date, dataStampa, oraStampa){
-                var ref=firebase.database().ref().child("posts").child("comments");
-                return $firebaseArray(ref).$add({
+            insertNewCommento: function (postId, autoreId, name, surname, img_url, testo, dataStampa, oraStampa){
+                var ref=firebase.database().ref().child("posts").child(postId).child("commenti").child(testo + oraStampa);
+                ref.update({
+                    id:name,
                     autoreId: autoreId,
                     name: name,
                     surname: surname,
                     autore_img: img_url,
                     descrizione: testo,
-                    date: date,
                     dataStampa: dataStampa,
                     oraStampa: oraStampa
                 });
             },
+
             updateCommento: function(commentoId) {
                 var ref = firebase.database().ref().child("posts").child("comments").child(commentoId);
                 ref.update({

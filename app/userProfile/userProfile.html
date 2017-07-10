@@ -1,7 +1,7 @@
-<div class="container" id="page">
+<div class="container-fluid" id="page" style="margin-left: 10%; margin-right: 10%; width: 80%">
   <div class="row">
     <!--SPAZIO UTENTE-->
-    <div class="col-sm-3 ">
+    <div class="col-md-3 ">
       <div class="panel panel-default" align="center" >
         <div class="panel-body">
           <div>
@@ -40,7 +40,7 @@
     </div>
 
     <!--SPAZIO POST-->
-    <div class="col-sm-8">
+    <div class="col-sm-6">
 
       <div class="row">
         <div class="col-sm-12">
@@ -55,7 +55,8 @@
       <div class="row">
         <div class="col-xs-12">
           <ul class="media-list">
-            <li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="  dati.userId == post.autoreId">
+            <!--area profilo-->
+            <li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="  dati.userId == post.autoreId && dati.area== 'profilo'">
                 <div class="media-left">
                   <div class="media-left">
                     <!--QUI METTEREI L'IMMAGINE DEL PROFILO-->
@@ -78,11 +79,121 @@
                 </div>
                 <hr/>
             </li>
+
+            <!--area ricettario-->
+            <li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="  dati.userId == post.autoreId && dati.area== 'ricettario' && post.tag=='ricetta'">
+            <h3>Le mie ricette</h3><hr>
+            <div class="col-md-4">
+              <div class="panel panel-success">
+                <div class="panel-heading"><a href="#!/detailsRicetta/{{post.id}}">{{post.titolo}}</a>
+                </div>
+                <div class="panel-body">
+                  <img style="width:100%" height="100px" alt="Image"
+                       ng-src="{{post.img_url}}" alt="{{post.img_alt}}" ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">
+                </div>
+                <!--<div class="panel-footer">-->
+                  <!--<p>-->
+                    <!--<a href="#!/otherUserProfile/{{post.autoreId}}" ng-if="dati.userId != post.autoreId"><span style="color: green">{{post.name}} {{post.surname}}</span></a>-->
+                    <!--<a href="#!/userProfile" ng-if="dati.userId == post.autoreId"><span style="color: green">{{post.name}} {{post.surname}}</span></a><br>-->
+                    <!--&lt;!&ndash;{{post.descrizione}}&ndash;&gt;-->
+                  <!--</p>-->
+                <!--</div>-->
+              </div>
+            </div>
+          </li>
+            <!--ricette salvate-->
+            <li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="  dati.userId == post.autoreId && dati.area== 'ricettario' && post.tag=='ricetta'">
+              <h3>Ricette salvate</h3><hr>
+              <!--<div class="col-md-6">-->
+                <!--<div class="panel panel-success">-->
+                  <!--<div class="panel-heading"><a href="#!/detailsRicetta/{{post.id}}">{{post.titolo}}</a>-->
+                  <!--</div>-->
+                  <!--<div class="panel-body">-->
+                    <!--<img style="width:100%" height="200px" alt="Image"-->
+                         <!--ng-src="{{post.img_url}}" alt="{{post.img_alt}}" ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">-->
+                  <!--</div>-->
+                  <!--<div class="panel-footer">-->
+                    <!--<p>-->
+                      <!--<a href="#!/otherUserProfile/{{post.autoreId}}" ng-if="dati.userId != post.autoreId"><span style="color: green">{{post.name}} {{post.surname}}</span></a>-->
+                      <!--<a href="#!/userProfile" ng-if="dati.userId == post.autoreId"><span style="color: green">{{post.name}} {{post.surname}}</span></a><br>-->
+                      <!--&lt;!&ndash;{{post.descrizione}}&ndash;&gt;-->
+                    <!--</p>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+            </li>
+
+            <!--area tutorial-->
+            <li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="  dati.userId == post.autoreId && dati.area== 'tutorial' && post.tag=='tutorial'">
+              <h3>I miei tutorial</h3><hr>
+              <div class="col-md-4">
+                <div class="panel panel-success">
+                  <div class="panel-heading"><a href="#!/detailsTutorial/{{post.id}}">{{post.titolo}}</a>
+                  </div>
+                  <div class="panel-body">
+                    <img style="width:100%" height="90px" alt="Image"
+                         ng-src="{{post.img_url}}" alt="{{post.img_alt}}" ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">
+                  </div>
+                  <!--<div class="panel-footer">-->
+                    <!--<p>-->
+                      <!--<a href="#!/otherUserProfile/{{post.autoreId}}" ng-if="dati.userId != post.autoreId"><span style="color: green">{{post.name}} {{post.surname}}</span></a>-->
+                      <!--<a href="#!/userProfile" ng-if="dati.userId == post.autoreId"><span style="color: green">{{post.name}} {{post.surname}}</span></a><br>-->
+                      <!--&lt;!&ndash;{{post.descrizione}}&ndash;&gt;-->
+                    <!--</p>-->
+                  <!--</div>-->
+                </div>
+              </div>
+            </li>
+            <!--ricette salvate-->
+            <li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="  dati.userId == post.autoreId && dati.area== 'tutorial' && post.tag=='tutorial'">
+              <h3>Tutorial salvati</h3><hr>
+              <!--<div class="col-md-6">-->
+              <!--<div class="panel panel-success">-->
+              <!--<div class="panel-heading"><a href="#!/detailsRicetta/{{post.id}}">{{post.titolo}}</a>-->
+              <!--</div>-->
+              <!--<div class="panel-body">-->
+              <!--<img style="width:100%" height="200px" alt="Image"-->
+              <!--ng-src="{{post.img_url}}" alt="{{post.img_alt}}" ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">-->
+              <!--</div>-->
+              <!--<div class="panel-footer">-->
+              <!--<p>-->
+              <!--<a href="#!/otherUserProfile/{{post.autoreId}}" ng-if="dati.userId != post.autoreId"><span style="color: green">{{post.name}} {{post.surname}}</span></a>-->
+              <!--<a href="#!/userProfile" ng-if="dati.userId == post.autoreId"><span style="color: green">{{post.name}} {{post.surname}}</span></a><br>-->
+              <!--&lt;!&ndash;{{post.descrizione}}&ndash;&gt;-->
+              <!--</p>-->
+              <!--</div>-->
+              <!--</div>-->
+              <!--</div>-->
+            </li>
+
+            <!--area medaglie-->
+            <li class="media" ng-if="dati.area== 'medaglie'">
+              <h3>Le mie medaglie</h3><hr>
+              <!--FACCIO PROVA -->
+              <div class="panel panel-default" style="height: 150px; width: 150px; padding: 5px 10px 5px 10px">
+                <img src="../images/provaMed.png" height="120px">
+                <p>Prova medaglia</p>
+              </div>
+            </li>
           </ul>
         </div>
       </div>
     </div>
-  </div>
+
+   <div class="col-md-3 ">
+      <div class="panel panel-default" align="center" >
+        <div class="panel-body">
+          <button class="btn btn-success" ng-click="goToRicettario()" style="width: 100%">Ricettario</button>
+          <br><br>
+          <button class="btn btn-success" ng-click="goToTutorial()" style="width: 100%">Contenitore Tutorial</button>
+          <br><br>
+          <button class="btn btn-success" ng-click="goToMedaglie()" style="width: 100%">Le mie medaglie</button>
+          <br><br>
+          <button class="btn btn-default" ng-click="goToProfilo()" style="width: 100%">Torna a Profilo</button>
+        </div>
+      </div>
+    </div>
+
 
   <!--MODAL DIVENTA PRODUTTORE-->
   <div class="modal fade" id="modalProduttore" role="dialog">
@@ -111,8 +222,9 @@
             <div class="form-group" align="center">
               <button href="#!/paginaProduttore" class="btn btn-success" type="submit">Diventa Produttore</button>
             </div>
+            <button class="btn btn-default" data-dismiss="modal" style="float: right">Close</button><br>
           </form>
-          <button class="btn btn-default" data-dismiss="modal" style="float: right">Close</button>
+
         </div>
 
 

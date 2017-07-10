@@ -28,6 +28,7 @@ angular.module('myApp.userProfile', ['ngRoute'])
 
         $scope.dati.userId = $firebaseAuth().$getAuth().uid;
         $scope.dati.user = UsersInfo.getUserInfo($firebaseAuth().$getAuth().uid);
+        $scope.dati.area = 'profilo';
 
         // $scope.becomeProduttore= function () {
         //     $scope.dati.user = Users.updateTipo($firebaseAuth().$getAuth().uid);
@@ -128,6 +129,27 @@ angular.module('myApp.userProfile', ['ngRoute'])
             $scope.addDefaultImage = function () {
                 $scope.imgPath = "userImages/Default.png"
                 Users.updateImage($scope.dati.userId, $scope.imgPath);
+            };
+
+            //PER ANDARE A RICETTARIO
+            $scope.goToRicettario= function () {
+                $scope.dati.area = 'ricettario';
+
+            };
+            //PER ANDARE A TUTORIAL
+            $scope.goToTutorial= function () {
+                $scope.dati.area = 'tutorial';
+
+            };
+            //PER ANDARE A MEDAGLIE
+            $scope.goToMedaglie= function () {
+                $scope.dati.area = 'medaglie';
+
+            };
+            //PER TORNARE A PROFILO
+            $scope.goToProfilo= function () {
+                $scope.dati.area = 'profilo';
+
             };
 
 }]);

@@ -18,8 +18,8 @@ angular.module('myApp.otherUserProfile', ['ngRoute'])
             }
         });
     }])
-    .controller('otherUserProfileCtrl', ['$scope', '$rootScope', '$routeParams','currentAuth', 'UsersFollowService', 'Post',
-        function ($scope, $rootScope, $routeParams, currentAuth,  UsersFollowService, Post) {
+    .controller('otherUserProfileCtrl', ['$scope', '$rootScope', '$routeParams', 'currentAuth', 'UsersFollowService', 'Post',
+        function ($scope, $rootScope, $routeParams, currentAuth, UsersFollowService, Post) {
             $scope.dati = {};
             $rootScope.dati= {};
             $rootScope.dati.currentView = "otherUserProfile";
@@ -38,11 +38,11 @@ angular.module('myApp.otherUserProfile', ['ngRoute'])
             $scope.orderProp1 = "followed";
 
             $scope.dati.posts = Post.getData();
-
             $scope.dati.follows = UsersFollowService.getFollow();
 
             $scope.dati.notFollowing = true;
             $scope.dati.follows.$loaded().then(function(){
+
                 var following = $scope.dati.follows;
                 for (var keySingleFlowing in following) {
                     if (!angular.isFunction(keySingleFlowing)) {
@@ -61,6 +61,7 @@ angular.module('myApp.otherUserProfile', ['ngRoute'])
             });
             $scope.dati.yetFollowing = false;
             $scope.dati.follows.$loaded().then(function(){
+
                 var following = $scope.dati.follows;
                 for (var keySingleFlowing in following) {
                     if (!angular.isFunction(keySingleFlowing)) {
@@ -88,14 +89,13 @@ angular.module('myApp.otherUserProfile', ['ngRoute'])
                     UsersFollowService.updateUsersFollow(followId);
                     $scope.dati.notFollowing = false;
                     $scope.dati.yetFollowing = true;
-                    //$window.location.reload();
 
                 });
             };
 
             $scope.removeFollow = function (followId) {
                 UsersFollowService.deleteFollow(followId);
-                $scope.dati.notYetFollowing = true;
+                $scope.dati.notFollowing = true;
                 $scope.dati.yetFollowing =false;
             };
 

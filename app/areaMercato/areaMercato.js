@@ -28,6 +28,29 @@ angular.module('myApp.areaMercato', ['ngRoute'])
             $scope.dati.userId = currentAuth.uid;
             $scope.dati.products = Prodotto.getData();
 
+            $scope.prodottiSearch = "";
+            $scope.categoriaSearch = "";
+            $scope.ricerca = false;
+
+            //FUNZIONI PER GESTIRE BOTTONI RICERCA
+            $scope.cancellaTutto = function () {
+                $scope.prodottiSearch = "";
+                $scope.categoriaSearch = "";
+                $scope.ricerca = false;
+            }
+
+            $scope.setRicerca = function () {
+                $scope.ricerca = true;
+            }
+
+            $scope.deleteIngrediente = function () {
+                $scope.prodottiSearch = "";
+            }
+
+            $scope.deleteCategoria = function () {
+                $scope.categoriaSearch = "";
+            }
+
 
 
         }]);

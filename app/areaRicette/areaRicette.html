@@ -3,9 +3,9 @@
     <div class="jumbotron" align="center">
         <div class="row">
         <div class="col-sm-10">
-        <input  id="Search" type="text" class="form-control input-lg" ng-model="ricetteSearch" placeholder="Cerca per ingrediente...">
+        <input  id="Search" type="text" class="form-control" ng-model="ricetteSearch" placeholder="Cerca per ingrediente...">
         </div>
-        <div class="col-xs-2"><button class="btn btn-success btn-lg" ng-click="setRicerca()"> Cerca </button></div>
+        <div class="col-xs-2"><button class="btn btn-success" ng-click="setRicerca()"> Cerca </button></div>
         </div>
         <div class="row">
         <div class="col-xs-4">
@@ -57,9 +57,9 @@
                     li[i].style.display = "none";
                 }
             }
-
         }
     </script>
+
     <!--SPAZIO INGREDIENTI/FILTRI AGGIUNTI-->
     <div class="container">
         <!--CHE POI SARANNO UNA LISTA STI BOTTONI-->
@@ -73,6 +73,7 @@
             <span class="glyphicon glyphicon-remove"></span>  {{difficoltaSearch}}</button>
         <button class="btn btn-danger" ng-click="cancellaTutto()">Cancella tutto</button>
     </div><br><br>
+
     <!--SPAZIO RICETTE TROVATE-->
     <div class="container">
         <div class="row">

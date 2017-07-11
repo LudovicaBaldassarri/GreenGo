@@ -17,6 +17,7 @@ angular.module('myApp', [
     'myApp.home',
     'myApp.post',
     'myApp.commento',
+    'myApp.messaggio',
     'myApp.prodotto',
     'myApp.ricetta',
     'myApp.tutorial',

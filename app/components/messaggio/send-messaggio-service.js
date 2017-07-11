@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp.messaggio.sendMessagioService', [])
+angular.module('myApp.messaggio.sendMessaggioService', [])
 
     .factory('SendMessaggioService', function($firebaseArray) {
         var newMessaggioService = {
@@ -9,12 +9,14 @@ angular.module('myApp.messaggio.sendMessagioService', [])
                 return $firebaseArray(userRef);
             },
 
-            sendNewMessage : function(autoreId, nome, cognome, date, dataStampa, oraStampa, testo) {
+            sendNewMessage : function(autoreId, destinatarioId, nome, cognome, img_url, date, dataStampa, oraStampa, testo) {
                 var ref = firebase.database().ref().child("messaggios");
                 return $firebaseArray(ref).$add({
                     autoreId: autoreId,
+                    destinatarioId: destinatarioId,
                     nome: nome,
                     cognome: cognome,
+                    img_url: img_url,
                     date: date,
                     dataStampa: dataStampa,
                     oraStampa: oraStampa,
@@ -26,6 +28,10 @@ angular.module('myApp.messaggio.sendMessagioService', [])
                 ref.update({
                     id: messageId
                 });
+            },
+            getMessaggi: function () {
+                var messaggiRef = firebase.database().ref().child("messaggios");
+                return $firebaseArray(messaggiRef);
             }
         };
         return newMessaggioService;

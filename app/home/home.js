@@ -190,59 +190,95 @@ angular.module('myApp.home', ['ngRoute'])
             // funzioni per l'aggiunta di input INGREDIENTI
             $scope.addIng2 = function () {
                 document.getElementById("ing2").style.display = "block";
+                document.getElementById("btn1").classList.remove("btn-success");
+                document.getElementById("btn1").classList.add("btn-default");
             };
             $scope.addIng3 = function () {
                 document.getElementById("ing3").style.display = "block";
+                document.getElementById("btn2").classList.remove("btn-success");
+                document.getElementById("btn2").classList.add("btn-default");
             };
             $scope.addIng4 = function () {
                 document.getElementById("ing4").style.display = "block";
+                document.getElementById("btn3").classList.remove("btn-success");
+                document.getElementById("btn3").classList.add("btn-default");
             };
             $scope.addIng5 = function () {
                 document.getElementById("ing5").style.display = "block";
+                document.getElementById("btn4").classList.remove("btn-success");
+                document.getElementById("btn4").classList.add("btn-default");
             };
             $scope.addIng6 = function () {
                 document.getElementById("ing6").style.display = "block";
+                document.getElementById("btn5").classList.remove("btn-success");
+                document.getElementById("btn5").classList.add("btn-default");
             };
             $scope.addIng7 = function () {
                 document.getElementById("ing7").style.display = "block";
+                document.getElementById("btn6").classList.remove("btn-success");
+                document.getElementById("btn6").classList.add("btn-default");
             };
             $scope.addIng8 = function () {
                 document.getElementById("ing8").style.display = "block";
+                document.getElementById("btn7").classList.remove("btn-success");
+                document.getElementById("btn7").classList.add("btn-default");
             };
             $scope.addIng9 = function () {
                 document.getElementById("ing9").style.display = "block";
+                document.getElementById("btn8").classList.remove("btn-success");
+                document.getElementById("btn8").classList.add("btn-default");
             };
             $scope.addIng10 = function () {
                 document.getElementById("ing10").style.display = "block";
+                document.getElementById("btn9").classList.remove("btn-success");
+                document.getElementById("btn9").classList.add("btn-default");
             };
 
             // funzioni per l'aggiunta di input OGGETTI
             $scope.addOgg2 = function () {
                 document.getElementById("ogg2").style.display = "block";
+                document.getElementById("button1").classList.remove("btn-success");
+                document.getElementById("button1").classList.add("btn-default");
             };
             $scope.addOgg3 = function () {
                 document.getElementById("ogg3").style.display = "block";
+                document.getElementById("button2").classList.remove("btn-success");
+                document.getElementById("button2").classList.add("btn-default");
             };
             $scope.addOgg4 = function () {
                 document.getElementById("ogg4").style.display = "block";
+                document.getElementById("button3").classList.remove("btn-success");
+                document.getElementById("button3").classList.add("btn-default");
             };
             $scope.addOgg5 = function () {
                 document.getElementById("ogg5").style.display = "block";
+                document.getElementById("button4").classList.remove("btn-success");
+                document.getElementById("button4").classList.add("btn-default");
             };
             $scope.addOgg6 = function () {
                 document.getElementById("ogg6").style.display = "block";
+                document.getElementById("button5").classList.remove("btn-success");
+                document.getElementById("button5").classList.add("btn-default");
             };
             $scope.addOgg7 = function () {
                 document.getElementById("ogg7").style.display = "block";
+                document.getElementById("button6").classList.remove("btn-success");
+                document.getElementById("button6").classList.add("btn-default");
             };
             $scope.addOgg8 = function () {
                 document.getElementById("ogg8").style.display = "block";
+                document.getElementById("button7").classList.remove("btn-success");
+                document.getElementById("button7").classList.add("btn-default");
             };
             $scope.addOgg9 = function () {
                 document.getElementById("ogg9").style.display = "block";
+                document.getElementById("button8").classList.remove("btn-success");
+                document.getElementById("button8").classList.add("btn-default");
             };
             $scope.addIOgg10 = function () {
                 document.getElementById("ogg10").style.display = "block";
+                document.getElementById("button9").classList.remove("btn-success");
+                document.getElementById("button9").classList.add("btn-default");
             };
 
 

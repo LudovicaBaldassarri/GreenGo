@@ -1,6 +1,7 @@
 body{
   margin:0;
-  font-family: "Verdana";
+  /* font-family: "Verdana"; */
+  font-family: 'Nunito', sans-serif;
 }
 
 .navbar {
@@ -56,8 +57,8 @@ body{
   opacity: 0;
   transition: .5s ease;
   /*background-color: #497e52;*/
-  /*background-color: #DFF0D8;*/
-  background-color: #C7EFB4;
+  /*background-color: #DFF0D8;      #C7EFB4;*/
+  background-color: #9ADB61;
   text-align: center;
 }
 
@@ -115,20 +116,43 @@ body{
 
 
 
-#modalRicetta {
+#modalRicetta,
+#modalTutorial {
   width: auto;
 }
 
+#modalRicetta .modal-content,
+#modalTutorial .modal-content{
 
-#modalRicetta h3, form {
+  border-radius: 13px;
+}
+
+#modalRicetta .modal-header,
+#modalTutorial .modal-header{
+  background-color: #9ADB61; /*74A614 9CC633*/
+  color: #FEFEFE;
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
+}
+
+#modalRicetta h3, form,
+#modalTutorial h3, form{
   padding: 20px;
 }
 
-#modalRicetta label, input, textarea {
+#modalRicetta h4, h5,
+#modalTutorial h4, h5 {
+  color: #74A614;
+}
+
+
+#modalRicetta label, input, textarea,
+#modalTutorial label, input, textarea {
   margin-bottom: 10px;
 }
 
-#modalRicetta img {
+#modalRicetta img,
+#modalTutorial img{
   position: static;
   height: 140px;
   width: 140px;
@@ -138,7 +162,8 @@ body{
   position: relative;
 }
 
-#modalRicetta p {
+#modalTutorial p,
+#modalRicetta p{
   display: inline;
   position: relative;
   bottom: 53px;
@@ -158,7 +183,7 @@ body{
 
 
 /*.panel{*/
-  /*border-color: #C7EFB4;*/
+/*border-color: #C7EFB4;*/
 /*}*/
 
 .entry:not(:first-of-type)
@@ -186,4 +211,10 @@ body{
   border: none;
   background-color: white;
   margin: 0;
+}
+
+.wrapper {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 50% 1fr;
 }

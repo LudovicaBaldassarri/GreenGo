@@ -8,7 +8,6 @@ angular.module('myApp.users.usersFollowService', [])
                 var ref = firebase.database().ref().child("follows");
                 return $firebaseArray(ref);
             },
-
             getUserInfo: function(userId) {
                 var userRef = firebase.database().ref().child("users").child(userId);
                 return $firebaseObject(userRef);
@@ -25,9 +24,7 @@ angular.module('myApp.users.usersFollowService', [])
                 });
             },
             updateUsersFollow: function (followId) {
-                //add the user to list of users and set the logged value to true
                 var ref = firebase.database().ref().child("follows").child(followId);
-                // create a synchronized array
                 ref.update({
                     id: followId
                 });

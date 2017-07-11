@@ -57,7 +57,10 @@ angular.module('myApp.post.insertPostService', [])
                         strumento7: strumento7,
                         strumento8: strumento8,
                         strumento9: strumento9,
-                        strumento10: strumento10}
+                        strumento10: strumento10},
+                    "savers":{
+                        id_salvatore: "inizializzazione"
+                    }
                 });
             },
             updatePost: function(postId) {
@@ -95,17 +98,17 @@ angular.module('myApp.post.insertPostService', [])
                 ref.update({
                     media: media
                 });
+            },
+            savePost: function (postId, id_salvatore){
+                var ref=firebase.database().ref().child("posts").child(postId).child("savers").child(id_salvatore);
+                ref.update({
+                    id_salvatore: id_salvatore
+                });
+            },
+            getSavers: function (postId) {
+                var saversRef = firebase.database().ref().child("posts").child(postId).child("savers");
+                return $firebaseArray(saversRef);
             }
-            // savePost: function (postId, userId){
-            //     var ref=firebase.database().ref().child("posts").child(postId).child("savers").child(userId);
-            //     ref.update({
-            //         id_salvatore: userId
-            //     });
-            // },
-            // getSavers: function (postId) {
-            //     var saversRef = firebase.database().ref().child("posts").child(postId).child("savers");
-            //     return $firebaseArray(saversRef);
-            // }
         };
         return newPostService;
     });

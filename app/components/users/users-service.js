@@ -27,6 +27,7 @@ angular.module('myApp.users.usersService', [])
                 var ref = firebase.database().ref().child("users").child(userId);
                 // create a synchronized array
                 ref.set({
+                    id: userId,
                     name: name,
                     surname: surname,
                     email: email,

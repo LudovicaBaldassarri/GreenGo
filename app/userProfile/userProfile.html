@@ -53,7 +53,7 @@
       </div>
 
       <div class="row">
-        <div class="col-xs-12">
+        <div class="col-md-12">
           <ul class="media-list">
             <!--area profilo-->
             <li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="  dati.userId == post.autoreId && dati.area== 'profilo'">
@@ -81,47 +81,41 @@
             </li>
 
             <!--area ricettario-->
-            <li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="  dati.userId == post.autoreId && dati.area== 'ricettario' && post.tag=='ricetta'">
-            <h3>Le mie ricette</h3><hr>
-            <div class="col-md-4">
-              <div class="panel panel-success">
-                <div class="panel-heading"><a href="#!/detailsRicetta/{{post.id}}">{{post.titolo}}</a>
+            <div class="row" ng-if="dati.area == 'ricettario'">
+              <h3>Le mie ricette</h3><hr>
+                <li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="  dati.userId == post.autoreId && dati.area== 'ricettario' && post.tag=='ricetta'">
+                <div class="col-md-4">
+                  <div class="panel panel-success">
+                    <div class="panel-heading"><a href="#!/detailsRicetta/{{post.id}}">{{post.titolo}}</a>
+                    </div>
+                    <div class="panel-body">
+                      <img style="width:100%" height="100px" alt="Image"
+                           ng-src="{{post.img_url}}" alt="{{post.img_alt}}" ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">
+                    </div>
+                  </div>
                 </div>
-                <div class="panel-body">
-                  <img style="width:100%" height="100px" alt="Image"
-                       ng-src="{{post.img_url}}" alt="{{post.img_alt}}" ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">
-                </div>
-                <!--<div class="panel-footer">-->
-                  <!--<p>-->
-                    <!--<a href="#!/otherUserProfile/{{post.autoreId}}" ng-if="dati.userId != post.autoreId"><span style="color: green">{{post.name}} {{post.surname}}</span></a>-->
-                    <!--<a href="#!/userProfile" ng-if="dati.userId == post.autoreId"><span style="color: green">{{post.name}} {{post.surname}}</span></a><br>-->
-                    <!--&lt;!&ndash;{{post.descrizione}}&ndash;&gt;-->
-                  <!--</p>-->
-                <!--</div>-->
+              </li>
+              <!--ng-repeat="post in dati.posts| orderBy: '-date' :true"-->
+              <!--ricette salvate-->
+              <h3>Ricette salvate</h3><hr>
+              <div class="col-md-4">
+                <li class="media" ng-repeat="post in dati.posts" ng-if="dati.area == 'ricettario' && post.tag=='ricetta'">
+
+                  <div class="panel panel-success">
+                    <div class="panel-heading"><a href="#!/detailsRicetta/{{post.id}}">{{post.titolo}}</a>
+                    </div>
+                    <div class="panel-body">
+                      <img style="width:100%" height="100px" alt="Image"
+                           ng-src="{{post.img_url}}" alt="{{post.img_alt}}" ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">
+                    </div>
+                  </div></li>
               </div>
             </div>
-          </li>
-            <!--ricette salvate-->
-            <li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="  dati.userId == post.autoreId && dati.area== 'ricettario' && post.tag=='ricetta'">
-              <h3>Ricette salvate</h3><hr>
-              <!--<div class="col-md-6">-->
-                <!--<div class="panel panel-success">-->
-                  <!--<div class="panel-heading"><a href="#!/detailsRicetta/{{post.id}}">{{post.titolo}}</a>-->
-                  <!--</div>-->
-                  <!--<div class="panel-body">-->
-                    <!--<img style="width:100%" height="200px" alt="Image"-->
-                         <!--ng-src="{{post.img_url}}" alt="{{post.img_alt}}" ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">-->
-                  <!--</div>-->
-                  <!--<div class="panel-footer">-->
-                    <!--<p>-->
-                      <!--<a href="#!/otherUserProfile/{{post.autoreId}}" ng-if="dati.userId != post.autoreId"><span style="color: green">{{post.name}} {{post.surname}}</span></a>-->
-                      <!--<a href="#!/userProfile" ng-if="dati.userId == post.autoreId"><span style="color: green">{{post.name}} {{post.surname}}</span></a><br>-->
-                      <!--&lt;!&ndash;{{post.descrizione}}&ndash;&gt;-->
-                    <!--</p>-->
-                  <!--</div>-->
-                <!--</div>-->
-              <!--</div>-->
-            </li>
+
+
+
+
+
 
             <!--area tutorial-->
             <li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="  dati.userId == post.autoreId && dati.area== 'tutorial' && post.tag=='tutorial'">
@@ -134,13 +128,6 @@
                     <img style="width:100%" height="90px" alt="Image"
                          ng-src="{{post.img_url}}" alt="{{post.img_alt}}" ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">
                   </div>
-                  <!--<div class="panel-footer">-->
-                    <!--<p>-->
-                      <!--<a href="#!/otherUserProfile/{{post.autoreId}}" ng-if="dati.userId != post.autoreId"><span style="color: green">{{post.name}} {{post.surname}}</span></a>-->
-                      <!--<a href="#!/userProfile" ng-if="dati.userId == post.autoreId"><span style="color: green">{{post.name}} {{post.surname}}</span></a><br>-->
-                      <!--&lt;!&ndash;{{post.descrizione}}&ndash;&gt;-->
-                    <!--</p>-->
-                  <!--</div>-->
                 </div>
               </div>
             </li>

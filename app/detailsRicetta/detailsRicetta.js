@@ -28,6 +28,7 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
         $scope.dati.userId = currentAuth.uid;
         $scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
         $scope.dati.commenti = InsertCommentoService.getCommenti($routeParams.postId);
+        $scope.dati.savers = InsertPostService.getSavers($routeParams.postId);
 
         $scope.dati.commento = "";
 
@@ -85,6 +86,13 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
                 var voto = $("#miovoto");
                 voto.show();
             },
+
+        $scope.salvaRicetta = function () {
+            InsertPostService.savePost($routeParams.postId, currentAuth.uid);
+            var bottone = $("#btnSalva");
+            bottone.hide();
+
+        },
 
         $scope.addCommento = function () {
 

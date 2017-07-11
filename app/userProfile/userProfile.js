@@ -19,26 +19,18 @@ angular.module('myApp.userProfile', ['ngRoute'])
         });
     }])
 
-    .controller('userProfileCtrl', ['$scope','$rootScope', 'Post','UsersInfo', '$firebaseAuth', '$firebaseStorage', 'Users',
-        function($scope,$rootScope, Post, UsersInfo,  $firebaseAuth, $firebaseStorage, Users) {
+    .controller('userProfileCtrl', ['$scope','$rootScope','$routeParams', 'UsersInfo','Post','SinglePost', 'InsertPostService','$firebaseAuth', '$firebaseStorage', 'Users',
+        function($scope,$rootScope,$routeParams,  UsersInfo,Post, SinglePost, InsertPostService, $firebaseAuth, $firebaseStorage, Users ) {
         $scope.dati={};
         $rootScope.dati={};
         $rootScope.dati.currentView = "userProfile";
-        $scope.dati.posts = Post.getData();
+
 
         $scope.dati.userId = $firebaseAuth().$getAuth().uid;
+        // $scope.dati.savers = InsertPostService.getSavers($scope.dati.post);
         $scope.dati.user = UsersInfo.getUserInfo($firebaseAuth().$getAuth().uid);
+        $scope.dati.posts = Post.getData();
         $scope.dati.area = 'profilo';
-
-        // $scope.becomeProduttore= function () {
-        //     $scope.dati.user = Users.updateTipo($firebaseAuth().$getAuth().uid);
-        //     $window.location.reload();
-        //     var modalDiv = $("#modalProduttore");
-        //     modalDiv.modal('hide');
-        //     var modalMsg = $("#modalMsg");
-        //     modalMsg.modal('show');
-        //
-        // };
         $scope.dati.nomeProduttore="";
         $scope.dati.citta="";
         $scope.dati.descrizione="";
@@ -64,10 +56,6 @@ angular.module('myApp.userProfile', ['ngRoute'])
             var modalDiv = $("#modalUpdateInfo");
             modalDiv.modal('hide');
         };
-
-        //$scope.dati.follows = UsersFollowService.getFollow();
-        //$scope.dati.userId = currentAuth.uid;
-        //$scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
 
         var ctrl = this;
         $scope.fileToUpload = null;

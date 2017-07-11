@@ -95,17 +95,17 @@ angular.module('myApp.post.insertPostService', [])
                 ref.update({
                     media: media
                 });
-            },
-            savePost: function (postId, id_salvatore){
-                var ref=firebase.database().ref().child("posts").child(postId).child("savers").child(postId+id_salvatore);
-                ref.update({
-                    id_salvatore: id_salvatore
-                });
-            },
-            getSavers: function (postId) {
-                var saversRef = firebase.database().ref().child("posts").child(postId).child("savers");
-                return $firebaseArray(saversRef);
             }
+            // savePost: function (postId, userId){
+            //     var ref=firebase.database().ref().child("posts").child(postId).child("savers").child(userId);
+            //     ref.update({
+            //         id_salvatore: userId
+            //     });
+            // },
+            // getSavers: function (postId) {
+            //     var saversRef = firebase.database().ref().child("posts").child(postId).child("savers");
+            //     return $firebaseArray(saversRef);
+            // }
         };
         return newPostService;
     });

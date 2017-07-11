@@ -5,8 +5,11 @@
             <div class="panel panel-default text-left">
                 <div class="panel-body">
                     <h1 style="color: green;">{{dati.post.titolo}}</h1>
-                        <button id="btnSalva" class="btn btn-success" ng-click="salvaRicetta()" style="float: right;"  ng-repeat="savers in dati.savers | filter: '!' + dati.userId">Salva ricetta</button>
-                        <button class="btn btn-default" style="float: right;" ng-repeat="savers in dati.savers | filter: dati.userId">Salvata</button>
+                    <!--<button  id="btnSalva" class="btn btn-success" ng-click="salvaRicetta()" ng-if="isNotSalvato(dati.post.id)" style="float: right;">Salva ricetta</button>-->
+                    <!--<button class="btn btn-default" style="float: right;">Salvata</button>-->
+                    </li>
+                        <!--<button id="btnSalva" class="btn btn-success" ng-click="salvaRicetta()" style="float: right;">Salva ricetta</button>-->
+                        <!--<button class="btn btn-default" style="float: right;">Salvata</button>-->
                 </div>
             </div>
             <div class="panel panel-default text-left">

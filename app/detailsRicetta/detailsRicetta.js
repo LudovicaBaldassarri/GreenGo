@@ -28,7 +28,7 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
         $scope.dati.userId = currentAuth.uid;
         $scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
         $scope.dati.commenti = InsertCommentoService.getCommenti($routeParams.postId);
-        $scope.dati.savers = InsertPostService.getSavers($routeParams.postId);
+        // $scope.dati.savers = InsertPostService.getSavers($routeParams.postId);
 
         $scope.dati.commento = "";
 
@@ -86,11 +86,16 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
                 var voto = $("#miovoto");
                 voto.show();
             },
-
+        $scope.isNotSalvato = function (postId) {
+            var ref= UsersInfo.getPostSalvato(currentAuth.uid, postId);
+            if(ref== null){
+          return true;  }
+        },
         $scope.salvaRicetta = function () {
-            InsertPostService.savePost($routeParams.postId, currentAuth.uid);
-            var bottone = $("#btnSalva");
-            bottone.hide();
+            // InsertPostService.savePost($routeParams.postId, currentAuth.uid);
+            // var bottone = $("#btnSalva");
+            // bottone.hide();
+            UsersInfo.addPostSalvato(currentAuth.uid, $routeParams.postId);
 
         },
 

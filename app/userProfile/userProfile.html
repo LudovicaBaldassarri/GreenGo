@@ -57,13 +57,11 @@
           <ul class="media-list">
             <!--area profilo-->
             <li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="  dati.userId == post.autoreId && dati.area== 'profilo'">
-                <div class="media-left">
                   <div class="media-left">
                     <!--QUI METTEREI L'IMMAGINE DEL PROFILO-->
                     <img class="img-circle" alt="immagine" width="50" height="50"
                          ng-src="{{post.autore_img}}" alt="{{post.autore_img}}" ng-if="post.autore_img.includes('https://firebasestorage.googleapis.com')">
                   </div>
-                </div>
                 <div class="media-body">
                   <h4><strong>{{post.name}} {{post.surname}}</strong> ha pubblicato:</h4>
                   <p class="data-ora">{{post.dataStampa}} {{post.oraStampa}} </p>

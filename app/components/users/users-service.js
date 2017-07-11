@@ -31,7 +31,8 @@ angular.module('myApp.users.usersService', [])
                     name: name,
                     surname: surname,
                     email: email,
-                    tipo: ""
+                    tipo: "",
+                    img_url: "https://firebasestorage.googleapis.com/v0/b/greengo-a9d21.appspot.com/o/userImages%2FDefault.png?alt=media&token=35b74c3d-69a4-4c0c-bd7a-603ca2ade81c"
                 });
             },
             updateTipo: function (userId) {

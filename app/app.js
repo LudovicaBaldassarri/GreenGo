@@ -134,6 +134,13 @@ angular.module('myApp', [
                                 var modalDiv = $("#myModal2");
                                 modalDiv.modal('hide');
 
+                                $scope.user.name ="";
+                                $scope.user.surname ="";
+                                $scope.user.email ="";
+                                $scope.user.password="";
+                                $scope.user.password2 ="";
+
+
                                 $location.path("/home");
                             }).catch(function(error) {
                                 $scope.error = error;

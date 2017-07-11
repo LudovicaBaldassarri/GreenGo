@@ -29,6 +29,13 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
         $scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
         $scope.dati.commenti = InsertCommentoService.getCommenti($routeParams.postId);
         $scope.dati.savers = InsertPostService.getSavers($routeParams.postId);
+        $scope.dati.salvatoCond = "false";
+
+        $scope.controlloSavers = function(saver){
+            if( saver == $scope.dati.userId){
+                return true;
+            }
+        }
 
         $scope.dati.commento = "";
 

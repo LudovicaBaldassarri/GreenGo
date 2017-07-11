@@ -46,9 +46,9 @@ angular.module('myApp.otherUserProfile', ['ngRoute'])
                 for (var keySingleFlowing in following) {
                     if (!angular.isFunction(keySingleFlowing)) {
                         if (!angular.isFunction(following[keySingleFlowing])) {
-                            if (following[keySingleFlowing]!=undefined && following[keySingleFlowing].follower!=undefined) {
-                                if ($scope.dati.userId.$id == following[keySingleFlowing].follower.id) {
-                                    if ($scope.dati.otherUserInfo.$id == following[keySingleFlowing].followed) {
+                            if (following[keySingleFlowing]!==undefined && following[keySingleFlowing].follower!==undefined) {
+                                if ($scope.dati.userId.$id === following[keySingleFlowing].follower.id) {
+                                    if ($scope.dati.otherUserInfo.$id === following[keySingleFlowing].followed) {
                                         $scope.dati.notFollowing = false;
                                     }
                                 }
@@ -63,9 +63,9 @@ angular.module('myApp.otherUserProfile', ['ngRoute'])
                 for (var keySingleFlowing in following) {
                     if (!angular.isFunction(keySingleFlowing)) {
                         if (!angular.isFunction(following[keySingleFlowing])) {
-                            if (following[keySingleFlowing]!=undefined && following[keySingleFlowing].follower!=undefined) {
-                                if ($scope.dati.userId.$id == following[keySingleFlowing].follower.id) {
-                                    if ($scope.dati.otherUserInfo.$id == following[keySingleFlowing].followed) {
+                            if (following[keySingleFlowing]!==undefined && following[keySingleFlowing].follower!==undefined) {
+                                if ($scope.dati.userId.$id === following[keySingleFlowing].follower.id) {
+                                    if ($scope.dati.otherUserInfo.$id === following[keySingleFlowing].followed) {
                                         $scope.dati.Follow = following[keySingleFlowing].id;
                                         console.log($scope.dati.Follow);
                                         $scope.dati.yetFollowing = true;
@@ -81,7 +81,7 @@ angular.module('myApp.otherUserProfile', ['ngRoute'])
 
 
             $scope.CreateFollow = function() {
-                UsersFollowService.insertNewUsersFollow($scope.dati.userId, $routeParams.otherUserId, $scope.dati.otherUserInfo.name, 'bottone disabilitato').then(function (ref) {
+                UsersFollowService.insertNewUsersFollow($scope.dati.userId, $routeParams.otherUserId, $scope.dati.otherUserInfo.name).then(function (ref) {
                     var followId = ref.key;
                     UsersFollowService.updateUsersFollow(followId);
                     $scope.dati.notFollowing = false;

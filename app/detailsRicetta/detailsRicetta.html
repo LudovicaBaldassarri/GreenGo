@@ -7,8 +7,8 @@
                     <h1 style="color: green;">{{dati.post.titolo}}</h1>
                     <!--BOTTONE SALVA POST-->
                     <button id="saveButton"  ng-click="saveRicetta()"
-                            type="submit" class="btn btn-success"  style="float: right;">Segui</button>
-                    <button   ng-click="removeSaver(dati.userId)" type="submit" class="btn btn-default"
+                            type="submit" class="btn btn-success" ng-if= "dati.notSaved" style="float: right;">Segui</button>
+                    <button  ng-if="dati.yetSaved" ng-click="removeSaver(dati.Saving)" type="submit" class="btn btn-default"
                              style="float: right;">Salvata</button>
                         <!--<button id="btnSalva" class="btn btn-success" ng-click="salvaRicetta()" style="float: right;" ng-repeat="saver in dati.savers filter:controlloSavers(saver.id_salvatore)">Salva ricetta</button>-->
                         <!--<button class="btn btn-default" style="float: right;" ng-repeat="saver in dati.savers filter:controlloSavers() ">Salvata</button>-->

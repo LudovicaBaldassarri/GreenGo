@@ -24,13 +24,13 @@ angular.module('myApp.users.postSaveService', [])
                 });
             },
             updatePostSaved: function (saverId) {
-                var ref = firebase.database().ref().child("follows").child(saverId);
+                var ref = firebase.database().ref().child("savers").child(saverId);
                 ref.update({
                     id: saverId
                 });
             },
             deleteSaved: function (saverId) {
-                var refDel = firebase.database().ref().child("follows").child(saverId);
+                var refDel = firebase.database().ref().child("savers").child(saverId);
                 refDel.remove();
             }
         };

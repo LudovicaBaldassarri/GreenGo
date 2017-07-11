@@ -30,62 +30,60 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
         $scope.dati.commenti = InsertCommentoService.getCommenti($routeParams.postId);
 
         $scope.dati.savers = PostSaveService.getSavers();
-        // $scope.dati.notSaved = true;
-        //
-        // $scope.dati.savers.$loaded().then(function(){
-        //     var saving = $scope.dati.savers;
-        //     for (var keySingleFlowing in saving) {
-        //         if (!angular.isFunction(keySingleFlowing)) {
-        //             if (!angular.isFunction(saving[keySingleFlowing])) {
-        //                 if (saving[keySingleFlowing]!=undefined && saving[keySingleFlowing].follower!=undefined) {
-        //                     if ($scope.dati.userId.$id == saving[keySingleFlowing].follower.id) {
-        //                         if ($scope.dati.otherUserInfo.$id == saving[keySingleFlowing].followed) {
-        //                             $scope.dati.notFollowing = false;
-        //                         }
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     }
-        // });
-        // $scope.dati.yetFollowing = false;
-        // $scope.dati.follows.$loaded().then(function(){
-        //     var following = $scope.dati.follows;
-        //     for (var keySingleFlowing in following) {
-        //         if (!angular.isFunction(keySingleFlowing)) {
-        //             if (!angular.isFunction(following[keySingleFlowing])) {
-        //                 if (following[keySingleFlowing]!=undefined && following[keySingleFlowing].follower!=undefined) {
-        //                     if ($scope.dati.userId.$id == following[keySingleFlowing].follower.id) {
-        //                         if ($scope.dati.otherUserInfo.$id == following[keySingleFlowing].followed) {
-        //                             $scope.dati.Follow = following[keySingleFlowing].id;
-        //                             console.log($scope.dati.Follow);
-        //                             $scope.dati.yetFollowing = true;
-        //
-        //                         }
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     }
-        //     return false;
-        // });
-        //
-console.log($scope.dati.post.id);
+        $scope.dati.notSaved = true;
+
+        $scope.dati.savers.$loaded().then(function(){
+            var saving = $scope.dati.savers;
+            for (var keySingleFlowing in saving) {
+                if (!angular.isFunction(keySingleFlowing)) {
+                    if (!angular.isFunction(saving[keySingleFlowing])) {
+                        if (saving[keySingleFlowing]!==undefined && saving[keySingleFlowing].saver!==undefined) {
+                            if ($scope.dati.userId === saving[keySingleFlowing].saver) {
+                                if ($scope.dati.post.$id === saving[keySingleFlowing].postId.id) {
+                                    $scope.dati.notSaved = false;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        $scope.dati.yetSaved = false;
+        $scope.dati.savers.$loaded().then(function(){
+            var saving = $scope.dati.savers;
+            for (var keySingleFlowing in saving) {
+                if (!angular.isFunction(keySingleFlowing)) {
+                    if (!angular.isFunction(saving[keySingleFlowing])) {
+                        if (saving[keySingleFlowing]!==undefined && saving[keySingleFlowing].saver!==undefined) {
+                            if ($scope.dati.userId === saving[keySingleFlowing].saver) {
+                                if ($scope.dati.post.$id === saving[keySingleFlowing].postId.id) {
+                                    $scope.dati.Saving = saving[keySingleFlowing].id;
+                                    $scope.dati.yetSaved = true;
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        });
+
         $scope.saveRicetta = function() {
-            PostSaveService.insertNewSavedPost($scope.dati.post.id, $scope.dati.userId, $scope.dati.post.titolo, $scope.dati.post.name).then(function (ref) {
+            PostSaveService.insertNewSavedPost($scope.dati.post, $scope.dati.userId, $scope.dati.post.titolo, $scope.dati.post.name).then(function (ref) {
                 var refy = ref.key;
                 PostSaveService.updatePostSaved(refy);
-                // $scope.dati.notFollowing = false;
-                // $scope.dati.yetFollowing = true;
+                $scope.dati.notSaved = false;
+                $scope.dati.yetSaved = true;
 
             });
         };
 
-        // $scope.removeFollow = function (followId) {
-        //     UsersFollowService.deleteFollow(followId);
-        //     $scope.dati.notFollowing = true;
-        //     $scope.dati.yetFollowing =false;
-        // };
+        $scope.removeSaver = function (userId) {
+            PostSaveService.deleteSaved(userId);
+            $scope.dati.notSaved = true;
+            $scope.dati.yetSaved =false;
+        };
 
     // };
 

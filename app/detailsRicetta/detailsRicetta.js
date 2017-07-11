@@ -19,8 +19,8 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
     });
 }])
 
-.controller('detailsRicettaCtrl', ['$scope', '$rootScope', 'SinglePost', '$routeParams', 'currentAuth', 'UsersInfo','InsertPostService', 'InsertCommentoService',
-    function ($scope, $rootScope, SinglePost, $routeParams, currentAuth, UsersInfo, InsertPostService, InsertCommentoService) {
+.controller('detailsRicettaCtrl', ['$scope', '$rootScope', 'SinglePost', '$routeParams', 'currentAuth', 'UsersInfo','InsertPostService', 'InsertCommentoService','PostSaveService',
+    function ($scope, $rootScope, SinglePost, $routeParams, currentAuth, UsersInfo, InsertPostService, InsertCommentoService, PostSaveService) {
         $scope.dati = {};
         $rootScope.dati = {};
         $rootScope.dati.currentView = "detailsRicetta";
@@ -28,14 +28,68 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
         $scope.dati.userId = currentAuth.uid;
         $scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
         $scope.dati.commenti = InsertCommentoService.getCommenti($routeParams.postId);
-        $scope.dati.savers = InsertPostService.getSavers($routeParams.postId);
-        $scope.dati.salvatoCond = "false";
 
-        $scope.controlloSavers = function(saver){
-            if( saver == $scope.dati.userId){
-                return true;
-            }
-        }
+        $scope.dati.savers = PostSaveService.getSavers();
+        // $scope.dati.notSaved = true;
+        //
+        // $scope.dati.savers.$loaded().then(function(){
+        //     var saving = $scope.dati.savers;
+        //     for (var keySingleFlowing in saving) {
+        //         if (!angular.isFunction(keySingleFlowing)) {
+        //             if (!angular.isFunction(saving[keySingleFlowing])) {
+        //                 if (saving[keySingleFlowing]!=undefined && saving[keySingleFlowing].follower!=undefined) {
+        //                     if ($scope.dati.userId.$id == saving[keySingleFlowing].follower.id) {
+        //                         if ($scope.dati.otherUserInfo.$id == saving[keySingleFlowing].followed) {
+        //                             $scope.dati.notFollowing = false;
+        //                         }
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        // });
+        // $scope.dati.yetFollowing = false;
+        // $scope.dati.follows.$loaded().then(function(){
+        //     var following = $scope.dati.follows;
+        //     for (var keySingleFlowing in following) {
+        //         if (!angular.isFunction(keySingleFlowing)) {
+        //             if (!angular.isFunction(following[keySingleFlowing])) {
+        //                 if (following[keySingleFlowing]!=undefined && following[keySingleFlowing].follower!=undefined) {
+        //                     if ($scope.dati.userId.$id == following[keySingleFlowing].follower.id) {
+        //                         if ($scope.dati.otherUserInfo.$id == following[keySingleFlowing].followed) {
+        //                             $scope.dati.Follow = following[keySingleFlowing].id;
+        //                             console.log($scope.dati.Follow);
+        //                             $scope.dati.yetFollowing = true;
+        //
+        //                         }
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        //     return false;
+        // });
+        //
+console.log($scope.dati.post.id);
+        $scope.saveRicetta = function() {
+            PostSaveService.insertNewSavedPost($scope.dati.post.id, $scope.dati.userId, $scope.dati.post.titolo, $scope.dati.post.name).then(function (ref) {
+                var refy = ref.key;
+                PostSaveService.updatePostSaved(refy);
+                // $scope.dati.notFollowing = false;
+                // $scope.dati.yetFollowing = true;
+
+            });
+        };
+
+        // $scope.removeFollow = function (followId) {
+        //     UsersFollowService.deleteFollow(followId);
+        //     $scope.dati.notFollowing = true;
+        //     $scope.dati.yetFollowing =false;
+        // };
+
+    // };
+
+
 
         $scope.dati.commento = "";
 
@@ -94,12 +148,12 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
                 voto.show();
             },
 
-        $scope.salvaRicetta = function () {
-            InsertPostService.savePost($routeParams.postId, currentAuth.uid);
-            var bottone = $("#btnSalva");
-            bottone.hide();
-
-        },
+        // $scope.salvaRicetta = function () {
+        //     InsertPostService.savePost($routeParams.postId, currentAuth.uid);
+        //     var bottone = $("#btnSalva");
+        //     bottone.hide();
+        //
+        // },
 
         $scope.addCommento = function () {
 

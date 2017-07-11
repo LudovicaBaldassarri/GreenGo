@@ -26,7 +26,6 @@ angular.module('myApp.otherUserProfile', ['ngRoute'])
 
             $scope.dati.userId = UsersFollowService.getUserInfo(currentAuth.uid);
             $scope.dati.otherUserId = $routeParams.otherUserId;
-            // $scope.dati.recipient = UsersFollowService.getUserInfo($scope.dati.otherUserId);
             $scope.dati.otherUserInfo = UsersFollowService.getUserInfo($scope.dati.otherUserId);
 
             $scope.Autore = function (autoreId) {

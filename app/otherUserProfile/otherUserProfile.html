@@ -26,7 +26,7 @@
                 </div>
                 <div id="followingDiv">
                     <h4>Following</h4>
-                    <div ng-repeat="follow in dati.follows" ng-if="dati.otherUserId==follow.follower.userId">
+                    <div ng-repeat="follow in dati.follows" ng-if="dati.otherUserId==follow.follower.id">
                         <em>{{follow.followedName}}</em>
                     </div>
                 </div>

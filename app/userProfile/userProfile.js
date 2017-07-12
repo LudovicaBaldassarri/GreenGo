@@ -19,14 +19,16 @@ angular.module('myApp.userProfile', ['ngRoute'])
         });
     }])
 
-    .controller('userProfileCtrl', ['$scope','$rootScope','$routeParams', 'UsersInfo','Post', 'PostSaveService','InsertPostService','$firebaseAuth', '$firebaseStorage', 'Users',
-        function($scope,$rootScope,$routeParams,  UsersInfo,Post, PostSaveService,InsertPostService, $firebaseAuth, $firebaseStorage, Users ) {
+    .controller('userProfileCtrl', ['$scope','$rootScope','$routeParams', 'UsersInfo','Post', 'PostSaveService','UsersFollowService','InsertPostService','$firebaseAuth', '$firebaseStorage', 'Users',
+        function($scope,$rootScope,$routeParams,  UsersInfo,Post, PostSaveService,UsersFollowService,InsertPostService, $firebaseAuth, $firebaseStorage, Users ) {
         $scope.dati={};
         $rootScope.dati={};
         $rootScope.dati.currentView = "userProfile";
 
         $scope.dati.savers = PostSaveService.getSavers();
+        $scope.dati.follows = UsersFollowService.getFollow();
 
+        // console.log($scope.dati.follows.follower.length());
         $scope.dati.userId = $firebaseAuth().$getAuth().uid;
         // $scope.dati.savers = InsertPostService.getSavers($scope.dati.post);
         $scope.dati.user = UsersInfo.getUserInfo($firebaseAuth().$getAuth().uid);
@@ -65,6 +67,7 @@ angular.module('myApp.userProfile', ['ngRoute'])
         $scope.addImage = function() {
 
             console.log($scope.dati.userId);
+
 
             //try to upload the image: if no image was specified, we create a new opera without an image
             if ($scope.fileToUpload != null) {
@@ -141,7 +144,13 @@ angular.module('myApp.userProfile', ['ngRoute'])
 
             };
 
-            $scope.removePost = function(postId){
-                Post.deletePost(postId);};
+            $scope.closeModalFollowers = function () {
+                var modalDiv = $("#followers");
+                modalDiv.modal('hide');
+            };
+            $scope.closeModalFollowing = function () {
+                var modalDiv = $("#following");
+                modalDiv.modal('hide');
+            };
 
 }]);

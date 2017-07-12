@@ -98,7 +98,45 @@ angular.module('myApp.post.insertPostService', [])
                 ref.update({
                     media: media
                 });
+            },
+
+            setVegetariana: function(postId, vegetariana, vegana) {
+                var ref = firebase.database().ref().child("posts").child(postId);
+                if(vegetariana || vegana){
+                    ref.update({
+                        vegetariana: "vegetariana"
+                    });
+                } else {ref.update({
+                    vegetariana: ""
+                });}
+
+            },
+
+            setVegana: function(postId, vegana) {
+                var ref = firebase.database().ref().child("posts").child(postId);
+                if(vegana){
+                    ref.update({
+                        vegana: "vegana"
+                    });
+                } else {ref.update({
+                    vegana: ""
+                });}
+
+            },
+
+            setSenzaGlutine: function(postId, senzaglutine) {
+                var ref = firebase.database().ref().child("posts").child(postId);
+                if(senzaglutine){
+                    ref.update({
+                        senzaglutine: "senzaglutine"
+                    });
+                } else {ref.update({
+                    senzaglutine: ""
+                });}
             }
+
+
+
             // savePost: function (postId, id_salvatore){
             //     var ref=firebase.database().ref().child("posts").child(postId).child("savers").child(id_salvatore);
             //     ref.update({

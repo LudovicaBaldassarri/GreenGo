@@ -61,7 +61,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" data-target="#modalPost">&times;</button>
-                                <h4>Insersci un post</h4>
+                                <h3>Insersci un post</h3>
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
@@ -92,11 +92,11 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" data-target="#modalPost">&times;</button>
-                                <h3>Insersci la tua Ricetta</h3>
+                                <h1>Insersci la tua Ricetta</h1>
                             </div>
                             <form ng-submit="addPost()">
                                 <div class="form-group">
-                                    <h4>Titolo:</h4>
+                                    <h3>Titolo:</h3>
                                     <input type="text" class="form-control" id="title"
                                            ng-model="dati.titolo" />
                                     <textarea class="form-control" rows="4" id="comment3" placeholder="Descrizione..."
@@ -261,7 +261,7 @@
 
                                 <div class="wrapper">
                                     <div>
-                                        <h5>Categoria</h5>
+                                        <h4>Categoria</h4>
                                         <select class="form-control" id="categoriaRic" style="max-width: 150px" ng-model="dati.categoria">
                                             <option></option>
                                             <option>Antipasti</option>
@@ -271,42 +271,25 @@
                                             <option>Bevande</option>
                                         </select>
                                     </div>
-
                                     <div>
-                                        <h5>Dieta</h5>
-
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" ng-model="dati.veggi" value="">
-                                                Vegetariana</label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" ng-model="dati.vegan" value="">
-                                                Vegana</label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label><input type="checkbox" ng-model="dati.glutenfree" value="">
-                                                Senza Glutine</label>
-                                        </div>
-
-                                        <!--<select class="form-control" id="dieta" style="max-width: 150px" ng-model="dati.dieta">
-                                            <option></option>
-                                            <option>Vegetariana</option>
-                                            <option>Vegana</option>
-                                            <option>Senza Glutine</option>
-                                            <option>Senza derivati del Latte</option>
-                                        </select>-->
+                                        <h4>Difficoltà</h4>
+                                        <select class="form-control" id="difRic" style="max-width: 150px" ng-model="dati.difficolta">
+                                            <option>Facile</option>
+                                            <option>Medio</option>
+                                            <option>Difficile</option>
+                                        </select>
                                     </div>
 
                                     <div>
-                                        <h5 style="padding-top: 10px; display: block">Tempo preparazione:</h5>
+                                        <h4 style="padding-top: 10px; display: block">Tempo preparazione:</h4>
                                         <input type="text" class="form-control" id="tmp1"  style="max-width: 110px"
-                                               placeholder="ore:minuti" ng-model="dati.tempoP">
+                                               placeholder="hh:mm" ng-model="dati.tempoP">
                                     </div>
 
                                     <div>
-                                        <h5 style="padding-top: 10px; display: block">Tempo cottura:</h5>
+                                        <h4 style="padding-top: 10px; display: block">Tempo cottura:</h4>
                                         <input type="text" class="form-control" id="tmp2"  style="max-width: 110px"
-                                               placeholder="ore:minuti" ng-model="dati.tempoC">
+                                               placeholder="hh:mm" ng-model="dati.tempoC">
                                     </div>
                                 </div>
                                 <hr>
@@ -321,13 +304,21 @@
                                     </div>
 
                                     <div>
-                                        <h5>Difficoltà</h5>
-                                        <select class="form-control" id="difRic" style="max-width: 150px" ng-model="dati.difficolta">
-                                            <option>Facile</option>
-                                            <option>Medio</option>
-                                            <option>Difficile</option>
-                                        </select>
+                                        <h4>Dieta</h4>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" ng-model="dati.veggi" value="">
+                                                Vegetariana</label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" ng-model="dati.vegan" value="">
+                                                Vegana</label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" ng-model="dati.glutenfree" value="">
+                                                Senza Glutine</label>
+                                        </div>
                                     </div>
+
                                 </div>
 
 
@@ -347,14 +338,14 @@
                 <div class="modal fade post" id="modalTutorial" role="dialog">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <div class="modal-header">
-                                <h3>Insersci il tuo Tutorial</h3>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h1>Insersci il tuo Tutorial</h1>
                             </div>
 
                             <form ng-submit="addPost()">
                                 <div class="form-group">
-                                    <h4>Titolo:</h4>
+                                    <h3>Titolo:</h3>
                                     <input type="text" class="form-control" id="titolo"
                                            ng-model="dati.titolo">
                                     <textarea class="form-control" rows="6" id="comment2" placeholder="Descrizione..."

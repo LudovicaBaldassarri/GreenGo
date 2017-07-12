@@ -176,6 +176,7 @@ angular.module('myApp.home', ['ngRoute'])
                     $scope.dati.vegetariana= InsertPostService.setVegetariana(postId, $scope.dati.veggi, $scope.dati.vegan);
                     $scope.dati.vegana= InsertPostService.setVegana(postId, $scope.dati.vegan);
                     $scope.dati.senzaglutine= InsertPostService.setSenzaGlutine(postId, $scope.dati.glutenfree);
+
                     /*  $scope.dati.vegana = $scope.setVegana();
                     $scope.dati.senzaglutine= $scope.setSenzaGlutine();*/
 

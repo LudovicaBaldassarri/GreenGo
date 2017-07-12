@@ -53,8 +53,12 @@
                                      ng-src="{{posts.img_url}}" alt="{{posts.img_alt}}"
                                      ng-if="posts.img_url.includes('https://firebasestorage.googleapis.com')"></div>
                             <div class="panel-footer">
-                                <p><a href="#!/otherUserProfile/{{posts.autoreId}}" style="color: green">{{posts.name}} {{posts.surname}} </a><br>
-                                <!--{{post.descrizione}}--></p></div>
+                                <p>
+                                    <a href="#!/otherUserProfile/{{post.autoreId}}" ng-if="dati.userId != post.autoreId"><span style="color: green">{{post.name}} {{post.surname}}</span></a>
+                                    <a href="#!/userProfile" ng-if="dati.userId == post.autoreId"><span style="color: green">{{post.name}} {{post.surname}}</span></a><br>
+                                    <!--{{post.descrizione}}-->
+                                </p>
+                            </div>
                         </div>
                     </div>
 

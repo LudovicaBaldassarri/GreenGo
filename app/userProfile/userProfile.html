@@ -51,7 +51,7 @@
         <div class="col-md-12">
           <ul class="media-list">
             <!--area profilo-->
-            <li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="  dati.userId == post.autoreId && dati.area== 'profilo'">
+            <li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="  dati.userId == post.autoreId">
                   <div class="media-left">
                     <!--QUI METTEREI L'IMMAGINE DEL PROFILO-->
                     <img class="img-circle" alt="immagine" width="50" height="50"
@@ -359,7 +359,7 @@
                   </div>
                   <div class="modal-body">
                       <li style="list-style: none" ng-repeat="follows in dati.follows" ng-if="dati.userId==follows.follower.id">
-                          <a href="#!/otherUserProfile/{{follows.followed}}" style="color: green" ng-click="closeModalFollowers()">{{follows.followedName}}</a>
+                          <a href="#!/otherUserProfile/{{follows.followed}}" style="color: green" ng-click="closeModalFollowing()">{{follows.followedName}}</a>
                       </li><br>
                       <button type="button" class="btn btn-default" style="float: right;" data-dismiss="modal">Close</button><br><br>
                   </div>

@@ -27,11 +27,12 @@ angular.module('myApp.otherUserProfile', ['ngRoute'])
             $scope.dati.userId = UsersFollowService.getUserInfo(currentAuth.uid);
             $scope.dati.otherUserId = $routeParams.otherUserId;
             $scope.dati.otherUserInfo = UsersFollowService.getUserInfo($scope.dati.otherUserId);
+            $scope.dati.area = 'profilo';
 
             $scope.Autore = function (autoreId) {
-                if (autoreId = $scope.dati.otherUserId){
+                if (autoreId === $scope.dati.otherUserId){
                     return autoreId;
-                };
+                }
             };
             $scope.orderProp = "autoreId";
 
@@ -95,7 +96,35 @@ angular.module('myApp.otherUserProfile', ['ngRoute'])
                 $scope.dati.notFollowing = true;
                 $scope.dati.yetFollowing =false;
             };
+            //PER ANDARE A RICETTARIO
+            $scope.goToRicettario= function () {
+                $scope.dati.area = 'ricettario';
 
+            };
+            //PER ANDARE A TUTORIAL
+            $scope.goToTutorial= function () {
+                $scope.dati.area = 'tutorial';
+
+            };
+            //PER ANDARE A MEDAGLIE
+            $scope.goToMedaglie= function () {
+                $scope.dati.area = 'medaglie';
+
+            };
+            //PER TORNARE A PROFILO
+            $scope.goToProfilo= function () {
+                $scope.dati.area = 'profilo';
+
+            };
+
+            $scope.closeModalFollowers = function () {
+                var modalDiv = $("#followers");
+                modalDiv.modal('hide');
+            };
+            $scope.closeModalFollowing = function () {
+                var modalDiv = $("#following");
+                modalDiv.modal('hide');
+            };
         }
 
 

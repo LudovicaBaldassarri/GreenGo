@@ -337,27 +337,3 @@ angular.module('myApp.home', ['ngRoute'])
             };
     }]);
 
-//  LISTA DINAMICA PER L'INSERIMENTO DEGLI INGREDIENTI
-// $(document).on('click', '.btn-add', function (e) {
-//     e.preventDefault();
-//
-//     var controlForm = $('.controls span:first'),
-//         currentEntry = $(this).parents('.entry').filter(":first"),
-//         newEntry = currentEntry.clone().appendTo(controlForm);
-//
-//     newEntry.find('input').val('');
-//     controlForm.find('.entry:not(:last) .btn-add')
-//         .removeClass('btn-add').addClass('btn-remove')
-//         .removeClass('btn-success').addClass('btn-danger')
-//         .html('<span class="glyphicon glyphicon-minus"></span>');
-// });
-//
-// $(document).on('click', '.btn-remove', function (e) {
-//     $(this).parents('.entry:first').remove();
-//
-//     e.preventDefault();
-//     return false;
-// });
-// FINE LISTA DINAMICA
-
-

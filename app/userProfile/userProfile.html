@@ -44,6 +44,501 @@
                 <!--<span style="float: right"><img src="../images/avocadino.png" height="70px"></span>-->
             </div>
           </div>
+            <!--INSERIMENTO POST-->
+            <div class="panel panel-default" id="postP">
+                <div class="panel-body">
+                    <div class="media-left">
+                        <img class="img-circle" alt="immagine" width="50" height="50"
+                             ng-src="{{dati.user.img_url}}" alt="{{dati.user.img_url}}" ng-if="dati.user.img_url.includes('https://firebasestorage.googleapis.com')">
+                    </div>
+                    <div class="media-body">
+                        <a href="#!/userProfile" style="color: grey; text-decoration: none" data-toggle="modal" data-target="#modalPostP">Scrivi qualcosa...</a>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <button type="button" class="btn btn-success" href="#!/userProfile"
+                            data-toggle="modal" data-target="#modalRicettaP"ng-click="setTagP('ricetta');">Ricetta</button>
+                    <button type="button" class="btn btn-success" href="#!/userProfile"
+                            data-toggle="modal" data-target="#modalTutorialP" ng-click="setTagP('tutorial');">Tutorial</button>
+                </div>
+            </div>
+            <!-- MODAL POST -->
+            <div class="modal fade" id="modalPostP" role="dialog">
+                <form id="frmAddPost" role="form" ng-submit="addPostP()">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" data-target="#modalPostP">&times;</button>
+                                <h3>Insersci un post</h3>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <div class="media-left">
+                                        <img class="img-circle" alt="immagine" width="50" height="50"
+                                             ng-src="{{dati.user.img_url}}" alt="{{dati.user.img_url}}" ng-if="dati.user.img_url.includes('https://firebasestorage.googleapis.com')">
+                                    </div>
+                                    <div class="media-body">
+                                    <textarea type = "text" class="form-control" nome="descrizione" rows="4" id="desc" placeholder="Scrivi qualcosa..."
+                                              ng-model="dati.descrizione"></textarea>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-success" href="#!/userProfile"
+                                        data-toggle="modal" data-target="#modalRicettaP" ng-click="setTagP('ricetta');">Ricetta</button>
+                                <button type="button" class="btn btn-success" href="#!/userProfile"
+                                        data-toggle="modal" data-target="#modalTutorialP" ng-click="setTagP('tutorial');">Tutorial</button>
+                                <button type="submit" style="float: right;" class="btn btn-default">Pubblica</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- MODAL POST RICETTA-->
+            <div ng-controller="userProfileCtrl as $ctrl">
+                <div class="modal fade post" id="modalRicettaP" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" data-target="#modalPostP">&times;</button>
+                                <h1>Insersci la tua Ricetta</h1>
+                            </div>
+                            <form ng-submit="addPostP()">
+                                <div class="form-group">
+                                    <h3>Titolo:</h3>
+                                    <input type="text" class="form-control" id="title"
+                                           ng-model="dati.titolo" />
+                                    <textarea class="form-control" rows="4" id="comment3" placeholder="Descrizione..."
+                                              ng-model="dati.descrizione"></textarea>
+                                </div>
+
+
+                                <!-- INSERIMENTO INGREDIENTI -->
+                                <h4 style="padding-top: 25px">Inserisci Ingredienti:</h4>
+                                <div class="wrapper">
+                                    <div class="controls" id="ing1">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field1"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.ingrediente1"/>
+                                     <span class="input-group-btn">
+                                       <button id="btn1" class="btn btn-success btn-add" type="button" ng-click="addIng2()">
+                                            <span class="glyphicon glyphicon-plus" style="color: white"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                                    </div>
+                                    <div class="controls" id="ing2" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field2"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.ingrediente2"/>
+                                     <span class="input-group-btn">
+                                       <button id="btn2" class="btn btn-success btn-add" type="button" ng-click="addIng3()">
+                                            <span class="glyphicon glyphicon-plus" style="color: white"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                                    </div>
+                                    <div class="controls" id="ing3" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field3"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.ingrediente3"/>
+                                     <span class="input-group-btn">
+                                       <button id="btn3" class="btn btn-success btn-add" type="button" ng-click="addIng4()">
+                                            <span class="glyphicon glyphicon-plus" style="color: white"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                                    </div>
+                                    <div class="controls" id="ing4" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field4"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.ingrediente4"/>
+                                     <span class="input-group-btn">
+                                       <button id="btn4" class="btn btn-success btn-add" type="button" ng-click="addIng5()">
+                                            <span class="glyphicon glyphicon-plus" style="color: white"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                                    </div>
+                                    <div class="controls" id="ing5" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field5"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.ingrediente5"/>
+                                     <span class="input-group-btn">
+                                       <button id="btn5" class="btn btn-success btn-add" type="button" ng-click="addIng6()">
+                                            <span class="glyphicon glyphicon-plus" style="color: white"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                                    </div>
+                                    <div class="controls" id="ing6" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field6"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.ingrediente6"/>
+                                     <span class="input-group-btn">
+                                       <button id="btn6" class="btn btn-success btn-add" type="button" ng-click="addIng7()">
+                                            <span class="glyphicon glyphicon-plus" style="color: white"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                                    </div>
+                                    <div class="controls" id="ing7" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field7"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.ingrediente7"/>
+                                     <span class="input-group-btn">
+                                       <button id="btn7" class="btn btn-success btn-add" type="button" ng-click="addIng8()">
+                                            <span class="glyphicon glyphicon-plus" style="color: white"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                                    </div>
+                                    <div class="controls" id="ing8" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field8"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.ingrediente8"/>
+                                     <span class="input-group-btn">
+                                       <button id="btn8" class="btn btn-success btn-add" type="button" ng-click="addIng9()">
+                                            <span class="glyphicon glyphicon-plus" style="color: white"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                                    </div>
+                                    <div class="controls" id="ing9" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field9"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.ingrediente9"/>
+                                     <span class="input-group-btn">
+                                       <button id="btn9" class="btn btn-success btn-add" type="button" ng-click="addIng10()">
+                                            <span class="glyphicon glyphicon-plus" style="color: white"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                                    </div>
+                                    <div class="controls" id="ing10" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field10"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.ingrediente10"/>
+                                     <span class="input-group-btn">
+                                       <button id="btn10" class="btn btn-default btn-add" type="button">
+                                            <span class="glyphicon glyphicon-plus" style="color: white"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                                    </div>
+                                </div>
+
+                                <!--     FINE INSERIMENTO INGREDIENTI    -->
+
+
+
+
+                                <h4>Procedimento:</h4>
+                                <textarea class="form-control" rows="7" id="procRic"
+                                          ng-model="dati.procedimento"></textarea>
+                                <hr>
+
+                                <div class="wrapper">
+                                    <div>
+                                        <h4>Categoria</h4>
+                                        <select class="form-control" id="categoriaRic" style="max-width: 150px" ng-model="dati.categoria">
+                                            <option></option>
+                                            <option>Antipasti</option>
+                                            <option>Primi</option>
+                                            <option>Secondi</option>
+                                            <option>Dolci</option>
+                                            <option>Bevande</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <h4>Difficoltà</h4>
+                                        <select class="form-control" id="difRic" style="max-width: 150px" ng-model="dati.difficolta">
+                                            <option>Facile</option>
+                                            <option>Medio</option>
+                                            <option>Difficile</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <h4 style="padding-top: 10px; display: block">Tempo preparazione:</h4>
+                                        <input type="text" class="form-control" id="tmp1"  style="max-width: 110px"
+                                               placeholder="hh:mm" ng-model="dati.tempoP">
+                                    </div>
+
+                                    <div>
+                                        <h4 style="padding-top: 10px; display: block">Tempo cottura:</h4>
+                                        <input type="text" class="form-control" id="tmp2"  style="max-width: 110px"
+                                               placeholder="hh:mm" ng-model="dati.tempoC">
+                                    </div>
+                                </div>
+                                <hr>
+
+                                <div class="wrapper">
+                                    <!--BOTTONE PER CARICAMENTO DI FILE-->
+                                    <!--<img ng-src="{{post.img_url}}" alt="{{post.img_alt}}" ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')"-->
+                                    <div>
+                                        <h4>Immagine descrittiva</h4>
+                                        <file-upload on-change="$ctrl.onChange">
+                                        </file-upload>
+                                    </div>
+
+                                    <div>
+                                        <h4>Dieta</h4>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" ng-model="dati.veggi" value="">
+                                                Vegetariana</label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" ng-model="dati.vegan" value="">
+                                                Vegana</label>
+                                        </div>
+                                        <div class="checkbox">
+                                            <label><input type="checkbox" ng-model="dati.glutenfree" value="">
+                                                Senza Glutine</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="modal-footer">
+                                    <button href="#home" style="...";
+                                            type="submit" class="btn btn-default">Pubblica</button>
+                                </div>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>  <!--    chiude il modal RICETTA     -->
+
+                <!--   MODAL POST TUTORIAL  -->
+
+                <div class="modal fade post" id="modalTutorialP" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h1>Insersci il tuo Tutorial</h1>
+                            </div>
+
+                            <form ng-submit="addPostP()">
+                                <div class="form-group">
+                                    <h3>Titolo:</h3>
+                                    <input type="text" class="form-control" id="titolo"
+                                           ng-model="dati.titolo">
+                                    <textarea class="form-control" rows="6" id="comment2" placeholder="Descrizione..."
+                                              ng-model="dati.descrizione"></textarea>
+                                </div>
+
+
+                                <!-- INSERIMENTO STRUMENTI -->
+                                <h4>Materiale Necessario:</h4>
+                                <div class="wrapper">
+                                    <div class="controls">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="f1"
+                                              type="text" placeholder="Aggiungi Oggetto"
+                                              ng-model="dati.strumento1"/>
+                                     <span class="input-group-btn">
+                                       <button id="button11" class="btn btn-success btn-add" type="button" ng-click="addOgg2()">
+                                            <span class="glyphicon glyphicon-plus" style="color: white"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                                    </div>
+                                    <div class="controls" id="ogg2" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="f2"
+                                              type="text" placeholder="Aggiungi Oggetto"
+                                              ng-model="dati.strumento2"/>
+                                     <span class="input-group-btn">
+                                       <button id="button22" class="btn btn-success btn-add" type="button" ng-click="addOgg3()">
+                                            <span class="glyphicon glyphicon-plus" style="color: white"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                                    </div>
+                                    <div class="controls" id="ogg3" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="f3"
+                                              type="text" placeholder="Aggiungi Oggetto"
+                                              ng-model="dati.strumento3"/>
+                                     <span class="input-group-btn">
+                                       <button id="button3" class="btn btn-success btn-add" type="button" ng-click="addOgg4()">
+                                            <span class="glyphicon glyphicon-plus" style="color: white"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                                    </div>
+                                    <div class="controls" id="ogg4" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="f4"
+                                              type="text" placeholder="Aggiungi Oggetto"
+                                              ng-model="dati.strumento4"/>
+                                     <span class="input-group-btn">
+                                       <button id="button4" class="btn btn-success btn-add" type="button" ng-click="addOgg5()">
+                                            <span class="glyphicon glyphicon-plus" style="color: white"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                                    </div>
+                                    <div class="controls" id="ogg5" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="f5"
+                                              type="text" placeholder="Aggiungi Oggetto"
+                                              ng-model="dati.strumento5"/>
+                                     <span class="input-group-btn">
+                                       <button id="button5" class="btn btn-success btn-add" type="button" ng-click="addOgg6()">
+                                            <span  class="glyphicon glyphicon-plus" style="color: white"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                                    </div>
+                                    <div class="controls" id="ogg6" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field6"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.oggetto6"/>
+                                     <span class="input-group-btn">
+                                       <button id="button6"class="btn btn-success btn-add" type="button" ng-click="addOgg7()">
+                                            <span class="glyphicon glyphicon-plus" style="color: white"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                                    </div>
+                                    <div class="controls" id="ogg7" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field7"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.oggetto7"/>
+                                     <span class="input-group-btn">
+                                       <button id="button7" class="btn btn-success btn-add" type="button" ng-click="addOgg8()">
+                                            <span class="glyphicon glyphicon-plus" style="color: white"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                                    </div>
+                                    <div class="controls" id="ogg8" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field8"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.oggetto8"/>
+                                     <span class="input-group-btn">
+                                       <button id="button8" class="btn btn-success btn-add" type="button" ng-click="addOgg9()">
+                                            <span class="glyphicon glyphicon-plus" style="color: white"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                                    </div>
+                                    <div class="controls" id="ogg9" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field9"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.oggetto9"/>
+                                     <span class="input-group-btn">
+                                       <button id="button9" class="btn btn-success btn-add" type="button" ng-click="addOgg10()">
+                                            <span class="glyphicon glyphicon-plus" style="color: white"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                                    </div>
+                                </div>
+
+                                <h4>Procedimento:</h4>
+                                <textarea class="form-control" rows="7" id="prcdTut"
+                                          ng-model="dati.procedimento"></textarea>
+                                <div class="wrapper">
+                                    <div>
+                                        <h4 style="margin-top: 20px">Categoria: </h4>
+                                        <select class="form-control" id="catTut" style="max-width: 140px;"
+                                                ng-model="dati.categoria">
+                                            <option>Riutilizzo</option>
+                                            <option>Cucina</option>
+                                            <option>Cura del corpo</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <h4 style="margin-top: 20px">Difficoltà: </h4>
+                                        <select class="form-control" id="difTut" style="max-width: 140px;"
+                                                ng-model="dati.difficolta">
+                                            <option>Facile</option>
+                                            <option>Medio</option>
+                                            <option>Difficile</option>
+                                        </select>
+                                    </div>
+
+                                    <div>
+                                        <h4>Immagine descrittiva</h4>
+                                        <file-upload on-change="$ctrl.onChange">
+                                        </file-upload>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button href="#!/userProfile" style="float: right;"
+                                            type="submit" class="btn btn-default">Pubblica</button>
+                                </div>
+
+
+                            </form>
+                        </div>
+                    </div>
+
+
+                </div>  <!--    chiude il modal TUTORIAL     -->
+
+            </div>   <!-- chiude l' ng-controller homeCtrl   -->
+
+            <!-- fine modal -->
+
         </div>
       </div>
 

@@ -19,15 +19,17 @@ angular.module('myApp.detailsTutorial', ['ngRoute'])
     })
 }])
 
-.controller('detailsTutorialCtrl', ['$scope', '$rootScope', 'SinglePost', '$routeParams', 'currentAuth','InsertPostService', 'PostSaveService',
-        function($scope, $rootScope, SinglePost, $routeParams, currentAuth, InsertPostService, PostSaveService) {
+.controller('detailsTutorialCtrl', ['$scope', '$rootScope', 'SinglePost', '$routeParams', 'currentAuth','InsertPostService', 'PostSaveService', 'PostVoteService',
+        function($scope, $rootScope, SinglePost, $routeParams, currentAuth, InsertPostService, PostSaveService, PostVoteService) {
             $scope.dati = {};
             $rootScope.dati = {};
             $rootScope.dati.currentView = 'detailsTutorial';
             $scope.dati.post = SinglePost.getSinglePost($routeParams.postId);
             $scope.dati.userId = currentAuth.uid;
             $scope.dati.savers = PostSaveService.getSavers();
+            $scope.dati.voters = PostVoteService.getVoters();
 
+            // Iterazione per savers
             $scope.dati.notSaved = true;
             $scope.dati.savers.$loaded().then(function(){
                 var saving = $scope.dati.savers;
@@ -56,7 +58,6 @@ angular.module('myApp.detailsTutorial', ['ngRoute'])
                                     if ($scope.dati.post.$id === saving[keySingleFlowing].postId.id) {
                                         $scope.dati.Saving = saving[keySingleFlowing].id;
                                         $scope.dati.yetSaved = true;
-
                                     }
                                 }
                             }
@@ -82,8 +83,47 @@ angular.module('myApp.detailsTutorial', ['ngRoute'])
                 $scope.dati.yetSaved =false;
             };
 
-            //ALGORITMO PER I VOTI STELLE
 
+            //CONTROLLI VOTERS
+            $scope.dati.notVoted = true;
+            $scope.dati.voters.$loaded().then(function(){
+                var voting = $scope.dati.voters;
+                for (var keySingleFlowing in voting) {
+                    if (!angular.isFunction(keySingleFlowing)) {
+                        if (!angular.isFunction(voting[keySingleFlowing])) {
+                            if (voting[keySingleFlowing]!==undefined && voting[keySingleFlowing].voter!==undefined) {
+                                if ($scope.dati.userId === voting[keySingleFlowing].voter) {
+                                    if ($scope.dati.post.$id === voting[keySingleFlowing].postId.id) {
+                                        $scope.dati.notVoted = false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            $scope.dati.yetVoted = false;
+            $scope.dati.voters.$loaded().then(function(){
+                var voting = $scope.dati.voters;
+                for (var keySingleFlowing in voting) {
+                    if (!angular.isFunction(keySingleFlowing)) {
+                        if (!angular.isFunction(voting[keySingleFlowing])) {
+                            if (voting[keySingleFlowing]!==undefined && voting[keySingleFlowing].voter!==undefined) {
+                                if ($scope.dati.userId === voting[keySingleFlowing].voter) {
+                                    if ($scope.dati.post.$id === voting[keySingleFlowing].postId.id) {
+                                        $scope.dati.Voting = voting[keySingleFlowing].id;
+                                        $scope.dati.yetVoted = true;
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                return false;
+            });
+
+            //ALGORITMO PER I VOTI STELLE
             $scope.valueUno= function () {
                 $scope.dati.post.nuovoVoto = 1;
             },
@@ -114,10 +154,19 @@ angular.module('myApp.detailsTutorial', ['ngRoute'])
                         $scope.dati.post.media= parseInt(parseInt($scope.dati.post.voto )/parseInt($scope.dati.post.votatori));
                         InsertPostService.updateMedia($routeParams.postId, $scope.dati.post.media);
                     }
-                    var form = $("#formVota");
-                    form.hide();
-                    var voto = $("#miovoto");
-                    voto.show();
+
+                    PostVoteService.insertNewVotedPost($scope.dati.post, $scope.dati.userId, $scope.dati.post.titolo, $scope.dati.post.name).then(function (ref) {
+                        var refy = ref.key;
+                        PostSaveService.updatePostSaved(refy);
+                        $scope.dati.notVoted = false;
+                        $scope.dati.yetVoted = true;
+
+                    });
+
+                    //var form = $("#formVota");
+                    //form.hide();
+                    //var voto = $("#miovoto");
+                    //voto.show();
 
                 };
         }

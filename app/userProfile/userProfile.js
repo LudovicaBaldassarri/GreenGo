@@ -140,4 +140,7 @@ angular.module('myApp.userProfile', ['ngRoute'])
 
             };
 
+            $scope.removePost = function(postId){
+                Post.deletePost(postId);};
+
 }]);

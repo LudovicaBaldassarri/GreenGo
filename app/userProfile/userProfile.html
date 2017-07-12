@@ -74,6 +74,11 @@
                     <img class="media-object" ng-src="{{post.img_url}}" ng-alt="{{post.img_alt}}" width="70%">
                   <a href=""><h4 class="media-heading"><strong>{{post.nome_post}}</strong></h4></a>
                     <p>{{post.descrizione}}</p>
+
+                  <!-- CANCELLA POST --->
+                  <button class="btn btn-default btn-sm"
+                          ng-click="removePost(post.id)"ng-if="dati.userId == post.autoreId">Rimuovi Post</button>
+
                 </div>
                 <hr/>
             </li>

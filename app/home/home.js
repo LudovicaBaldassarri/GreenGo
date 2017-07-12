@@ -72,6 +72,10 @@ angular.module('myApp.home', ['ngRoute'])
             $scope.dati.strumento8 = "";
             $scope.dati.strumento9 = "";
             $scope.dati.strumento10 = "";
+            $scope.dati.strumento10 = "";
+            $scope.dati.vegetariana = "";
+            $scope.dati.vegana = "";
+            $scope.dati.senzaglutine = "";
 
             var ctrl = this;
             $scope.fileToUpload = null;
@@ -133,7 +137,8 @@ angular.module('myApp.home', ['ngRoute'])
                     $scope.dati.strumento2, $scope.dati.strumento3, $scope.dati.strumento4,
                     $scope.dati.strumento5, $scope.dati.strumento6, $scope.dati.strumento7,
                     $scope.dati.strumento8, $scope.dati.strumento9,
-                    $scope.dati.strumento10).then(function (ref) {
+                    $scope.dati.strumento10, $scope.dati.vegetariana, $scope.dati.vegana, $scope.dati.senzaglutine)
+                    .then(function (ref) {
 
                     var postId = ref.key;
                     $scope.dati.userInfo = InsertPostService.getUserInfo($scope.dati.userId);
@@ -168,8 +173,24 @@ angular.module('myApp.home', ['ngRoute'])
                     $scope.dati.strumento9 = "";
                     $scope.dati.strumento10 = "";
 
-                    console.log($rootScope.dati.tag);
+                    $scope.dati.vegetariana= InsertPostService.setVegetariana(postId, $scope.dati.veggi, $scope.dati.vegan);
+                    $scope.dati.vegana= InsertPostService.setVegana(postId, $scope.dati.vegan);
+                    $scope.dati.senzaglutine= InsertPostService.setSenzaGlutine(postId, $scope.dati.glutenfree);
+                    /*  $scope.dati.vegana = $scope.setVegana();
+                    $scope.dati.senzaglutine= $scope.setSenzaGlutine();*/
+
+                       /* $scope.dati.vegetariana= "";
+                        $scope.dati.vegana = "";
+                        $scope.dati.senzaglutine= "";*/
+
+
+
+                        console.log($rootScope.dati.tag);
                     console.log("hai aggiunto un post");
+                        console.log("vegetariana: "+ $scope.dati.veggi);
+                        console.log("vegana: "+ $scope.dati.vegan);
+                        console.log("senza glutine: "+ $scope.dati.glutenfree);
+
 
                     // SERVE PER CHIUDERE IL MODAL
                     var modalDiv = $("#modalPost");
@@ -186,6 +207,22 @@ angular.module('myApp.home', ['ngRoute'])
 
             $scope.removePost = function(postId){
                 Post.deletePost(postId);};
+
+           /* $scope.setVegetariana = function () {
+                if($scope.dati.vegetariana){
+                    return "Vegetariana";}
+                /!*if($scope.dati.veggie || $scope.dati.vegan) {
+                    InsertPostService.setFiltroVegetariana($scope.dati.id, 'vegetariana');
+                }*!/
+            };
+            $scope.setVegana = function () {
+                if($scope.dati.vegan){
+                    return "Vegana";}
+            };
+            $scope.setSenzaGlutine = function () {
+                if($scope.dati.glutenfree){
+                    return "Senza Glutine";}
+            };*/
 
             // funzioni per l'aggiunta di input INGREDIENTI
             $scope.addIng2 = function () {

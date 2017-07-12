@@ -1,6 +1,54 @@
 <div id="page">
     <!--SPAZIO RICERCA-->
-    <div class="jumbotron" align="center">
+    <div class="jumbotron">
+        <!--<div class="panel-body">-->
+
+            <input  id="wordR" type="text" class="form-control" ng-model="ricetteSearch" placeholder="Cerca per ingrediente...">
+
+
+            <div id="cathegoryR">
+                <h5>Categoria</h5>
+                <select class="form-control" id="categoriaRic" style="max-width: 150px" ng-model="categoriaSearch">
+                   <option></option>
+                   <option>Antipasti</option>
+                   <option>Primi</option>
+                   <option>Secondi</option>
+                   <option>Dolci</option>
+                   <option>Bevande</option>
+                </select>
+            </div>
+
+            <div id="difficultyR">
+                <h5>Difficoltà</h5>
+                <select class="form-control" id="difRic" style="max-width: 150px" ng-model="difficoltaSearch">
+                    <option>Facile</option>
+                    <option>Medio</option>
+                    <option>Difficile</option>
+                </select>
+            </div>
+
+            <div id="dietR">
+                <h5>Dieta</h5>
+                <select class="form-control" id="dieta" style="max-width: 150px" ng-model="dietaSearch">
+                    <option></option>
+                    <option>Vegetariana</option>
+                    <option>Vegana</option>
+                    <option>Senza Glutine</option>
+                </select>
+            </div>
+
+
+            <button id="searchR" class="btn btn-success" ng-click="setRicerca()"> Cerca </button>
+
+        </div>
+
+        <!--<input id="Search2" type="text" class="form-control" ng-model="ricetteSearch.$" placeholder="">-->
+
+
+
+
+
+    <!--<div class="jumbotron" align="center">
         <div class="panel-body"></div>
 
         <div class="row">
@@ -36,15 +84,14 @@
             <option>Vegetariana</option>
             <option>Vegana</option>
             <option>Senza Glutine</option>
-            <option>Senza derivati del Latte</option>
         </select>
         </div>
         </div>
 
-        <!--<input id="Search2" type="text" class="form-control" ng-model="ricetteSearch.$" placeholder="">-->
+        &lt;!&ndash;<input id="Search2" type="text" class="form-control" ng-model="ricetteSearch.$" placeholder="">&ndash;&gt;
 
     </div>
-
+-->
     <script>
         function myFunction() {
             var input, filter, ul, li, a, i;

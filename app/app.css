@@ -79,6 +79,7 @@ body{
   margin-right: 10%;
   margin-left: 10%;
   width: 80%;
+  padding-bottom: 150px;
 }
 
 #page {
@@ -224,4 +225,39 @@ body{
 
 .checkbox {
   margin:0;
+}
+
+
+/**  POSIZIONAMENTO ELEMENTI PER LA RICERCA  **/
+
+#wordR, #wordT, #wordM {
+  max-width: 250px;
+  position: absolute;
+  left:400px;
+}
+
+#cathegoryR, #cathegoryT, #cathegoryM {
+  width: 120px;
+  position: absolute;
+  top: 220px;
+  left:400px;
+}
+
+#difficultyR, #difficultyT{
+  width: 120px;
+  position: absolute;
+  top: 220px;
+  left: 550px;
+}
+
+#dietR {
+  width: 120px;
+  position: absolute;
+  top: 220px;
+  left: 705px;
+}
+
+#searchR, #searchT, #searchM {
+  position: absolute;
+  left:760px;
 }

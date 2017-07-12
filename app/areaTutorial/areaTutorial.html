@@ -1,31 +1,31 @@
 <div id="pageTut">
 
-    <div class="jumbotron" align="center">
-        <div class="row">
-            <div class="col-sm-10">
-                <input  id="Search" type="text" class="form-control" ng-model="tutorialSearch" placeholder="Cerca per strumento...">
-            </div>
-            <div class="col-xs-2"><button class="btn btn-success" ng-click="setRicerca()"> Cerca </button></div>
+    <div class="jumbotron">
+
+        <input  id="wordT" type="text" class="form-control" ng-model="tutorialSearch"
+                placeholder="Cerca per strumento...">
+
+        <div id="cathegoryT">
+            <h5>Categoria</h5>
+            <select class="form-control" id="categoriaRic" style="max-width: 150px" ng-model="categoriaSearch">
+                <option></option>
+                <option>Riutilizzo</option>
+                <option>Cucina</option>
+                <option>Cura del corpo</option>
+            </select>
         </div>
-        <div class="row">
-            <div class="col-xs-4">
-                <h5>Categoria</h5>
-                <select class="form-control" id="categoriaRic" style="max-width: 150px" ng-model="categoriaSearch">
-                    <option></option>
-                    <option>Riutilizzo</option>
-                    <option>Cucina</option>
-                    <option>Cura del corpo</option>
-                </select>
-            </div>
-            <div class="col-xs-4">
-                <h5>Difficoltà</h5>
-                <select class="form-control" id="difRic" style="max-width: 150px" ng-model="difficoltaSearch">
-                    <option>Facile</option>
-                    <option>Medio</option>
-                    <option>Difficile</option>
-                </select>
-            </div>
+
+        <div id="difficultyT">
+            <h5>Difficoltà</h5>
+            <select class="form-control" id="difRic" style="max-width: 150px" ng-model="difficoltaSearch">
+                <option>Facile</option>
+                <option>Medio</option>
+                <option>Difficile</option>
+            </select>
         </div>
+
+        <button id="searchT" class="btn btn-success" ng-click="setRicerca()"> Cerca </button>
+
     </div>
     <!-- <br><br>  -->
 

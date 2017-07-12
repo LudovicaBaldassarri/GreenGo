@@ -46,52 +46,6 @@
 
 
 
-
-
-    <!--<div class="jumbotron" align="center">
-        <div class="panel-body"></div>
-
-        <div class="row">
-        <div class="col-sm-10">
-        <input  id="Search" type="text" class="form-control" ng-model="ricetteSearch" placeholder="Cerca per ingrediente...">
-        </div>
-        <div class="col-xs-2"><button class="btn btn-success" ng-click="setRicerca()"> Cerca </button></div>
-        </div>
-        <div class="row">
-        <div class="col-xs-4">
-            <h5>Categoria</h5>
-            <select class="form-control" id="categoriaRic" style="max-width: 150px" ng-model="categoriaSearch">
-                <option></option>
-                <option>Antipasti</option>
-                <option>Primi</option>
-                <option>Secondi</option>
-                <option>Dolci</option>
-                <option>Bevande</option>
-            </select>
-        </div>
-        <div class="col-xs-4">
-        <h5>Difficoltà</h5>
-        <select class="form-control" id="difRic" style="max-width: 150px" ng-model="difficoltaSearch">
-            <option>Facile</option>
-            <option>Medio</option>
-            <option>Difficile</option>
-        </select>
-        </div>
-        <div class="col-xs-4">
-        <h5>Dieta</h5>
-        <select class="form-control" id="dieta" style="max-width: 150px" ng-model="dietaSearch">
-            <option></option>
-            <option>Vegetariana</option>
-            <option>Vegana</option>
-            <option>Senza Glutine</option>
-        </select>
-        </div>
-        </div>
-
-        &lt;!&ndash;<input id="Search2" type="text" class="form-control" ng-model="ricetteSearch.$" placeholder="">&ndash;&gt;
-
-    </div>
--->
     <script>
         function myFunction() {
             var input, filter, ul, li, a, i;
@@ -140,14 +94,16 @@
 
                             <div class="panel-body">
                                 <a href="#!/detailsRicetta/{{post.id}}" style="color: #18562c">{{post.titolo}}</a><br>
-                                <span style="font-size: 15px ;">{{post.descrizione}}</span>
+                                <p style="font-size: 15px ;">{{post.descrizione}}</p>
+
                             </div>
                             <div class="panel-footer">
                                 <p>
-                                    <a href="#!/otherUserProfile/{{post.autoreId}}" ng-if="dati.userId != post.autoreId">
+                                    <a href="#!/otherUserProfile/{{post.autoreId}}"
+                                       style="color: grey; font-size: 18px;font-weight: lighter" ng-if="dati.userId != post.autoreId">
                                         <span style="color: grey; font-weight: lighter">by {{post.name}} {{post.surname}}</span></a>
-                                    <a href="#!/userProfile" ng-if="dati.userId == post.autoreId">
-                                        <span style="color: grey; font-weight: lighter">by {{post.name}} {{post.surname}}</span></a><br>
+                                    <a href="#!/userProfile"style="color: grey; font-size: 18px;font-weight: lighter" ng-if="dati.userId == post.autoreId">
+                                        <span>by {{post.name}} {{post.surname}}</span></a><br>
                                     <!--{{post.descrizione}}-->
                                 </p>
                             </div>

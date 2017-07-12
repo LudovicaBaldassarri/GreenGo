@@ -82,7 +82,7 @@ angular.module('myApp.otherUserProfile', ['ngRoute'])
 
 
             $scope.CreateFollow = function() {
-                UsersFollowService.insertNewUsersFollow($scope.dati.userId, $routeParams.otherUserId, $scope.dati.otherUserInfo.name).then(function (ref) {
+                UsersFollowService.insertNewUsersFollow($scope.dati.userId, $routeParams.otherUserId, $scope.dati.otherUserInfo.name, $scope.dati.otherUserInfo.surname).then(function (ref) {
                     var followId = ref.key;
                     UsersFollowService.updateUsersFollow(followId);
                     $scope.dati.notFollowing = false;

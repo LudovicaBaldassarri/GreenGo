@@ -16,7 +16,7 @@ angular.module('myApp.post.insertPostService', [])
                                         ingrediente3, ingrediente4, ingrediente5, ingrediente6, ingrediente7,
                                      ingrediente8, ingrediente9, ingrediente10, strumento1, strumento2, strumento3,
                                      strumento4, strumento5, strumento6, strumento7, strumento8, strumento9,
-                                     strumento10, vegetariana, vegana, senzaglutine){
+                                     strumento10){
                 var ref=firebase.database().ref().child("posts");
                 return $firebaseArray(ref).$add({
                     autoreId: autoreId,
@@ -58,9 +58,9 @@ angular.module('myApp.post.insertPostService', [])
                         strumento8: strumento8,
                         strumento9: strumento9,
                         strumento10: strumento10},
-                    vegetariana: vegetariana,
-                    vegana:vegana,
-                    senzaglutine: senzaglutine
+                    "savers":{
+                        id_salvatore: "inizializzazione"
+                    }
                 });
             },
             updatePost: function(postId) {
@@ -98,53 +98,17 @@ angular.module('myApp.post.insertPostService', [])
                 ref.update({
                     media: media
                 });
-            },
-            savePost: function (postId, id_salvatore){
-                var ref=firebase.database().ref().child("posts").child(postId).child("savers").child(postId+id_salvatore);
-                ref.update({
-                    id_salvatore: id_salvatore
-                });
-            },
-            getSavers: function (postId) {
-                var saversRef = firebase.database().ref().child("posts").child(postId).child("savers");
-                return $firebaseArray(saversRef);
-            },
-
-            setVegetariana: function(postId, vegetariana, vegana) {
-                var ref = firebase.database().ref().child("posts").child(postId);
-                if(vegetariana || vegana){
-                    ref.update({
-                        vegetariana: "vegetariana"
-                    });
-                } else {ref.update({
-                    vegetariana: ""
-                });}
-
-            },
-
-            setVegana: function(postId, vegana) {
-                var ref = firebase.database().ref().child("posts").child(postId);
-                if(vegana){
-                    ref.update({
-                        vegana: "vegana"
-                    });
-                } else {ref.update({
-                    vegana: ""
-                });}
-
-            },
-
-            setSenzaGlutine: function(postId, senzaglutine) {
-                var ref = firebase.database().ref().child("posts").child(postId);
-                if(senzaglutine){
-                    ref.update({
-                        senzaglutine: "senzaglutine"
-                    });
-                } else {ref.update({
-                    senzaglutine: ""
-                });}
             }
-
+            // savePost: function (postId, id_salvatore){
+            //     var ref=firebase.database().ref().child("posts").child(postId).child("savers").child(id_salvatore);
+            //     ref.update({
+            //         id_salvatore: id_salvatore
+            //     });
+            // },
+            // getSavers: function (postId) {
+            //     var saversRef = firebase.database().ref().child("posts").child(postId).child("savers");
+            //     return $firebaseArray(saversRef);
+            // }
         };
         return newPostService;
     });

@@ -19,12 +19,13 @@ angular.module('myApp.userProfile', ['ngRoute'])
         });
     }])
 
-    .controller('userProfileCtrl', ['$scope','$rootScope','$routeParams', 'UsersInfo','Post','SinglePost', 'InsertPostService','$firebaseAuth', '$firebaseStorage', 'Users',
-        function($scope,$rootScope,$routeParams,  UsersInfo,Post, SinglePost, InsertPostService, $firebaseAuth, $firebaseStorage, Users ) {
+    .controller('userProfileCtrl', ['$scope','$rootScope','$routeParams', 'UsersInfo','Post', 'PostSaveService','InsertPostService','$firebaseAuth', '$firebaseStorage', 'Users',
+        function($scope,$rootScope,$routeParams,  UsersInfo,Post, PostSaveService,InsertPostService, $firebaseAuth, $firebaseStorage, Users ) {
         $scope.dati={};
         $rootScope.dati={};
         $rootScope.dati.currentView = "userProfile";
 
+        $scope.dati.savers = PostSaveService.getSavers();
 
         $scope.dati.userId = $firebaseAuth().$getAuth().uid;
         // $scope.dati.savers = InsertPostService.getSavers($scope.dati.post);

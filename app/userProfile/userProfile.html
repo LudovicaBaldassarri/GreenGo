@@ -57,13 +57,11 @@
           <ul class="media-list">
             <!--area profilo-->
             <li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="  dati.userId == post.autoreId && dati.area== 'profilo'">
-                <div class="media-left">
                   <div class="media-left">
                     <!--QUI METTEREI L'IMMAGINE DEL PROFILO-->
                     <img class="img-circle" alt="immagine" width="50" height="50"
                          ng-src="{{post.autore_img}}" alt="{{post.autore_img}}" ng-if="post.autore_img.includes('https://firebasestorage.googleapis.com')">
                   </div>
-                </div>
                 <div class="media-body">
                   <h4><strong>{{post.name}} {{post.surname}}</strong> ha pubblicato:</h4>
                   <p class="data-ora">{{post.dataStampa}} {{post.oraStampa}} </p>
@@ -86,8 +84,9 @@
             </li>
 
             <!--area ricettario-->
-            <div class="row" ng-if="dati.area == 'ricettario'">
+            <div class="col-md-12" ng-if="dati.area == 'ricettario'">
               <h3>Le mie ricette</h3><hr>
+              <ul class="media-list">
                 <li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="  dati.userId == post.autoreId && dati.area== 'ricettario' && post.tag=='ricetta'">
                 <div class="col-md-4">
                   <div class="panel panel-success">
@@ -100,20 +99,24 @@
                   </div>
                 </div>
               </li>
+              </ul>
               <!--ng-repeat="post in dati.posts| orderBy: '-date' :true"-->
               <!--ricette salvate-->
+
               <h3>Ricette salvate</h3><hr>
               <div class="col-md-4">
-                <li class="media" ng-repeat="post in dati.posts" ng-if="dati.area == 'ricettario' && post.tag=='ricetta'">
-
+                <ul class="media-list">
+                <li class="media" ng-repeat="savers in dati.savers" ng-if="savers.saver == dati.userId && dati.area == 'ricettario' && savers.postId.tag=='ricetta'">
                   <div class="panel panel-success">
-                    <div class="panel-heading"><a href="#!/detailsRicetta/{{post.id}}">{{post.titolo}}</a>
+                    <div class="panel-heading"><a href="#!/detailsRicetta/{{savers.postId.id}}">{{savers.postId.titolo}}</a>
                     </div>
                     <div class="panel-body">
                       <img style="width:100%" height="100px" alt="Image"
-                           ng-src="{{post.img_url}}" alt="{{post.img_alt}}" ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">
+                           ng-src="{{savers.postId.img_url}}" alt="{{savers.postId.img_alt}}" ng-if="savers.postId.img_url.includes('https://firebasestorage.googleapis.com')">
                     </div>
-                  </div></li>
+                  </div>
+                </li>
+                </ul>
               </div>
             </div>
 

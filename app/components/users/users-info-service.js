@@ -8,6 +8,17 @@ angular.module('myApp.users.usersInfoService', [])
                 var ref = firebase.database().ref().child("users").child(userId);
                 return $firebaseObject(ref);
             }
+
+            // addPostSalvato: function (userId, postId) {
+            //     var ref = firebase.database().ref().child("users").child(userId).child('postSalvati').child(postId);
+            //     ref.update({
+            //                 post_salvato:postId
+            //             });
+            // },
+            // getPostSalvato: function (userId, postId) {
+            //     var ref = firebase.database().ref().child("users").child(userId).child('postSalvati');
+            //     return $firebaseObject(ref);
+            // }
         };
         return usersInfoService;
     })

@@ -5,8 +5,13 @@
             <div class="panel panel-default text-left">
                 <div class="panel-body">
                     <h1 style="color: green;">{{dati.post.titolo}}</h1>
-                        <button id="btnSalva" class="btn btn-success" ng-click="salvaRicetta()" style="float: right;"  ng-repeat="savers in dati.savers | filter: '!' + dati.userId">Salva ricetta</button>
-                        <button class="btn btn-default" style="float: right;" ng-repeat="savers in dati.savers | filter: dati.userId">Salvata</button>
+                    <!--BOTTONE SALVA POST-->
+                    <button id="saveButton"  ng-click="saveRicetta()"
+                            type="submit" class="btn btn-success" ng-if= "dati.notSaved" style="float: right;">Salva</button>
+                    <button  ng-if="dati.yetSaved" ng-click="removeSaver(dati.Saving)" type="submit" class="btn btn-default"
+                             style="float: right;">Salvata</button>
+                        <!--<button id="btnSalva" class="btn btn-success" ng-click="salvaRicetta()" style="float: right;" ng-repeat="saver in dati.savers filter:controlloSavers(saver.id_salvatore)">Salva ricetta</button>-->
+                        <!--<button class="btn btn-default" style="float: right;" ng-repeat="saver in dati.savers filter:controlloSavers() ">Salvata</button>-->
                 </div>
             </div>
             <div class="panel panel-default text-left">
@@ -101,16 +106,17 @@
                     <hr>
                     Il tuo voto:
                     <br>
-                    <form ng-submit="addVoto()" id="formVota">
+                    <form ng-submit="addVoto()" id="formVota" ng-if="dati.notVoted">
                         <button class="stellaButton" ng-click="valueUno()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
                         <button class="stellaButton" ng-click="valueDue()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
                         <button class="stellaButton" ng-click="valueTre()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
                         <button class="stellaButton" ng-click="valueQuattro()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
                         <button class="stellaButton" ng-click="valueCinque()" type="submit"><img src="../images/empty-star.png" height="20px"></button>
                     </form>
-                    <span id="miovoto" hidden>
+                    <!--<span id="miovoto" hidden>
                         <p>Il tuo voto è stato aggiunto! <span class="glyphicon glyphicon-ok"></span></p>
-                    </span>
+                    </span>-->
+                    </span><p ng-if="dati.yetVoted"> Il tuo voto è stato aggiunto! <span class="glyphicon glyphicon-ok"></span> </p>
                     <hr>
                     commenta:
                     <form id="frmAddCommento" role="form" ng-submit="addCommento()">

@@ -74,6 +74,9 @@
   <script src="components/version/interpolate-filter.js"></script>
   <script src="components/post/post.js"></script>
   <script src="components/post/post-service.js"></script>
+  <script src="components/post/insert-post-service.js"></script>
+  <script src="components/post/post-save-service.js"></script>
+  <script src="components/post/post-vote-service.js"></script>
   <script src="components/post/single-post-service.js"></script>
   <script src="components/file-upload/file-upload.js"></script>
   <script src="components/file-upload/file-upload-directive.js"></script>
@@ -94,7 +97,6 @@
   <script src="components/tutorial/tutorial.js"></script>
   <script src="components/tutorial/tutorial-service.js"></script>
   <script src="components/tutorial/single-tutorial-service.js"></script>
-  <script src="components/post/insert-post-service.js"></script>
   <script src="components/prodotto/prodotto.js"></script>
   <script src="components/prodotto/prodotto-service.js"></script>
   <script src="components/prodotto/insert-prodotto-service.js"></script>
@@ -159,6 +161,10 @@
           </div>
           <button type="submit" class="btn btn-success center-block">Login</button>
         </form>
+        <div class="alert alert-danger alert-dismissible" role="alert" ng-if="error" align="center">
+          <h3>Login Non Riuscito</h3>
+          <p>La mail o la password sono errati, prova a reinserire i dati!</p>
+        </div>
       </div>
     </div>
   </div>
@@ -201,6 +207,10 @@
           <button type="submit" class="btn btn-success center-block">Invia</button>
         </form>
       </div>
+      <div class="alert alert-danger alert-dismissible" role="alert" ng-if="error" align="center">
+        <h3>La registrazione non è stata effettuata</h3>
+        <p>Prova a reinserire i dati!</p>
+      </div>
     </div>
   </div>
 </div>
@@ -228,6 +238,7 @@
     </div>
   </div>
 </div>
+
 
 
 <!--SPAZIO PER CONTENUTI-->

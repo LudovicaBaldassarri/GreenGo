@@ -8,7 +8,6 @@ angular.module('myApp.post.singlePostService', [])
                 var ref = firebase.database().ref().child("posts").child(postId);
                 return $firebaseObject(ref);
             }
-
         };
         return singlePostService;
 

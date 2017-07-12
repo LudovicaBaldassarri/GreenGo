@@ -342,7 +342,7 @@
                   </div>
                   <div class="modal-body">
                       <li style="list-style: none" ng-repeat="follows in dati.follows" ng-if ="dati.userId == follows.followed">
-                          <a href="#!/otherUserProfile/{{follows.follower.id}}" style="color: green" ng-click="closeModalFollowers()">{{follows.follower.name}}{{follows.follower.surname}}</a>
+                          <a href="#!/otherUserProfile/{{follows.follower.id}}" style="color: green" ng-click="closeModalFollowers()">{{follows.follower.name}} {{follows.follower.surname}}</a>
                       </li><br>
                       <button type="button" class="btn btn-default" style="float: right;" data-dismiss="modal">Close</button><br><br>
                   </div>
@@ -359,7 +359,7 @@
                   </div>
                   <div class="modal-body">
                       <li style="list-style: none" ng-repeat="follows in dati.follows" ng-if="dati.userId==follows.follower.id">
-                          <a href="#!/otherUserProfile/{{follows.followed}}" style="color: green" ng-click="closeModalFollowing()">{{follows.followedName}}</a>
+                          <a href="#!/otherUserProfile/{{follows.followed}}" style="color: green" ng-click="closeModalFollowing()">{{follows.followedName}} {{follows.followedSurname}}</a>
                       </li><br>
                       <button type="button" class="btn btn-default" style="float: right;" data-dismiss="modal">Close</button><br><br>
                   </div>

@@ -70,7 +70,23 @@ angular.module('myApp.users.usersService', [])
                 ref.update({
                     id: userId
                 });
-            }
+            },
+            // getPunteggio: function (userId) {
+            //     var userRef = firebase.database().ref().child("users").child(userId).child('punti');
+            //     return userRef;
+            // },
+            setPunteggio: function(userId){
+                var ref = firebase.database().ref().child("users").child(userId);
+                ref.update({
+                    punti: 1
+                });
+            },
+            updatePunteggio: function(userId, punti) {
+                var ref = firebase.database().ref().child("users").child(userId);
+                ref.update({
+                    punti: parseInt(parseInt(punti)+parseInt(1))
+                });
+            },
 
         };
     });

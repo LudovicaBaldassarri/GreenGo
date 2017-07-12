@@ -121,7 +121,9 @@ angular.module('myApp.home', ['ngRoute'])
             ctrl.onChange = function onChange(fileList) {
                 $scope.fileToUpload = fileList[0];
             };
-
+            if ($scope.dati.user.punti == null){
+                Users.setPunteggio($scope.dati.userId);
+            }
 
             $scope.finalPostAddition = function () {
                 InsertPostService.insertNewPost($scope.dati.userId, $scope.dati.user.name, $scope.dati.user.surname, $scope.dati.user.img_url,

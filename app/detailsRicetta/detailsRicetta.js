@@ -20,8 +20,8 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
 }])
 
 .controller('detailsRicettaCtrl', ['$scope', '$rootScope', 'SinglePost', '$routeParams', 'currentAuth', 'UsersInfo','InsertPostService',
-    'InsertCommentoService','PostSaveService', 'PostVoteService',
-    function ($scope, $rootScope, SinglePost, $routeParams, currentAuth, UsersInfo, InsertPostService, InsertCommentoService, PostSaveService, PostVoteService) {
+    'InsertCommentoService','PostSaveService', 'PostVoteService','Users',
+    function ($scope, $rootScope, SinglePost, $routeParams, currentAuth, UsersInfo, InsertPostService, InsertCommentoService, PostSaveService, PostVoteService, Users) {
         $scope.dati = {};
         $rootScope.dati = {};
         $rootScope.dati.currentView = "detailsRicetta";
@@ -31,6 +31,8 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
         $scope.dati.commenti = InsertCommentoService.getCommenti($routeParams.postId);
         $scope.dati.voters = PostVoteService.getVoters();
         $scope.dati.savers = PostSaveService.getSavers();
+
+        // $scope.dati.autorePost = UsersInfo.getUserInfo($scope.dati.post.autoreId);
 
         $scope.dati.notSaved = true;
         $scope.dati.savers.$loaded().then(function(){
@@ -174,6 +176,13 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
                     InsertPostService.updateVoto($routeParams.postId, $scope.dati.post.voto, $scope.dati.post.nuovoVoto);
                     $scope.dati.post.media = parseInt(parseInt($scope.dati.post.voto) / parseInt($scope.dati.post.votatori));
                     InsertPostService.updateMedia($routeParams.postId, $scope.dati.post.media);
+                }
+
+                $scope.dati.autore = UsersInfo.getUserInfo($scope.dati.post.autoreId);
+                if($scope.dati.autore.punti == null){
+                    Users.setPunteggio($scope.dati.post.autoreId);
+                } else {
+                    Users.updatePunteggio($scope.dati.post.autoreId, $scope.dati.autore.punti);
                 }
 
                 // Aggiunge anche Voters nel database

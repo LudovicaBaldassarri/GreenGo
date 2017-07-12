@@ -19,8 +19,9 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
     });
 }])
 
-.controller('detailsRicettaCtrl', ['$scope', '$rootScope', 'SinglePost', '$routeParams', 'currentAuth', 'UsersInfo','InsertPostService', 'InsertCommentoService','PostSaveService',
-    function ($scope, $rootScope, SinglePost, $routeParams, currentAuth, UsersInfo, InsertPostService, InsertCommentoService, PostSaveService) {
+.controller('detailsRicettaCtrl', ['$scope', '$rootScope', 'SinglePost', '$routeParams', 'currentAuth', 'UsersInfo','InsertPostService',
+    'InsertCommentoService','PostSaveService', 'PostVoteService',
+    function ($scope, $rootScope, SinglePost, $routeParams, currentAuth, UsersInfo, InsertPostService, InsertCommentoService, PostSaveService, PostVoteService) {
         $scope.dati = {};
         $rootScope.dati = {};
         $rootScope.dati.currentView = "detailsRicetta";
@@ -28,10 +29,10 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
         $scope.dati.userId = currentAuth.uid;
         $scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
         $scope.dati.commenti = InsertCommentoService.getCommenti($routeParams.postId);
-
+        $scope.dati.voters = PostVoteService.getVoters();
         $scope.dati.savers = PostSaveService.getSavers();
-        $scope.dati.notSaved = true;
 
+        $scope.dati.notSaved = true;
         $scope.dati.savers.$loaded().then(function(){
             var saving = $scope.dati.savers;
             for (var keySingleFlowing in saving) {
@@ -106,6 +107,48 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
 
         })*/
 
+
+        //CONTROLLI VOTERS
+        $scope.dati.notVoted = true;
+        $scope.dati.voters.$loaded().then(function(){
+            var voting = $scope.dati.voters;
+            for (var keySingleFlowing in voting) {
+                if (!angular.isFunction(keySingleFlowing)) {
+                    if (!angular.isFunction(voting[keySingleFlowing])) {
+                        if (voting[keySingleFlowing]!==undefined && voting[keySingleFlowing].voter!==undefined) {
+                            if ($scope.dati.userId === voting[keySingleFlowing].voter) {
+                                if ($scope.dati.post.$id === voting[keySingleFlowing].postId.id) {
+                                    $scope.dati.notVoted = false;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        $scope.dati.yetVoted = false;
+        $scope.dati.voters.$loaded().then(function(){
+            var voting = $scope.dati.voters;
+            for (var keySingleFlowing in voting) {
+                if (!angular.isFunction(keySingleFlowing)) {
+                    if (!angular.isFunction(voting[keySingleFlowing])) {
+                        if (voting[keySingleFlowing]!==undefined && voting[keySingleFlowing].voter!==undefined) {
+                            if ($scope.dati.userId === voting[keySingleFlowing].voter) {
+                                if ($scope.dati.post.$id === voting[keySingleFlowing].postId.id) {
+                                    $scope.dati.Voting = voting[keySingleFlowing].id;
+                                    $scope.dati.yetVoted = true;
+
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        });
+
+
+
         console.log($scope.dati.user);
         console.log($scope.dati.dataStampa);
         //ALGORITMO PER I VOTI STELLE
@@ -126,6 +169,7 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
                 $scope.dati.post.nuovoVoto = 5;
             },
             $scope.addVoto = function () {
+
                 if ($scope.dati.post.votatori == null) {
                     InsertPostService.setVotatori($routeParams.postId);
                 } else {
@@ -140,11 +184,39 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
                     $scope.dati.post.media = parseInt(parseInt($scope.dati.post.voto) / parseInt($scope.dati.post.votatori));
                     InsertPostService.updateMedia($routeParams.postId, $scope.dati.post.media);
                 }
-                var form = $("#formVota");
-                form.hide();
-                var voto = $("#miovoto");
-                voto.show();
+
+                // Aggiunge anche Voters nel database
+                PostVoteService.insertNewVotedPost($scope.dati.post, $scope.dati.userId, $scope.dati.post.titolo, $scope.dati.post.name).then(function (ref) {
+                    var refy = ref.key;
+                    PostSaveService.updatePostSaved(refy);
+                    $scope.dati.notVoted = false;
+                    $scope.dati.yetVoted = true;
+
+                });
+
+                //var form = $("#formVota");
+                //form.hide();
+                //var voto = $("#miovoto");
+                //voto.show();
+
             },
+
+           /* $scope.voteRicetta = function() {
+                PostVoteService.insertNewVotedPost($scope.dati.post, $scope.dati.userId, $scope.dati.post.titolo, $scope.dati.post.name).then(function (ref) {
+                    var refy = ref.key;
+                    PostSaveService.updatePostSaved(refy);
+                    //$scope.dati.notSaved = false;
+                    //$scope.dati.yetSaved = true;
+
+                });
+            };
+*/
+        $scope.removeVoter = function (userId) {
+            PostVoteService.deleteVoted(userId);
+            //$scope.dati.notSaved = true;
+            //$scope.dati.yetSaved =false;
+        };
+
 
         // $scope.salvaRicetta = function () {
         //     InsertPostService.savePost($routeParams.postId, currentAuth.uid);

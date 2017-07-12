@@ -19,13 +19,68 @@ angular.module('myApp.detailsTutorial', ['ngRoute'])
     })
 }])
 
-.controller('detailsTutorialCtrl', ['$scope', '$rootScope', 'SinglePost', '$routeParams', 'currentAuth','InsertPostService',
-        function($scope, $rootScope, SinglePost, $routeParams, currentAuth, InsertPostService) {
+.controller('detailsTutorialCtrl', ['$scope', '$rootScope', 'SinglePost', '$routeParams', 'currentAuth','InsertPostService', 'PostSaveService',
+        function($scope, $rootScope, SinglePost, $routeParams, currentAuth, InsertPostService, PostSaveService) {
             $scope.dati = {};
             $rootScope.dati = {};
             $rootScope.dati.currentView = 'detailsTutorial';
             $scope.dati.post = SinglePost.getSinglePost($routeParams.postId);
             $scope.dati.userId = currentAuth.uid;
+            $scope.dati.savers = PostSaveService.getSavers();
+
+            $scope.dati.notSaved = true;
+            $scope.dati.savers.$loaded().then(function(){
+                var saving = $scope.dati.savers;
+                for (var keySingleFlowing in saving) {
+                    if (!angular.isFunction(keySingleFlowing)) {
+                        if (!angular.isFunction(saving[keySingleFlowing])) {
+                            if (saving[keySingleFlowing]!==undefined && saving[keySingleFlowing].saver!==undefined) {
+                                if ($scope.dati.userId === saving[keySingleFlowing].saver) {
+                                    if ($scope.dati.post.$id === saving[keySingleFlowing].postId.id) {
+                                        $scope.dati.notSaved = false;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            $scope.dati.yetSaved = false;
+            $scope.dati.savers.$loaded().then(function(){
+                var saving = $scope.dati.savers;
+                for (var keySingleFlowing in saving) {
+                    if (!angular.isFunction(keySingleFlowing)) {
+                        if (!angular.isFunction(saving[keySingleFlowing])) {
+                            if (saving[keySingleFlowing]!==undefined && saving[keySingleFlowing].saver!==undefined) {
+                                if ($scope.dati.userId === saving[keySingleFlowing].saver) {
+                                    if ($scope.dati.post.$id === saving[keySingleFlowing].postId.id) {
+                                        $scope.dati.Saving = saving[keySingleFlowing].id;
+                                        $scope.dati.yetSaved = true;
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                return false;
+            });
+
+            $scope.saveRicetta = function() {
+                PostSaveService.insertNewSavedPost($scope.dati.post, $scope.dati.userId, $scope.dati.post.titolo, $scope.dati.post.name).then(function (ref) {
+                    var refy = ref.key;
+                    PostSaveService.updatePostSaved(refy);
+                    $scope.dati.notSaved = false;
+                    $scope.dati.yetSaved = true;
+
+                });
+            };
+
+            $scope.removeSaver = function (userId) {
+                PostSaveService.deleteSaved(userId);
+                $scope.dati.notSaved = true;
+                $scope.dati.yetSaved =false;
+            };
 
             //ALGORITMO PER I VOTI STELLE
 

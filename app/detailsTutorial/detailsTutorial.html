@@ -6,6 +6,11 @@
             <div class="panel panel-default text-left">
                 <div class="panel-body">
                     <h1 style="color: green;">{{dati.post.titolo}}</h1>
+
+                    <button id="saveButton"  ng-click="saveRicetta()"
+                            type="submit" class="btn btn-success" ng-if= "dati.notSaved" style="float: right;">Salva</button>
+                    <button  ng-if="dati.yetSaved" ng-click="removeSaver(dati.Saving)" type="submit" class="btn btn-default"
+                             style="float: right;">Salvata</button>
                 </div>
             </div>
             <div class="panel panel-default text-left">

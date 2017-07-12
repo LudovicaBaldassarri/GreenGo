@@ -7,52 +7,47 @@
           <div>
             <img class="img-circle" width="200" height="200"
                  ng-src="{{dati.user.img_url}}" alt="{{dati.user.img_alt}}" ng-if="dati.user.img_url.includes('https://firebasestorage.googleapis.com')">
-            <button type="button" class="btn btn-default"
+            <br><br><button type="button" class="btn btn-default"
                         data-toggle="modal" data-target="#modalAddImmagine">Aggiorna immagine profilo</button><hr>
           </div>
 
-          <!--BOTTONI PRODUTTORE risolvere problema-->
+          <!--BOTTONI PRODUTTORE-->
           <button id="button2"  ng-if="dati.user.tipo == ''" data-toggle="modal" data-target="#modalProduttore" class="btn btn-success">Diventa Produttore</button>
           <button id="button1" ng-if="dati.user.tipo == 'produttore'" class="btn btn-default"><a href="#!/paginaProduttore">Vai alla tua pagina Produttore</a></button>
+            <hr>
 
-          <!--<div id="followersDiv">-->
-          <!--<h4>Followers</h4>-->
-          <!--<div ng-repeat="follow in dati.follows" ng-if ="dati.user.userId == follow.followed" >-->
-          <!--<em>{{follow.follower.name}}</em>-->
-          <!--</div>-->
-          <!--</div>-->
-          <!--<div id="followingDiv">-->
-          <!--<h4>Following</h4>-->
-          <!--<div ng-repeat="follow in dati.follows" ng-if="dati.user.userId==follow.follower.userId">-->
-          <!--<em>{{follow.followedName}}</em>-->
-          <!--</div>-->
-          <!--</div>-->
+            <!--SPAZIO FOLLOWERS/FOLLOWING-->
+            <p><b><a style="color: green" data-toggle="modal" data-target="#followers">Followers</a></b> /
+                <b><a style="color: green" data-toggle="modal" data-target="#following">Following</a></b></p>
+           <hr>
 
-        </div>
+
         <div style="padding: 10px">
-
           <p><span class="coloreTestoVerde">Data di nascita: </span>{{dati.user.dataNascita}}</p>
           <p><span class="coloreTestoVerde">Vive a: </span>{{dati.user.cittaVive}}</p>
           <p><span class="coloreTestoVerde">Dice di sè: </span>{{dati.user.descPersonale}}</p>
           <button type="button3" class="btn btn-default" data-toggle="modal" data-target="#modalUpdateInfo">Modifica Informazioni</button>
         </div><br>
+
+        </div>
       </div>
     </div>
 
     <!--SPAZIO POST-->
-    <div class="col-sm-6">
+    <div class="col-sm-6" ng-if="dati.area== 'profilo'">
 
       <div class="row">
         <div class="col-sm-12">
           <div class="panel panel-default text-left">
             <div class="panel-body" >
               <h1>{{dati.user.name}} {{dati.user.surname}}</h1>
+                <!--<span style="float: right"><img src="../images/avocadino.png" height="70px"></span>-->
             </div>
           </div>
         </div>
       </div>
 
-      <div class="row">
+      <div class="row" >
         <div class="col-md-12">
           <ul class="media-list">
             <!--area profilo-->
@@ -79,99 +74,128 @@
                 </div>
                 <hr/>
             </li>
-
-            <!--area ricettario-->
-            <div class="col-md-12" ng-if="dati.area == 'ricettario'">
-              <h3>Le mie ricette</h3><hr>
-              <ul class="media-list">
-                <li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="  dati.userId == post.autoreId && dati.area== 'ricettario' && post.tag=='ricetta'">
-                <div class="col-md-4">
-                  <div class="panel panel-success">
-                    <div class="panel-heading"><a href="#!/detailsRicetta/{{post.id}}">{{post.titolo}}</a>
-                    </div>
-                    <div class="panel-body">
-                      <img style="width:100%" height="100px" alt="Image"
-                           ng-src="{{post.img_url}}" alt="{{post.img_alt}}" ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">
-                    </div>
-                  </div>
-                </div>
-              </li>
-              </ul>
-              <!--ng-repeat="post in dati.posts| orderBy: '-date' :true"-->
-              <!--ricette salvate-->
-
-              <h3>Ricette salvate</h3><hr>
-              <div class="col-md-4">
-                <ul class="media-list">
-                <li class="media" ng-repeat="savers in dati.savers" ng-if="savers.saver == dati.userId && dati.area == 'ricettario' && savers.postId.tag=='ricetta'">
-                  <div class="panel panel-success">
-                    <div class="panel-heading"><a href="#!/detailsRicetta/{{savers.postId.id}}">{{savers.postId.titolo}}</a>
-                    </div>
-                    <div class="panel-body">
-                      <img style="width:100%" height="100px" alt="Image"
-                           ng-src="{{savers.postId.img_url}}" alt="{{savers.postId.img_alt}}" ng-if="savers.postId.img_url.includes('https://firebasestorage.googleapis.com')">
-                    </div>
-                  </div>
-                </li>
-                </ul>
-              </div>
-            </div>
-
-
-
-
-
-
-            <!--area tutorial-->
-            <li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="  dati.userId == post.autoreId && dati.area== 'tutorial' && post.tag=='tutorial'">
-              <h3>I miei tutorial</h3><hr>
-              <div class="col-md-4">
-                <div class="panel panel-success">
-                  <div class="panel-heading"><a href="#!/detailsTutorial/{{post.id}}">{{post.titolo}}</a>
-                  </div>
-                  <div class="panel-body">
-                    <img style="width:100%" height="90px" alt="Image"
-                         ng-src="{{post.img_url}}" alt="{{post.img_alt}}" ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">
-                  </div>
-                </div>
-              </div>
-            </li>
-            <!--ricette salvate-->
-            <li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="  dati.userId == post.autoreId && dati.area== 'tutorial' && post.tag=='tutorial'">
-              <h3>Tutorial salvati</h3><hr>
-              <!--<div class="col-md-6">-->
-              <!--<div class="panel panel-success">-->
-              <!--<div class="panel-heading"><a href="#!/detailsRicetta/{{post.id}}">{{post.titolo}}</a>-->
-              <!--</div>-->
-              <!--<div class="panel-body">-->
-              <!--<img style="width:100%" height="200px" alt="Image"-->
-              <!--ng-src="{{post.img_url}}" alt="{{post.img_alt}}" ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">-->
-              <!--</div>-->
-              <!--<div class="panel-footer">-->
-              <!--<p>-->
-              <!--<a href="#!/otherUserProfile/{{post.autoreId}}" ng-if="dati.userId != post.autoreId"><span style="color: green">{{post.name}} {{post.surname}}</span></a>-->
-              <!--<a href="#!/userProfile" ng-if="dati.userId == post.autoreId"><span style="color: green">{{post.name}} {{post.surname}}</span></a><br>-->
-              <!--&lt;!&ndash;{{post.descrizione}}&ndash;&gt;-->
-              <!--</p>-->
-              <!--</div>-->
-              <!--</div>-->
-              <!--</div>-->
-            </li>
-
-            <!--area medaglie-->
-            <li class="media" ng-if="dati.area== 'medaglie'">
-              <h3>Le mie medaglie</h3><hr>
-              <!--FACCIO PROVA -->
-              <div class="panel panel-default" style="height: 150px; width: 150px; padding: 5px 10px 5px 10px">
-                <img src="../images/provaMed.png" height="120px">
-                <p>Prova medaglia</p>
-              </div>
-            </li>
           </ul>
         </div>
       </div>
     </div>
+<!--AREA RICETTARIO-->
+      <div class="col-sm-6" ng-if="dati.area== 'ricettario'">
+          <div class="row">
+              <div class="col-sm-12">
+                  <div class="panel panel-default text-left">
+                      <div class="panel-body" >
+                          <h1>{{dati.user.name}} {{dati.user.surname}}</h1>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-12"><h3>Le mie ricette</h3><hr></div>
+              <ul class="media-list">
+                  <li ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="dati.userId == post.autoreId && post.tag=='ricetta'">
+                      <div class="col-md-4">
+                          <div class="panel panel-default" style="height: 190px">
+                              <div class="panel-heading"><a href="#!/detailsRicetta/{{post.id}}">{{post.titolo}}</a></div>
+                              <div class="panel-body">
+                                <img style="width:100%" height="100px" alt="Image" ng-src="{{post.img_url}}" alt="{{post.img_alt}}"
+                                     ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+          <div class="row">
+              <div class="col-md-12"><h3>Ricette salvate</h3><hr></div>
+              <ul class="media-list">
+                  <li ng-repeat="savers in dati.savers| orderBy: '-date' :true" ng-if="savers.saver == dati.userId && savers.postId.tag=='ricetta'">
+                      <div class="col-md-4">
+                          <div class="panel panel-default" style="height: 190px">
+                              <div class="panel-heading"><a href="#!/detailsRicetta/{{savers.postId.id}}">{{savers.postId.titolo}}</a></div>
+                              <div class="panel-body">
+                                  <img style="width:100%" height="100px" alt="Image" ng-src="{{savers.postId.img_url}}" alt="{{savers.postId.img_alt}}"
+                                       ng-if="savers.postId.img_url.includes('https://firebasestorage.googleapis.com')">
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <!--AREA TUTORIAL-->
+      <div class="col-sm-6" ng-if="dati.area== 'tutorial'">
+          <div class="row">
+              <div class="col-sm-12">
+                  <div class="panel panel-default text-left">
+                      <div class="panel-body" >
+                          <h1>{{dati.user.name}} {{dati.user.surname}}</h1>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-12"><h3>I miei tutorial</h3><hr></div>
+              <ul class="media-list">
+                  <li ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="dati.userId == post.autoreId && post.tag=='tutorial'">
+                      <div class="col-md-4">
+                          <div class="panel panel-default" style="height: 190px">
+                              <div class="panel-heading"><a href="#!/detailsTutorial/{{post.id}}">{{post.titolo}}</a></div>
+                              <div class="panel-body">
+                                  <img style="width:100%" height="100px" alt="Image" ng-src="{{post.img_url}}" alt="{{post.img_alt}}"
+                                       ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+          <div class="row">
+              <div class="col-md-12"><h3>Tutorial salvati</h3><hr></div>
+              <ul class="media-list">
+                  <li ng-repeat="savers in dati.savers| orderBy: '-date' :true" ng-if="savers.saver == dati.userId && savers.postId.tag=='tutorial'">
+                      <div class="col-md-4">
+                          <div class="panel panel-default" style="height: 190px">
+                              <div class="panel-heading"><a href="#!/detailsTutorial/{{savers.postId.id}}">{{savers.postId.titolo}}</a></div>
+                              <div class="panel-body">
+                                  <img style="width:100%" height="100px" alt="Image" ng-src="{{savers.postId.img_url}}" alt="{{savers.postId.img_alt}}"
+                                       ng-if="savers.postId.img_url.includes('https://firebasestorage.googleapis.com')">
+                              </div>
+                          </div>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <!--AREA MEDAGLIE-->
+      <div class="col-sm-6" ng-if="dati.area== 'medaglie'">
+          <div class="row">
+              <div class="col-sm-12">
+                  <div class="panel panel-default text-left">
+                      <div class="panel-body" >
+                          <h1>{{dati.user.name}} {{dati.user.surname}}</h1>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-12"><h3>Le mie medaglie</h3><hr></div>
+              <!--<ul class="media-list">-->
+                  <!--<li ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="dati.userId == post.autoreId && post.tag=='tutorial'">-->
+                      <!--<div class="col-md-4">-->
+                          <!--<div class="panel panel-default" style="height: 190px">-->
+                              <!--<div class="panel-heading"><a href="#!/detailsTutorial/{{post.id}}">{{post.titolo}}</a></div>-->
+                              <!--<div class="panel-body">-->
+                                  <!--<img style="width:100%" height="100px" alt="Image" ng-src="{{post.img_url}}" alt="{{post.img_alt}}"-->
+                                       <!--ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">-->
+                              <!--</div>-->
+                          <!--</div>-->
+                      <!--</div>-->
+                  <!--</li>-->
+              <!--</ul>-->
+          </div>
+      </div>
 
+      <!--MENU LATO-->
    <div class="col-md-3 ">
       <div class="panel panel-default" align="center" >
         <div class="panel-body">
@@ -305,4 +329,40 @@
     </div>
   </div>
 
+      <!--MODAL FOLLOWERS-->
+      <div class="modal fade" id="followers" role="dialog">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Followers di {{dati.user.name}}</h4>
+                  </div>
+                  <div class="modal-body">
+                      <li style="list-style: none" ng-repeat="follows in dati.follows" ng-if ="dati.userId == follows.followed">
+                          <a href="#!/otherUserProfile/{{follows.follower.id}}" style="color: green" ng-click="closeModalFollowers()">{{follows.follower.name}}{{follows.follower.surname}}</a>
+                      </li><br>
+                      <button type="button" class="btn btn-default" style="float: right;" data-dismiss="modal">Close</button><br><br>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!--MODAL FOLLOWING-->
+      <div class="modal fade" id="following" role="dialog">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Following di {{dati.user.name}}</h4>
+                  </div>
+                  <div class="modal-body">
+                      <li style="list-style: none" ng-repeat="follows in dati.follows" ng-if="dati.userId==follows.follower.id">
+                          <a href="#!/otherUserProfile/{{follows.followed}}" style="color: green" ng-click="closeModalFollowers()">{{follows.followedName}}</a>
+                      </li><br>
+                      <button type="button" class="btn btn-default" style="float: right;" data-dismiss="modal">Close</button><br><br>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  </div>
 </div>

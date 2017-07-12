@@ -1,15 +1,21 @@
-<div class="container" id="page">
-    <div class="row">
+<div class="container-fluid" id="page" style="margin-left: 10%; margin-right: 10%; width: 80%">
+<div class="row">
         <div class="col-md-1"></div>
 
         <div class="col-md-7 text-left">
             <div class="panel panel-default text-left">
                 <div class="panel-body">
                     <h1 style="color: green;">{{dati.post.titolo}}</h1>
-
-                    <button id="saveButton"  ng-click="saveRicetta()"
-                            type="submit" class="btn btn-success" ng-if= "dati.notSaved" style="float: right;">Salva</button>
-                    <button  ng-if="dati.yetSaved" ng-click="removeSaver(dati.Saving)" type="submit" class="btn btn-default"
+                    <br>
+                    <img src="../images/votozero.png" height="20px" ng-if="dati.post.media==null">
+                    <img src="../images/votouno.png" height="20px" ng-if="dati.post.media==1">
+                    <img src="../images/votodue.png" height="20px" ng-if="dati.post.media==2">
+                    <img src="../images/vototre.png" height="20px" ng-if="dati.post.media==3">
+                    <img src="../images/votoquattro.png" height="20px" ng-if="dati.post.media==4">
+                    <img src="../images/votocinque.png" height="20px" ng-if="dati.post.media==5">
+                    <button id="saveButton"  ng-click="saveTutorial()"
+                            type="submit" class="btn btn-success" ng-if= "dati.post.autoreId != dati.userId && dati.notSaved" style="float: right;">Salva</button>
+                    <button  ng-if="dati.post.autoreId != dati.userId && dati.yetSaved" ng-click="removeSaver(dati.Saving)" type="submit" class="btn btn-default"
                              style="float: right;">Salvata</button>
                 </div>
             </div>
@@ -19,9 +25,11 @@
                     <h4>Descrizione</h4>
                     <p>{{dati.post.descrizione}}</p>
                     <hr>
-                    <div class="col-md-4">
-                        <span><img src="../images/icona_difficolta.png" height="15px"></span>
-                        <span style="color: green;">Difficoltà: </span>{{dati.post.difficolta}}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span><img src="../images/icona_difficolta.png" height="15px"></span>
+                            <span style="color: green;">Difficoltà: </span>{{dati.post.difficolta}}
+                        </div>
                     </div>
                     <hr>
                     <h4 style="color: green">Materiale Necessario:</h4>
@@ -56,7 +64,6 @@
                                     {{dati.post.name}} {{dati.post.surname}}</a>
                             </ul>
 
-                            <!--punteggio/titolo raggiunto-->
                         </div>
                     </div>
                     <hr>
@@ -65,38 +72,41 @@
                     <b>{{dati.post.titolo}}</b> <br><br>
                     <p style="color: lightgrey;"><em>VARI FILTRI</em></p>
                     <!--mettiamo i filtri a lista-->
-                    <br>
-                    Voto :
-                    <img src="../images/votozero.png" height="20px" ng-if="dati.post.media==null">
-                    <img src="../images/votouno.png" height="20px" ng-if="dati.post.media==1">
-                    <img src="../images/votodue.png" height="20px" ng-if="dati.post.media==2">
-                    <img src="../images/vototre.png" height="20px" ng-if="dati.post.media==3">
-                    <img src="../images/votoquattro.png" height="20px" ng-if="dati.post.media==4">
-                    <img src="../images/votocinque.png" height="20px" ng-if="dati.post.media==5">
-                    <hr>
-                    Il tuo voto:
-                    <br>
-                    <form ng-submit="addVoto()" id="formVota" ng-if="dati.notVoted">
-                        <button class="stellaButton" ng-click="valueUno()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
-                        <button class="stellaButton" ng-click="valueDue()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
-                        <button class="stellaButton" ng-click="valueTre()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
-                        <button class="stellaButton" ng-click="valueQuattro()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
-                        <button class="stellaButton" ng-click="valueCinque()" type="submit"><img src="../images/empty-star.png" height="20px"></button>
 
-                        <!--<select class="form-control" id="voto" ng-model="dati.post.nuovoVoto" style="width: 100px; float: left">-->
-                        <!--<option>1</option>-->
-                        <!--<option>2</option>-->
-                        <!--<option>3</option>-->
-                        <!--<option>4</option>-->
-                        <!--<option>5</option>-->
-
-                        <!--</select>-->
-                        <!--<button type="submit" class="btn btn-success">Vota</button>-->
-                    </form>
-                    <!--<span id="miovoto" hidden>
-                        <p>Il tuo voto è stato aggiunto! <span class="glyphicon glyphicon-ok"></span></p>
-                    </span>-->
-                    </span><p ng-if="dati.yetVoted"> Il tuo voto è stato aggiunto! <span class="glyphicon glyphicon-ok"></span> </p>
+                    <div ng-if="dati.post.autoreId != dati.userId">
+                        Vota il tutorial:
+                        <br>
+                        <form ng-submit="addVoto()" id="formVota" ng-if="dati.notVoted">
+                            <button class="stellaButton" ng-click="valueUno()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
+                            <button class="stellaButton" ng-click="valueDue()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
+                            <button class="stellaButton" ng-click="valueTre()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
+                            <button class="stellaButton" ng-click="valueQuattro()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
+                            <button class="stellaButton" ng-click="valueCinque()" type="submit"><img src="../images/empty-star.png" height="20px"></button>
+                        </form>
+                        </span><p ng-if="dati.yetVoted"> Il tuo voto è stato aggiunto! <span class="glyphicon glyphicon-ok"></span> </p>
+                        <hr>
+                    </div>
+                    commenta:
+                    <form id="frmAddCommento" role="form" ng-submit="addCommento()">
+                        <textarea type = "text" class="form-control" nome="testo" rows="4" id="desc" placeholder="Scrivi un commento..."
+                                  ng-model="dati.commento"></textarea>
+                        <button class="btn btn-success" type="submit" style="float: right;">Pubblica</button>
+                    </form><hr>
+                    <div>
+                        <li class="media-list" ng-repeat="commenti in dati.commenti | orderBy: 'date' :true" style="list-style: none">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="media-left">
+                                        <img class="img-circle" ng-src="{{commenti.autore_img}}" height="60px" width="60px">
+                                    </div>
+                                    <div class="media-body">
+                                        <p><span style="color: green"><b>{{commenti.name}} {{commenti.surname}}: </b></span> {{commenti.descrizione}}</p>
+                                        <p class="data-ora" style="float: right">{{commenti.dataStampa}} {{commenti.oraStampa}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </div>
                 </div>
             </div>
         </div>

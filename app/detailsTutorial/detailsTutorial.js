@@ -19,13 +19,15 @@ angular.module('myApp.detailsTutorial', ['ngRoute'])
     })
 }])
 
-.controller('detailsTutorialCtrl', ['$scope', '$rootScope', 'SinglePost', '$routeParams', 'currentAuth','InsertPostService', 'PostSaveService', 'PostVoteService',
-        function($scope, $rootScope, SinglePost, $routeParams, currentAuth, InsertPostService, PostSaveService, PostVoteService) {
+.controller('detailsTutorialCtrl', ['$scope', '$rootScope', 'SinglePost','UsersInfo', '$routeParams', 'currentAuth','InsertPostService', 'PostSaveService', 'PostVoteService','InsertCommentoService',
+        function($scope, $rootScope, SinglePost, UsersInfo, $routeParams, currentAuth, InsertPostService, PostSaveService, PostVoteService, InsertCommentoService) {
             $scope.dati = {};
             $rootScope.dati = {};
             $rootScope.dati.currentView = 'detailsTutorial';
             $scope.dati.post = SinglePost.getSinglePost($routeParams.postId);
+            $scope.dati.user = UsersInfo.getUserInfo(currentAuth.uid);
             $scope.dati.userId = currentAuth.uid;
+            $scope.dati.commenti = InsertCommentoService.getCommenti($routeParams.postId);
             $scope.dati.savers = PostSaveService.getSavers();
             $scope.dati.voters = PostVoteService.getVoters();
 
@@ -67,7 +69,7 @@ angular.module('myApp.detailsTutorial', ['ngRoute'])
                 return false;
             });
 
-            $scope.saveRicetta = function() {
+            $scope.saveTutorial = function() {
                 PostSaveService.insertNewSavedPost($scope.dati.post, $scope.dati.userId, $scope.dati.post.titolo, $scope.dati.post.name).then(function (ref) {
                     var refy = ref.key;
                     PostSaveService.updatePostSaved(refy);
@@ -82,6 +84,16 @@ angular.module('myApp.detailsTutorial', ['ngRoute'])
                 $scope.dati.notSaved = true;
                 $scope.dati.yetSaved =false;
             };
+
+            $scope.dati.commento = "";
+
+            //salva la data di oggi e la inserisce come attributo nel firebase del post
+            $scope.dati.date = new Date();
+            //scompone la data completa in gg/mm/aaa da stampare in html quando serve
+            var month = $scope.dati.date.getUTCMonth() + 1;
+            $scope.dati.dataStampa = $scope.dati.date.getUTCDate() + "/" + month + "/" + $scope.dati.date.getUTCFullYear();
+            //scompone l0ora da date in hh:mm:ss da stampare quando serve
+            $scope.dati.oraStampa = $scope.dati.date.getUTCHours() + ":" + $scope.dati.date.getUTCMinutes() + ":" + $scope.dati.date.getUTCSeconds();
 
 
             //CONTROLLI VOTERS
@@ -162,12 +174,38 @@ angular.module('myApp.detailsTutorial', ['ngRoute'])
                         $scope.dati.yetVoted = true;
 
                     });
+                };
+            $scope.removeVoter = function (userId) {
+                PostVoteService.deleteVoted(userId);
+                //$scope.dati.notSaved = true;
+                //$scope.dati.yetSaved =false;
+            };
+            // AGGIUNGE COMMENTO
+            $scope.addCommento = function () {
 
-                    //var form = $("#formVota");
-                    //form.hide();
-                    //var voto = $("#miovoto");
-                    //voto.show();
+                //check if the user inserted all the required information
+                if ($scope.dati.commento != undefined && $scope.dati.commento != "") {
+                    $scope.dati.error = "";
+                    $scope.dati.post.$loaded().then(function () {
+                        /*$scope.dati.oraStampa = $scope.dati.post.oraStampa;
+                         $scope.dati.dataStampa = $scope.dati.post.dataStampa;
+                         console.log($scope.dati.oraStampa);
+                         console.log($scope.dati.dataStampa);*/
+                    })
+                    $scope.finalCommentoAddition();
 
+                }
+                else {
+                    //write an error message to the user
+                    $scope.dati.error = "You forgot to insert one of the required information!";
+                }
+            },
+
+                $scope.finalCommentoAddition = function () {
+                    InsertCommentoService.insertNewCommento($scope.dati.post.$id, $scope.dati.userId, $scope.dati.user.name, $scope.dati.user.surname, $scope.dati.user.img_url,
+                        $scope.dati.commento, $scope.dati.dataStampa, $scope.dati.oraStampa);
+
+                    $scope.dati.commento = "";
                 };
         }
 ]);

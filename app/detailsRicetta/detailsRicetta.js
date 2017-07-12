@@ -101,12 +101,6 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
         $scope.dati.oraStampa = $scope.dati.date.getUTCHours() + ":" + $scope.dati.date.getUTCMinutes() + ":" + $scope.dati.date.getUTCSeconds();
 
 
-        /*$scope.dati.post.$loaded().then(function () {
-            $scope.dati.oraStampa = $scope.dati.post.oraStampa;
-            $scope.dati.dataStampa = $scope.dati.post.dataStampa;
-
-        })*/
-
 
         //CONTROLLI VOTERS
         $scope.dati.notVoted = true;
@@ -148,9 +142,6 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
         });
 
 
-
-        console.log($scope.dati.user);
-        console.log($scope.dati.dataStampa);
         //ALGORITMO PER I VOTI STELLE
 
         $scope.valueUno = function () {
@@ -193,37 +184,13 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
                     $scope.dati.yetVoted = true;
 
                 });
-
-                //var form = $("#formVota");
-                //form.hide();
-                //var voto = $("#miovoto");
-                //voto.show();
-
             },
 
-           /* $scope.voteRicetta = function() {
-                PostVoteService.insertNewVotedPost($scope.dati.post, $scope.dati.userId, $scope.dati.post.titolo, $scope.dati.post.name).then(function (ref) {
-                    var refy = ref.key;
-                    PostSaveService.updatePostSaved(refy);
-                    //$scope.dati.notSaved = false;
-                    //$scope.dati.yetSaved = true;
-
-                });
-            };
-*/
         $scope.removeVoter = function (userId) {
             PostVoteService.deleteVoted(userId);
             //$scope.dati.notSaved = true;
             //$scope.dati.yetSaved =false;
         };
-
-
-        // $scope.salvaRicetta = function () {
-        //     InsertPostService.savePost($routeParams.postId, currentAuth.uid);
-        //     var bottone = $("#btnSalva");
-        //     bottone.hide();
-        //
-        // },
 
         $scope.addCommento = function () {
 
@@ -244,12 +211,6 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
                 $scope.dati.error = "You forgot to insert one of the required information!";
             }
         },
-
-
-        console.log($scope.dati.post.$id);
-        console.log($scope.dati.post.oraStampa);
-        console.log($scope.dati.userId);
-        console.log($scope.dati.user.name);
 
         $scope.finalCommentoAddition = function () {
             InsertCommentoService.insertNewCommento($scope.dati.post.$id, $scope.dati.userId, $scope.dati.user.name, $scope.dati.user.surname, $scope.dati.user.img_url,

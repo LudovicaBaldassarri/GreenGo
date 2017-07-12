@@ -1,17 +1,24 @@
 <div class="container-fluid" id="page" style="margin-left: 10%; margin-right: 10%; width: 80%">
     <!--MAGARI QUI DENTRO METTIAMO QUALCOSA-->
     <div class="row">
-        <div class="col-md-8 text-left">
+        <div class="col-md-1"></div>
+
+        <div class="col-md-7 text-left">
             <div class="panel panel-default text-left">
                 <div class="panel-body">
                     <h1 style="color: green;">{{dati.post.titolo}}</h1>
+                    <br>
+                    <img src="../images/votozero.png" height="20px" ng-if="dati.post.media==null">
+                    <img src="../images/votouno.png" height="20px" ng-if="dati.post.media==1">
+                    <img src="../images/votodue.png" height="20px" ng-if="dati.post.media==2">
+                    <img src="../images/vototre.png" height="20px" ng-if="dati.post.media==3">
+                    <img src="../images/votoquattro.png" height="20px" ng-if="dati.post.media==4">
+                    <img src="../images/votocinque.png" height="20px" ng-if="dati.post.media==5">
                     <!--BOTTONE SALVA POST-->
                     <button id="saveButton"  ng-click="saveRicetta()"
-                            type="submit" class="btn btn-success" ng-if= "dati.notSaved" style="float: right;">Salva</button>
-                    <button  ng-if="dati.yetSaved" ng-click="removeSaver(dati.Saving)" type="submit" class="btn btn-default"
+                            type="submit" class="btn btn-success" ng-if= "dati.post.autoreId != dati.userId && dati.notSaved" style="float: right;">Salva</button>
+                    <button  ng-if="dati.post.autoreId != dati.userId && dati.yetSaved" ng-click="removeSaver(dati.Saving)" type="submit" class="btn btn-default"
                              style="float: right;">Salvata</button>
-                        <!--<button id="btnSalva" class="btn btn-success" ng-click="salvaRicetta()" style="float: right;" ng-repeat="saver in dati.savers filter:controlloSavers(saver.id_salvatore)">Salva ricetta</button>-->
-                        <!--<button class="btn btn-default" style="float: right;" ng-repeat="saver in dati.savers filter:controlloSavers() ">Salvata</button>-->
                 </div>
             </div>
             <div class="panel panel-default text-left">
@@ -21,14 +28,13 @@
                     <p> {{dati.post.descrizione}}</p>
                     <hr>
                         <div class="row">
-                            <!--MANCA TEMPO DI COTTURA-->
                             <div class="col-md-4">
                                 <span><img src="../images/icona_tempo.png" height="15px"></span>
-                                <span style="color: green;">Preparazione: </span>{{dati.post.cottura}}
+                                <span style="color: green;">Preparazione: </span>{{dati.post.tempoP}}
                             </div>
                             <div class="col-md-4">
                                 <span><img src="../images/icona_clessidra.png" height="15px"></span>
-                                <span style="color: green;">Cottura: </span>{{dati.post.cottura}}
+                                <span style="color: green;">Cottura: </span>{{dati.post.tempoC}}
                             </div>
                             <div class="col-md-4">
                                 <span><img src="../images/icona_difficolta.png" height="15px"></span>
@@ -63,12 +69,12 @@
                         </div>
 
                     </div>
-                    <h3 style="color: green;">Preparazione</h3>
+                    <h3 style="color: green;">Procedimento:</h3>
                     <p>{{dati.post.procedimento}}</p>
                 </div>
             </div>
         </div>
-        <div class="col-md-4 sidenav">
+        <div class="col-md-3 sidenav">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="row">
@@ -82,8 +88,8 @@
                             <ul class="media-list">
                             <a href="#!/otherUserProfile/{{dati.post.autoreId}}" ng-if="dati.userId != dati.post.autoreId"><span style="color: green">
                                 {{dati.post.name}} {{dati.post.surname}}</span></a>
-                            <a href="#!/userProfile" ng-if="dati.userId == dati.post.autoreId">
-                                {{dati.post.name}} {{dati.post.surname}}</a>
+                            <a href="#!/userProfile" ng-if="dati.userId == dati.post.autoreId"><span style="color: green">
+                                {{dati.post.name}} {{dati.post.surname}}</span></a>
                             </ul>
 
                             <!--punteggio/titolo raggiunto-->
@@ -95,36 +101,28 @@
                     <b>{{dati.post.titolo}}</b> <br><br>
                     <p style="color: lightgrey;"><em>VARI FILTRI</em></p>
                     <!--mettiamo i filtri a lista-->
-                    <br>
-                    Voto :
-                    <img src="../images/votozero.png" height="20px" ng-if="dati.post.media==null">
-                    <img src="../images/votouno.png" height="20px" ng-if="dati.post.media==1">
-                    <img src="../images/votodue.png" height="20px" ng-if="dati.post.media==2">
-                    <img src="../images/vototre.png" height="20px" ng-if="dati.post.media==3">
-                    <img src="../images/votoquattro.png" height="20px" ng-if="dati.post.media==4">
-                    <img src="../images/votocinque.png" height="20px" ng-if="dati.post.media==5">
-                    <hr>
-                    Il tuo voto:
-                    <br>
-                    <form ng-submit="addVoto()" id="formVota" ng-if="dati.notVoted">
-                        <button class="stellaButton" ng-click="valueUno()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
-                        <button class="stellaButton" ng-click="valueDue()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
-                        <button class="stellaButton" ng-click="valueTre()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
-                        <button class="stellaButton" ng-click="valueQuattro()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
-                        <button class="stellaButton" ng-click="valueCinque()" type="submit"><img src="../images/empty-star.png" height="20px"></button>
-                    </form>
-                    <!--<span id="miovoto" hidden>
-                        <p>Il tuo voto è stato aggiunto! <span class="glyphicon glyphicon-ok"></span></p>
-                    </span>-->
-                    </span><p ng-if="dati.yetVoted"> Il tuo voto è stato aggiunto! <span class="glyphicon glyphicon-ok"></span> </p>
-                    <hr>
+                    <!--<br>-->
+                    <div ng-if="dati.post.autoreId != dati.userId">
+                        Vota la ricetta:
+                        <br>
+                        <form ng-submit="addVoto()" id="formVota" ng-if="dati.notVoted">
+                            <button class="stellaButton" ng-click="valueUno()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
+                            <button class="stellaButton" ng-click="valueDue()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
+                            <button class="stellaButton" ng-click="valueTre()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
+                            <button class="stellaButton" ng-click="valueQuattro()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
+                            <button class="stellaButton" ng-click="valueCinque()" type="submit"><img src="../images/empty-star.png" height="20px"></button>
+                        </form>
+                        </span><p ng-if="dati.yetVoted"> Il tuo voto è stato aggiunto! <span class="glyphicon glyphicon-ok"></span> </p>
+                        <hr>
+                    </div>
+
+
                     commenta:
                     <form id="frmAddCommento" role="form" ng-submit="addCommento()">
                         <textarea type = "text" class="form-control" nome="testo" rows="4" id="desc" placeholder="Scrivi un commento..."
                                   ng-model="dati.commento"></textarea>
-                        <button class="btn btn-success" type="submit">Pubblica</button>
-                    </form>
-                    <hr>
+                        <button class="btn btn-success" type="submit" style="float: right;">Pubblica</button>
+                    </form><hr>
                     <div>
                         <li class="media-list" ng-repeat="commenti in dati.commenti | orderBy: 'date' :true" style="list-style: none">
                             <div class="panel panel-default">
@@ -137,10 +135,7 @@
                                         <p class="data-ora" style="float: right">{{commenti.dataStampa}} {{commenti.oraStampa}}</p>
                                     </div>
                                 </div>
-
-
                             </div>
-
                         </li>
                 </div>
             </div>

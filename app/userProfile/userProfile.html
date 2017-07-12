@@ -592,7 +592,7 @@
               <ul class="media-list">
                   <li ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="dati.userId == post.autoreId && post.tag=='ricetta'">
                       <div class="col-md-4">
-                          <div class="panel panel-default" style="height: 190px">
+                          <div class="panel panel-default" style="height: 200px">
                               <div class="panel-heading"><a href="#!/detailsRicetta/{{post.id}}">{{post.titolo}}</a></div>
                               <div class="panel-body">
                                 <img style="width:100%" height="100px" alt="Image" ng-src="{{post.img_url}}" alt="{{post.img_alt}}"
@@ -608,7 +608,7 @@
               <ul class="media-list">
                   <li ng-repeat="savers in dati.savers| orderBy: '-date' :true" ng-if="savers.saver == dati.userId && savers.postId.tag=='ricetta'">
                       <div class="col-md-4">
-                          <div class="panel panel-default" style="height: 190px">
+                          <div class="panel panel-default" style="height: 250px">
                               <div class="panel-heading"><a href="#!/detailsRicetta/{{savers.postId.id}}">{{savers.postId.titolo}}</a></div>
                               <div class="panel-body">
                                   <img style="width:100%" height="100px" alt="Image" ng-src="{{savers.postId.img_url}}" alt="{{savers.postId.img_alt}}"

@@ -76,7 +76,7 @@
                     <hr>
                     Il tuo voto:
                     <br>
-                    <form ng-submit="addVoto()" id="formVota">
+                    <form ng-submit="addVoto()" id="formVota" ng-if="dati.notVoted">
                         <button class="stellaButton" ng-click="valueUno()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
                         <button class="stellaButton" ng-click="valueDue()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
                         <button class="stellaButton" ng-click="valueTre()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
@@ -93,9 +93,10 @@
                         <!--</select>-->
                         <!--<button type="submit" class="btn btn-success">Vota</button>-->
                     </form>
-                    <span id="miovoto" hidden>
+                    <!--<span id="miovoto" hidden>
                         <p>Il tuo voto è stato aggiunto! <span class="glyphicon glyphicon-ok"></span></p>
-                    </span>
+                    </span>-->
+                    </span><p ng-if="dati.yetVoted"> Il tuo voto è stato aggiunto! <span class="glyphicon glyphicon-ok"></span> </p>
                 </div>
             </div>
         </div>

@@ -103,7 +103,9 @@
                                        style="color: grey; font-size: 18px;font-weight: lighter" ng-if="dati.userId != post.autoreId">
                                         <span style="color: grey; font-weight: lighter">by {{post.name}} {{post.surname}}</span></a>
                                     <a href="#!/userProfile"style="color: grey; font-size: 18px;font-weight: lighter" ng-if="dati.userId == post.autoreId">
-                                        <span>by {{post.name}} {{post.surname}}</span></a><br>
+                                        <span>by {{post.name}} {{post.surname}}</span></a>
+                                    <span style="color: grey; font-size: 18px;font-weight: lighter; float: right">
+                                        voto: {{post.media}}</span><br>
                                     <!--{{post.descrizione}}-->
                                 </p>
                             </div>

@@ -104,7 +104,7 @@ body{
 #post .panel-body {
   padding-top: 25px;
   padding-bottom: 25px;
-  min-height: 300px;
+  /*min-height: 300px;*/
 }
 
 #post .panel-footer {
@@ -112,7 +112,7 @@ body{
 }
 
 #post .modal-body {
-  padding: 20px;
+  /*padding: 20px;*/
 
 }
 

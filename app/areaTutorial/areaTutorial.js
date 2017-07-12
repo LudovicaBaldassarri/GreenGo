@@ -29,7 +29,7 @@ angular.module('myApp.areaTutorial', ['ngRoute'])
             $scope.dietaSearch = "";
             $scope.tutorialSearch = "";
             $scope.categoriaSearch = "";
-            $scope.ricerca = false;
+            $scope.ricerca = true;
 
 
             //FUNZIONI PER GESTIRE BOTTONI RICERCA
@@ -37,7 +37,7 @@ angular.module('myApp.areaTutorial', ['ngRoute'])
                 $scope.difficoltaSearch = "";
                 $scope.tutorialSearch = "";
                 $scope.categoriaSearch = "";
-                $scope.ricerca = false;
+                //$scope.ricerca = false;
             }
 
             $scope.setRicerca = function () {

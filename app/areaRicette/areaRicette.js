@@ -35,7 +35,7 @@ angular.module('myApp.areaRicette', ['ngRoute'])
         //$scope.ricettaSearch.b = {};
         $scope.difficoltaSearch = "";
         $scope.dietaSearch = "";
-        $scope.ricerca = false;
+        $scope.ricerca = true;
 
         //FUNZIONI PER GESTIRE BOTTONI RICERCA
         $scope.cancellaTutto = function () {
@@ -43,7 +43,7 @@ angular.module('myApp.areaRicette', ['ngRoute'])
             $scope.dietaSearch = "";
             $scope.ricetteSearch = "";
             $scope.categoriaSearch = "";
-            $scope.ricerca = false;
+            //$scope.ricerca = false;
         }
 
         $scope.setRicerca = function () {

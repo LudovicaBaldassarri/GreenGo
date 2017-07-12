@@ -125,7 +125,46 @@
     </div><br><br>
 
     <!--SPAZIO RICETTE TROVATE-->
-    <div class="container">
+
+    <div class="container" id="listaRicette">
+        <div class="row">
+            <ul class="media-list">
+                <li ng-repeat="post in dati.posts | filter:ricetteSearch| filter:{difficolta:difficoltaSearch, categoria:categoriaSearch, dieta:dietaSearch}  " ng-if="post.tag === 'ricetta'" >
+
+                    <div class="col-md-4">
+                            <div class="panel-heading">
+                                <img style="width:100%" height="200px" alt="Image"
+                                     ng-src="{{post.img_url}}" alt="{{post.img_alt}}"
+                                     ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">
+                            </div>
+
+                            <div class="panel-body">
+                                <a href="#!/detailsRicetta/{{post.id}}" style="color: #18562c">{{post.titolo}}</a><br>
+                                <span style="font-size: 15px ;">{{post.descrizione}}</span>
+                            </div>
+                            <div class="panel-footer">
+                                <p>
+                                    <a href="#!/otherUserProfile/{{post.autoreId}}" ng-if="dati.userId != post.autoreId">
+                                        <span style="color: grey; font-weight: lighter">by {{post.name}} {{post.surname}}</span></a>
+                                    <a href="#!/userProfile" ng-if="dati.userId == post.autoreId">
+                                        <span style="color: grey; font-weight: lighter">by {{post.name}} {{post.surname}}</span></a><br>
+                                    <!--{{post.descrizione}}-->
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <!--<div class="container">
         <div class="row">
             <ul class="media-list">
                 <li ng-repeat="post in dati.posts | filter:ricetteSearch| filter:{difficolta:difficoltaSearch, categoria:categoriaSearch, dieta:dietaSearch}  " ng-if="post.tag === 'ricetta'" >
@@ -142,7 +181,7 @@
                                 <p>
                                     <a href="#!/otherUserProfile/{{post.autoreId}}" ng-if="dati.userId != post.autoreId"><span style="color: green">{{post.name}} {{post.surname}}</span></a>
                                     <a href="#!/userProfile" ng-if="dati.userId == post.autoreId"><span style="color: green">{{post.name}} {{post.surname}}</span></a><br>
-                                <!--{{post.descrizione}}-->
+                                &lt;!&ndash;{{post.descrizione}}&ndash;&gt;
                                 </p>
                             </div>
                         </div>
@@ -152,7 +191,7 @@
 
         </div>
     </div>
-
+-->
 </div>
 
 

@@ -1,5 +1,4 @@
 <div class="container-fluid" id="page" style="margin-left: 5%; margin-right: 5%; width: 90%">
-    <!--MAGARI QUI DENTRO METTIAMO QUALCOSA-->
     <div class="row">
         <div class="col-md-1"></div>
 
@@ -46,9 +45,6 @@
                     <hr>
                     <h3>Ingredienti</h3>
                     <div class="panel panel-default">
-                        <!--CAMBIARE COLORE SFONDO e testo-->
-                        <!--QUA METTIAMO UN DIV CLASS ROW QUANDO ABBIAMO GLI INGREDIENTI-->
-                        <!--PER FARLI VENIRE IN DUE COLONNE-->
                         <div class="row">
                             <div class="col-md-6">
                                 <ul style="list-style: none; padding-top: 10px">
@@ -112,7 +108,6 @@
                     <hr>
                     <div ng-if="dati.post.autoreId != dati.userId">
                         <p>Vota la ricetta:</p>
-                        <br>
                         <form ng-submit="addVoto()" id="formVota" ng-if="dati.notVoted">
                             <button class="stellaButton" ng-click="valueUno()"type="submit"><img src="../images/empty-star.png" height="18px"></button>
                             <button class="stellaButton" ng-click="valueDue()"type="submit"><img src="../images/empty-star.png" height="18px"></button>
@@ -123,8 +118,6 @@
                         </span><p ng-if="dati.yetVoted"><em>Il tuo voto è stato aggiunto! </em><span style="color: green" class="glyphicon glyphicon-ok"></span></p>
                         <hr>
                     </div>
-
-
                     <p>Aggiungi un commento:</p>
                     <form id="frmAddCommento" role="form" ng-submit="addCommento()">
                         <textarea style="height: 50px" type = "text" class="form-control" nome="testo" rows="4" id="desc" placeholder="Scrivi un commento..."
@@ -132,20 +125,21 @@
                         <button class="btn btn-success" type="submit" style="float: right;">Pubblica</button>
                     </form><hr>
 
-                    <div>
+                    <a style="color: green" class="btn" data-toggle="collapse" data-target="#demo">Visualizza commenti</a><br>
+                    <div id="demo" class="collapse"><br>
                         <li class="media-list" ng-repeat="commenti in dati.commenti | orderBy: '-date' :true" style="list-style: none">
                             <div class="panel">
-                                    <div class="media-left">
-                                        <img class="img-circle" ng-src="{{commenti.autore_img}}" height="50px" width="50px">
-                                    </div>
-                                    <div class="media-body">
-                                        <p><span style="color: green"><b>{{commenti.name}} {{commenti.surname}}: </b></span> <br>{{commenti.descrizione}}</p>
-                                        <p class="data-ora" style="float: right">{{commenti.dataStampa}} {{commenti.oraStampa}}</p>
+                                <div class="media-left">
+                                <img class="img-circle" ng-src="{{commenti.autore_img}}" height="50px" width="50px">
+                                </div>
+                                <div class="media-body">
+                                <p><span style="color: green"><b>{{commenti.name}} {{commenti.surname}}: </b></span> <br>{{commenti.descrizione}}</p>
+                                <p class="data-ora" style="float: right">{{commenti.dataStampa}} {{commenti.oraStampa}}</p>
 
                                 </div>
                             </div>
                         </li>
-                </div>
+                    </div>
             </div>
         </div>
     </div>

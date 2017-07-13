@@ -128,7 +128,7 @@ angular.module('myApp.post.insertPostService', [])
                 var ref = firebase.database().ref().child("posts").child(postId);
                 if(senzaglutine){
                     ref.update({
-                        senzaglutine: "senzaglutine"
+                        senzaglutine: "senza glutine"
                     });
                 } else {ref.update({
                     senzaglutine: ""

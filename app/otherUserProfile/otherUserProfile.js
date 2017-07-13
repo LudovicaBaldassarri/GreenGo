@@ -90,11 +90,11 @@ angular.module('myApp.otherUserProfile', ['ngRoute'])
                     }else{
                         UsersFollowService.updateUsersFollow($scope.dati.otherUserId);
                     }
-                    if ($scope.dati.numFollowing== null){
+                    /*if ($scope.dati.numFollowing == null){
                         UsersFollowService.setNumeroFollowers($scope.dati.userId);
                     }else{
                         UsersFollowService.updateUsersFollow($scope.dati.userId);
-                    }
+                    }*/
 
                     $scope.dati.notFollowing = false;
                     $scope.dati.yetFollowing = true;

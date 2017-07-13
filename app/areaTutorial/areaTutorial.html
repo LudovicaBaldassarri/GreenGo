@@ -61,18 +61,18 @@
                             </div>
                             <div class="panel-footer">
                                 <p>
-                                    <a href="#!/otherUserProfile/{{post.autoreId}}"
-                                       style="color: grey; font-size: 16px;font-weight: lighter" ng-if="dati.userId != post.autoreId">
-                                        <span style="color: grey; font-weight: lighter">by {{posts.name}} {{post.surname}}</span></a>
-                                    <a href="#!/userProfile"style="color:grey; font-size: 18px;font-weight: lighter" ng-if="dati.userId == post.autoreId">
+                                    <a href="#!/otherUserProfile/{{posts.autoreId}}"
+                                       style="color: grey; font-size: 16px;font-weight: lighter" ng-if="dati.userId != posts.autoreId">
+                                        <span style="color: grey; font-weight: lighter">by {{posts.name}} {{posts.surname}}</span></a>
+                                    <a href="#!/userProfile"style="color:grey; font-size: 18px;font-weight: lighter" ng-if="dati.userId == posts.autoreId">
                                         <span>by {{posts.name}} {{posts.surname}}</span></a>
                                     <span style="color: grey; font-size: 16px;font-weight: lighter; float: right">
-                                        <img src="../images/votozero.png" height="16px" ng-if="post.media==null">
-                                        <img src="../images/votouno.png" height="16px" ng-if="post.media==1">
-                                        <img src="../images/votodue.png" height="16px" ng-if="post.media==2">
-                                        <img src="../images/vototre.png" height="16px" ng-if="post.media==3">
-                                        <img src="../images/votoquattro.png" height="16px" ng-if="post.media==4">
-                                        <img src="../images/votocinque.png" height="16px" ng-if="post.media==5">
+                                        <img src="../images/votozero.png" height="16px" ng-if="posts.media==null">
+                                        <img src="../images/votouno.png" height="16px" ng-if="posts.media==1">
+                                        <img src="../images/votodue.png" height="16px" ng-if="posts.media==2">
+                                        <img src="../images/vototre.png" height="16px" ng-if="posts.media==3">
+                                        <img src="../images/votoquattro.png" height="16px" ng-if="posts.media==4">
+                                        <img src="../images/votocinque.png" height="16px" ng-if="posts.media==5">
                                         <!--voto: {{post.media}}-->
                                     </span>
                                     <br>

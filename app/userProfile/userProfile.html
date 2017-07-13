@@ -716,6 +716,7 @@
 
 
   <!--MODAL DIVENTA PRODUTTORE-->
+  <div ng-controller="userProfileCtrl as $ctrl">
   <div class="modal fade" id="modalProduttore" role="dialog">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
@@ -739,14 +740,15 @@
               <label for="txtPres">Descrizione</label>
               <input class="form-control" id="txtPres" placeholder="Fai una breve descrizione della tua attività" name="password" ng-model="dati.descrizione" />
             </div>
+              <h4 class="modal-title">Aggiungi un'immagine per la tua attività da produttore! </h4>
+                   <file-upload on-change="$ctrl.onChange"> </file-upload>
             <div class="form-group" align="center">
               <button href="#!/paginaProduttore" class="btn btn-success" type="submit">Diventa Produttore</button>
             </div>
             <button class="btn btn-default" data-dismiss="modal" style="float: right">Close</button><br>
           </form>
-
         </div>
-
+      </div>
 
       </div>
     </div>

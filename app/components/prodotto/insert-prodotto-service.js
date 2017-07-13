@@ -11,7 +11,7 @@ angular.module('myApp.prodotto.insertProdottoService', [])
             },
 
             insertNewProdotto: function (autoreId, nomeProduttore, img_url, descrizione, prezzo, date, dataStampa, oraStampa,
-                                     nomeProdotto, categoria, imgPath){
+                                     nomeProdotto, categoria, imgPath, cittaProduttore){
                 var ref=firebase.database().ref().child("products");
                 return $firebaseArray(ref).$add({
                     autoreId: autoreId,
@@ -24,7 +24,8 @@ angular.module('myApp.prodotto.insertProdottoService', [])
                     oraStampa: oraStampa,
                     nomeProdotto: nomeProdotto,
                     categoria: categoria,
-                    img_url: imgPath
+                    img_url: imgPath,
+                    cittaProduttore: cittaProduttore
                 });
             },
             updateProdotto: function(prodottoId) {

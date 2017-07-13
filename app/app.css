@@ -290,3 +290,13 @@ body{
   margin-bottom: 50px;
 
 }
+.crop{
+  width: 600px;
+  height: 200px;
+  overflow: hidden;
+}
+.crop img {
+  width: 600px;
+  height: 450px;
+  margin: -100px 0 0 -50px;
+}

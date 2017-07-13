@@ -51,13 +51,43 @@ angular.module('myApp.userProfile', ['ngRoute'])
         $scope.dati.descPersonale="";
 
         $scope.updateInfoProduttore = function () {
-            Users.updateProduttore($scope.dati.userId, $scope.dati.nomeProduttore, $scope.dati.citta, $scope.dati.descrizione);
+            if ($scope.fileToUpload != null) {
+                //get the name of the file
+                var fileName = $scope.fileToUpload.name;
+                //specify the path in which the file should be saved on firebase
+                var storageRef = firebase.storage().ref("produttoriImages/" + fileName);
+                $scope.storage = $firebaseStorage(storageRef);
+                var uploadTask = $scope.storage.$put($scope.fileToUpload);
+                uploadTask.$complete(function (snapshot) {
+                    $scope.imgPath = snapshot.downloadURL;
+                    $scope.finalUpdateInfoProduttore();
+
+
+                });
+                uploadTask.$error(function (error) {
+                    $scope.dati.error = error + " - il produttore rimmarrà senza immagine :(";
+                    //senza aggiungere un immagine
+                    $scope.finalUpdateInfoProduttore();
+                });
+            }
+            else {
+                $scope.addDefaultImage();
+
+            }
+
+
+        };
+
+        $scope.finalUpdateInfoProduttore = function () {
+            Users.updateProduttore($scope.dati.userId, $scope.dati.nomeProduttore, $scope.dati.citta, $scope.dati.descrizione, $scope.imgPath);
             $scope.dati.user = Users.updateTipo($firebaseAuth().$getAuth().uid);
             var modalDiv = $("#modalProduttore");
             modalDiv.modal('hide');
             var modalMsg = $("#modalMsg");
             modalMsg.modal('show');
         };
+
+
         $scope.close = function () {
             var modalMsg = $("#modalMsg");
             modalMsg.modal('hide');
@@ -108,9 +138,6 @@ angular.module('myApp.userProfile', ['ngRoute'])
 
         $scope.addImage = function() {
 
-            console.log($scope.dati.userId);
-
-
             //try to upload the image: if no image was specified, we create a new opera without an image
             if ($scope.fileToUpload != null) {
                 //get the name of the file
@@ -139,8 +166,8 @@ angular.module('myApp.userProfile', ['ngRoute'])
                    $scope.addDefaultImage();
 
                 }
-            var modalDiv = $("#modalAddImmagine");
-            modalDiv.modal('hide');
+                 var modalDiv = $("#modalAddImmagine");
+                 modalDiv.modal('hide');
             };
 
             //initialize the function that will be called when a new file will be specified by the user
@@ -159,12 +186,12 @@ angular.module('myApp.userProfile', ['ngRoute'])
 
             };
 
-            //provo a mettere l'immagine default
+            /*//provo a mettere l'immagine default
             $scope.addDefaultImage = function () {
                 $scope.imgPath = "userImages/Default.png"
                 Users.updateImage($scope.dati.userId, $scope.imgPath);
             };
-
+*/
             $scope.addPostP = function () {
 
                 //check if the user inserted all the required information

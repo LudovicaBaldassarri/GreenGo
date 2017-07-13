@@ -281,33 +281,33 @@ body{
 #wordR, #wordT, #wordM {
   max-width: 250px;
   position: absolute;
-  left:400px;
+  left:35%;
 }
 
 #cathegoryR, #cathegoryT, #cathegoryM {
   width: 120px;
   position: absolute;
   top: 220px;
-  left:400px;
+  left:35%;
 }
 
 #difficultyR, #difficultyT{
   width: 120px;
   position: absolute;
   top: 220px;
-  left: 550px;
+  left: 50%;
 }
 
 #dietR {
   width: 120px;
   position: absolute;
   top: 220px;
-  left: 705px;
+  left: 65%;
 }
 
 #searchR, #searchT, #searchM {
   position: absolute;
-  left:760px;
+  left:70%;
 }
 #listaTutorial .panel-body {
   min-height: 200px;

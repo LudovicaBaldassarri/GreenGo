@@ -8,12 +8,11 @@
                             <div class="crop" align="center">
                                 <img class=" " width="100%" height="20%"
                                      ng-src="{{dati.user.img_produttore}}" alt=" " ng-if="dati.user.img_produttore.includes('https://firebasestorage.googleapis.com')">
-
                             </div>
                             <h1><strong>{{dati.user.nomeProduttore}}</strong></h1>
                             <p style="font-size: 25px">{{dati.user.citta}} · {{dati.user.descrizione}}</p><hr>
-                            <p style="font-size: 20px"> Attività di <a href="#!/otherUserProfile/{{dati.userId}}">{{dati.user.name}} {{dati.user.surname}}</a></p>
-                            <img class="img-circle" width="125" height="125"
+                            <p style="font-weight: lighter"> Attività di <a href="#!/otherUserProfile/{{dati.userId}}">{{dati.user.name}} {{dati.user.surname}}</a></p>
+                            <img class="img-circle" width="80" height="80"
                                  ng-src="{{dati.user.img_url}}" alt="{{dati.user.img_alt}}" ng-if="dati.user.img_url.includes('https://firebasestorage.googleapis.com')">
                             <button style="margin: 15px" type="button" class="btn btn-success btn-lg" href="#/otherProduttore"
                                     data-toggle="modal" data-target="#modalProdotto">Aggiungi Prodotto</button>
@@ -122,3 +121,4 @@
 </div>
 
 
+</div>

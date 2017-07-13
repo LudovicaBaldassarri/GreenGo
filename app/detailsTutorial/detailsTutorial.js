@@ -30,6 +30,7 @@ angular.module('myApp.detailsTutorial', ['ngRoute'])
             $scope.dati.commenti = InsertCommentoService.getCommenti($routeParams.postId);
             $scope.dati.savers = PostSaveService.getSavers();
             $scope.dati.voters = PostVoteService.getVoters();
+            $scope.dati.condivisione = "";
 
             // Iterazione per savers
             $scope.dati.notSaved = true;
@@ -212,5 +213,20 @@ angular.module('myApp.detailsTutorial', ['ngRoute'])
                         InsertPostService.updateNumCommenti($scope.dati.post.id,$scope.dati.post.numCommenti);
                     }
                 };
+
+            $scope.condividiT = function () {
+                InsertPostService.condividiTutorial( $scope.dati.post.$id, $scope.dati.userId, $scope.dati.user.name, $scope.dati.user.surname, $scope.dati.user.img_url, $scope.dati.post.autoreId, $scope.dati.post.name,
+                    $scope.dati.post.surname, $scope.dati.post.autore_img, $scope.dati.post.descrizione, $scope.dati.post.dataStampa, $scope.dati.post.oraStampa,
+                    $scope.dati.post.titolo, $scope.dati.post.categoria, $scope.dati.condivisione).then(function (ref) {
+                    var refy = ref.key;
+                    //InsertPostService.updatePost($scope.dati.post.$id);
+                    var modalDiv = $("#modalCondivisione");
+                    modalDiv.modal('hide');
+                });
+
+            }
+
+
+
         }
 ]);

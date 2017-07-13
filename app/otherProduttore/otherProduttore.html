@@ -11,15 +11,12 @@
                     </div>
                     <h1><strong>{{dati.otherProduttoreInfo.nomeProduttore}}</strong></h1>
                     <p style="font-size:20px; font-weight:lighter">{{dati.otherProduttoreInfo.citta}} · {{dati.otherProduttoreInfo.descrizione}}</p><hr>
-                    <img class="img-circle" width="50" height="50" align="right"
-                         ng-src="{{dati.otherProduttoreInfo.img_url}}" alt="immagine" ng-if="dati.otherProduttoreInfo.img_url.includes('https://firebasestorage.googleapis.com')">
-
-                </div>
+                    </div>
                 <div class="col-md-8 text-right">
-                    <p style="font-size: 20px"> Attività di <a href="#!/otherUserProfile/{{dati.otherProduttoreId}}">{{dati.otherProduttoreInfo.name}} {{dati.otherProduttoreInfo.surname}}</a></p>
+                    <p style="font-size: 15px; margin-top: 5px; font-weight: lighter"> Attività di <a href="#!/otherUserProfile/{{dati.otherProduttoreId}}">{{dati.otherProduttoreInfo.name}} {{dati.otherProduttoreInfo.surname}}</a></p>
                 </div>
                 <div class="col-md-4 text-center">
-                <img class="img-circle" width="50" height="50" align="right"
+                <img class="img-circle" width="50" height="50" align="left"
                      ng-src="{{dati.otherProduttoreInfo.img_url}}" alt="immagine" ng-if="dati.otherProduttoreInfo.img_url.includes('https://firebasestorage.googleapis.com')">
                     <br><button style="margin: 15px" type="button" class="btn btn-default" href="#/otherProduttore"
                             data-toggle="modal" data-target="#modalMessaggio">

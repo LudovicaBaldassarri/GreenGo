@@ -1,6 +1,6 @@
 <div id="page">
     <!--SPAZIO RICERCA-->
-    <div class="jumbotron">
+    <div id="ricercaRicetta" class="jumbotron">
         <!--<div class="panel-body">-->
 
             <input  id="wordR" type="text" class="form-control" ng-model="ricetteSearch" placeholder="Cerca per ingrediente...">
@@ -75,15 +75,20 @@
             <span class="glyphicon glyphicon-remove"></span>  {{dietaSearch}}</button>
         <button class="btn btn-default" ng-if="ricerca && difficoltaSearch != ''" ng-click="deleteDifficolta()">
             <span class="glyphicon glyphicon-remove"></span>  {{difficoltaSearch}}</button>
-        <button class="btn btn-danger" ng-click="cancellaTutto()">Cancella tutto</button>
+        <button class="btn btn-danger" ng-click="cancellaTutto()"  style=" margin-left: 50px"
+        >Cancella tutto</button>
+        <button type="button" class="btn btn-success" href="#/areaRicette" style="float: right; margin-right: 50px"
+                data-toggle="modal" data-target="#modalRicetta"ng-click="setTag('ricetta');">
+            + Aggiungi Ricetta</button>
     </div><br><br>
+
 
     <!--SPAZIO RICETTE TROVATE-->
 
     <div class="container" id="listaRicette">
         <div class="row">
             <ul class="media-list">
-                <li ng-repeat="post in dati.posts | filter:ricetteSearch| filter:{difficolta:difficoltaSearch, categoria:categoriaSearch, dieta:dietaSearch}  " ng-if="post.tag === 'ricetta'" >
+                <li ng-repeat="post in dati.posts | filter:ricetteSearch| filter:{difficolta:difficoltaSearch, categoria:categoriaSearch}| filter:dietaSearch  " ng-if="post.tag === 'ricetta'" >
 
                     <div class="col-md-4">
                             <div class="panel-heading">
@@ -93,9 +98,8 @@
                             </div>
 
                             <div class="panel-body">
-                                <a href="#!/detailsRicetta/{{post.id}}" style="color: #18562c">{{post.titolo}}</a><br>
-                                <p style="font-size: 15px ;">{{post.descrizione}}</p>
-
+                                <a href="#!/detailsRicetta/{{post.id}}">{{post.titolo}}</a><br>
+                                <p>{{post.descrizione}}</p>
                             </div>
                             <div class="panel-footer">
                                 <p>

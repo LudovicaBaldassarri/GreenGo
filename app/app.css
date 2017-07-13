@@ -309,14 +309,32 @@ body{
   position: absolute;
   left:760px;
 }
-#listaRicette .panel-body {
-  min-height: 160px;
+#listaTutorial .panel-body {
+  min-height: 200px;
   background-color: #FEFEFE;
 
 }
+#listaRicette .panel-body {
+  min-height: 160px;
+  background-color: #FEFEFE;
+}
 
-#listaRicette .panel-footer {
+#listaRicette .panel-body a,
+#listaTutorial .panel-body a {
+  color: #74A614;
+}
+
+#listaRicette .panel-body p,
+#listaTutorial .panel-body p {
+  font-size: 15px;
+}
+
+#listaRicette .panel-footer,
+#listaTutorial .panel-footer{
   background-color: #FEFEFE;
   margin-bottom: 50px;
+}
 
+#ricercaRicetta {
+  background-color: #FEFEFE;
 }

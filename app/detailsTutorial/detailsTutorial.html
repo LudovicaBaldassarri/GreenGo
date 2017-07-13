@@ -6,7 +6,6 @@
             <div class="panel text-left">
                 <div class="panel-body">
                     <h1 style="color: green;">{{dati.post.titolo}}</h1>
-                    <br>
                     <img src="../images/votozero.png" height="20px" ng-if="dati.post.media==null">
                     <img src="../images/votouno.png" height="20px" ng-if="dati.post.media==1">
                     <img src="../images/votodue.png" height="20px" ng-if="dati.post.media==2">
@@ -92,11 +91,11 @@
                     <div ng-if="dati.post.autoreId != dati.userId">
                         <p>Vota il tutorial:</p>
                         <form ng-submit="addVoto()" id="formVota" ng-if="dati.notVoted">
-                            <button class="stellaButton" ng-click="valueUno()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
-                            <button class="stellaButton" ng-click="valueDue()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
-                            <button class="stellaButton" ng-click="valueTre()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
-                            <button class="stellaButton" ng-click="valueQuattro()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
-                            <button class="stellaButton" ng-click="valueCinque()" type="submit"><img src="../images/empty-star.png" height="20px"></button>
+                            <button class="stellaButton" ng-click="valueUno()"type="submit"><img src="../images/empty-star.png" height="18px"></button>
+                            <button class="stellaButton" ng-click="valueDue()"type="submit"><img src="../images/empty-star.png" height="18px"></button>
+                            <button class="stellaButton" ng-click="valueTre()"type="submit"><img src="../images/empty-star.png" height="18px"></button>
+                            <button class="stellaButton" ng-click="valueQuattro()"type="submit"><img src="../images/empty-star.png" height="18px"></button>
+                            <button class="stellaButton" ng-click="valueCinque()" type="submit"><img src="../images/empty-star.png" height="18px"></button>
                         </form>
                         </span><p ng-if="dati.yetVoted"><em>Il tuo voto è stato aggiunto! </em><span style="color: green" class="glyphicon glyphicon-ok"></span></p>
                         <hr>

@@ -1,20 +1,22 @@
-<div class="container-fluid" id="page" style="margin-left: 10%; margin-right: 10%; width: 80%">
+<div class="container-fluid" id="page" style=" width: 100%">
 <div class="row">
         <!--SPAZIO UTENTE-->
-    <div class="col-md-3 ">
+    <div class="col-md-3 "  style="width: 20%">
         <div class="panel panel-default" align="center" >
             <div class="panel-body">
                 <div>
-                    <img class="img-circle" width="200" height="200"
+                    <img class="img-circle" width="180" height="180"
                          ng-src="{{dati.otherUserInfo.img_url}}" alt="{{dati.otherUserInfo.img_alt}}" ng-if="dati.otherUserInfo.img_url.includes('https://firebasestorage.googleapis.com')">
-                    <br>                <button id="followButton" ng-if= "dati.notFollowing" ng-click="CreateFollow()"
-                                                type="submit" class="btn btn-success"  style="float: right;">Segui</button>
+                    <br>
+                    <button id="followButton" ng-if= "dati.notFollowing" ng-click="CreateFollow()"
+                            style="width: 72%;" type="submit" class="btn btn-success"  style="float: right;">Segui</button>
                     <button  ng-if="dati.yetFollowing " ng-click="removeFollow(dati.Follow)" type="submit" class="btn btn-default"
-                             style="float: right;">Segui già</button><br><hr>
+                             style="width: 72%;" style="float: right;">Segui già</button><br><hr>
                 </div>
 
                 <!--BOTTONI PRODUTTORE-->
-                <button id="button1" ng-if="dati.otherUserInfo.tipo == 'produttore'" class="btn btn-default"><a href="#!/otherProduttore/{{dati.otherUserId}}">Pagina Produttore di {{dati.otherUserInfo.name}}</a></button>
+                <button id="button1" ng-if="dati.otherUserInfo.tipo == 'produttore'" class="btn btn-default">
+                    <a href="#!/otherProduttore/{{dati.otherUserId}}" style="color: grey">Pagina Produttore</a></button>
                 <hr>
                 <!--BOTTONE FOLLOWING-->
 
@@ -36,7 +38,7 @@
     <!--SPAZIO POST-->
     <div class="col-sm-6" ng-if="dati.area== 'profilo'">
 
-        <div class="row">
+        <div class="row" style="width: 125%">
             <div class="col-sm-12">
                 <div class="panel panel-default text-left">
                     <div class="panel-body" >
@@ -47,7 +49,7 @@
             </div>
         </div>
 
-        <div class="row" >
+        <div class="row" style="width: 125%">
             <div class="col-md-12">
                 <ul class="media-list">
                     <!--area profilo-->
@@ -60,14 +62,23 @@
                             <h4><strong>{{post.name}} {{post.surname}}</strong> ha pubblicato:</h4>
                             <p class="data-ora">{{post.dataStampa}} {{post.oraStampa}} </p>
 
-                            <a ng-if="post.tag == 'ricetta'" href="#!/detailsRicetta/{{post.id}}" style="color: darkgreen">
-                                <h4 class="media-heading"><strong>{{post.titolo}}</strong></h4></a>
-                            <a ng-if="post.tag == 'tutorial'" href="#!/detailsTutorial/{{post.id}}" style="color: darkgreen">
-                                <h4 class="media-heading"><strong>{{post.titolo}}</strong></h4></a>
-
-                            <img class="media-object" ng-src="{{post.img_url}}" ng-alt="{{post.img_alt}}" width="70%">
-                            <a href=""><h4 class="media-heading"><strong>{{post.nome_post}}</strong></h4></a>
-                            <p>{{post.descrizione}}</p>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <a ng-if="post.tag == 'ricetta'" href="#!/detailsRicetta/{{post.id}}" style="color: darkgreen">
+                                    <h4 class="media-heading" style="font-size: 100%; margin-top: 20px; margin-bottom: 15px;"><strong>
+                                        {{post.titolo}}</strong></h4></a>
+                                <a ng-if="post.tag == 'tutorial'" href="#!/detailsTutorial/{{post.id}}" style="color: darkgreen">
+                                    <h4 class="media-heading" style="font-size: 100%; margin-top: 20px; margin-bottom: 15px;"><strong>
+                                        {{post.titolo}}</strong></h4></a>
+                                <img  ng-src="{{post.img_url}}" ng-alt="{{post.img_alt}}" width="90%">
+                                <!--style="position: relative; left: 0px;"-->
+                                <a href=""><h4 class="media-heading"><strong>{{post.nome_post}}</strong></h4></a>
+                            </div>
+                            <div class="col-md-7">
+                            <p style="position: relative; margin-right: 20%; font-size: 90%;
+                                        margin-top: 20%">{{post.descrizione}}</p>
+                            </div>
+                        </div>
                         </div>
                         <hr/>
                     </li>
@@ -192,7 +203,7 @@
         </div>
     </div>
     <!--MENU LATO-->
-    <div class="col-md-3 ">
+    <div class="col-md-3 " style="width: 20%; float: right">
         <div class="panel panel-default" align="center" >
             <div class="panel-body">
                 <button class="btn btn-success" ng-click="goToRicettario()" style="width: 100%">

@@ -281,34 +281,32 @@ body{
 #wordR, #wordT, #wordM {
   max-width: 250px;
   position: absolute;
-  left:35%;
+  /*left:35%;*/
+  top: 165px;
+  left: 15%;
 }
 
 #cathegoryR, #cathegoryT, #cathegoryM {
   width: 120px;
   position: absolute;
-  top: 220px;
-  left:35%;
+  left:38%;
 }
 
 #difficultyR, #difficultyT{
   width: 120px;
   position: absolute;
-  top: 220px;
   left: 50%;
 }
 
 #dietR {
   width: 120px;
   position: absolute;
-  top: 220px;
   left: 65%;
 }
 
 #cityM {
   width: 140px;
   position: absolute;
-  top: 220px;
   left: 45%;
 }
 
@@ -344,6 +342,9 @@ body{
 
 .jumbotron {
   background-color: #FEFEFE;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  height: 100px;
 }
 
 .img-circle{
@@ -377,7 +378,6 @@ body{
   font-size: larger;
 }
 
-
 #content p {
   font-size: 90%;
 }
@@ -386,7 +386,7 @@ body{
   color: grey;
   font-size: 16px;
   font-weight: lighter;
-  float: right;
+  float: left;
 }
 
 #dataOra {
@@ -404,4 +404,17 @@ body{
     width: 600px;
     height: 450px;
     margin: -80px 0 0 -80px;
+}
+
+#formVota{
+  min-width: 220px;
+  max-height: 70px;
+}
+
+#descy{
+  max-width: 350px;
+}
+
+#btnpubblica {
+  margin-left: 10px;
 }

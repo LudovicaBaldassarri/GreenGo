@@ -212,7 +212,7 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
                     $scope.dati.dataStampa = $scope.dati.post.dataStampa;
                     console.log($scope.dati.oraStampa);
                     console.log($scope.dati.dataStampa);*/
-                })
+                });
                 $scope.finalCommentoAddition();
 
             }
@@ -220,13 +220,18 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
                 //write an error message to the user
                 $scope.dati.error = "You forgot to insert one of the required information!";
             }
-        },
+        };
 
         $scope.finalCommentoAddition = function () {
             InsertCommentoService.insertNewCommento($scope.dati.post.$id, $scope.dati.userId, $scope.dati.user.name, $scope.dati.user.surname, $scope.dati.user.img_url,
                 $scope.dati.commento, $scope.dati.dataStampa, $scope.dati.oraStampa);
 
             $scope.dati.commento = "";
+            if($scope.dati.post.numCommenti == null){
+                InsertPostService.setNumCommenti($scope.dati.post.id);
+            }else{
+                InsertPostService.updateNumCommenti($scope.dati.post.id,$scope.dati.post.numCommenti);
+            }
         };
 
 

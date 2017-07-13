@@ -99,6 +99,19 @@ angular.module('myApp.post.insertPostService', [])
                     media: media
                 });
             },
+            setNumCommenti: function(postId){
+                var ref = firebase.database().ref().child("posts").child(postId);
+                ref.update({
+                    numCommenti: 1
+                });
+            },
+            updateNumCommenti: function (postId, num) {
+                var ref = firebase.database().ref().child("posts").child(postId);
+                ref.update({
+                    numCommenti: num+1
+                });
+            },
+
 
             setVegetariana: function(postId, vegetariana, vegana) {
                 var ref = firebase.database().ref().child("posts").child(postId);
@@ -136,17 +149,6 @@ angular.module('myApp.post.insertPostService', [])
             }
 
 
-
-            // savePost: function (postId, id_salvatore){
-            //     var ref=firebase.database().ref().child("posts").child(postId).child("savers").child(id_salvatore);
-            //     ref.update({
-            //         id_salvatore: id_salvatore
-            //     });
-            // },
-            // getSavers: function (postId) {
-            //     var saversRef = firebase.database().ref().child("posts").child(postId).child("savers");
-            //     return $firebaseArray(saversRef);
-            // }
         };
         return newPostService;
     });

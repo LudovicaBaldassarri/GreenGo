@@ -524,15 +524,39 @@
                         </div>
                     </div>
 
+
+                    <!--
+
+
+                    <div class="controls" id="ogg10" style="display: none">
+                                <span role="form" autocomplete="off">
+                                   <div class="entry input-group col-xs-3">
+                                       <input class="form-control" style="width: 200px" name="field10"
+                                              type="text" placeholder="Aggiungi Ingrediente"
+                                              ng-model="dati.oggetto10"/>
+                                     <span class="input-group-btn">
+                                       <button class="btn btn-success btn-add" type="button">
+                                            <span class="glyphicon glyphicon-plus"></span>
+                                       </button>
+                                     </span>
+                                   </div>
+                                </span>
+                    </div> --->
+
+
                 </div>  <!--    chiude il modal TUTORIAL     -->
 
-            </div>
+            </div>   <!-- chiude l' ng-controller homeCtrl   -->
+
+            <!-- fine modal -->
+
+            <!--LISTA POST DATABASE-->
 
             <div class="row">
                 <div class="col-md-12">
 
                         <div class="media" ng-repeat="post in dati.posts | orderBy: '-date' :true">
-                        <div class="media" ng-repeat="follow in dati.follows" ng-if="follow.followed == post.autoreId && follow.follower.id == dati.userId || post.autoreId == dati.userId">
+                        <div class="media" ng-repeat="follow in dati.follows" ng-if="follow.followed == post.autoreId && follow.follower.id == dati.userId">
 
                             <div class="media-left">
                                 <img class="img-circle" alt="immagine" width="70" height="70"

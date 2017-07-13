@@ -180,12 +180,12 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
                     InsertPostService.updateMedia($routeParams.postId, $scope.dati.post.media);
                 }
 
-                $scope.dati.autore = UsersInfo.getUserInfo($scope.dati.post.autoreId);
-                if($scope.dati.autore.punti == null){
-                    Users.setPunteggio($scope.dati.post.autoreId);
-                } else {
-                    Users.updatePunteggio($scope.dati.post.autoreId, $scope.dati.autore.punti);
-                }
+                // $scope.dati.autore = UsersInfo.getUserInfo($scope.dati.post.autoreId);
+                // if($scope.dati.autore.punti == null){
+                //     Users.setPunteggio($scope.dati.post.autoreId);
+                // } else {
+                //     Users.updatePunteggio($scope.dati.post.autoreId, $scope.dati.autore.punti);
+                // }
 
                 // Aggiunge anche Voters nel database
                 PostVoteService.insertNewVotedPost($scope.dati.post, $scope.dati.userId, $scope.dati.post.titolo, $scope.dati.post.name).then(function (ref) {

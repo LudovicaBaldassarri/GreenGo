@@ -206,6 +206,11 @@ angular.module('myApp.detailsTutorial', ['ngRoute'])
                         $scope.dati.commento, $scope.dati.dataStampa, $scope.dati.oraStampa);
 
                     $scope.dati.commento = "";
+                    if($scope.dati.post.numCommenti == null){
+                        InsertPostService.setNumCommenti($scope.dati.post.id);
+                    }else{
+                        InsertPostService.updateNumCommenti($scope.dati.post.id,$scope.dati.post.numCommenti);
+                    }
                 };
         }
 ]);

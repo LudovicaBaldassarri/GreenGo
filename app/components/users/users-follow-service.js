@@ -32,7 +32,31 @@ angular.module('myApp.users.usersFollowService', [])
             deleteFollow: function (followId) {
                 var refDel = firebase.database().ref().child("follows").child(followId);
                 refDel.remove();
-            }
+            },
+            setNumeroFollowers: function(userId){
+                var ref = firebase.database().ref().child("users").child(userId);
+                ref.update({
+                    numFollowers: 1
+                });
+            },
+            updateNumeroFollowers: function(userId, num){
+                var ref = firebase.database().ref().child("users").child(userId);
+                ref.update({
+                    numFollowers: num + 1
+                });
+            },
+            setNumeroFollowing: function(userId){
+                var ref = firebase.database().ref().child("users").child(userId);
+                ref.update({
+                    numFollowing: 1
+                });
+            },
+            updateNumeroFollowing: function(userId, num){
+                var ref = firebase.database().ref().child("users").child(userId);
+                ref.update({
+                    numFollowers: num + 1
+                });
+            },
         };
         return NewUsersFollowService;
     });

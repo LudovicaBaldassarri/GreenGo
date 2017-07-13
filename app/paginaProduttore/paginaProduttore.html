@@ -6,13 +6,13 @@
                     <div class="panel panel-default col-md-12" style="padding: 15px">
                         <div class="col-md-8 text-center">
                             <h1><strong>{{dati.user.nomeProduttore}}</strong></h1>
-                            <p style="font-size: 30px">{{dati.user.citta}} · {{dati.user.descrizione}}</p><hr>
-                            <p style="font-size: 25px"> Attività di <a href="#!/otherUserProfile/{{dati.userId}}">{{dati.user.name}} {{dati.user.surname}}</a></p>
+                            <p style="font-size: 25px">{{dati.user.citta}} · {{dati.user.descrizione}}</p><hr>
+                            <p style="font-size: 20px"> Attività di <a href="#!/otherUserProfile/{{dati.userId}}">{{dati.user.name}} {{dati.user.surname}}</a></p>
                         </div>
                         <div class="col-md-4 text-center">
                             <img class="img-circle" width="125" height="125"
                                 ng-src="{{dati.user.img_url}}" alt="{{dati.user.img_alt}}" ng-if="dati.user.img_url.includes('https://firebasestorage.googleapis.com')">
-                             <br><button style="margin: 20px" type="button" class="btn btn-success btn-lg" href="#/otherProduttore"
+                             <br><button style="margin: 15px" type="button" class="btn btn-success btn-lg" href="#/otherProduttore"
                                 data-toggle="modal" data-target="#modalProdotto">Aggiungi Prodotto</button>
                         </div>
                     </div>

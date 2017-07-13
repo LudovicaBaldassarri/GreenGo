@@ -1,7 +1,6 @@
 <div id="page">
     <!--SPAZIO RICERCA-->
     <div id="ricercaRicetta" class="jumbotron">
-        <!--<div class="panel-body">-->
 
             <input  id="wordR" type="text" class="form-control" ng-model="ricetteSearch" placeholder="Cerca per ingrediente...">
 
@@ -127,10 +126,10 @@
             </ul>
 
         </div>
-
+<!--MODAL RICETT-->
     <div ng-controller="homeCtrl as $ctrl">
         <div class="modal fade post" id="modalRicetta" role="dialog">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-lg" style="width: 850px">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" data-target="#modalPost">&times;</button>

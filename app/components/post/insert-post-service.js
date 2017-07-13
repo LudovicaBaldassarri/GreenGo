@@ -63,6 +63,30 @@ angular.module('myApp.post.insertPostService', [])
                     }
                 });
             },
+
+            condividiRicetta: function (postId, condividerId, condividerName, condividerSurname, condivider_img, autoreId, nameAutore, surnameAutore,
+                                        autore_img, descrizione, dataStampa, oraStampa, titolo, categoria, condivisione) {
+                var ref=firebase.database().ref().child("posts");
+                return $firebaseArray(ref).$add({
+                    postId: postId,
+                    condividerId: condividerId,
+                    condividerName: condividerName,
+                    condividerSurname: condividerSurname,
+                    condivider_img: condivider_img,
+                    autore_Id: autoreId,
+                    nameAutore: nameAutore,
+                    surnameAutore: surnameAutore,
+                    autore_img: autore_img,
+                    descrizione: descrizione,
+                    dataStampa: dataStampa,
+                    oraStampa: oraStampa,
+                    titolo: titolo,
+                    tag: "condiviso",
+                    categoria: categoria,
+                    condivisione: condivisione
+                });
+            },
+
             updatePost: function(postId) {
                 var ref = firebase.database().ref().child("posts").child(postId);
                 ref.update({

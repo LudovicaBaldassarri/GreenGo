@@ -93,19 +93,26 @@
                             </div>
 
                             <div class="panel-body">
-                                <a href="#!/detailsRicetta/{{post.id}}" style="color: #18562c">{{post.titolo}}</a><br>
-                                <p style="font-size: 15px ;">{{post.descrizione}}</p>
-
+                                <a href="#!/detailsRicetta/{{post.id}}">{{post.titolo}}</a><br>
+                                <p>{{post.descrizione}}</p>
                             </div>
                             <div class="panel-footer">
                                 <p>
                                     <a href="#!/otherUserProfile/{{post.autoreId}}"
-                                       style="color: grey; font-size: 18px;font-weight: lighter" ng-if="dati.userId != post.autoreId">
+                                       style="color: grey; font-size: 16px;font-weight: lighter" ng-if="dati.userId != post.autoreId">
                                         <span style="color: grey; font-weight: lighter">by {{post.name}} {{post.surname}}</span></a>
                                     <a href="#!/userProfile"style="color: grey; font-size: 18px;font-weight: lighter" ng-if="dati.userId == post.autoreId">
                                         <span>by {{post.name}} {{post.surname}}</span></a>
-                                    <span style="color: grey; font-size: 18px;font-weight: lighter; float: right">
-                                        voto: {{post.media}}</span><br>
+                                    <span style="color: grey; font-size: 16px;font-weight: lighter; float: right">
+                                        <img src="../images/votozero.png" height="16px" ng-if="post.media==null">
+                                        <img src="../images/votouno.png" height="16px" ng-if="post.media==1">
+                                        <img src="../images/votodue.png" height="16px" ng-if="post.media==2">
+                                        <img src="../images/vototre.png" height="16px" ng-if="post.media==3">
+                                        <img src="../images/votoquattro.png" height="16px" ng-if="post.media==4">
+                                        <img src="../images/votocinque.png" height="16px" ng-if="post.media==5">
+                                        <!--voto: {{post.media}}-->
+                                    </span>
+                                    <br>
                                     <!--{{post.descrizione}}-->
                                 </p>
                             </div>
@@ -118,38 +125,6 @@
     </div>
 
 
-
-
-
-
-    <!--<div class="container">
-        <div class="row">
-            <ul class="media-list">
-                <li ng-repeat="post in dati.posts | filter:ricetteSearch| filter:{difficolta:difficoltaSearch, categoria:categoriaSearch, dieta:dietaSearch}  " ng-if="post.tag === 'ricetta'" >
-
-                    <div class="col-md-4">
-                        <div class="panel panel-success">
-                            <div class="panel-heading"><a href="#!/detailsRicetta/{{post.id}}">{{post.titolo}}</a>
-                            </div>
-                            <div class="panel-body">
-                                <img style="width:100%" height="200px" alt="Image"
-                                     ng-src="{{post.img_url}}" alt="{{post.img_alt}}" ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">
-                            </div>
-                            <div class="panel-footer">
-                                <p>
-                                    <a href="#!/otherUserProfile/{{post.autoreId}}" ng-if="dati.userId != post.autoreId"><span style="color: green">{{post.name}} {{post.surname}}</span></a>
-                                    <a href="#!/userProfile" ng-if="dati.userId == post.autoreId"><span style="color: green">{{post.name}} {{post.surname}}</span></a><br>
-                                &lt;!&ndash;{{post.descrizione}}&ndash;&gt;
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-
-        </div>
-    </div>
--->
 </div>
 
 

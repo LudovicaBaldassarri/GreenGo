@@ -555,8 +555,9 @@
             <div class="row">
                 <div class="col-md-12">
 
-                        <div class="media" ng-repeat="post in dati.posts | orderBy: '-date' :true">
-                        <div class="media" ng-repeat="follow in dati.follows" ng-if="follow.followed == post.autoreId && follow.follower.id == dati.userId">
+                        <!--<div class="media" ng-repeat="post in dati.posts | orderBy: '-date' :true">-->
+                        <div class="media" ng-repeat="follow in dati.follows" >
+                            <div class="media" ng-repeat="post in dati.posts | orderBy: '-date' :true" ng-if="post.autoreId ==follow.followed  && follow.follower.id == dati.userId" >
 
                             <div class="media-left">
                                 <img class="img-circle" alt="immagine" width="70" height="70"
@@ -607,16 +608,15 @@
                                     <p>{{post.descrizione}}</p>
                                 </div>
                                 <div id="footerPost" class="media-bottom">
-                                    <!--<p class="data-ora" style="float: right;"> {{post.dataStampa}} {{post.oraStampa}}</p><br>-->
-                                    <form id="frmAddCommento" role="form" ng-submit="addCommento()">
-                                        <textarea type = "text" class="form-control" nome="testo" rows="4" id="descy" placeholder="Scrivi un commento..."
-                                             ng-model="dati.commento" style="width: 500px; height: 40px; float: left"></textarea>
-                                        <button id="btnpubblica"class="btn btn-success" type="submit" >Pubblica</button>
-                                    </form><br>
+                                    <a ng-if="post.tag == 'ricetta' && post.numCommenti == null" href="#!/detailsRicetta/{{post.id}}">Commenti: 0</a>
+                                    <a ng-if="post.tag == 'ricetta' && post.numCommenti != null" href="#!/detailsRicetta/{{post.id}}">Commenti: {{post.numCommenti}}</a>
+
+                                    <a ng-if="post.tag == 'tutorial'&& post.numCommenti == null" href="#!/detailsTutorial/{{post.id}}">Commenti: 0</a>
+                                    <a ng-if="post.tag == 'tutorial'&& post.numCommenti != null" href="#!/detailsTutorial/{{post.id}}">Commenti: {{post.numCommenti}}</a>
+
                                 </div>
                             </div>
                             <hr>
-                            <!--</li>-->
 
                     </div>
 
@@ -624,26 +624,7 @@
 
                 </div>
             </div>
-            <!--<form id="frmAddCommento" role="form" ng-submit="addCommento()">-->
-                        <!--<textarea type = "text" class="form-control" nome="testo" rows="4" id="desc" placeholder="Scrivi un commento..."-->
-                                  <!--ng-model="dati.commento"></textarea>-->
-                <!--<button class="btn btn-success" type="submit" style="float: right;">Pubblica</button>-->
-            <!--</form><hr>-->
-            <!--<div>-->
-                <!--<li class="media-list" ng-repeat="commenti in dati.commenti | orderBy: 'date' :true" style="list-style: none">-->
-                    <!--<div class="panel panel-default">-->
-                        <!--<div class="panel-body">-->
-                            <!--<div class="media-left">-->
-                                <!--<img class="img-circle" ng-src="{{commenti.autore_img}}" height="60px" width="60px">-->
-                            <!--</div>-->
-                            <!--<div class="media-body">-->
-                                <!--<p><span style="color: green"><b>{{commenti.name}} {{commenti.surname}}: </b></span> {{commenti.descrizione}}</p>-->
-                                <!--<p class="data-ora" style="float: right">{{commenti.dataStampa}} {{commenti.oraStampa}}</p>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    <!--</div>-->
-                <!--</li>-->
-            <!--</div>-->
+
 
 
 

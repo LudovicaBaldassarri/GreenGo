@@ -280,36 +280,36 @@ body{
 
 #wordR, #wordT, #wordM {
   max-width: 250px;
-  position: absolute;
-  left:35%;
+  position: relative;
+  top: 38px;
 }
 
 #cathegoryR, #cathegoryT, #cathegoryM {
   width: 120px;
   position: absolute;
-  top: 220px;
-  left:35%;
+  left:40%;
+  top: 135px;
 }
 
 #difficultyR, #difficultyT{
   width: 120px;
   position: absolute;
-  top: 220px;
-  left: 50%;
+  left: 53%;
+  top: 135px;
 }
 
 #dietR {
   width: 120px;
   position: absolute;
-  top: 220px;
   left: 65%;
+  top: 135px;
 }
 
 #cityM {
   width: 140px;
   position: absolute;
-  top: 220px;
-  left: 45%;
+  top:135px;
+  left: 53%;
 }
 
 #searchR, #searchT, #searchM {
@@ -344,6 +344,9 @@ body{
 
 .jumbotron {
   background-color: #FEFEFE;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  height: 80px;
 }
 
 .img-circle{

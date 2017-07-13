@@ -21,8 +21,8 @@ angular.module('myApp.home', ['ngRoute'])
     }])
 
 
-    .controller('homeCtrl',['$scope','$rootScope', '$firebaseAuth','UsersInfo', 'Post', 'InsertPostService', '$firebaseStorage',
-        function($scope, $rootScope, $firebaseAuth , UsersInfo, Post, InsertPostService, $firebaseStorage) {
+    .controller('homeCtrl',['$scope','$rootScope', '$firebaseAuth','$routeParams','UsersInfo', 'Post','UsersFollowService','InsertPostService', '$firebaseStorage',
+        function($scope, $rootScope, $firebaseAuth ,$routeParams, UsersInfo, Post, UsersFollowService,InsertPostService, $firebaseStorage ) {
 
             $scope.dati = {};
             $scope.dati.feedback = "";
@@ -33,7 +33,7 @@ angular.module('myApp.home', ['ngRoute'])
             $scope.dati.user = UsersInfo.getUserInfo($firebaseAuth().$getAuth().uid);
 
             $scope.dati.posts = Post.getData();
-
+            $scope.dati.follows = UsersFollowService.getFollow();
 
             //salva la data di oggi e la inserisce come attributo nel firebase del post
             $scope.dati.date = new Date();
@@ -320,13 +320,6 @@ angular.module('myApp.home', ['ngRoute'])
             };
 
 
-
-            // function conto() {
-            //     var x = document.getElementById("ingrd").lenght;
-            //     console.log(x);
-            // }
-
-
             // TAG RICETTA-TUTORIAL
             $scope.setTag = function (nometag) {
                 $rootScope.dati.tag = nometag;
@@ -335,5 +328,7 @@ angular.module('myApp.home', ['ngRoute'])
                // modalDiv.modal('hide');
                 console.log($rootScope.dati.tag);
             };
+
+
     }]);
 

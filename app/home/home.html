@@ -524,39 +524,16 @@
                         </div>
                     </div>
 
-
-                    <!--
-
-
-                    <div class="controls" id="ogg10" style="display: none">
-                                <span role="form" autocomplete="off">
-                                   <div class="entry input-group col-xs-3">
-                                       <input class="form-control" style="width: 200px" name="field10"
-                                              type="text" placeholder="Aggiungi Ingrediente"
-                                              ng-model="dati.oggetto10"/>
-                                     <span class="input-group-btn">
-                                       <button class="btn btn-success btn-add" type="button">
-                                            <span class="glyphicon glyphicon-plus"></span>
-                                       </button>
-                                     </span>
-                                   </div>
-                                </span>
-                    </div> --->
-
-
                 </div>  <!--    chiude il modal TUTORIAL     -->
 
-            </div>   <!-- chiude l' ng-controller homeCtrl   -->
-
-            <!-- fine modal -->
-
-            <!--LISTA POST DATABASE-->
+            </div>
 
             <div class="row">
                 <div class="col-md-12">
-                    <ul class="media-list">
-                        <!--RICORDIAMOCI DI FILTRARE-->
-                        <li class="media" ng-repeat="post in dati.posts | orderBy: '-date' :true">
+
+                        <div class="media" ng-repeat="post in dati.posts | orderBy: '-date' :true">
+                        <div class="media" ng-repeat="follow in dati.follows" ng-if="follow.followed == post.autoreId && follow.follower.id == dati.userId || post.autoreId == dati.userId">
+
                             <div class="media-left">
                                 <img class="img-circle" alt="immagine" width="70" height="70"
                                 ng-src="{{post.autore_img}}" alt="{{post.autore_img}}"
@@ -615,8 +592,11 @@
                                 </div>
                             </div>
                             <hr>
-                        </li>
-                    </ul>
+                            <!--</li>-->
+
+                    </div>
+
+
 
                 </div>
             </div>

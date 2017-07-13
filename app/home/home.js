@@ -21,8 +21,8 @@ angular.module('myApp.home', ['ngRoute'])
     }])
 
 
-    .controller('homeCtrl',['$scope','$rootScope', '$firebaseAuth','UsersInfo', 'Post', 'InsertPostService', '$firebaseStorage',
-        function($scope, $rootScope, $firebaseAuth , UsersInfo, Post, InsertPostService, $firebaseStorage) {
+    .controller('homeCtrl',['$scope','$rootScope', '$firebaseAuth','UsersInfo', 'Post','UsersFollowService', 'InsertPostService', '$firebaseStorage',
+        function($scope, $rootScope, $firebaseAuth , UsersInfo, Post, UsersFollowService, InsertPostService, $firebaseStorage) {
 
             $scope.dati = {};
             $scope.dati.feedback = "";
@@ -33,6 +33,7 @@ angular.module('myApp.home', ['ngRoute'])
             $scope.dati.user = UsersInfo.getUserInfo($firebaseAuth().$getAuth().uid);
 
             $scope.dati.posts = Post.getData();
+            $scope.dati.follows = UsersFollowService.getFollow();
 
 
             //salva la data di oggi e la inserisce come attributo nel firebase del post

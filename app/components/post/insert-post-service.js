@@ -104,7 +104,7 @@ angular.module('myApp.post.insertPostService', [])
                 var ref = firebase.database().ref().child("posts").child(postId);
                 if(vegetariana || vegana){
                     ref.update({
-                        vegetariana: "vegetariana"
+                        vegetariana: "Vegetariana"
                     });
                 } else {ref.update({
                     vegetariana: ""
@@ -116,7 +116,7 @@ angular.module('myApp.post.insertPostService', [])
                 var ref = firebase.database().ref().child("posts").child(postId);
                 if(vegana){
                     ref.update({
-                        vegana: "vegana"
+                        vegana: "Vegana"
                     });
                 } else {ref.update({
                     vegana: ""
@@ -128,7 +128,7 @@ angular.module('myApp.post.insertPostService', [])
                 var ref = firebase.database().ref().child("posts").child(postId);
                 if(senzaglutine){
                     ref.update({
-                        senzaglutine: "senzaglutine"
+                        senzaglutine: "Senza Glutine"
                     });
                 } else {ref.update({
                     senzaglutine: ""

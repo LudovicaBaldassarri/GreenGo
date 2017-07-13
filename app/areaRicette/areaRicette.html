@@ -83,7 +83,7 @@
     <div class="container" id="listaRicette">
         <div class="row">
             <ul class="media-list">
-                <li ng-repeat="post in dati.posts | filter:ricetteSearch| filter:{difficolta:difficoltaSearch, categoria:categoriaSearch, dieta:dietaSearch}  " ng-if="post.tag === 'ricetta'" >
+                <li ng-repeat="post in dati.posts | filter:ricetteSearch| filter:{difficolta:difficoltaSearch, categoria:categoriaSearch}| filter:dietaSearch  " ng-if="post.tag === 'ricetta'" >
 
                     <div class="col-md-4">
                             <div class="panel-heading">

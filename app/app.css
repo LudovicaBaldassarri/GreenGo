@@ -388,7 +388,7 @@ body{
   left: 16px;
 }
 .crop {
-    width: 100%;
+    width: 600px;
     height: 200px;
     overflow: hidden;
 }
@@ -396,5 +396,5 @@ body{
 .crop img {
     width: 600px;
     height: 450px;
-    margin: -80px 0 0 0px;
+    margin: -80px 0 0 -80px;
 }

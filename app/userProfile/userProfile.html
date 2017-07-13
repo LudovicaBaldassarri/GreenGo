@@ -552,7 +552,7 @@
           <ul class="media-list">
             <!--area profilo-->
             <li class="media" ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="  dati.userId == post.autoreId">
-                  <div class="media-left">
+                  <div class="media-left" ng-if="post.tag!='condiviso'">
                     <!--QUI METTEREI L'IMMAGINE DEL PROFILO-->
                     <img class="img-circle" alt="immagine" width="50" height="50"
                          ng-src="{{post.autore_img}}" alt="{{post.autore_img}}"
@@ -590,12 +590,64 @@
                      <img src="../images/votocinque.png" height="20px" ng-if="post.media==5">
                     </div>
                     </div>
-
                 </div>
-
                 </div>
+                <!--IMMAGINE CONDIVISA-->
+                <!--<div class="media-left" ng-if="post.tag == 'condiviso'">-->
+                    <!--&lt;!&ndash;QUI METTEREI L'IMMAGINE DEL PROFILO&ndash;&gt;-->
+                    <!--<img class="img-circle" alt="immagine" width="50" height="50"-->
+                         <!--ng-src="{{post.condivider_img}}" alt="{{post.condivider_img}}"-->
+                         <!--ng-if="post.condivider_img.includes('https://firebasestorage.googleapis.com')">-->
+                <!--</div>-->
+                <!--<div class="media-body" ng-if="post.tag == 'condiviso'">-->
+
+                    <!--<h4 style="color: grey"><strong>{{post.condividerName}} {{post.condividerSurname}}</strong> ha condiviso:</h4>-->
+
+                    <!--<button class="btn btn-default btn-sm" style="position: relative; left:80px;"-->
+                            <!--ng-click="removePost(post.id)"ng-if="dati.userId == post.autoreId">Rimuovi Post</button>-->
+                    <!--<p>{{post.condivisione}}</p><hr>-->
+                    <!--<h4 style="color: grey"><strong>{{post.nameAutore}} {{post.surnameAutore}}</strong> ha pubblicato:</h4>-->
+                    <!--<span class="data-ora">{{post.dataStampa}} {{post.oraStampa}} </span>-->
+                    <!--<div class="media-left" ng-if="post.tag == 'condiviso'">-->
+                    <!--&lt;!&ndash;QUI METTEREI L'IMMAGINE DEL PROFILO&ndash;&gt;-->
+                    <!--<img class="img-circle" alt="immagine" width="50" height="50"-->
+                         <!--ng-src="{{post.autore_img}}" alt="{{post.autore_img}}"-->
+                         <!--ng-if="post.autore_img.includes('https://firebasestorage.googleapis.com')">-->
+                    <!--</div>-->
+                    <!--<div class="media-body">-->
+                        <!--<h4 style="color: grey"><strong>{{post.nameAutore}} {{post.surnameAutore}}</strong> ha pubblicato:</h4>-->
+
+                        <!--<h4 class="media-heading" style="font-size:larger; margin-top: 20px; margin-bottom: 15px;">-->
+                            <!--<strong>{{post.titolo}}</strong></h4>-->
+                        <!--<div class="row">-->
+                            <!--<div class="col-md-5">-->
+                                <!--<img style="position: relative; left: 0px;"-->
+                                     <!--ng-src="{{post.img_url}}" ng-alt="{{post.img_alt}}" width="95%">-->
+                                <!--<a href=""><h4><strong>{{post.nome_post}}</strong></h4></a>-->
+                            <!--</div>-->
+                            <!--<div class="col-md-7">-->
+                                <!--<p style="position: relative;left: 0px; font-size: 80%">-->
+                                    <!--{{post.descrizione}}</p>-->
+                                <!--<div ng-if="post.media!=null" class="stelline">-->
+                                    <!--<img src="../images/votozero.png" height="20px" ng-if="post.media==null">-->
+                                    <!--<img src="../images/votouno.png" height="20px" ng-if="post.media==1">-->
+                                    <!--<img src="../images/votodue.png" height="20px" ng-if="post.media==2">-->
+                                    <!--<img src="../images/vototre.png" height="20px" ng-if="post.media==3">-->
+                                    <!--<img src="../images/votoquattro.png" height="20px" ng-if="post.media==4">-->
+                                    <!--<img src="../images/votocinque.png" height="20px" ng-if="post.media==5">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+
                 <hr/>
             </li>
+
+
+
+
           </ul>
         </div>
       </div>

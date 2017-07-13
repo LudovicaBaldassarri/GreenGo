@@ -405,7 +405,7 @@ body{
 .crop img {
     width: 600px;
     height: 450px;
-    margin: -80px 0 0 -80px;
+    /*margin: -80px 0 0 -80px;*/
 }
 
 #footerPost{

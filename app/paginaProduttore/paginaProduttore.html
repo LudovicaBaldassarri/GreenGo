@@ -7,24 +7,27 @@
                         <div class="col-md-12 text-center">
                             <div class="row">
                             <div class="col-md-12 text-center">
-                            <div class="crop" align="center">
-                                <img class=" " width="100%" height="20%"
-                                     ng-src="{{dati.user.img_produttore}}" alt=" " ng-if="dati.user.img_produttore.includes('https://firebasestorage.googleapis.com')">
-                            </div>
+                                <div class="panel" align="center">
+                                    <div class="crop">
+                                        <img class=" " width="100%" height="20%"
+                                             ng-src="{{dati.user.img_produttore}}" alt=" " ng-if="dati.user.img_produttore.includes('https://firebasestorage.googleapis.com')">
+                                    </div>
+                                </div>
+
                                 <h1><strong>{{dati.user.nomeProduttore}}</strong></h1>
                                  <p style="font-size:20px; font-weight:lighter">{{dati.user.citta}} · {{dati.user.descrizione}}</p><hr>
                             </div>
                             </div>
                             <div class="col-md-4 text-right">
-                                <p style="float: left;font-size: 13px; font-weight: lighter; margin: 5px" > Attività di <a href="#!/otherUserProfile/{{dati.userId}}">{{dati.user.name}} {{dati.user.surname}}</a></p>
+                                <p style="float: left;font-size: 13px; font-weight: lighter; margin: 5px" > Attività di <a style="color: green" href="#!/otherUserProfile/{{dati.userId}}">{{dati.user.name}} {{dati.user.surname}}</a></p>
                             </div>
                             <div class="col-md-4 left">
                                 <img style="margin-top: 5px" align="center" class="img-circle" width="50" height="50"
                                      ng-src="{{dati.user.img_url}}" alt="{{dati.user.img_alt}}" ng-if="dati.user.img_url.includes('https://firebasestorage.googleapis.com')">
                                 </div>
                             <div class="col-md-4 right">
-                                <button style="margin-right:10px" type="button" class="btn btn-success" href="#/otherProduttore" align="center"
-                                        data-toggle="modal" data-target="#modalProdotto">Aggiungi Prodotto</button>
+                                <a style="margin-right:10px;font-size: 13px; font-weight: lighter;"
+                                        data-toggle="modal" data-target="#modalProdotto">Aggiungi Prodotto</a>
                             </div>
                         </div>
                     </div>
@@ -40,16 +43,14 @@
                                     <div class="panel-heading">
                                         <!--<a data-toggle="modal" data-target="#modalInfo">{{prodotto.nomeProdotto}}</a>-->
                                         <span class="coloreTestoVerde">{{prodotto.nomeProdotto}}</span>
-                                        <span style="float: right">{{prodotto.prezzo}}/kg</span>
+                                        <span style="float: right">{{prodotto.prezzo}} Euro/kg</span>
                                     </div>
                                     <div class="panel-body">
                                         <img style="width:100%" width="70%" alt="Image"
                                              ng-src="{{prodotto.img_url}}" alt="immagine" ng-if="prodotto.img_url.includes('https://firebasestorage.googleapis.com')">
                                     </div>
-                                    <div class="panel-footer" style="height: 80px">
-                                        <p style="height: 30px">{{prodotto.descrizione}}</p>
-
-                                        <!--METTERE DATA-->
+                                    <div class="panel-footer" style="height: 50px">
+                                        <p>{{prodotto.descrizione}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -59,8 +60,8 @@
             </div>
          <!--VISUALIZZAZIONE MESSAGGI-->
         <div class="col-md-4">
-          <div class="panel panel-default">
-            <button style="margin: 10px" type="button" class="btn btn-info btn-lg" data-toggle="collapse" data-target="#demo">Messaggi</button>
+          <div class="panel panel-default" align="center">
+            <button style="margin: 10px" type="button" class="btn btn-default" data-toggle="collapse" data-target="#demo">Messaggi</button>
               <div id="demo" class="collapse">
                 <div class="panel-body">
                   <li class="media-list" ng-repeat="messaggios in dati.messaggi | orderBy: 'date' :true "  style="list-style: none" ng-if="dati.userId == messaggios.destinatarioId">
@@ -120,7 +121,7 @@
 
                             <input type="text" class="form-control"  placeholder="00,00 Euro/kg" ng-model="dati.prezzo">
 
-                            <button href="#home" style="float: right" type="submit" class="btn btn-default">Pubblica</button>
+                            <button href="#home" style="float: right" type="submit" class="btn btn-default">Pubblica</button><br>
                         </form>
                     </div>
                 </div>

@@ -20,8 +20,8 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
 }])
 
 .controller('detailsRicettaCtrl', ['$scope', '$rootScope', 'SinglePost', '$routeParams', 'currentAuth', 'UsersInfo','InsertPostService',
-    'InsertCommentoService','PostSaveService', 'PostVoteService','Users',
-    function ($scope, $rootScope, SinglePost, $routeParams, currentAuth, UsersInfo, InsertPostService, InsertCommentoService, PostSaveService, PostVoteService, Users) {
+    'InsertCommentoService','PostSaveService', 'PostVoteService','Users', 'Post',
+    function ($scope, $rootScope, SinglePost, $routeParams, currentAuth, UsersInfo, InsertPostService, InsertCommentoService, PostSaveService, PostVoteService, Users, Post) {
         $scope.dati = {};
         $rootScope.dati = {};
         $rootScope.dati.currentView = "detailsRicetta";
@@ -31,6 +31,7 @@ angular.module('myApp.detailsRicetta', ['ngRoute'])
         $scope.dati.commenti = InsertCommentoService.getCommenti($routeParams.postId);
         $scope.dati.voters = PostVoteService.getVoters();
         $scope.dati.savers = PostSaveService.getSavers();
+        $scope.dati.posts = Post.getData();
 
         // $scope.dati.autorePost = UsersInfo.getUserInfo($scope.dati.post.autoreId);
 

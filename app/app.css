@@ -2,7 +2,7 @@ body{
   margin:0;
   /* font-family: "Verdana"; */
   font-family: 'Nunito', sans-serif;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .navbar {
@@ -120,15 +120,28 @@ body{
 #modalPost h3{
   color: #74A614;
 }
+#modalPostP h3{
+  color: #74A614;
+}
+
 
 
 #modalRicetta,
 #modalTutorial {
   width: auto;
 }
+#modalRicettaP,
+#modalTutorialP {
+  width: auto;
+}
 
 #modalRicetta .modal-content,
 #modalTutorial .modal-content{
+
+  border-radius: 13px;
+}
+#modalRicettaP .modal-content,
+#modalTutorialP .modal-content{
 
   border-radius: 13px;
 }
@@ -141,9 +154,21 @@ body{
   border-top-right-radius: 13px;
   padding: 10px;
 }
+#modalRicettaP .modal-header,
+#modalTutorialP .modal-header{
+  background-color: #9ADB61; /*74A614 9CC633*/
+  color: #FEFEFE;
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
+  padding: 10px;
+}
 
 #modalRicetta h1, form,
 #modalTutorial h1, form{
+  padding: 20px;
+}
+#modalRicettaP h1, form,
+#modalTutorialP h1, form{
   padding: 20px;
 }
 
@@ -151,10 +176,18 @@ body{
 #modalTutorial h3, h4, h5 {
   color: #74A614;
 }
+#modalRicettaP h3, h4, h5,
+#modalTutorialP h3, h4, h5 {
+  color: #74A614;
+}
 
 
 #modalRicetta label, input, textarea,
 #modalTutorial label, input, textarea {
+  margin-bottom: 10px;
+}
+#modalRicettaP label, input, textarea,
+#modalTutorialP label, input, textarea {
   margin-bottom: 10px;
 }
 
@@ -164,13 +197,25 @@ body{
   height: 140px;
   width: 140px;
 }
-
+#modalRicettaP img,
+#modalTutorialP img{
+  position: static;
+  height: 140px;
+  width: 140px;
+}
 .form-group {
   position: relative;
 }
 
 #modalTutorial p,
 #modalRicetta p{
+  display: inline;
+  position: relative;
+  bottom: 53px;
+  left: 20px;
+}
+#modalTutorialP p,
+#modalRicettaP p{
   display: inline;
   position: relative;
   bottom: 53px;
@@ -288,15 +333,57 @@ body{
 #listaTutorial .panel-footer{
   background-color: #FEFEFE;
   margin-bottom: 50px;
+}
 
+.jumbotron {
+  background-color: #FEFEFE;
 }
-.crop{
-  width: 600px;
-  height: 200px;
-  overflow: hidden;
+
+.img-circle{
+  margin: 10px;
 }
-.crop img {
-  width: 600px;
-  height: 450px;
-  margin: -100px 0 0 -50px;
+
+#heading {
+  position: relative;
+  top: 20px;
+  left: 16px;
+  font-size: 20px;
+}
+
+
+#imgPost {
+  position: relative;
+  top: 0px;
+  left: 16px;
+
+  //**  margin-right: 0%; margin-left: 5%;  **//
+}
+
+#content {
+  margin-top: 16px;
+  margin-left: 0px;
+}
+
+#content h4 {
+  color: darkgreen;
+  padding-bottom: 5px;
+  font-size: larger;
+}
+
+
+#content p {
+  font-size: 90%;
+}
+
+.stelline {
+  color: grey;
+  font-size: 16px;
+  font-weight: lighter;
+  float: right;
+}
+
+#dataOra {
+  position: relative;
+  top: 23px;
+  left: 16px;
 }

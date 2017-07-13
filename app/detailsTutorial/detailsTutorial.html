@@ -1,9 +1,9 @@
-<div class="container-fluid" id="page" style="margin-left: 10%; margin-right: 10%; width: 80%">
-<div class="row">
+<div class="container-fluid" id="page" style="margin-left: 5%; margin-right: 5%; width: 90%">
+    <div class="row">
         <div class="col-md-1"></div>
 
         <div class="col-md-7 text-left">
-            <div class="panel panel-default text-left">
+            <div class="panel text-left">
                 <div class="panel-body">
                     <h1 style="color: green;">{{dati.post.titolo}}</h1>
                     <br>
@@ -18,12 +18,15 @@
                     <button  ng-if="dati.post.autoreId != dati.userId && dati.yetSaved" ng-click="removeSaver(dati.Saving)" type="submit" class="btn btn-default"
                              style="float: right;">Salvata</button>
                 </div>
+                <div class="panel-footer" style="background-color: white">
+                    <p> {{dati.post.descrizione}}</p>
+                </div>
             </div>
-            <div class="panel panel-default text-left">
+            <div class="panel text-left">
+                <div class="panel-body" align="center">
+                    <img class="img-responsive" ng-src="{{dati.post.img_url}}" width="600" height="400">
+                </div>
                 <div class="panel-body">
-                    <img class="img-responsive" ng-src="{{dati.post.img_url}}" width="640" height="426">
-                    <h4>Descrizione</h4>
-                    <p>{{dati.post.descrizione}}</p>
                     <hr>
                     <div class="row">
                         <div class="col-md-12">
@@ -32,15 +35,31 @@
                         </div>
                     </div>
                     <hr>
-                    <h4 style="color: green">Materiale Necessario:</h4>
-                    <div class="panel panel-default" style="background-color: darkseagreen">
-                        <ul style="color: white; list-style: none; padding-top: 10px">
-                            <li>Strumento 1</li>
-                            <li>Strumento 2</li>
-                        </ul>
+                    <h3>Materiale Necessario:</h3>
+                    <div class="panel panel-default">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <ul style="list-style: none; padding-top: 10px">
+                                    <li>{{dati.post.strumenti.strumento1}}</li>
+                                    <li>{{dati.post.strumenti.strumento3}}</li>
+                                    <li>{{dati.post.strumenti.strumento5}}</li>
+                                    <li>{{dati.post.strumenti.strumento7}}</li>
+                                    <li>{{dati.post.strumenti.strumento9}}</li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <ul style="list-style: none; padding-top: 10px">
+                                    <li>{{dati.post.strumenti.strumento2}}</li>
+                                    <li>{{dati.post.strumenti.strumento4}}</li>
+                                    <li>{{dati.post.strumenti.strumento6}}</li>
+                                    <li>{{dati.post.strumenti.strumento8}}</li>
+                                    <li>{{dati.post.strumenti.strumento10}}</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                    <hr>
-                    <h3 style="color: green;">Procedimento</h3>
+                    <h3>Procedimento</h3>
                     <p>{{dati.post.procedimento}}</p>
                 </div>
             </div>
@@ -49,33 +68,29 @@
         <div class="col-md-3 sidenav">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-4">
+                    <div class="media-list">
+                        <li class="media-right">
                             <img class="img-circle" width="50px" height="50px"
                                  ng-src="{{dati.post.autore_img}}" alt="{{dati.post.autore_img}}" ng-if="dati.post.autore_img.includes('https://firebasestorage.googleapis.com')">
-                        </div>
-                        <div class="col-md-8">
-                            Pubblicata da: <br>
+                        </li>
+                        <li class="media-body" style="padding-left: 10px">
+                            Pubblicata da:<br>
+                            <a href="#!/otherUserProfile/{{dati.post.autoreId}}" ng-if="dati.userId != dati.post.autoreId"><span style="color: green">
+                            {{dati.post.name}} {{dati.post.surname}}</span></a>
+                            <a href="#!/userProfile" ng-if="dati.userId == dati.post.autoreId"><span style="color: green">
+                            {{dati.post.name}} {{dati.post.surname}}</span></a>
 
-                            <ul class="media-list">
-                                <a href="#!/otherUserProfile/{{dati.post.autoreId}}" ng-if="dati.userId != dati.post.autoreId"><span style="color: green">
-                                {{dati.post.name}} {{dati.post.surname}}</span></a>
-                                <a href="#!/userProfile" ng-if="dati.userId == dati.post.autoreId">
-                                    {{dati.post.name}} {{dati.post.surname}}</a>
-                            </ul>
-
-                        </div>
+                            <!--punteggio/titolo raggiunto-->
+                        </li>
                     </div>
                     <hr>
-                    Altro da {{dati.post.name}}
+                    <p>Altro da {{dati.post.name}}:</p>
+                    <li  style="list-style: none" ng-repeat="post in dati.posts" ng-if="post.autoreId == dati.post.autoreId && post.tag=='tutorial' ">
+                        <a href="#!/detailsTutorial/{{post.id}}" ><p style="color: green; font-size: 15px">{{post.titolo}}</p></a>
+                    </li>
                     <hr>
-                    <b>{{dati.post.titolo}}</b> <br><br>
-                    <p style="color: lightgrey;"><em>VARI FILTRI</em></p>
-                    <!--mettiamo i filtri a lista-->
-
                     <div ng-if="dati.post.autoreId != dati.userId">
-                        Vota il tutorial:
-                        <br>
+                        <p>Vota il tutorial:</p>
                         <form ng-submit="addVoto()" id="formVota" ng-if="dati.notVoted">
                             <button class="stellaButton" ng-click="valueUno()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
                             <button class="stellaButton" ng-click="valueDue()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
@@ -83,26 +98,26 @@
                             <button class="stellaButton" ng-click="valueQuattro()"type="submit"><img src="../images/empty-star.png" height="20px"></button>
                             <button class="stellaButton" ng-click="valueCinque()" type="submit"><img src="../images/empty-star.png" height="20px"></button>
                         </form>
-                        </span><p ng-if="dati.yetVoted"> Il tuo voto è stato aggiunto! <span class="glyphicon glyphicon-ok"></span> </p>
+                        </span><p ng-if="dati.yetVoted"><em>Il tuo voto è stato aggiunto! </em><span style="color: green" class="glyphicon glyphicon-ok"></span></p>
                         <hr>
                     </div>
-                    commenta:
+                    <p>Aggiungi un commento:</p>
                     <form id="frmAddCommento" role="form" ng-submit="addCommento()">
-                        <textarea type = "text" class="form-control" nome="testo" rows="4" id="desc" placeholder="Scrivi un commento..."
+                        <textarea style="height: 50px" type = "text" class="form-control" nome="testo" rows="4" id="desc" placeholder="Scrivi un commento..."
                                   ng-model="dati.commento"></textarea>
                         <button class="btn btn-success" type="submit" style="float: right;">Pubblica</button>
                     </form><hr>
-                    <div>
-                        <li class="media-list" ng-repeat="commenti in dati.commenti | orderBy: 'date' :true" style="list-style: none">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <div class="media-left">
-                                        <img class="img-circle" ng-src="{{commenti.autore_img}}" height="60px" width="60px">
-                                    </div>
-                                    <div class="media-body">
-                                        <p><span style="color: green"><b>{{commenti.name}} {{commenti.surname}}: </b></span> {{commenti.descrizione}}</p>
-                                        <p class="data-ora" style="float: right">{{commenti.dataStampa}} {{commenti.oraStampa}}</p>
-                                    </div>
+                    <a style="color: green" class="btn" data-toggle="collapse" data-target="#demo">Visualizza commenti</a><br>
+                    <div id="demo" class="collapse"><br>
+                        <li class="media-list" ng-repeat="commenti in dati.commenti | orderBy: '-date' :true" style="list-style: none">
+                            <div class="panel">
+                                <div class="media-left">
+                                    <img class="img-circle" ng-src="{{commenti.autore_img}}" height="50px" width="50px">
+                                </div>
+                                <div class="media-body">
+                                    <p><span style="color: green"><b>{{commenti.name}} {{commenti.surname}}: </b></span> <br>{{commenti.descrizione}}</p>
+                                    <p class="data-ora" style="float: right">{{commenti.dataStampa}} {{commenti.oraStampa}}</p>
+
                                 </div>
                             </div>
                         </li>

@@ -20,7 +20,10 @@
             <option>Aromi</option>
         </select>
         </div>
-
+        <div>
+            <h5>Inserisci la tua Città</h5>
+            <input  id="cityM" type="text" class="form-control" ng-model="cittaSearch" placeholder="Città">
+        </div>
         <button id="searchM" class="btn btn-success" ng-click="setRicerca()"> Cerca </button>
 
     </div>
@@ -32,6 +35,8 @@
             <span class="glyphicon glyphicon-remove"></span>  {{prodottiSearch}} </button>
         <button class="btn btn-default" ng-if="ricerca && categoriaSearch != ''" ng-click="deleteCategoria()">
             <span class="glyphicon glyphicon-remove"></span>  {{categoriaSearch}}</button>
+        <button class="btn btn-default" ng-if="ricerca && cittaSearch != ''" ng-click="deleteCitta()">
+            <span class="glyphicon glyphicon-remove"></span>  {{categoriaSearch}}</button>
         <button class="btn btn-danger" ng-click="cancellaTutto()">Cancella tutto</button>
     </div><br><br>
 
@@ -39,7 +44,7 @@
         <div class="row">
             <ul class="media-list">
                 <!--METTERE NG-IF-->
-                <li ng-repeat="prodotto in dati.products | filter:prodottiSearch| filter:{categoria:categoriaSearch}">
+                <li ng-repeat="prodotto in dati.products | filter:prodottiSearch| filter:{categoria:categoriaSearch, cittaProduttore:cittaSearch }">
                     <div class="col-md-4">
                         <div class="panel panel-default">
                             <div class="panel-heading">

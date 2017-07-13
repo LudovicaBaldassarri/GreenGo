@@ -30,12 +30,15 @@ angular.module('myApp.areaMercato', ['ngRoute'])
 
             $scope.prodottiSearch = "";
             $scope.categoriaSearch = "";
+            $scope.cittaSearch = "";
+
             $scope.ricerca = false;
 
             //FUNZIONI PER GESTIRE BOTTONI RICERCA
             $scope.cancellaTutto = function () {
                 $scope.prodottiSearch = "";
                 $scope.categoriaSearch = "";
+                $scope.cittaSearch = "";
                 $scope.ricerca = false;
             }
 
@@ -49,6 +52,10 @@ angular.module('myApp.areaMercato', ['ngRoute'])
 
             $scope.deleteCategoria = function () {
                 $scope.categoriaSearch = "";
+            }
+
+            $scope.deleteCitta = function () {
+                $scope.cittaSearch = "";
             }
 
 

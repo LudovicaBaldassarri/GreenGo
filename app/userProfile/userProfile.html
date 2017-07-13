@@ -592,12 +592,29 @@
               <ul class="media-list">
                   <li ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="dati.userId == post.autoreId && post.tag=='ricetta'">
                       <div class="col-md-4">
-                          <div class="panel panel-default" style="height: 200px">
-                              <div class="panel-heading"><a href="#!/detailsRicetta/{{post.id}}">{{post.titolo}}</a></div>
-                              <div class="panel-body">
-                                <img style="width:100%" height="100px" alt="Image" ng-src="{{post.img_url}}" alt="{{post.img_alt}}"
-                                     ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">
-                              </div>
+                          <div class="panel-heading" style="width: 200px">
+                              <img style="width:100%" height="100px" alt="Image"
+                                   ng-src="{{post.img_url}}" alt="{{post.img_alt}}"
+                                   ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">
+                          </div>
+
+                          <div class="panel-body" style="width: 200px; height: 85px">
+                              <a href="#!/detailsRicetta/{{post.id}}" style="color: #74A614">{{post.titolo}}</a><br>
+                          </div>
+                          <div class="panel-footer" style="width: 200px; height: 50px; background-color: white">
+                              <p>
+                                  <span style="color: grey; font-size: 16px;font-weight: lighter; float: right">
+                                        <img src="../images/votozero.png" height="16px" ng-if="post.media==null">
+                                        <img src="../images/votouno.png" height="16px" ng-if="post.media==1">
+                                        <img src="../images/votodue.png" height="16px" ng-if="post.media==2">
+                                        <img src="../images/vototre.png" height="16px" ng-if="post.media==3">
+                                        <img src="../images/votoquattro.png" height="16px" ng-if="post.media==4">
+                                        <img src="../images/votocinque.png" height="16px" ng-if="post.media==5">
+                                      <!--voto: {{post.media}}-->
+                                    </span>
+                                  <br>
+                                  <!--{{post.descrizione}}-->
+                              </p>
                           </div>
                       </div>
                   </li>
@@ -608,12 +625,29 @@
               <ul class="media-list">
                   <li ng-repeat="savers in dati.savers| orderBy: '-date' :true" ng-if="savers.saver == dati.userId && savers.postId.tag=='ricetta'">
                       <div class="col-md-4">
-                          <div class="panel panel-default" style="height: 250px">
-                              <div class="panel-heading"><a href="#!/detailsRicetta/{{savers.postId.id}}">{{savers.postId.titolo}}</a></div>
-                              <div class="panel-body">
-                                  <img style="width:100%" height="100px" alt="Image" ng-src="{{savers.postId.img_url}}" alt="{{savers.postId.img_alt}}"
-                                       ng-if="savers.postId.img_url.includes('https://firebasestorage.googleapis.com')">
-                              </div>
+                          <div class="panel-heading" style="width: 200px">
+                              <img style="width:100%" height="100px" alt="Image"
+                                   ng-src="{{savers.postId.img_url}}" alt="{{savers.postId.img_alt}}"
+                                   ng-if="savers.postId.img_url.includes('https://firebasestorage.googleapis.com')">
+                          </div>
+
+                          <div class="panel-body" style="width: 200px; height: 85px">
+                              <a href="#!/detailsRicetta/{{savers.postId.id}}" style="color: #74A614">{{savers.postId.titolo}}</a><br>
+                          </div>
+                          <div class="panel-footer" style="width: 200px; height: 50px; background-color: white">
+                              <p>
+                                  <span style="color: grey; font-size: 16px;font-weight: lighter; float: right">
+                                        <img src="../images/votozero.png" height="16px" ng-if="savers.postId.media==null">
+                                        <img src="../images/votouno.png" height="16px" ng-if="savers.postId.media==1">
+                                        <img src="../images/votodue.png" height="16px" ng-if="savers.postId.media==2">
+                                        <img src="../images/vototre.png" height="16px" ng-if="savers.postId.media==3">
+                                        <img src="../images/votoquattro.png" height="16px" ng-if="savers.postId.media==4">
+                                        <img src="../images/votocinque.png" height="16px" ng-if="savers.postId.media==5">
+                                      <!--voto: {{post.media}}-->
+                                    </span>
+                                  <br>
+                                  <!--{{post.descrizione}}-->
+                              </p>
                           </div>
                       </div>
                   </li>
@@ -636,12 +670,29 @@
               <ul class="media-list">
                   <li ng-repeat="post in dati.posts| orderBy: '-date' :true" ng-if="dati.userId == post.autoreId && post.tag=='tutorial'">
                       <div class="col-md-4">
-                          <div class="panel panel-default" style="height: 190px">
-                              <div class="panel-heading"><a href="#!/detailsTutorial/{{post.id}}">{{post.titolo}}</a></div>
-                              <div class="panel-body">
-                                  <img style="width:100%" height="100px" alt="Image" ng-src="{{post.img_url}}" alt="{{post.img_alt}}"
-                                       ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">
-                              </div>
+                          <div class="panel-heading" style="width: 200px">
+                              <img style="width:100%" height="100px" alt="Image"
+                                   ng-src="{{post.img_url}}" alt="{{post.img_alt}}"
+                                   ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">
+                          </div>
+
+                          <div class="panel-body" style="width: 200px; height: 85px">
+                              <a href="#!/detailsTutorial/{{post.id}}" style="color: #74A614">{{post.titolo}}</a><br>
+                          </div>
+                          <div class="panel-footer" style="width: 200px; height: 50px; background-color: white">
+                              <p>
+                                  <span style="color: grey; font-size: 16px;font-weight: lighter; float: right">
+                                        <img src="../images/votozero.png" height="16px" ng-if="post.media==null">
+                                        <img src="../images/votouno.png" height="16px" ng-if="post.media==1">
+                                        <img src="../images/votodue.png" height="16px" ng-if="post.media==2">
+                                        <img src="../images/vototre.png" height="16px" ng-if="post.media==3">
+                                        <img src="../images/votoquattro.png" height="16px" ng-if="post.media==4">
+                                        <img src="../images/votocinque.png" height="16px" ng-if="post.media==5">
+                                      <!--voto: {{post.media}}-->
+                                    </span>
+                                  <br>
+                                  <!--{{post.descrizione}}-->
+                              </p>
                           </div>
                       </div>
                   </li>
@@ -652,12 +703,29 @@
               <ul class="media-list">
                   <li ng-repeat="savers in dati.savers| orderBy: '-date' :true" ng-if="savers.saver == dati.userId && savers.postId.tag=='tutorial'">
                       <div class="col-md-4">
-                          <div class="panel panel-default" style="height: 190px">
-                              <div class="panel-heading"><a href="#!/detailsTutorial/{{savers.postId.id}}">{{savers.postId.titolo}}</a></div>
-                              <div class="panel-body">
-                                  <img style="width:100%" height="100px" alt="Image" ng-src="{{savers.postId.img_url}}" alt="{{savers.postId.img_alt}}"
-                                       ng-if="savers.postId.img_url.includes('https://firebasestorage.googleapis.com')">
-                              </div>
+                          <div class="panel-heading" style="width: 200px">
+                              <img style="width:100%" height="100px" alt="Image"
+                                   ng-src="{{savers.postId.img_url}}" alt="{{savers.postId.img_alt}}"
+                                   ng-if="savers.postId.img_url.includes('https://firebasestorage.googleapis.com')">
+                          </div>
+
+                          <div class="panel-body" style="width: 200px; height: 85px">
+                              <a href="#!/detailsTutorial/{{savers.postId.id}}" style="color: #74A614">{{savers.postId.titolo}}</a><br>
+                          </div>
+                          <div class="panel-footer" style="width: 200px; height: 50px; background-color: white">
+                              <p>
+                                  <span style="color: grey; font-size: 16px;font-weight: lighter; float: right">
+                                        <img src="../images/votozero.png" height="16px" ng-if="savers.postId.media==null">
+                                        <img src="../images/votouno.png" height="16px" ng-if="savers.postId.media==1">
+                                        <img src="../images/votodue.png" height="16px" ng-if="savers.postId.media==2">
+                                        <img src="../images/vototre.png" height="16px" ng-if="savers.postId.media==3">
+                                        <img src="../images/votoquattro.png" height="16px" ng-if="savers.postId.media==4">
+                                        <img src="../images/votocinque.png" height="16px" ng-if="savers.postId.media==5">
+                                      <!--voto: {{post.media}}-->
+                                    </span>
+                                  <br>
+                                  <!--{{post.descrizione}}-->
+                              </p>
                           </div>
                       </div>
                   </li>

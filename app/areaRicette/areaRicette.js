@@ -19,15 +19,15 @@ angular.module('myApp.areaRicette', ['ngRoute'])
         });
     }])
 
-    .controller('areaRicetteCtrl', ['$scope', '$rootScope','$routeParams','$firebaseStorage','$firebaseAuth','currentAuth','Post','SinglePost', 'InsertPostService',
-        function($scope, $rootScope,$routeParams,$firebaseStorage, $firebaseAuth, currentAuth, Post, SinglePost, InsertPostService) {
+    .controller('areaRicetteCtrl', ['$scope', '$rootScope','$routeParams','$firebaseStorage','$firebaseAuth','Post','SinglePost','UsersInfo', 'InsertPostService',
+        function($scope, $rootScope,$routeParams,$firebaseStorage, $firebaseAuth, Post, SinglePost, UsersInfo, InsertPostService) {
 
         $scope.dati={};
         $rootScope.dati={};
         $rootScope.dati.currentView="areaRicette";
         // $scope.dati.userId = currentAuth.uid;
         $scope.dati.userId = $firebaseAuth().$getAuth().uid;
-        // $scope.dati.user = UsersInfo.getUserInfo($firebaseAuth().$getAuth().uid);
+        $scope.dati.user = UsersInfo.getUserInfo($firebaseAuth().$getAuth().uid);
         $scope.dati.posts = Post.getData();
         //$scope.dati.ingr = Ingredienti.getData();
         $scope.orderProp = "ingredienti";

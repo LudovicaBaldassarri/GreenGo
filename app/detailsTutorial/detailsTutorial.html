@@ -12,6 +12,10 @@
                     <img src="../images/vototre.png" height="20px" ng-if="dati.post.media==3">
                     <img src="../images/votoquattro.png" height="20px" ng-if="dati.post.media==4">
                     <img src="../images/votocinque.png" height="20px" ng-if="dati.post.media==5">
+
+                    <button  type="button" id="condividiButtonT" href="#!/dettailsTutorial" data-toggle="modal"
+                             data-target="#modalCondivisione" type="submit" class="btn btn-default" style="float: right;"> Condividi</button>
+
                     <button id="saveButton"  ng-click="saveTutorial()"
                             type="submit" class="btn btn-success" ng-if= "dati.post.autoreId != dati.userId && dati.notSaved" style="float: right;">Salva</button>
                     <button  ng-if="dati.post.autoreId != dati.userId && dati.yetSaved" ng-click="removeSaver(dati.Saving)" type="submit" class="btn btn-default"
@@ -125,4 +129,28 @@
             </div>
         </div>
     </div>
+
+    <!-- MODAL CONDIVISIONE -->
+    <!-- Modal -->
+    <div class="modal fade" id="modalCondivisione" role="dialog">
+        <form role="form" ng-submit="condividiT()">
+            <div class="modal-dialog">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Condividi nella tua bacheca</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" class="form-control" id="title"
+                               ng-model="dati.condivisione" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-default">Condividi</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
 </div>

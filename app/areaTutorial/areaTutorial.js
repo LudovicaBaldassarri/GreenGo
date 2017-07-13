@@ -18,8 +18,8 @@ angular.module('myApp.areaTutorial', ['ngRoute'])
         });
     }])
 
-    .controller('areaTutorialCtrl', ['$scope', '$rootScope','$routeParams','$firebaseStorage','$firebaseAuth','UsersInfo','currentAuth','Post','SinglePost', 'InsertPostService',
-        function($scope, $rootScope,$routeParams,$firebaseStorage, $firebaseAuth, UsersInfo, currentAuth, Post, SinglePost, InsertPostService) {
+    .controller('areaTutorialCtrl', ['$scope', '$rootScope','$routeParams','$firebaseStorage','$firebaseAuth','UsersInfo','Post','SinglePost', 'InsertPostService',
+        function($scope, $rootScope,$routeParams,$firebaseStorage, $firebaseAuth, UsersInfo, Post, SinglePost, InsertPostService) {
             $scope.dati={};
             $rootScope.dati={};
             $scope.dati.user = UsersInfo.getUserInfo($firebaseAuth().$getAuth().uid);

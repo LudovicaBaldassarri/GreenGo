@@ -46,8 +46,8 @@ angular.module('myApp.home', ['ngRoute'])
 
             $scope.dati.titolo = "";
             $scope.dati.procedimento = "";
-            $scope.dati.categoria= "";
-            $scope.dati.dieta="";
+            $scope.dati.categoria = "";
+            $scope.dati.dieta = "";
             $scope.dati.difficolta = "";
             $scope.dati.tempoP = "";
             $scope.dati.tempoC = "";
@@ -80,7 +80,6 @@ angular.module('myApp.home', ['ngRoute'])
             var ctrl = this;
             $scope.fileToUpload = null;
             $scope.imgPath = "";
-
 
             $scope.addPost = function () {
 

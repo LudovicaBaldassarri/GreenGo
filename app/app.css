@@ -107,9 +107,7 @@ body{
   /*min-height: 300px;*/
 }
 
-#post .panel-footer {
-  background-color: #dff0d8 ;
-}
+
 
 #post .modal-body {
   /*padding: 20px;*/
@@ -388,7 +386,7 @@ body{
   color: grey;
   font-size: 16px;
   font-weight: lighter;
-  float: right;
+  float: left;
 }
 
 #dataOra {
@@ -419,4 +417,9 @@ body{
 #btnpubblica{
     position: relative;
     left: 10px;
+}
+
+.btn-success {
+  background-color: #9ADB61;
+  border: 1px solid #9ADB61;
 }

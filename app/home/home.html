@@ -562,7 +562,7 @@
 
                         <!--<div class="media" ng-repeat="post in dati.posts | orderBy: '-date' :true">-->
                         <div class="media" ng-repeat="follow in dati.follows" >
-                            <div class="media" ng-repeat="post in dati.posts | orderBy: '-date' :true" ng-if="post.autoreId ==follow.followed  && follow.follower.id == dati.userId" >
+                            <div class="media" ng-repeat="post in dati.posts | orderBy: '-date' :true" ng-if="post.autoreId == follow.followed  && follow.follower.id == dati.userId" >
 
                             <div class="media-left">
                                 <img class="img-circle" alt="immagine" width="70" height="70"

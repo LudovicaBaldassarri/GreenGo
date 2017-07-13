@@ -1,19 +1,24 @@
-<div class="container-fluid" id="page" style="margin-left: 5%; margin-right: 5%; width: 90%">
+<div class="container-fluid" id="page" style=" width: 100%">
   <div class="row">
     <!--SPAZIO UTENTE-->
-    <div class="col-md-3 ">
+    <div class="col-md-3 " style="width: 20%">
       <div class="panel panel-default" align="center">
-        <div class="panel-body">
+        <div class="panel-body" >
           <div>
-            <img class="img-circle" width="200" height="200"
-                 ng-src="{{dati.user.img_url}}" alt="{{dati.user.img_alt}}" ng-if="dati.user.img_url.includes('https://firebasestorage.googleapis.com')">
+            <img class="img-circle" width="180" height="180"
+                 ng-src="{{dati.user.img_url}}" alt="{{dati.user.img_alt}}"
+                 ng-if="dati.user.img_url.includes('https://firebasestorage.googleapis.com')">
             <br><br><button type="button" class="btn btn-default"
                         data-toggle="modal" data-target="#modalAddImmagine">Aggiorna immagine profilo</button><hr>
           </div>
 
           <!--BOTTONI PRODUTTORE-->
-          <button id="button2"  ng-if="dati.user.tipo == ''" data-toggle="modal" data-target="#modalProduttore" class="btn btn-success">Diventa Produttore</button>
-          <button id="button1" ng-if="dati.user.tipo == 'produttore'" class="btn btn-default"><a href="#!/paginaProduttore">Vai alla tua pagina Produttore</a></button>
+          <button id="button2" style="width: 72%;" ng-if="dati.user.tipo == ''" data-toggle="modal"
+                  data-target="#modalProduttore" class="btn btn-success">
+              Diventa Produttore</button>
+          <button id="button1" style="width: 72%;" ng-if="dati.user.tipo == 'produttore'"
+                  class="btn btn-default"><a href="#!/paginaProduttore">
+              Pagina Produttore</a></button>
             <hr>
 
             <!--SPAZIO FOLLOWERS/FOLLOWING-->
@@ -36,7 +41,7 @@
     <!--SPAZIO POST-->
     <div class="col-sm-6" ng-if="dati.area== 'profilo'">
 
-      <div class="row">
+      <div class="row" style="width: 125%">
         <div class="col-sm-12">
           <div class="panel panel-default text-left">
             <div class="panel-body" >
@@ -542,7 +547,7 @@
         </div>
       </div>
 
-      <div class="row" >
+      <div class="row" style="width: 125%" >
         <div class="col-md-12">
           <ul class="media-list">
             <!--area profilo-->
@@ -550,24 +555,43 @@
                   <div class="media-left">
                     <!--QUI METTEREI L'IMMAGINE DEL PROFILO-->
                     <img class="img-circle" alt="immagine" width="50" height="50"
-                         ng-src="{{post.autore_img}}" alt="{{post.autore_img}}" ng-if="post.autore_img.includes('https://firebasestorage.googleapis.com')">
+                         ng-src="{{post.autore_img}}" alt="{{post.autore_img}}"
+                         ng-if="post.autore_img.includes('https://firebasestorage.googleapis.com')">
                   </div>
                 <div class="media-body">
-                  <h4><strong>{{post.name}} {{post.surname}}</strong> ha pubblicato:</h4>
-                  <p class="data-ora">{{post.dataStampa}} {{post.oraStampa}} </p>
+                  <h4 style="color: grey"><strong>{{post.name}} {{post.surname}}</strong> ha pubblicato:</h4>
+                  <span class="data-ora">{{post.dataStampa}} {{post.oraStampa}} </span>
+                    <!-- CANCELLA POST --->
+                    <button class="btn btn-default btn-sm" style="position: relative; left:80px;"
+                            ng-click="removePost(post.id)"ng-if="dati.userId == post.autoreId">Rimuovi Post</button>
 
                   <a ng-if="post.tag == 'ricetta'" href="#!/detailsRicetta/{{post.id}}" style="color: darkgreen">
-                    <h4 class="media-heading"><strong>{{post.titolo}}</strong></h4></a>
+                    <h4 class="media-heading" style="font-size: larger; margin-top: 20px; margin-bottom: 15px;">
+                        <strong>{{post.titolo}}</strong></h4></a>
                   <a ng-if="post.tag == 'tutorial'" href="#!/detailsTutorial/{{post.id}}" style="color: darkgreen">
-                    <h4 class="media-heading"><strong>{{post.titolo}}</strong></h4></a>
+                    <h4 class="media-heading" style="font-size:larger; margin-top: 20px; margin-bottom: 15px;">
+                        <strong>{{post.titolo}}</strong></h4></a>
+                 <div class="row">
+                    <div class="col-md-5">
+                    <img style="position: relative; left: 0px;"
+                         ng-src="{{post.img_url}}" ng-alt="{{post.img_alt}}" width="95%">
+                    <a href=""><h4><strong>{{post.nome_post}}</strong></h4></a>
+                    </div>
+                    <div class="col-md-7">
+                    <p style="position: relative;left: 0px; font-size: 80%">
+                        {{post.descrizione}}</p>
+                     <div ng-if="post.tag == 'ricetta'" ng-if="post.tag == 'tutorial'"
+                          class="stelline">
+                     <img src="../images/votozero.png" height="20px" ng-if="post.media==null">
+                     <img src="../images/votouno.png" height="20px" ng-if="post.media==1">
+                     <img src="../images/votodue.png" height="20px" ng-if="post.media==2">
+                     <img src="../images/vototre.png" height="20px" ng-if="post.media==3">
+                     <img src="../images/votoquattro.png" height="20px" ng-if="post.media==4">
+                     <img src="../images/votocinque.png" height="20px" ng-if="post.media==5">
+                    </div>
+                    </div>
 
-                    <img class="media-object" ng-src="{{post.img_url}}" ng-alt="{{post.img_alt}}" width="70%">
-                  <a href=""><h4 class="media-heading"><strong>{{post.nome_post}}</strong></h4></a>
-                    <p>{{post.descrizione}}</p>
-
-                  <!-- CANCELLA POST --->
-                  <button class="btn btn-default btn-sm"
-                          ng-click="removePost(post.id)"ng-if="dati.userId == post.autoreId">Rimuovi Post</button>
+                </div>
 
                 </div>
                 <hr/>
@@ -762,7 +786,7 @@
       </div>
 
       <!--MENU LATO-->
-   <div class="col-md-3 ">
+   <div class="col-md-3 " style="width: 20%; float: right">
       <div class="panel panel-default" align="center" >
         <div class="panel-body">
           <button class="btn btn-success" ng-click="goToRicettario()" style="width: 100%">

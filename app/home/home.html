@@ -558,47 +558,55 @@
                         <!--RICORDIAMOCI DI FILTRARE-->
                         <li class="media" ng-repeat="post in dati.posts | orderBy: '-date' :true">
                             <div class="media-left">
-                                <img class="img-circle" alt="immagine" width="60" height="60"
-                                ng-src="{{post.autore_img}}" alt="{{post.autore_img}}" ng-if="post.autore_img.includes('https://firebasestorage.googleapis.com')">
+                                <img class="img-circle" alt="immagine" width="70" height="70"
+                                ng-src="{{post.autore_img}}" alt="{{post.autore_img}}"
+                                     ng-if="post.autore_img.includes('https://firebasestorage.googleapis.com')">
                             </div>
-                            <div class="media-body">
+                            <div id="homeAutorePost" class="media-body">
                                 <h4 class="media-heading">
-                                    <span style="float: left"><a href="#!/otherUserProfile/{{post.autoreId}}" ng-if="dati.userId != post.autoreId">
-                                        <span style="color: black"> {{post.name}} {{post.surname}}</span></a>
+                                    <span id="heading"><a href="#!/otherUserProfile/{{post.autoreId}}" ng-if="dati.userId != post.autoreId">
+                                        <span style="color: grey"> {{post.name}} {{post.surname}} </span></a>
                                     <a href="#!/userProfile" ng-if="dati.userId == post.autoreId">
-                                        <span style="color: black">{{post.name}} {{post.surname}}</span></a>
+                                        <span style="color: grey">{{post.name}} {{post.surname}}</span></a>
                                     ha pubblicato:
                                     </span>
                                     <span style="float: right">
-                                        <button style="float: right" class="btn btn-default btn-sm"
-                                            ng-click="removePost(post.id)"ng-if="dati.userId == post.autoreId">Rimuovi Post</button>
+                                        <button style="position: relative; right: 10px; top: 20px;" class="btn btn-default btn-sm"
+                                                ng-click="removePost(post.id)"ng-if="dati.userId == post.autoreId">Rimuovi Post</button>
                                     </span>
-                                </h4><br>
+                                </h4>
+                                <p id="dataOra" class="data-ora" > {{post.dataStampa}} {{post.oraStampa}}</p><br>
+
+                                <br>
                                 <div class="row" ng-if="post.tag == 'ricetta' || post.tag == 'tutorial'">
                                     <div class="col-md-5">
-                                        <img class="media-object" width="90%" style="margin-right: 5%; margin-left: 5%" img ng-src="{{post.img_url}}" alt="{{post.img_alt}}"
+                                        <img id="imgPost" class="media-object" width="90%"
+                                             img ng-src="{{post.img_url}}" alt="{{post.img_alt}}"
                                              ng-if="post.img_url.includes('https://firebasestorage.googleapis.com')">
                                     </div>
                                     <div class="col-md-7">
-
-                                        <a ng-if="post.tag == 'ricetta'" href="#!/detailsRicetta/{{post.id}}" style="color: darkgreen">
-                                        <h4 class="media-heading"><strong>{{post.titolo}}</strong></h4></a>
-                                        <a ng-if="post.tag == 'tutorial'" href="#!/detailsTutorial/{{post.id}}" style="color: darkgreen">
+                                        <div id="content">
+                                        <a ng-if="post.tag == 'ricetta'" href="#!/detailsRicetta/{{post.id}}">
+                                        <h4 id="titoloPost" class="media-heading"><strong>{{post.titolo}}</strong></h4></a>
+                                        <a ng-if="post.tag == 'tutorial'" href="#!/detailsTutorial/{{post.id}}">
                                         <h4 class="media-heading"><strong>{{post.titolo}}</strong></h4></a>
                                         <p>{{post.descrizione}}</p>
-                                        <img src="../images/votozero.png" height="20px" ng-if="post.media==null">
-                                        <img src="../images/votouno.png" height="20px" ng-if="post.media==1">
-                                        <img src="../images/votodue.png" height="20px" ng-if="post.media==2">
-                                        <img src="../images/vototre.png" height="20px" ng-if="post.media==3">
-                                        <img src="../images/votoquattro.png" height="20px" ng-if="post.media==4">
-                                        <img src="../images/votocinque.png" height="20px" ng-if="post.media==5">
+                                        <span class="stelline">
+                                          <img src="../images/votozero.png" height="20px" ng-if="post.media==null">
+                                          <img src="../images/votouno.png" height="20px" ng-if="post.media==1">
+                                          <img src="../images/votodue.png" height="20px" ng-if="post.media==2">
+                                          <img src="../images/vototre.png" height="20px" ng-if="post.media==3">
+                                          <img src="../images/votoquattro.png" height="20px" ng-if="post.media==4">
+                                          <img src="../images/votocinque.png" height="20px" ng-if="post.media==5">
+                                        <span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div ng-if="! (post.tag == 'ricetta' || post.tag == 'tutorial') || (post.tag=='ricetta' && post.img_url == null) || (post.tag == 'tutorial' && post.img_url==null) ">
                                     <p>{{post.descrizione}}</p>
                                 </div>
                                 <div class="media-bottom">
-                                    <p class="data-ora" style="float: right;"> {{post.dataStampa}} {{post.oraStampa}}</p><br>
+                                    <!--<p class="data-ora" style="float: right;"> {{post.dataStampa}} {{post.oraStampa}}</p><br>-->
                                     <form id="frmAddCommento" role="form" ng-submit="addCommento()">
                                         <textarea type = "text" class="form-control" nome="testo" rows="4" id="descy" placeholder="Scrivi un commento..."
                                              ng-model="dati.commento" style="width: 500px; height: 40px; float: left"></textarea>
@@ -606,8 +614,7 @@
                                     </form><br>
                                 </div>
                             </div>
-
-
+                            <hr>
                         </li>
                     </ul>
 

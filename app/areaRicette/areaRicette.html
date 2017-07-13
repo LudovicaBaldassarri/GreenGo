@@ -1,6 +1,6 @@
 <div id="page">
     <!--SPAZIO RICERCA-->
-    <div id="ricercaRicetta" class="jumbotron">
+    <div class="jumbotron">
         <!--<div class="panel-body">-->
 
             <input  id="wordR" type="text" class="form-control" ng-model="ricetteSearch" placeholder="Cerca per ingrediente...">
@@ -108,7 +108,7 @@
                                         <span style="color: grey; font-weight: lighter">by {{post.name}} {{post.surname}}</span></a>
                                     <a href="#!/userProfile"style="color: grey; font-size: 18px;font-weight: lighter" ng-if="dati.userId == post.autoreId">
                                         <span>by {{post.name}} {{post.surname}}</span></a>
-                                    <span style="color: grey; font-size: 16px;font-weight: lighter; float: right">
+                                    <span class="stelline">
                                         <img src="../images/votozero.png" height="16px" ng-if="post.media==null">
                                         <img src="../images/votouno.png" height="16px" ng-if="post.media==1">
                                         <img src="../images/votodue.png" height="16px" ng-if="post.media==2">
@@ -376,6 +376,7 @@
         </div>  <!--    chiude il modal RICETTA     -->
 
 
+</div>
 </div>
 
 

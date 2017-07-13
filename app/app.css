@@ -335,6 +335,55 @@ body{
   margin-bottom: 50px;
 }
 
-#ricercaRicetta {
+.jumbotron {
   background-color: #FEFEFE;
+}
+
+.img-circle{
+  margin: 10px;
+}
+
+#heading {
+  position: relative;
+  top: 20px;
+  left: 16px;
+  font-size: 20px;
+}
+
+
+#imgPost {
+  position: relative;
+  top: 0px;
+  left: 16px;
+
+  //**  margin-right: 0%; margin-left: 5%;  **//
+}
+
+#content {
+  margin-top: 16px;
+  margin-left: 0px;
+}
+
+#content h4 {
+  color: darkgreen;
+  padding-bottom: 5px;
+  font-size: larger;
+}
+
+
+#content p {
+  font-size: 90%;
+}
+
+.stelline {
+  color: grey;
+  font-size: 16px;
+  font-weight: lighter;
+  float: right;
+}
+
+#dataOra {
+  position: relative;
+  top: 23px;
+  left: 16px;
 }

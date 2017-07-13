@@ -592,7 +592,7 @@
                                         <h4 class="media-heading"><strong>{{post.titolo}}</strong></h4></a>
                                         <p>{{post.descrizione}}</p>
                                         </div><br>
-                                        <div class="stelline">
+                                        <div ng-if="post.tag == 'ricetta'" ng-if="post.tag == 'tutorial'" class="stelline">
                                             <img src="../images/votozero.png" height="20px" ng-if="post.media==null">
                                             <img src="../images/votouno.png" height="20px" ng-if="post.media==1">
                                             <img src="../images/votodue.png" height="20px" ng-if="post.media==2">

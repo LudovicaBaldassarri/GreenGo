@@ -5,17 +5,27 @@
                 <div class="row">
                     <div class="panel panel-default col-md-12" style="padding: 15px">
                         <div class="col-md-12 text-center">
+                            <div class="row">
+                            <div class="col-md-12 text-center">
                             <div class="crop" align="center">
                                 <img class=" " width="100%" height="20%"
                                      ng-src="{{dati.user.img_produttore}}" alt=" " ng-if="dati.user.img_produttore.includes('https://firebasestorage.googleapis.com')">
                             </div>
-                            <h1><strong>{{dati.user.nomeProduttore}}</strong></h1>
-                            <p style="font-size: 25px">{{dati.user.citta}} · {{dati.user.descrizione}}</p><hr>
-                            <p style="font-weight: lighter"> Attività di <a href="#!/otherUserProfile/{{dati.userId}}">{{dati.user.name}} {{dati.user.surname}}</a></p>
-                            <img class="img-circle" width="80" height="80"
-                                 ng-src="{{dati.user.img_url}}" alt="{{dati.user.img_alt}}" ng-if="dati.user.img_url.includes('https://firebasestorage.googleapis.com')">
-                            <button style="margin: 15px" type="button" class="btn btn-success btn-lg" href="#/otherProduttore"
-                                    data-toggle="modal" data-target="#modalProdotto">Aggiungi Prodotto</button>
+                                <h1><strong>{{dati.user.nomeProduttore}}</strong></h1>
+                                 <p style="font-size:20px; font-weight:lighter">{{dati.user.citta}} · {{dati.user.descrizione}}</p><hr>
+                            </div>
+                            </div>
+                            <div class="col-md-4 text-right">
+                                <p style="float: left;font-size: 13px; font-weight: lighter; margin: 5px" > Attività di <a href="#!/otherUserProfile/{{dati.userId}}">{{dati.user.name}} {{dati.user.surname}}</a></p>
+                            </div>
+                            <div class="col-md-4 left">
+                                <img style="margin-top: 5px" align="center" class="img-circle" width="50" height="50"
+                                     ng-src="{{dati.user.img_url}}" alt="{{dati.user.img_alt}}" ng-if="dati.user.img_url.includes('https://firebasestorage.googleapis.com')">
+                                </div>
+                            <div class="col-md-4 right">
+                                <button style="margin-right:10px" type="button" class="btn btn-success" href="#/otherProduttore" align="center"
+                                        data-toggle="modal" data-target="#modalProdotto">Aggiungi Prodotto</button>
+                            </div>
                         </div>
                     </div>
                 </div>

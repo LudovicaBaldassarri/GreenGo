@@ -305,6 +305,13 @@ body{
   left: 65%;
 }
 
+#cityM {
+  width: 140px;
+  position: absolute;
+  top: 220px;
+  left: 45%;
+}
+
 #searchR, #searchT, #searchM {
   position: absolute;
   left:70%;

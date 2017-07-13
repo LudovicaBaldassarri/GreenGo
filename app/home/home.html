@@ -591,26 +591,26 @@
                                         <a ng-if="post.tag == 'tutorial'" href="#!/detailsTutorial/{{post.id}}">
                                         <h4 class="media-heading"><strong>{{post.titolo}}</strong></h4></a>
                                         <p>{{post.descrizione}}</p>
-                                        <span class="stelline">
-                                          <img src="../images/votozero.png" height="20px" ng-if="post.media==null">
-                                          <img src="../images/votouno.png" height="20px" ng-if="post.media==1">
-                                          <img src="../images/votodue.png" height="20px" ng-if="post.media==2">
-                                          <img src="../images/vototre.png" height="20px" ng-if="post.media==3">
-                                          <img src="../images/votoquattro.png" height="20px" ng-if="post.media==4">
-                                          <img src="../images/votocinque.png" height="20px" ng-if="post.media==5">
-                                        <span>
+                                        </div><br>
+                                        <div class="stelline">
+                                            <img src="../images/votozero.png" height="20px" ng-if="post.media==null">
+                                            <img src="../images/votouno.png" height="20px" ng-if="post.media==1">
+                                            <img src="../images/votodue.png" height="20px" ng-if="post.media==2">
+                                            <img src="../images/vototre.png" height="20px" ng-if="post.media==3">
+                                            <img src="../images/votoquattro.png" height="20px" ng-if="post.media==4">
+                                            <img src="../images/votocinque.png" height="20px" ng-if="post.media==5">
                                         </div>
                                     </div>
                                 </div>
                                 <div ng-if="! (post.tag == 'ricetta' || post.tag == 'tutorial') || (post.tag=='ricetta' && post.img_url == null) || (post.tag == 'tutorial' && post.img_url==null) ">
                                     <p>{{post.descrizione}}</p>
                                 </div>
-                                <div class="media-bottom">
+                                <div id="footerPost" class="media-bottom">
                                     <!--<p class="data-ora" style="float: right;"> {{post.dataStampa}} {{post.oraStampa}}</p><br>-->
                                     <form id="frmAddCommento" role="form" ng-submit="addCommento()">
                                         <textarea type = "text" class="form-control" nome="testo" rows="4" id="descy" placeholder="Scrivi un commento..."
                                              ng-model="dati.commento" style="width: 500px; height: 40px; float: left"></textarea>
-                                        <button class="btn btn-success" type="submit" style="float: right;">Pubblica</button>
+                                        <button id="btnpubblica"class="btn btn-success" type="submit" >Pubblica</button>
                                     </form><br>
                                 </div>
                             </div>

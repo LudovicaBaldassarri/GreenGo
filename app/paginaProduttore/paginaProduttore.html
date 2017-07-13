@@ -1,92 +1,59 @@
 <div class="container-fluid" id="page">
     <div class="row">
-        <div class="col-md-8" style="width: 70%; margin-right: 15%; margin-left: 15%">
-            <!--RIVEDERE LO STILE- SPOSTARLO IN APP.CSS -->
-            <div class="panel panel-default text-center" style="padding-bottom: 15px">
-                <h3>I prodotti di {{dati.user.nomeProduttore}}</h3><br>
-                <img class="img-circle" width="150" height="150"
-                     ng-src="{{dati.user.img_url}}" alt="{{dati.user.img_alt}}" ng-if="dati.user.img_url.includes('https://firebasestorage.googleapis.com')">
-            </div>
-            <div class="col-md-3">
-                <div class="panel panel-default text-center">
-                    <div class="panel-body">
-                        <h5>Informazioni</h5><hr>
-                        <p><span style="color:green">Città</span><br>{{dati.user.citta}}</p><br>
-                        <p><span style="color:green">Descrizione dell'attività </span><br>{{dati.user.descrizione}} </p><hr>
-                        <button class="btn btn-success" data-toggle="modal" data-target="#modalProdotto">Aggiungi Prodotto</button>
+        <div class="col-md-12" style="width: 80%; margin-right: 15%; margin-left: 15%">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="panel panel-default col-md-12" style="padding: 15px">
+                        <div class="col-md-8 text-center">
+                            <h1><strong>{{dati.user.nomeProduttore}}</strong></h1>
+                            <p style="font-size: 25px">{{dati.user.citta}} · {{dati.user.descrizione}}</p><hr>
+                            <p style="font-size: 20px"> Attività di <a href="#!/otherUserProfile/{{dati.userId}}">{{dati.user.name}} {{dati.user.surname}}</a></p>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <img class="img-circle" width="125" height="125"
+                                ng-src="{{dati.user.img_url}}" alt="{{dati.user.img_alt}}" ng-if="dati.user.img_url.includes('https://firebasestorage.googleapis.com')">
+                             <br><button style="margin: 15px" type="button" class="btn btn-success btn-lg" href="#/otherProduttore"
+                                data-toggle="modal" data-target="#modalProdotto">Aggiungi Prodotto</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-9">
+
                 <!--PRODOTTI-->
-                <ul class="media-list">
-                    <!--METTERE NG-IF-->
-                    <li ng-repeat="prodotto in dati.products" ng-if="dati.userId == prodotto.autoreId">
+                <div class="col-md-10">
+                    <ul class="media-list">
+                        <!--METTERE NG-IF-->
+                        <li ng-repeat="prodotto in dati.products" ng-if="dati.userId == prodotto.autoreId">
+                            <div class="col-md-5">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <!--<a data-toggle="modal" data-target="#modalInfo">{{prodotto.nomeProdotto}}</a>-->
+                                        <span class="coloreTestoVerde">{{prodotto.nomeProdotto}}</span>
+                                        <span style="float: right">{{prodotto.prezzo}}/kg</span>
+                                    </div>
+                                    <div class="panel-body">
+                                        <img style="width:100%" width="70%" alt="Image"
+                                             ng-src="{{prodotto.img_url}}" alt="immagine" ng-if="prodotto.img_url.includes('https://firebasestorage.googleapis.com')">
+                                    </div>
+                                    <div class="panel-footer" style="height: 80px">
+                                        <p style="height: 30px">{{prodotto.descrizione}}</p>
 
-                        <div class="col-md-4">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <!--<a data-toggle="modal" data-target="#modalInfo">{{prodotto.nomeProdotto}}</a>-->
-                                    <span class="coloreTestoVerde">{{prodotto.nomeProdotto}}</span>
-                                    <span style="float: right">{{prodotto.prezzo}}/kg</span>
-                                </div>
-                                <div class="panel-body">
-                                    <img style="width:100%" width="70%" alt="Image"
-                                         ng-src="{{prodotto.img_url}}" alt="immagine" ng-if="prodotto.img_url.includes('https://firebasestorage.googleapis.com')">
-                                </div>
-                                <div class="panel-footer" style="height: 80px">
-                                    <p style="height: 30px">{{prodotto.descrizione}}</p>
-
-                                    <!--METTERE DATA-->
+                                        <!--METTERE DATA-->
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-                            <!--<div class="modal fade" id="modalInfo" role="dialog">-->
-                                <!--<div class="modal-dialog">-->
-
-                                    <!--&lt;!&ndash; Modal content&ndash;&gt;-->
-                                    <!--<div class="modal-content">-->
-                                        <!--<div class="modal-header">-->
-                                            <!--<button type="button" class="close" data-dismiss="modal">&times;</button>-->
-                                            <!--<h4 class="modal-title">{{prodotto.nomeProdotto}}</h4>-->
-                                        <!--</div>-->
-                                        <!--<div class="modal-body">-->
-                                            <!--<div class="row">-->
-                                                <!--<div class="col-md-5">-->
-                                                    <!--<img style="width:200px" alt="Image"-->
-                                                         <!--ng-src="{{prodotto.img_url}}" alt="immagine" ng-if="prodotto.img_url.includes('https://firebasestorage.googleapis.com')">-->
-                                                <!--</div>-->
-                                                <!--<div class="col-md-7">-->
-                                                    <!--<p>{{prodotto.descrizione}}</p>-->
-                                                    <!--<p>{{prodotto.prezzo}} Euro/kg</p>-->
-                                                    <!--<p>pezzi minimi ecc?</p>-->
-                                                <!--</div>-->
-                                            <!--</div>-->
-
-                                        <!--</div>-->
-                                        <!--<div class="modal-footer">-->
-                                            <!--<button type="button" class="btn btn-success">Compra</button>-->
-                                            <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-
-                                <!--</div>-->
-                            <!--</div>-->
-
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-
-    </div>
-
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <li class="media-list" ng-repeat="messaggios in dati.messaggi | orderBy: 'date' :true "  style="list-style: none" ng-if="dati.userId == messaggios.destinatarioId">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
+         <!--VISUALIZZAZIONE MESSAGGI-->
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <button style="margin: 10px" type="button" class="btn btn-info btn-lg" data-toggle="collapse" data-target="#demo">Messaggi</button>
+              <div id="demo" class="collapse">
+                <div class="panel-body">
+                  <li class="media-list" ng-repeat="messaggios in dati.messaggi | orderBy: 'date' :true "  style="list-style: none" ng-if="dati.userId == messaggios.destinatarioId">
+                     <div class="panel panel-default">
+                         <div class="panel-body">
                             <div class="media-left">
                                 <img class="img-circle" ng-src="{{messaggios.img_url}}" height="60px" width="60px">
                             </div>
@@ -94,15 +61,15 @@
                                 <p><span style="color: green"><b>{{messaggios.nome}} {{messaggios.cognome}}: </b></span> {{messaggios.testo}}</p>
                                 <p class="data-ora" style="float: right">{{messaggios.dataStampa}} {{messaggios.oraStampa}}</p>
                             </div>
-                        </div>
-
-
-                    </div>
-
-                </li>
-            </div>
+                         </div>
+                     </div>
+                  </li>
+                </div>
+              </div>
+          </div>
         </div>
-    </div>
+</div>
+
 
     <!--MODAL INSERISCI PRODOTTO-->
     <div ng-controller="paginaProduttoreCtrl as $ctrl">

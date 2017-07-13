@@ -26,8 +26,8 @@
                                      ng-src="{{dati.user.img_url}}" alt="{{dati.user.img_alt}}" ng-if="dati.user.img_url.includes('https://firebasestorage.googleapis.com')">
                                 </div>
                             <div class="col-md-4 right">
-                                <a style="margin-right:10px;font-size: 13px; font-weight: lighter;"
-                                        data-toggle="modal" data-target="#modalProdotto">Aggiungi Prodotto</a>
+                                <button type="button" class="btn btn-success" href="#/home"
+                                        data-toggle="modal" data-target="#modalProdotto">Aggiungi Prodotto</button>
                             </div>
                         </div>
                     </div>
@@ -38,18 +38,18 @@
                     <ul class="media-list">
                         <!--METTERE NG-IF-->
                         <li ng-repeat="prodotto in dati.products" ng-if="dati.userId == prodotto.autoreId">
-                            <div class="col-md-5">
+                            <div class="col-md-7">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
                                         <!--<a data-toggle="modal" data-target="#modalInfo">{{prodotto.nomeProdotto}}</a>-->
                                         <span class="coloreTestoVerde">{{prodotto.nomeProdotto}}</span>
-                                        <span style="float: right">{{prodotto.prezzo}} Euro/kg</span>
+                                        <span style="font-size: 13px; float: right">{{prodotto.prezzo}} Euro/kg</span>
                                     </div>
                                     <div class="panel-body">
                                         <img style="width:100%" width="70%" alt="Image"
                                              ng-src="{{prodotto.img_url}}" alt="immagine" ng-if="prodotto.img_url.includes('https://firebasestorage.googleapis.com')">
                                     </div>
-                                    <div class="panel-footer" style="height: 50px">
+                                    <div class="panel-footer" style=" font-size: 15px; height: 50px">
                                         <p>{{prodotto.descrizione}}</p>
                                     </div>
                                 </div>
